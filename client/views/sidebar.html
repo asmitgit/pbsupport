@@ -1,0 +1,69 @@
+<div ng-controller="SideBarCTRL">
+    <div class="sidebar-scroll">
+        <div class="user-account">
+            <img src="assets/images/user.png" class="rounded-circle user-photo" alt="User Profile Picture">
+            <div class="dropdown">
+                <span>Welcome,</span>
+                <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>{{UserDetails.EMPData[0].Name}}</strong></a>
+                <ul class="dropdown-menu dropdown-menu-right account animated flipInY">
+                    <!--<li><a href="page-profile2.html"><i class="icon-user"></i>My Profile</a></li>
+                    <li><a href="app-inbox.html"><i class="icon-envelope-open"></i>Messages</a></li>
+                    <li><a href="javascript:void(0);"><i class="icon-settings"></i>Settings</a></li>
+                    <li class="divider"></li>
+                    <li><a href="page-login.html"><i class="icon-power"></i>Logout</a></li>-->
+                </ul>
+            </div>
+            <hr>
+        </div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active show"
+                    data-toggle="tab" ng-click="MenuActive(1)" href="javascript:void(0)">My Account</a>
+            </li>
+            <li class="nav-item" ng-if="UserDetails.EMPData[0].RoleID!=5">
+                <a class="nav-link"
+                  data-toggle="tab" href="javascript:void(0)" ng-click="MenuActive(2)">Admin</a>
+            </li>
+        </ul>
+        <!-- Tab panes -->
+        <!-- Tab panes -->
+        <div class="tab-content p-l-0 p-r-0">
+            <div class="tab-pane animated fadeIn " ng-class="ActiveBar==1 ? 'show active':'' ">
+                <nav class="sidebar-nav">
+                    <ul class="main-menu metismenu">
+                        <li><a href="/home.html#/pbsupport/CreateTicket"><i class="icon-speedometer"></i><span>Create Ticket</span></a></li>
+                        <li><a href="/home.html#/pbsupport/MyTickets"><i class="icon-list"></i>My Tickets</a></li>
+
+                    </ul>
+                </nav>
+            </div>
+            <div class="tab-pane animated fadeIn" ng-class="ActiveBar==2 ? 'show active':'' ">
+                <nav class="sidebar-nav">
+                    <ul class="main-menu metismenu">
+                        <!--<li><a href="index2.html"><i class="icon-speedometer"></i><span>Dashboard</span></a></li>-->
+                        <li ng-if="('4,6,7').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/AssignedTickets"><i class="icon-envelope"></i>Assigned Tickets</a></li>
+
+                        <li ng-if="('4,6,7').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/MySpanTickets"><i class="icon-envelope"></i>My Span Tickets</a></li>
+                        <li ng-if="('3,2').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/MGRDashboardTickets"><i class="icon-bubbles"></i>Dashboard</a></li>
+                        <li ng-if="('3').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/UserReport"><i class="icon-bubbles"></i>User Report</a></li>
+                        <li ng-if="('2').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/AdminUserReport"><i class="icon-bubbles"></i>User Report</a></li>
+                        <li ng-if="('4,6,7').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/EmployeeDirectory"><i class="icon-envelope"></i>Emp Directory</a></li>
+
+
+                    </ul>
+
+                </nav>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+   
+</div>

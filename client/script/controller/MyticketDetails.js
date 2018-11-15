@@ -1,0 +1,118 @@
+﻿HRSupport.controller("MyTicketDetailsCTRL", function ($scope, HRSupportService, $rootScope, $uibModal, $routeParams, $window) {
+    $scope.UserDetails = JSON.parse($window.localStorage.getItem('UserDetails'));
+
+    $scope.isEmpty = function (str) {
+        return typeof str == 'string' && !str.trim() || typeof str == 'undefined' || str === null;
+    };
+   
+    $scope.TicketID = $routeParams.TicketID;
+    
+    $scope.TicketReply = '';
+   
+    $scope.GetTicketDetails = function () {
+        var objRequest = {
+            "TicketID": $scope.TicketID
+        };
+        HRSupportService.GetTicketDetails(objRequest, $scope.UserDetails.Toket).success(function (data) {
+            $scope.TicketDetails = data.data.length > 1 ? data.data[0] : [];
+            $scope.TicketComments = data.data.length > 2 ? data.data[1] : [];
+            //$scope.Selected.Status = { StatusID: $scope.TicketDetails[0].StatusID };
+            //$scope.Selected.IssueType = { ISSUEID: $scope.TicketDetails[0].IssueID };
+            //$scope.Selected.SubIssueType = { SUBISSUEID: $scope.TicketDetails[0].SubIssueID };
+            //if (!$scope.isEmpty($routeParams.IssueID) && !$scope.isEmpty($routeParams.SubIssueID)) {
+            //    $scope.Selected.IssueType = { ISSUEID: $routeParams.IssueID };
+            //    $scope.Selected.SubIssueType = { SUBISSUEID: $routeParams.SubIssueID };
+            //}
+        });
+    };
+    $scope.GetTicketDetails();
+
+    $scope.UpdateTicketRemarks = function (ReplyType) {
+        var _Comments = '';
+
+        _Comments = $scope.TicketReply;
+
+        var objRequest = {
+            "TicketID": $scope.TicketID,
+            "Comments": _Comments,
+            "CreatedBy": $scope.UserDetails.EMPData[0].EmpID,
+            "ReplyType": ReplyType,
+            "FileURL": "",
+            "FileName": ""
+        };
+
+        if ($scope.FileAttachments.length > 0) {
+            HRSupportService.UploadFile($scope.FileAttachments, $scope.UserDetails.Toket).success(function (data) {
+                console.log(data);
+                $scope.FileAttachments = data
+                objRequest.FileURL = $scope.FileAttachments[0].AttachmentURL;
+                objRequest.FileName = $scope.FileAttachments[0].FileName;
+                HRSupportService.UpdateTicketRemarks(objRequest, $scope.UserDetails.Toket).success(function (data) {
+                    if (!data.error) {
+                        alert('Updated sussessfully');
+                        $scope.GetTicketDetails();
+                        $scope.TicketReply = '';
+
+                    }
+                });
+            });
+        }
+        else {
+            HRSupportService.UpdateTicketRemarks(objRequest, $scope.UserDetails.Toket).success(function (data) {
+                if (!data.error) {
+                    alert('Updated sussessfully');
+                    $scope.GetTicketDetails();
+                    $scope.TicketReply = '';
+
+                }
+            });
+        }
+    };
+
+    $scope.FileAttachments = [];
+    $scope.file_changed = function (element) {
+        //debugger;
+        $scope.FileAttachments = [];
+        var FileData = [];
+
+        $scope.$apply(function (scope) {
+            //$scope.DocumentList
+            var j = 0; var k = element.files.length;
+            for (var i = 0 ; i < element.files.length; i++) {
+                var photofile = element.files[i];
+
+                var fileReader = new FileReader();
+                var _img = {
+                    "FileName": photofile.name,
+                    "AttachemntContent": '',//btoa(fileLoadedEvent.target.result),
+                    "AttachmentURL": ""
+                };
+                FileData.push(_img);
+
+                fileReader.onload = function (fileLoadedEvent) {
+
+                    if (fileLoadedEvent.target.readyState == FileReader.DONE) {
+                        FileData[j].AttachemntContent = btoa(fileLoadedEvent.target.result);
+                        FileData[j].FileName
+                        j++;
+                        if (j == k) {
+                            $scope.FileAttachments = FileData;
+                            $scope.$apply();
+                        }
+                    }
+                    //$scope.FileName = element.files[0].name;
+                    //$scope.Size = element.files[0].size
+                    //$scope.FileStringData = btoa(fileLoadedEvent.target.result);
+
+                };
+                if (element.files.length > 0) {
+                    fileReader.readAsBinaryString(photofile);
+                }
+            }
+
+        });
+
+        //alert($scope.FileAttachments.length);
+    };
+    
+});

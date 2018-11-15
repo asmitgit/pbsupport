@@ -1,0 +1,108 @@
+.helpdesk{margin: auto;float: none;margin-top: 100px;}
+.my_class{background:#ff0000; height:120px; width:100%;}
+#main-content {margin-top:100px;}
+.help_block{width:100%; margin: 0 auto; text-align: left; margin-top:0;}
+.container-fluid{ text-align:center;}
+.dd-list .dd-list{padding:0 !important; }
+.team_list{padding:5px 0 !important;}
+.site_view{margin-top:100px;}
+.info_items {
+	min-height: 100px;
+	background: #fff;
+	width: 100%;
+	box-shadow: 0 5px 20px rgba(0, 0, 0, .1);
+	-webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, .1);
+	margin-bottom: 30px;
+	padding: 20px 15px;
+	overflow: hidden;
+}
+.bg_green {
+	background: #2ed8b6;
+}
+.bg_yellow {
+	background: #FFB64D;
+}
+.bg_blue {
+	background: #4099ff;
+}
+.bg_pink {
+	background: #FF5370;
+}
+.info_items_icon {
+	float: left;
+	color: #fff;
+	height: 65px;
+	width: 65px;
+	text-align: center;
+	font-size: 30px;
+	line-height: 65px;
+	margin-right: 20px;
+	background: rgba(0, 0, 0, .2);
+	border-radius: 100%;
+}
+.info_item_content {
+	width: calc(100% - 90px);
+	float: left;
+	line-height: normal;
+	color: #fff;
+}
+.info_items_text {
+	margin-bottom: 8px;
+}
+.info_items_text, .progress-description {
+	display: block;
+	font-size: 16px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-weight: 400;
+}
+.info_items_number {
+	font-weight: 300;
+	font-size: 21px;
+}
+.progress-description {
+	margin: 0;
+}
+.info_items .progress, .info_items .progress .progress-bar {
+	border-radius: 0;
+}
+.info_items .progress {
+	background: rgba(0, 0, 0, .2);
+	margin: 10px 0px;
+	height: 3px;
+}
+
+.progress {
+	border: 0;
+	background-image: none;
+	filter: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	border-radius: 0 !important;
+	margin: 0;
+}
+.info_items .progress .progress-bar {
+	background: #fff;
+}
+.info_items .progress, .info_items .progress .progress-bar {
+	border-radius: 0;
+}
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.fade.in {
+    opacity: 1;
+}
+.show {
+    display: block!important;
+}
+
+.fade {
+    opacity: 0;
+    -webkit-transition: opacity .15s linear;
+    -o-transition: opacity .15s linear;
+    transition: opacity .15s linear;
+}

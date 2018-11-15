@@ -1,0 +1,90 @@
+﻿<div class="container-fluid">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-6 col-md-8 col-lg-12">
+
+                <ul class="breadcrumb adv_search">
+                    <!--<li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>-->
+                    <li class="breadcrumb-item active">My Tickets</li>
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-lg-3 col-md-9 col-lg-12 tkt_listing3">
+            <div class="card text-center bg-info new">
+                <div class="body">
+                    <div class="p-15 text-light" ng-click="GetAllTicketList(1)">
+                        <h3>{{TicketCount[0].NEWCASE}}</h3>
+                        <span>New</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-9 col-lg-12 tkt_listing3">
+            <div class="card text-center bg-secondary open">
+                <div class="body">
+                    <div class="p-15 text-light" ng-click="GetAllTicketList(2)">
+                        <h3>{{TicketCount[0].OPENCASE}}</h3>
+                        <span>Open</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-9 col-lg-12 tkt_listing3">
+            <div class="card text-center bg-warning tatbust">
+                <div class="body">
+                    <div class="p-15 text-light" ng-click="GetAllTicketList(4)">
+                        <h3>{{TicketCount[0].Closed}}</h3>
+                        <span>Closed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row clearfix">
+        <div class="col-md-12">
+            <div class="card">
+
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-hover js-basic-example dataTable table-custom">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Ticket Id</th>
+                                    <th>Created On</th>
+                                    <th>Issue</th>
+                                    <th>Status</th>
+                                    <th>Updated On</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr ng-repeat="data in TicketList">
+                                    <td><a class="btn btn-link mybtn-link" href="home.html#/pbsupport/MyTicketDetails/{{data.TicketID}}">{{data.TicketDispID}}</a></td>
+                                    <td>{{data.CreatedON| date:'medium'}}</td>
+                                    <td>{{data.ISSUENAME}}</td>
+                                    <td>{{data.StatusName}}</td>
+                                    <td>{{data.LastUpdatedOn| date:'medium'}}</td>
+                                </tr>
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+

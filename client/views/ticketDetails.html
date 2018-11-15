@@ -1,0 +1,210 @@
+﻿<div class="container-fluid">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-6 col-md-8 col-lg-12">
+                <div class="detail_links">
+                    <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a><button type="button" class="btn btn-success"><i class="fa fa-arrow-right" aria-hidden="true"></i> Next</button></h2>
+                    <p class="demo-button">
+
+                        <button type="button" class="btn btn-outline-primary">{{TicketDetails[0].AssignToName}}({{TicketDetails[0].AssignToEmployeeID}})</button>
+                        <!--<button type="button" class="btn btn-outline-success" title="New"> <span>{{TicketDetails[0].AssignToEmployeeID}}</span></button>-->
+                       
+                        <!--<button type="button" class="btn btn-outline-danger" title="Log"><i class="fa fa-file-text-o"></i> <span>Log</span></button>-->
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+   
+
+    <div class="row clearfix">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="mobile-left">
+                    <a class="btn btn-primary toggle-email-nav collapsed" data-toggle="collapse" href="#email-nav" role="button" aria-expanded="false" aria-controls="email-nav">
+                        <span class="btn-label">
+                            <i class="la la-bars"></i>
+                        </span>
+                        Menu
+                    </a>
+                </div>
+
+
+                <div class="mail-inbox">
+                    <div class="mail-left collapse filter_box" id="email-nav">
+
+
+                        <div class="mail-side mail-sidenew">
+                            <ul class="nav">
+                                <li class="active">
+                                    <label>Status</label>
+                                    <select class="form-control" ng-model="Selected.Status"
+                                            ng-options="data.StatusName for data in StatusList
+                                    |  unique: 'StatusID' | orderBy:['Sequence'] track by data.StatusID ">
+                                        <option value="">Select Status</option>
+                                    </select>
+                                </li>
+                                <li><label>Follow-up Date</label><input type="text" id="product-key" class="form-control" ng-model="TicketDetails[0].FollowUp"></li>
+                                <li>
+                                    <label>Issue</label>
+                                    <select class="form-control" ng-model="Selected.IssueType"
+                                            ng-options="data.ISSUENAME for data in IssueSubIssue
+                                    |  unique: 'ISSUEID' | orderBy:['SUBISSUENAME'] track by data.ISSUEID ">
+                                        <option value="">Select Issue</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    <label>Sub Issue</label>
+                                    <select class="form-control" ng-model="Selected.SubIssueType"
+                                            ng-options="data.SUBISSUENAME for data in IssueSubIssue
+                                    | filter : {ISSUEID:Selected.IssueType.ISSUEID}:true | orderBy:['SUBISSUENAME']  track by data.SUBISSUEID" ng-disabled="!(Selected.IssueType.ISSUEID>0)">
+                                        <option value="">Select Sub Issue</option>
+                                    </select>
+                                </li>
+                                <!--<li><label>Agent</label><input type="text" id="product-key" class="form-control"></li>
+                                <li><label>Designation</label><input type="text" id="product-key" class="form-control"></li>
+                                <li><label>Manager</label><input type="text" id="product-key" class="form-control"></li>
+                                <li><label>BU</label><input type="text" id="product-key" class="form-control"></li>-->
+                                <li><label>Employee</label>{{TicketDetails[0].Name}}({{TicketDetails[0].EmployeeID}})</li>
+                                <li><label>Assigned to</label>{{TicketDetails[0].AssignToName}}({{TicketDetails[0].AssignToEmployeeID}})</li>
+                                <li><label>Company</label>{{TicketDetails[0].CompanyName}}</li>
+                                <li><label>HR Spoc</label>{{TicketDetails[0].HRSpocID}}({{TicketDetails[0].HRSpocName}})</li>
+
+                            </ul>
+                            <div class="m-t-30 compose_action_button">
+                                <button type="button" class="btn btn-success" ng-click="UpdateTicketDetails();">Submit</button>
+                                <a href="#" class="btn btn-outline-secondary">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mail-right">
+
+                        <div class="body ticket_detailbox">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item"><a class="nav-link active show" data-toggle="tab" ng-click="ChangeActive(1)">Ticket Detail</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" ng-click="ChangeActive(2)">Internal Comment</a></li>
+                            </ul>
+                            <div class="tab-content table_databox">
+                                <div class="tab-pane " ng-class="ActivType==1 ? 'show active':'' ">
+                                    <div class="table-responsive">
+                                        <table class="table m-b-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Ticket Id</th>
+                                                    <th>Cretaed on</th>
+                                                    <th>Issue</th>
+                                                    <th>Sub Issue</th>
+                                                    <th>Status</th>
+                                                  
+                                                    <th>Last Updated on</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="active_detaillist" >
+                                                    <td>{{TicketDetails[0].TicketDispID}}</td>
+                                                    <td>{{TicketDetails[0].CreatedON| date:'medium'}}</td>
+                                                    <td>{{TicketDetails[0].ISSUENAME}}</td>
+                                                    <td>{{TicketDetails[0].SUBISSUENAME}}</td>
+                                                    <td>{{TicketDetails[0].StatusName}}</td>
+                                                    <td>{{TicketDetails[0].LastUpdatedOn| date:'medium'}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="7" class="tkt_detailbox">
+                                                        <div class="card detialbox">
+                                                            <div class="body emailer_body">
+                                                                <div class="timeline-item green detail_data" ng-repeat="data in TicketComments" ng-if="data.ReplyType==1 || data.ReplyType==2">
+                                                                    <div style="    margin: 0 0 14px 0;">
+                                                                        <span class="date">From : <a>{{data.Name}}({{data.EmployeeID}})</a></span>
+                                                                        <div class="right_section">
+                                                                            <span class="sl-date">{{data.CreatedOn| date:'medium'}}</span>
+                                                                            <!--<div class="mail_reply"> <i class="icon-action-undo"></i></div>-->
+                                                                        </div>
+                                                                        <div style="width:100%:display:block;">
+                                                                            <p>
+                                                                                {{data.Comments}}
+                                                                            </p>
+                                                                        </div>
+                                                                        <!--<button type="button" class="btn btn-outline-info">Read More</button>-->
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mail_compose_Section">
+                                                                    <div class="card shadow_none">
+                                                                        <div class="body compose_box">
+                                                                          
+                                                                            <hr>
+                                                                            <div class="header sub_hd">
+                                                                                <h2>Respond to Query</h2>
+                                                                            </div>
+                                                                            <input type="text" class="form-control" ng-model="TicketReply" style="height:200px;width:620px" />
+                                                                            <div class="m-t-30 compose_action_button">
+                                                                                <div class="upload_box ng-scope">
+                                                                                    <input type="file" name="file-3[]" id="file-3" class="inputfile inputfile-3" onchange="angular.element(this).scope().file_changed(this)" accept="file_extension|.jpg,.pdf,.xlsx" multiple="">
+                                                                                    <label for="file-3" class="upload_docs" style="display:inline;">
+                                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+                                                                                        <!--<span>Choose a file&hellip;</span>-->
+                                                                                    </label>
+                                                                                </div>
+                                                                                <button type="button" class="btn btn-success" ng-click="UpdateTicketRemarks(2)">Post</button>
+                                                                                <a href="app-inbox.html" class="btn btn-outline-secondary">Cancel</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                    </td>
+                                                </tr>
+
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane " ng-class="ActivType==2 ? 'show active':'' ">
+
+                                    <p>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" ng-model="HRComments"></input>
+                                            <button type="button" class="btn btn-success comment_submit" ng-click="UpdateTicketRemarks(3)">Submit</button>
+                                        </div>
+
+                                        <div class="media">
+
+                                            <div class="media-body" ng-repeat="data in TicketComments" ng-if="data.ReplyType==3">
+                                                <span class="name">{{data.Name}}({{data.EmployeeID}}) <font>{{data.CreatedOn| date:'medium'}}</font></span>
+                                                <span class="message">{{data.Comments}}</span>
+
+                                            </div>
+
+                                           
+                                        </div>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+
+            </div>
+
+
+
+
+
+
+        </div>

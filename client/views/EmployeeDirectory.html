@@ -1,0 +1,68 @@
+﻿<div class="container-fluid">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-6 col-md-8 col-lg-12">
+
+                <ul class="breadcrumb adv_search">
+                    <!--<li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>-->
+                    <li class="breadcrumb-item active">User Directory</li>
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+    
+
+
+    <div class="row clearfix">
+        <div class="col-md-12">
+            <div class="card">
+
+                <div class="body">
+                    <div class="search_box">
+                        <input type="search" class="searchdata" value="" placeholder="Search">
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover js-basic-example dataTable table-custom">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Employee ID</th>
+                                    <th>Name</th>
+                                    <th>Company</th>
+                                    <th>Department</th>
+                                    <th>HR Spoc</th>
+                                    <th>First Reporting</th>
+                                    <th>Second Reporting</th>
+                                  
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr ng-repeat="data in EmpData">
+                                    <td><a class="btn btn-link mybtn-link" href="#">{{data.EmployeeID}}</a></td>
+                                    <td>{{data.Name}}</td>
+                                    <td>{{data.CompanyName}}</td>
+                                    <td>{{data.DepartmentName}}</td>
+                                    <td>{{data.HRSpocName}}</td>
+                                    <td>{{data.FirstLevelReportingName}}</td>
+                                    <td>{{data.SecondLevelReportingName}}</td>
+                                 
+                                </tr>
+
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+

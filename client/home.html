@@ -1,0 +1,223 @@
+﻿<!doctype html>
+<html lang="en" ng-app="HRSupport">
+
+<head>
+    <title>Ticket Listing</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="Lucid Bootstrap 4.1.1 Admin Template">
+    <meta name="author" content="">
+
+    <link rel="shortcut icon" href="https://www.policybazaar.com/home-v3/favicon.ico">
+    <!-- VENDOR CSS -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/vendor/sweetalert/sweetalert.css" />
+    <link rel="stylesheet" href="assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="assets/vendor/parsleyjs/css/parsley.css">
+
+    <script src="Script/lib/js/angular.js"></script>
+    <script src="script/lib/angular-ui.js"></script>
+    <script src="Script/lib/js/angular-route.js"></script>
+    <script src="Script/lib/js/ui-bootstrap-custom-tpls-1.3.2.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.min.js"></script>
+    <script src="app.js"></script>
+    <script src="Script/config/config.js"></script>
+    <script src="Script/module/module.js"></script>
+    <script src="Script/service/service.js"></script>
+    <script src="Script/controller/home.js"></script>
+    <script src="script/controller/createticket.js"></script>
+    <script src="script/controller/ticketDetails.js"></script>
+    <script src="script/controller/mytickets.js"></script>
+    <script src="script/controller/MyticketDetails.js"></script>
+    <script src="script/controller/assignedTickets.js"></script>
+    <script src="script/controller/mgrDashboard.js"></script>
+    <script src="script/controller/sidebar.js"></script>
+    <script src="script/controller/user-report.js"></script>
+    <script src="script/controller/spanTickets.js"></script>
+    <script src="script/controller/employee%20directory.js"></script>
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="light/assets/css/inbox.css">
+    <link rel="stylesheet" href="light/assets/css/main.css">
+    <link rel="stylesheet" href="light/assets/css/styles.css">
+    <link rel="stylesheet" href="light/assets/css/color_skins.css">
+</head>
+
+<body class="theme-orange">
+
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="m-t-30"><img src="landing-page/images/pb-support_logo.png" />       
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- Overlay For Sidebars -->
+
+    <div id="wrapper">
+
+        <nav class="navbar navbar-fixed-top">
+            <div class="container-fluid" ng-controller="HeaderCTRL">
+                <div class="navbar-btn">
+                    <button type="button" class="btn-toggle-offcanvas"><i class="lnr lnr-menu fa fa-bars"></i></button>
+                </div>
+
+                <div class="navbar-brand">
+                    <a href="javascript:void(0)"><img src="landing-page/images/support_logo.png" width="177" height="38" alt="Pb"></a>
+                </div>
+                <div class="navbar-right">
+
+
+                    <div id="navbar-menu">
+                        <ul class="nav navbar-nav">
+                            <!--<li>
+                        <a href="app-events.html" class="icon-menu d-none d-sm-block d-md-none d-lg-block"><i
+                                class="icon-calendar"></i></a>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown">
+                            <i class="icon-bell"></i>
+                            <span class="notification-dot"></span>
+                        </a>
+                        <ul class="dropdown-menu notifications animated shake">
+                            <li class="header"><strong>You have 4 new Notifications</strong></li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <i class="icon-info text-warning"></i>
+                                        </div>
+                                        <div class="media-body">
+                                            <p class="text">Campaign <strong>Holiday Sale</strong> is nearly
+                                                reach budget limit.</p>
+                                            <span class="timestamp">10:00 AM Today</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <i class="icon-like text-success"></i>
+                                        </div>
+                                        <div class="media-body">
+                                            <p class="text">Your New Campaign <strong>Holiday Sale</strong> is
+                                                approved.</p>
+                                            <span class="timestamp">11:30 AM Today</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <i class="icon-pie-chart text-info"></i>
+                                        </div>
+                                        <div class="media-body">
+                                            <p class="text">Website visits from Twitter is 27% higher than last
+                                                week.</p>
+                                            <span class="timestamp">04:00 PM Today</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <i class="icon-info text-danger"></i>
+                                        </div>
+                                        <div class="media-body">
+                                            <p class="text">Error on website analytics configurations</p>
+                                            <span class="timestamp">Yesterday</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="footer"><a href="javascript:void(0);" class="more">See all notifications</a></li>
+                        </ul>
+                    </li>-->
+
+
+                            <li>
+                                <!--<a href="http://localhost:61750" class="icon-menu"><i class="icon-logout"></i></a>-->
+                                <a href="javascript:void(0);" class="icon-menu" ng-click="LogOut()"><i class="icon-logout"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div id="left-sidebar" class="sidebar">
+            <div ng-include="'views/sidebar.html'"></div>
+        </div>
+
+        <div id="main-content" ng-view=ng-view>
+        </div>
+    </div>
+    <div ng-controller="SideBarCTRL">
+        <div class="modal fade show" id="defaultModal" style="display: block; transition: opacity .15s linear; background-color: rgba(0,0,0,0.4); " tabindex="-1" role="dialog" ng-if="UserDetails.IsLocSet==0">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h2>Location Details</h2>
+                            </div>
+                            <div class="body">
+                                <form id="basic-form" method="post" novalidate>
+                                    <div class="form-group">
+                                        <label> Current City</label>
+                                        <input type="text" class="form-control" ng-model="UserDetails.Location[0].City">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Area/Sector</label>
+                                        <input type="text" class="form-control" ng-model="UserDetails.Location[0].Sector">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Building</label>
+                                        <input type="text" class="form-control" ng-model="UserDetails.Location[0].Building">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Floor</label>
+                                        <input type="text" class="form-control" ng-model="UserDetails.Location[0].FloorNo">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Seat</label>
+                                        <input type="text" class="form-control" ng-model="UserDetails.Location[0].Seat">
+                                    </div>
+
+                                    <br>
+                                    <button type="button" class="btn btn-primary" ng-click="UpdateLocation()">Save</button>
+                                    <button type="button" class="btn btn-primary" ng-click="Skip()">Skip</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+   
+    <!-- Javascript -->
+    <script src="light/assets/bundles/libscripts.bundle.js"></script>
+    <script src="light/assets/bundles/vendorscripts.bundle.js"></script>
+    <script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="assets/bundles/datatablescripts.bundle.js" type="text/script"></script>
+    <script src="assets/vendor/sweetalert/sweetalert.min.js"></script>
+     <!-- SweetAlert Plugin Js -->
+
+    <script src="light/assets/bundles/mainscripts.bundle.js"></script>
+   
+    <script src="light/assets/js/pages/ui/dialogs.js"></script>
+</body>
+
+</html>

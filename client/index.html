@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PB Online HelpDesk</title>
+	<meta name="description" content="Online Policybazaar" />
+	<meta name="author" content="online-policybazaar" />
+    <link href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+	<link rel="shortcut icon" href="https://www.policybazaar.com/home-v3/favicon.ico">
+    <script src="Script/lib/js/angular.js"></script>
+    <script src="Script/lib/angular-ui.js"></script>
+    <script src="Script/lib/js/angular-route.js"></script>
+    <script src="Script/lib/js/ui-bootstrap-custom-tpls-1.3.2.min.js"></script>
+    <script>
+        angular.module("HRSupport", ["ngRoute", "ui.bootstrap", "ui.filters"]).config(["$routeProvider",
+          function ($routeProvider) {
+              $routeProvider.
+                  when('/Login/:type', {
+                      templateUrl: 'light/login.html',
+                      controller: 'LoginCTRL'
+                  })
+          }]);
+    </script>
+    <script src="Script/config/config.js"></script>
+    <script src="Script/module/module.js"></script>
+    <script src="Script/service/service.js"></script>
+    <script src="Script/controller/homectrl.js"></script>
+
+
+	 <link rel="stylesheet" href="landing-page/css/style.css" type="text/css" />
+	 <link rel="stylesheet" href="landing-page/css/bootstrap.min.css" type="text/css" />
+	 <link rel="stylesheet" href="landing-page/css/animate.css" type="text/css" />
+	 <link rel="stylesheet" href="landing-page/css/responsive.css" type="text/css" />
+   
+	</head>
+<body ng-app="HRSupport">
+
+    <div id="all-area" class="all-section" ng-controller="homeCTRL">
+
+        <header class="clearfix header affix" data-spy="affix" data-offset-top="60">
+
+            <div class="navbar navbar-default navbar-top">
+                <div class="container">
+                    <div class="navbar-header">
+
+                        <div class="logo">
+                            <a class="navbar-brand" href="#">
+                                <img alt="Logo" src="landing-page/images/pb-support_logo.png">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="search_data">
+                        <span>
+                            <select ng-model="Selected.IssueType"
+                                    ng-options="data.ISSUENAME for data in IssueSubIssue
+                                    |  unique: 'ISSUEID' | orderBy:['SUBISSUENAME'] track by data.ISSUEID ">
+                                <option value="">Select Issue</option>
+                            </select>
+                            <select ng-model="Selected.SubIssueType"
+                                    ng-options="data.SUBISSUENAME for data in IssueSubIssue
+                                    | filter : {ISSUEID:Selected.IssueType.ISSUEID}:true | orderBy:['SUBISSUENAME']  track by data.SUBISSUEID" ng-disabled="!(Selected.IssueType.ISSUEID>0)">
+                                <option value="">Select Sub Issue</option>
+                            </select>
+                        </span>
+
+                        <button><!--<img src="landing-page/images/landing_search.png" alt="Search" onclick="SearchKeywork();">--> <i class="fa fa-search" aria-hidden="true" alt="Search" ng-click="search()"></i></button>
+                    </div>
+                    <p class="search_subtxt">Didn't find what you were looking for? Please <a href="">click here</a> to Log in and raise a ticket.</p>
+                    <a href="http://localhost:61750/light/login.html" class="login_btn"><img alt="login" src="landing-page/images/login.png"></a>
+
+                </div>
+            </div>
+        </header>
+
+
+        <section id="main-slider">
+
+            <div id="main-slide" class="main-slider carousel slide">
+                <div class="banner_content">
+                    <h1> PB Online <span>Helpdesk</span></h1>
+                    <p>Welcome to pbSupport - an online helpdesk for all PB employees. You can search for information on company policies here. If you need any help within the PB ecosystem, you may create service tickets for issue or query resolution by logging in.</p>
+
+                    <!--<div class="search_data"><input type="text" placeholder="Enter Keyword" value="" id="txtKeyword" /><button><img  src="landing-page/images/landing_search.png" alt="Search" onclick="SearchKeywork();"></button></div>-->
+
+
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="landing-page/images/banner.jpg" alt="banner">
+                </div>
+            </div>
+    </div>
+
+
+
+
+
+
+    <section class="service section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-xs-12 col-sm-offset-2 col-xs-offset-0">
+                    <div class="section-heading">
+                        <h2 class="title">
+                            <span>
+                                Get help by selecting any of the categories below to explore our knowledge base.
+                        </h2>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 service-box" data-animation="fadeIn" data-animation-delay="01">
+                    <div class="service-icon">
+
+                        <img class="flaticon-img icon-large" src="landing-page/images/salary.png" alt="Icon">
+                    </div>
+                    <div class="service-content">
+                        <a href="faq.html?id=3"><h4>Salary</h4></a>
+                        <p>Know more about salary cycle, pay-slips, bank accounts, etc.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 service-box" data-animation="fadeIn" data-animation-delay="01">
+                    <div class="service-icon">
+
+                        <img class="flaticon-img icon-large" src="landing-page/images/leave.png" alt="Icon" alt="Icon">
+                    </div>
+                    <div class="service-content">
+                        <a href="faq.html?id=1"><h4>Leave & Attendance</h4></a>
+                        <p>For queries related to your roster, attendance, leave accruals, etc.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 service-box" data-animation="fadeIn" data-animation-delay="01">
+                    <div class="service-icon">
+
+                        <img class="flaticon-img icon-large" src="landing-page/images/policy.png" alt="Icon" alt="Icon">
+                    </div>
+                    <div class="service-content">
+                        <a href="faq.html?id=2"><h4>Policies</h4></a>
+                        <p>Understand company policies for various processes, guidelines & benefits.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 service-box" data-animation="fadeIn" data-animation-delay="01">
+                    <div class="service-icon">
+
+                        <img class="flaticon-img icon-large" src="landing-page/images/grievance.png" alt="Icon" alt="Icon">
+                    </div>
+                    <div class="service-content">
+                        <a href="faq.html?id=4"><h4>Grievance</h4></a>
+                        <p>Facing an issue at the workplace? Know more on policies or seek help for your concerns.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 service-box" data-animation="fadeIn" data-animation-delay="01">
+                    <div class="service-icon">
+
+                        <img class="flaticon-img icon-large" src="landing-page/images/it.png" alt="Icon" alt="Icon">
+                    </div>
+                    <div class="service-content">
+                        <a href="faq.html?id=6"><h4>IT</h4></a>
+                        <p>
+                            Get support for issues relating your system, device, network, etc.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 service-box" data-animation="fadeIn" data-animation-delay="01">
+                    <div class="service-icon">
+
+                        <img class="flaticon-img icon-large" src="landing-page/images/admin.png" alt="Icon" alt="Icon">
+                    </div>
+                    <div class="service-content">
+                        <a href="faq.html?id=5"><h4>Admin</h4></a>
+                        <p> Explore topics related to your seating, lockers, ID or facilities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+
+        <div class="copyright">
+            <div class="container">
+
+            </div>
+        </div>
+    </footer>
+
+
+    </div>
+
+
+    <script type="text/javascript">
+        function SearchKeywork() {
+            window.location.replace("http://localhost:61750/faq.html?key=" + document.getElementById("txtKeyword").value);
+        }
+    </script>
+</body>
+
+	</html>	

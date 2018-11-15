@@ -1,0 +1,86 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+<title>Login</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="description" content="Lucid Bootstrap 4.1.1 Admin Template">
+<meta name="author" content="">
+
+<link rel="shortcut icon" href="https://www.policybazaar.com/home-v3/favicon.ico">
+<!-- VENDOR CSS -->
+<link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../assets/vendor/font-awesome/css/font-awesome.min.css">
+
+<script src="../Script/lib/js/angular.js"></script>
+<script src="../Script/lib/angular-ui.js"></script>
+<script src="../Script/lib/js/angular-route.js"></script>
+<script src="../Script/lib/js/ui-bootstrap-custom-tpls-1.3.2.min.js"></script>
+<script>
+   angular.module("HRSupport", ["ngRoute", "ui.bootstrap", "ui.filters"]).config(["$routeProvider",
+     function ($routeProvider) {
+    //   $routeProvider.
+    //       when('/Login/:Issue/:SubIssue', {
+    //           templateUrl: 'light/login.html',
+    //           controller: 'LoginCTRL'
+    //       })
+     }]);
+</script>
+<script src="../Script/config/config.js"></script>
+<script src="../Script/module/module.js"></script>
+<script src="../Script/service/service.js"></script>
+<script src="../Script/controller/login.js"></script>
+
+<!-- MAIN CSS -->
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/color_skins.css">
+</head>
+
+<body class="theme-orange" ng-app="HRSupport">
+	<!-- WRAPPER -->
+	<div id="wrapper"  ng-controller="LoginCTRL">
+		<div class="vertical-align-wrap">
+			<div class="vertical-align-middle auth-main">
+				<div class="auth-box">
+                    <div class="top logo_block">
+                        <!--<img src="../images/pb-support_logo.png" alt="Policy Bazaar">-->
+                        <img src="../landing-page/images/pb-support_logo.png" alt="Policy Bazaar" />
+                    </div>
+					<div class="card">
+                        <div class="header">
+                            <p class="lead">Login to your account</p>
+                        </div>
+                        <div class="body">
+                            <form class="form-auth-small" >
+                                <div class="form-group">
+                                    <label for="signin-EmployeeID" class="control-label sr-only">EmployeeID</label>
+                                    <input type="EmployeeID" class="form-control" id="signin-EmployeeID" placeholder="EmployeeID" ng-model="EmployeeID">
+                                </div>
+                                <div class="form-group">
+                                    <label for="signin-password" class="control-label sr-only">Password</label>
+                                    <input type="password" class="form-control" id="signin-password" placeholder="Password" ng-model="Password">
+                                </div>
+                                <!--<div class="form-group clearfix">
+                                    <label class="fancy-checkbox element-left">
+                                        <input type="checkbox">
+                                        <span>Remember me</span>
+                                    </label>								
+                                </div>-->
+                                <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="Login()">LOGIN</button>
+                                <!--<div class="bottom">
+                                    <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="page-forgot-password.html">Forgot password?</a></span>
+                                    <span>Don't have an account? <a href="page-register.html">Register</a></span>
+                                </div>-->
+                            </form>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END WRAPPER -->
+</body>
+</html>

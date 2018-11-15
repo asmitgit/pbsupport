@@ -1,0 +1,97 @@
+<div class="container-fluid">
+    <div class="row clearfix">
+        <div class="col-md-12">
+            <div class="card">
+
+                <div class="body">
+                    <div class="table-responsive">
+
+                        <table class="table table-hover js-basic-example dataTable table-custom">
+                            <thead class="thead-dark">
+                                <tr>
+
+                                    <th>Spoc </th>
+                                    <th>New</th>
+                                    <th>Open</th>
+                                    <th>TAT Bust</th>
+                                    <th>Closed Today</th>
+                                    <th>MTD Closed</th>
+                                </tr>
+                            </thead>
+
+                            <tbody ng-repeat="data in Report">
+
+                                <tr>
+
+                                    <td>{{data.Name}}</td>
+                                    <td ng-click="GetUserTicketData(data,1)">{{data.NewTickets}}</td>
+                                    <td ng-click="GetUserTicketData(data,2)">{{data.OpenTickets}}</td>
+                                    <td ng-click="GetUserTicketData(data,3)">{{data.TATTickets}}</td>
+                                    <td ng-click="GetUserTicketData(data,4)">{{data.ClosedTickets}}</td>
+                                    <td ng-click="GetUserTicketData(data,5)">{{data.MTDClosedTickets}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6" class="tkt_detailbox" ng-if="data.SubData.length>0">
+
+                                        <div class="card detialbox supervisor_block">
+                                            <!--<div style="text-align:right; padding:5px;"><button type="button" class="btn btn-info">Assign</button></div>-->
+                                            <div class="body expand_table">
+                                                <div class="table-responsive">
+
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <!--<th>
+                                                                    <div class="fancy-checkbox">
+                                                                        <label><input type="checkbox"><span>&nbsp;</span></label>
+                                                                    </div>
+                                                                </th>-->
+                                                                <th>Ticket#</th>
+                                                                <th>Date</th>
+                                                                <th>Issue</th>
+                                                                <th>Sub Issue</th>
+                                                                <th>Status</th>
+                                                                <th>Last Updated on</th>
+                                                                <th>Agent Name</th>
+
+                                                                <th>TAT</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr ng-repeat="childData in data.SubData">
+                                                                <!--<td>
+                                                                    <div class="fancy-checkbox">
+                                                                        <label><input type="checkbox"><span>&nbsp;</span></label>
+                                                                    </div>
+                                                                </td>-->
+                                                                <td><a class="btn btn-link mybtn-link" href="home.html#/pbsupport/TicketDetails/{{childData.TicketID}}">{{childData.TicketDispID}}</a></td>
+                                                                <td>{{childData.CreatedON | date:'medium'}}</td>
+                                                                <td>{{childData.ISSUENAME}}</td>
+                                                                <td>{{childData.SUBISSUENAME}}</td>
+                                                                <td>{{childData.StatusName}}</td>
+                                                                <td>{{childData.LastUpdatedOn | date:'medium'}}</td>
+                                                                <td>{{childData.Name}}</td>
+                                                                <td>{{childData.TATDate | date:'medium'}}</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+

@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<title>Agent Comment</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<link rel="shortcut icon" href="https://www.policybazaar.com/home-v3/favicon.ico">
+<!-- VENDOR CSS -->
+<link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../assets/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../assets/vendor/sweetalert/sweetalert.css"/>
+<link rel="stylesheet" href="../assets/vendor/summernote/dist/summernote.css"/>
+<!-- MAIN CSS -->
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/inbox.css">
+<link rel="stylesheet" href="assets/css/color_skins.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="theme-orange">
+
+<!-- Page Loader -->
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="m-t-30"><img src="../assets/images/pb-support_logo.png" width="177" height="38" alt="Pb Support"></div>
+        <p>Please wait...</p>        
+    </div>
+</div>
+<!-- Overlay For Sidebars -->
+
+<div id="wrapper">
+
+    <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-btn">
+                <button type="button" class="btn-toggle-offcanvas"><i class="lnr lnr-menu fa fa-bars"></i></button>
+            </div>
+
+             <div class="navbar-brand">
+               <a href="#"><img src="../assets/images/support_logo.png" width="177" height="38" alt="Pb Support"></a>             
+            </div>
+            
+            <div class="navbar-right">
+                <form id="navbar-search" class="navbar-form search-form">
+                    <input value="" class="form-control" placeholder="Search here..." type="text">
+                    <button type="button" class="btn btn-default"><i class="icon-magnifier"></i></button>
+                </form>               
+
+                 <div id="navbar-menu">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="icon-menu d-none d-sm-block d-md-none d-lg-block"><i class="icon-calendar"></i></a>
+                        </li>
+                        
+                           <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown">
+                                <i class="icon-bell"></i>
+                                <span class="notification-dot"></span>
+                            </a>
+                            <ul class="dropdown-menu notifications animated shake">
+                                <li class="header"><strong>You have 4 new Notifications</strong></li>
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <div class="media">
+                                            <div class="media-left">
+                                                <i class="icon-info text-warning"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="text">Campaign <strong>Holiday Sale</strong> is nearly reach budget limit.</p>
+                                                <span class="timestamp">10:00 AM Today</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>                               
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <div class="media">
+                                            <div class="media-left">
+                                                <i class="icon-like text-success"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="text">Your New Campaign <strong>Holiday Sale</strong> is approved.</p>
+                                                <span class="timestamp">11:30 AM Today</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                    <li>
+                                    <a href="javascript:void(0);">
+                                        <div class="media">
+                                            <div class="media-left">
+                                                <i class="icon-pie-chart text-info"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="text">Website visits from Twitter is 27% higher than last week.</p>
+                                                <span class="timestamp">04:00 PM Today</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <div class="media">
+                                            <div class="media-left">
+                                                <i class="icon-info text-danger"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <p class="text">Error on website analytics configurations</p>
+                                                <span class="timestamp">Yesterday</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="footer"><a href="javascript:void(0);" class="more">See all notifications</a></li>
+                            </ul>
+                        </li>
+               
+               
+                        <li>
+                            <a href="page-login.html" class="icon-menu"><i class="icon-login"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="left-sidebar" class="sidebar">
+        <div class="sidebar-scroll">
+            <div class="user-account">
+                <img src="../assets/images/user.png" class="rounded-circle user-photo" alt="User Profile Picture">
+                <div class="dropdown">
+                    <span>Welcome,</span>
+                    <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>Admin</strong></a>                    
+                    <ul class="dropdown-menu dropdown-menu-right account animated flipInY">
+                        <li><a href="page-profile2.html"><i class="icon-user"></i>My Profile</a></li>
+                        <li><a href="app-inbox.html"><i class="icon-envelope-open"></i>Messages</a></li>
+                        <li><a href="javascript:void(0);"><i class="icon-settings"></i>Settings</a></li>
+                        <li class="divider"></li>
+                        <li><a href="page-login.html"><i class="icon-power"></i>Logout</a></li>
+                    </ul>
+                </div>
+                <hr>
+      
+            </div>
+            <!-- Nav tabs -->
+       
+                
+            <!-- Tab panes -->
+            <div class="tab-content p-l-0 p-r-0">
+     
+                <div class="tab-pane animated fadeIn active" id="project_menu">
+                    <nav class="sidebar-nav">
+                           <div class="tab-pane animated fadeIn active" id="hr_menu">
+                    <nav class="sidebar-nav">
+                        <ul class="main-menu metismenu">
+                            <li><a href="#"><i class="icon-speedometer"></i><span>Demo 123</span></a></li>
+                            <li><a href="#"><i class="icon-list"></i>Demo 12345</a></li>
+                             <li>
+                                <a href="#" class="has-arrow"><i class="icon-users"></i><span>Demo Subcategory</span></a>
+                                <ul>
+                                    <li><a href="#">Test1</a></li>
+                                    <li><a href="#">Test2</a></li>
+                                    <li><a href="#">Test3</a></li>
+                                   
+                                </ul>
+                            </li>
+                           
+                        </ul>
+                    </nav>
+                </div>                     
+                    </nav>                    
+                </div>
+               
+                        
+            </div>          
+        </div>
+    </div>
+
+    <div id="main-content">
+        <div class="container-fluid">
+		<div class="block-header">
+                <div class="row">
+                    <div class="col-lg-6 col-md-8 col-lg-12">
+                      
+                        <ul class="breadcrumb adv_search">
+                            <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
+                            <li class="breadcrumb-item active">Agent Comment</li>
+                        </ul>
+			
+                    </div>            
+                   
+                </div>
+            </div>
+               <div class="row clearfix">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="mobile-left">
+                            <a class="btn btn-primary toggle-email-nav collapsed" data-toggle="collapse" href="#email-nav" role="button" aria-expanded="false" aria-controls="email-nav">
+                                <span class="btn-label">
+                                    <i class="la la-bars"></i>
+                                </span>
+                                Menu
+                            </a>
+                        </div>
+                        <div class="mail-inbox">
+                         
+                           
+						   <div class="mail-right agent_tkt_view">
+						   
+						     <div class="body ticket_detailbox">
+                       
+					   	<div class="mail_compose_Section">
+						     <div class="card shadow_none">
+                        <div class="body compose_box">
+                            <form> 
+							<div class="row clearfix">
+							<div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group grp1">
+                              <div class="form-group"> 
+							  <label>Issue</label>
+							  <select class="form-control">
+							  <option>Salary</option>
+							  </select>
+                              </div>
+							  </div></div>
+							  
+							  <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group grp1">
+                              <div class="form-group"> 
+							  <label>Sub Issue</label>
+							  <select class="form-control">
+							  <option>Deducation</option>
+							  </select>
+                              </div>
+							  </div></div>
+							  </div>
+                            </form> 
+                        
+                            <div class="summernote">
+                                Hello there,
+                                <br/>
+                                <p>The toolbar can be customized and it also supports various callbacks such as <code>oninit</code>, <code>onfocus</code>, <code>onpaste</code> and many more.</p>
+                                <p>Please try <b>paste some texts</b> here</p>
+                            </div>
+                            <div class="m-t-30 compose_action_button">
+							  <div class="upload_box ng-scope" ng-if="TicketsDetails.ParentID==0">
+                                                                <input type="file" name="file-3[]" id="file-3" class="inputfile inputfile-3" onchange="angular.element(this).scope().file_changed(this)" accept="file_extension|.jpg,.pdf,.xlsx" multiple="">
+                                                                <label for="file-3" class="upload_docs" style="display:inline;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg> <!--<span>Choose a file&hellip;</span>--></label>
+                                                            </div>
+                                <button type="button" class="btn btn-success">Post</button>
+                                <a href="app-inbox.html" class="btn btn-outline-secondary">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+					</div>
+					   
+					   
+						   </div>
+						   
+						   
+						   
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+    
+</div>
+
+<!-- Javascript -->
+<script src="assets/bundles/libscripts.bundle.js"></script>    
+<script src="assets/bundles/vendorscripts.bundle.js"></script>
+
+<script src="../assets/vendor/sweetalert/sweetalert.min.js"></script> <!-- SweetAlert Plugin Js --> 
+
+<script src="assets/bundles/mainscripts.bundle.js"></script>
+<script src="assets/js/pages/ui/dialogs.js"></script>
+<script src="../assets/vendor/summernote/dist/summernote.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $(".mail-detail-expand").click(function(){
+            $("#mail-detail-open").toggle();
+        });
+        $(".mail-back").click(function(){
+            $("#mail-detail-open").toggle();
+        });
+    });
+</script>
+</body>
+</html>

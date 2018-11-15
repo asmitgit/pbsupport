@@ -1,0 +1,195 @@
+﻿<div class="container-fluid">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-6 col-md-8 col-lg-12">
+
+                <ul class="breadcrumb adv_search">
+                    <!--<li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>-->
+                    <li class="breadcrumb-item active">Tickets</li>
+                </ul>
+
+                <div class="col-lg-6 hidden-sm text-right switch_btns">
+
+                    <a href="javascript:void(0);" ng-click="ActiveSearch(1)" class="btn btn-sm btn-outline-info"><i class="fa fa-search"></i></a>
+                    <a href="javascript:void(0);" ng-click="ActiveSearch(2)" class="btn btn-sm btn-outline-secondary"><i class="fa fa-tachometer"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix" ng-if="ActiveSearchType==2">
+        <div class="col-lg-3 col-md-9 col-lg-12 tkt_listing5">
+            <div class="card text-center bg-info new">
+                <div class="body">
+                    <div class="p-15 text-light" ng-click="GetAllTicketList(1)">
+                        <h3>{{TicketCount[0].NEWCASE?TicketCount[0].NEWCASE:0}}</h3>
+                        <span>New</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-9 col-lg-12 tkt_listing5">
+            <div class="card text-center bg-secondary open">
+                <div class="body">
+                    <div class="p-15 text-light" ng-click="GetAllTicketList(2)">
+                        <h3>{{TicketCount[0].OPENCASE?TicketCount[0].OPENCASE:0}}</h3>
+                        <span>Open</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-9 col-lg-12 tkt_listing5">
+            <div class="card text-center bg-warning tatbust">
+                <div class="body">
+                    <div class="p-15 text-light" ng-click="GetAllTicketList(3)">
+                        <h3>{{TicketCount[0].TATCASE?TicketCount[0].TATCASE:0}}</h3>
+                        <span>TAT Bust</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-9 col-lg-12 tkt_listing5">
+            <div class="card text-center bg-warning tatbust">
+                <div class="body">
+                    <div class="p-15 text-light" ng-click="GetAllTicketList(4)">
+                        <h3>{{TicketCount[0].TATCASE_NoChange?TicketCount[0].TATCASE_NoChange:0}}</h3>
+                        <span>TAT without Status</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-9 col-lg-12 tkt_listing5">
+            <div class="card text-center bg-warning tatbust">
+                <div class="body">
+                    <div class="p-15 text-light" ng-click="GetAllTicketList(4)">
+                        <h3>{{TicketCount[0].MTDCASE?TicketCount[0].MTDCASE:0}}</h3>
+                        <span>MTD Closed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row clearfix" ng-if="ActiveSearchType==1">
+        <div class="col-md-12">
+            <div class="card">
+
+                <div class="body">
+                    <div class="row clearfix">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="form-group grp1">
+                                <label>From</label>
+                                <div class="date_block">
+                                    <input type="text" class="form-control cal" uib-datepicker-popup="{{format}}"
+                                           ng-model="FromDate" is-open="popup1.opened" readonly
+                                           datepicker-options="dateOptions" ng-click="open1()"
+                                           ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="form-group grp1">
+                                <label>To</label>
+                                <div class="date_block">
+                                    <input type="text" class="form-control cal" uib-datepicker-popup="{{format}}"
+                                           ng-model="ToDate" is-open="popup2.opened" readonly
+                                           datepicker-options="dateOptions" ng-click="open2()"
+                                           ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="form-group grp1">
+                                <label for="phone-ex" class="control-label">Issue</label>
+                                <select class="form-control" ng-model="Selected.IssueType"
+                                        ng-options="data.ISSUENAME for data in IssueSubIssue
+                                    |  unique: 'ISSUEID' | orderBy:['SUBISSUENAME'] track by data.ISSUEID ">
+                                    <option value="">Select Issue</option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="form-group grp1">
+                                <label for="tax-id" class="control-label">SubIssue</label>
+                                <select class="form-control" ng-model="Selected.SubIssueType"
+                                        ng-options="data.SUBISSUENAME for data in IssueSubIssue
+                                    | filter : {ISSUEID:Selected.IssueType.ISSUEID}:true | orderBy:['SUBISSUENAME']  track by data.SUBISSUEID" ng-disabled="!(Selected.IssueType.ISSUEID>0)">
+                                    <option value="">Select Sub Issue</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="form-group grp1">
+                                <label for="tax-id" class="control-label">Status</label>
+                                <select class="form-control" ng-model="Selected.Status"
+                                        ng-options="data.StatusName for data in StatusList
+                                    |  unique: 'StatusID' | orderBy:['Sequence'] track by data.StatusID ">
+                                    <option value="">Select Status</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!--<div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="form-group grp1">
+                                <label for="product-key" class="control-label">Assigned to</label>
+                                <input type="text" id="product-key" class="form-control">
+                            </div>
+                        </div>-->
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="m-t-15 advance_search_btn">
+                                <button class="btn btn-primary" ng-click="GetAllTicketList(4)">Search</button>
+                                <button class="btn btn-outline-secondary">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-12">
+            <div class="card">
+
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-hover js-basic-example dataTable table-custom">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Ticket Id</th>
+                                    <th>Created On</th>
+                                    <th>Issue</th>
+                                    <th>Status</th>
+                                    <th>Updated On</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                
+
+                                <tr ng-repeat="data in TicketList">
+                                    <td><a class="btn btn-link mybtn-link" href="home.html#/pbsupport/TicketDetails/{{data.TicketID}}">{{data.TicketDispID}}</a></td>
+                                    <td>{{data.CreatedON| date:'medium'}}</td>
+                                    <td>{{data.ISSUENAME}}</td>
+                                    <td>{{data.StatusName}}</td>
+                                    <td>{{data.LastUpdatedOn| date:'medium'}}</td>
+                                </tr>
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
