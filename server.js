@@ -52,6 +52,7 @@ var cors = require('cors');
 
 // use it before all route definitions
 app.use(cors({ origin: 'http://localhost:61750' }));
+app.use(cors({ origin: 'http://pbsupportuat.policybazaar.com/' }));
 app.post('/api/getAllFAQ', (req, res) => {
     if (isEmpty(req.body))
         return res.send({ error: true, data: null, message: 'error in request' });
