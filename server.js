@@ -52,7 +52,8 @@ var cors = require('cors');
 
 // use it before all route definitions
 
-app.use(cors({ origin: 'http://pbsupportuat.policybazaar.com' }));
+app.use(cors({ origin: ['http://pbsupportuat.policybazaar.com','http://localhost:61750'] }));
+
 app.post('/api/getAllFAQ', (req, res) => {
     if (isEmpty(req.body))
         return res.send({ error: true, data: null, message: 'error in request' });
@@ -183,7 +184,10 @@ app.post('/api/auth', (req, res) => {
                             //console.log(user.description,JSON.stringify(user));
                             //console.log(auth);
                             try {
-                                mc.query("CALL sp_LogInUser(?,?,?)", [user.description,JSON.stringify(user),password], function (mySqlerror, results, fields) {
+                               
+                                let buff = new Buffer(password);  
+                                let base64data = buff.toString('base64');
+                                mc.query("CALL sp_LogInUser(?,?,?)", [user.description,JSON.stringify(user),base64data], function (mySqlerror, results, fields) {
                                     console.log(mySqlerror,results);
                                     if (mySqlerror) {                                       
                                         return res.send({ error: true, data: null, message: 'Incorrect User/Password0', token: null });
