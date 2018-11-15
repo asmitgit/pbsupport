@@ -51,7 +51,7 @@ const port = process.env.PORT || 5000;
 var cors = require('cors');
 
 // use it before all route definitions
-app.use(cors({ origin: 'http://localhost:61750' }));
+
 app.use(cors({ origin: 'http://pbsupportuat.policybazaar.com/' }));
 app.post('/api/getAllFAQ', (req, res) => {
     if (isEmpty(req.body))
