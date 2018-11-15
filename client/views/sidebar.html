@@ -21,7 +21,7 @@
                 <a class="nav-link active show"
                     data-toggle="tab" ng-click="MenuActive(1)" href="javascript:void(0)">My Account</a>
             </li>
-            <li class="nav-item" ng-if="UserDetails.EMPData[0].RoleID!=5">
+            <li class="nav-item" ng-if="UserDetails.EMPData[0].RoleID!=3">
                 <a class="nav-link"
                   data-toggle="tab" href="javascript:void(0)" ng-click="MenuActive(2)">Admin</a>
             </li>
@@ -38,7 +38,7 @@
                     </ul>
                 </nav>
             </div>
-            <div class="tab-pane animated fadeIn" ng-class="ActiveBar==2 ? 'show active':'' ">
+            <div class="tab-pane animated fadeIn" ng-class="ActiveBar==2 ? 'show active':'' " ng-if="UserDetails.EMPData[0].RoleID!=3">
                 <nav class="sidebar-nav">
                     <ul class="main-menu metismenu">
                         <!--<li><a href="index2.html"><i class="icon-speedometer"></i><span>Dashboard</span></a></li>-->
