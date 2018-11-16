@@ -2,9 +2,10 @@ HRSupport.controller("UserReportCTRL", function ($scope, HRSupportService, $root
     $scope.UserDetails = JSON.parse($window.localStorage.getItem('UserDetails'));
 
     $scope.GetUserTicketReport = function () {
-       var objRequest = {
-           "MgrID": $scope.UserDetails.EMPData[0].EmpID
-       };
+        var objRequest = {
+            "MgrID": $scope.UserDetails.EMPData[0].EmpID,
+            "Type": 1
+        };
        HRSupportService.GetUserTicketReport(objRequest, $scope.UserDetails.Toket).success(function (data) {
            if (data.data != null) {
                $scope.Report = data.data.length > 1 ? data.data[0] : [];

@@ -211,8 +211,9 @@ router.post('/GetUserTicketReport', (req, res) => {
     try{
         
         let _MgrID = req.body.MgrID;   
+        let _Type = req.body.Type; 
         
-        mc.query('CALL sp_GetUserTicketReport(?)', [_MgrID], function (error, results, fields) {
+        mc.query('CALL sp_GetUserTicketReport(?,?)', [_MgrID,_Type], function (error, results, fields) {
             console.log(results);   
             if (error) 
             {

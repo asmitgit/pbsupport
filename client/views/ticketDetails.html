@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-6 col-md-8 col-lg-12">
                 <div class="detail_links">
-                    <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a><button type="button" class="btn btn-success"><i class="fa fa-arrow-right" aria-hidden="true"></i> Next</button></h2>
+                    <!--<h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a><button type="button" class="btn btn-success"><i class="fa fa-arrow-right" aria-hidden="true"></i> Next</button></h2>-->
                     <p class="demo-button">
 
                         <button type="button" class="btn btn-outline-primary">{{TicketDetails[0].AssignToName}}({{TicketDetails[0].AssignToEmployeeID}})</button>
@@ -139,7 +139,8 @@
                                                                             <div class="header sub_hd">
                                                                                 <h2>Respond to Query</h2>
                                                                             </div>
-                                                                            <input type="text" class="form-control" ng-model="TicketReply" style="height:200px;width:620px" />
+                                                                            <!--<input type="text" class="form-control" ng-model="TicketReply" style="height:200px;width:620px" />-->
+                                                                            <textarea ng-model="TicketReply" cols="85" rows="10"></textarea>
                                                                             <div class="m-t-30 compose_action_button">
                                                                                 <div class="upload_box ng-scope">
                                                                                     <input type="file" name="file-3[]" id="file-3" class="inputfile inputfile-3" onchange="angular.element(this).scope().file_changed(this)" accept="file_extension|.jpg,.pdf,.xlsx" multiple="">
