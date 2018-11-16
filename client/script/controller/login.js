@@ -38,7 +38,7 @@ HRSupport.controller("LoginCTRL", function ($scope, HRSupportService, $rootScope
             $window.localStorage.setItem('UserDetails',
                 JSON.stringify({ "EMPData": data.data[0], "Token": data.token, "IsLocSet": 0, "Location": data.data[1], "Issue": { "IssueID": getParameterByName("issue"), "SubIssueID": getParameterByName("subissue") } }));
             $scope.UserDetails = JSON.parse($window.localStorage.getItem('UserDetails'));
-            if (('3').indexOf(data.data[0][0].RoleID) >= 0) //agent
+            if (('4').indexOf(data.data[0][0].RoleID) >= 0) //agent
             {
                 if (getParameterByName("issue") != '') {
                     $window.location.href = '/home.html#/pbsupport/CreateTicket/' + getParameterByName("issue") + '/' + getParameterByName("subissue");

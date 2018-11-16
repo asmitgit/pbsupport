@@ -27,6 +27,7 @@ HRSupport.controller("FAQCtrl", function ($scope, HRSupportService, $rootScope,$
     if (getParameterByName('key') != '') {
         $scope.KeyValue = getParameterByName('key');
     }
+    $scope.IsNo = 1;
     $scope.GetFAQ = function () {
         var _objGetFAQ = { "ISSUEID": 0, "SUBISSUEID": 0, "KeyWord": 'blank'};
 

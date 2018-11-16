@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="navbar-brand">
-                    <a href="javascript:void(0)"><img src="landing-page/images/support_logo.png" width="177" height="38" alt="Pb"></a>
+                   <img src="landing-page/images/support_logo.png" width="177" height="38" alt="Pb">
                 </div>
                 <div class="navbar-right">
 
@@ -175,15 +175,31 @@
                                 <form id="basic-form" method="post" novalidate>
                                     <div class="form-group">
                                         <label> Current City</label>
-                                        <input type="text" class="form-control" ng-model="UserDetails.Location[0].City">
+                                        <select class="form-control" ng-model="Selected.city_name"
+                                                ng-options="data.city_name for data in UserDetails.LocationMaster
+                                    |  unique: 'city_name' | orderBy:['city_name'] track by data.city_name">
+                                            <option value="">Select City</option>
+                                        </select>
+
+                                        <!--<input type="text" class="form-control" ng-model="UserDetails.Location[0].City">-->
                                     </div>
                                     <div class="form-group">
                                         <label>Area/Sector</label>
-                                        <input type="text" class="form-control" ng-model="UserDetails.Location[0].Sector">
+                                        <select class="form-control" ng-model="Selected.area_name"
+                                                ng-options="data.area_name for data in UserDetails.LocationMaster
+                                    | filter : {city_name:data.city_name.city_name}:true |  unique: 'area_name'| orderBy:['area_name']  track by data.area_name" ng-disabled="!(Selected.city_name)">
+                                            <option value="">Select Area/Sector</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Building</label>
-                                        <input type="text" class="form-control" ng-model="UserDetails.Location[0].Building">
+                                        <!--<input type="text" class="form-control" ng-model="UserDetails.Location[0].Building">-->
+                                        <select class="form-control" ng-model="Selected.building_name"
+                                                ng-options="data.building_name for data in UserDetails.LocationMaster
+                               | filter :  {city_name:data.area_name.city_name}:true
+                                                     | filter : {area_name:data.area_name.area_name}:true | orderBy:['building_name']  track by data.building_name" ng-disabled="!(Selected.area_name)">
+                                            <option value="">Select Building</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Floor</label>

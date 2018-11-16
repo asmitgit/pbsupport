@@ -29,6 +29,15 @@ router.get('/getAllIssueSubIssue', (req, res) => {
     });  
 });
 
+router.get('/getlocationmaster', (req, res) => {
+    mc.query('CALL sp_get_location_master()', function (error, results, fields) {
+        if (error) { 
+            return res.send({ error: true, data: null, message:error});
+        }
+        return res.send({ error: false, data: results, message: 'success' });
+    });  
+});
+
 router.post('/UpdateLocation', (req, res) => {
     if (isEmpty(req.body))
         return res.send({ error: true, data: null, message: 'error in request' });

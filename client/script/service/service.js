@@ -110,6 +110,28 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             });
         return request;
     }
+
+    this.getlocationmaster = function (Token) {
+
+        var request = $http({
+            method: "GET",
+            url: config.serviceURL + "api/info/getlocationmaster",
+            headers: {
+                'Content-Type': "application/json; charset=utf-8"
+            }
+        }).success(function (dataGetFAQ) {
+            var test = dataGetFAQ;
+            debugger;
+            console.log(dataGetFAQ);
+        })
+            .error(function (error, status) {
+                if (status == 401) {
+                    alert('401');
+                }
+            });
+        return request;
+    }
+
     this.CreateNewTicket = function (objCreateNewTicket,Token) {
 
         var request = $http({
