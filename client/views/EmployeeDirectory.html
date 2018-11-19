@@ -5,7 +5,7 @@
 
                 <ul class="breadcrumb adv_search">
                     <!--<li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>-->
-                    <li class="breadcrumb-item active">User Directory</li>
+                    <li class="breadcrumb-item active">Employee Directory</li>
                 </ul>
 
             </div>
@@ -21,7 +21,13 @@
 
                 <div class="body">
                     <div class="search_box">
-                        <input type="search" class="searchdata" value="" placeholder="Search">
+                        <select class="form-control" ng-model="Selected.FilterType"
+                                ng-options="data.FilterType for data in FilterType
+                                    |  unique: 'FilterType' | orderBy:['FilterType'] track by data.FilterType ">
+                            <option value="">Select Key</option>
+                        </select>
+                        <input type="search" class="searchdata" value="" placeholder="Enter Key" ng-model="KeyValue">
+                        <button type="button" class="btn btn-success" ng-click="SearchEmployee(1)">Search</button>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-hover js-basic-example dataTable table-custom">
@@ -41,7 +47,7 @@
                             <tbody>
 
                                 <tr ng-repeat="data in EmpData">
-                                    <td><a class="btn btn-link mybtn-link" href="#">{{data.EmployeeID}}</a></td>
+                                    <td><a class="btn btn-link mybtn-link" href="javascript:void(0)" ng-click="OpenDetails(data.EmployeeID)">{{data.EmployeeID}}</a></td>
                                     <td>{{data.Name}}</td>
                                     <td>{{data.CompanyName}}</td>
                                     <td>{{data.DepartmentName}}</td>

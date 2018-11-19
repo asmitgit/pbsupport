@@ -50,6 +50,10 @@ angular.module("HRSupport", ["ngRoute", "ui.bootstrap", "ui.filters"]).config(["
                 templateUrl: 'views/EmployeeDirectory.html',
                 controller: 'EmployeeDirectoryCTRL'
             })
+             .when('/pbsupport/EmployeeDirectory/Details/:EmpID', {
+                 templateUrl: 'views/EmployeeDetails.html',
+                 controller: 'EmployeeDirectoryCTRL'
+             })
 
 
 

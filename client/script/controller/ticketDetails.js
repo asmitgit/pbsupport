@@ -104,7 +104,7 @@
         }
       
     };
-
+    $scope.minDate = new Date();
     $scope.UpdateTicketDetails = function (ReplyType) {
         var _Comments = '';
         if (ReplyType == 1) {
@@ -119,7 +119,7 @@
             "StatusID": $scope.Selected.Status.StatusID,
             "IssueID": $scope.Selected.IssueType.ISSUEID,
             "SubIssueID": $scope.Selected.SubIssueType.SUBISSUEID,
-            "FollowUp": $scope.TicketDetails[0].FollowUp
+            "FollowUp": $scope.isEmpty($scope.TicketDetails[0].FollowUp) ? '' : moment($scope.TicketDetails[0].FollowUp).format("YYYY-MM-YY")
         };
 
         HRSupportService.UpdateTicketDetails(objRequest, $scope.UserDetails.Toket).success(function (data) {

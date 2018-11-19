@@ -22,8 +22,11 @@ router.get('/test', (req, res) => res.json({ msg: 'Users Works' }));
 // @desc    Register user
 // @access  Public
 router.post('/getAllEmployee', (req, res) => {
+  let _FilterID = req.body.FilterID;
   let _EmployeeID = req.body.EmployeeID;
-    mc.query('CALL sp_GetEmployeeDirectory(?)',[_EmployeeID], function (error, results, fields) {
+  let _Key = req.body.Key;
+
+    mc.query('CALL sp_GetEmployeeDirectory(?,?,?)',[_EmployeeID,_FilterID,_Key], function (error, results, fields) {
         if (error) throw error;
         return res.send({ error: false, data: results, message: 'success' });
     });  

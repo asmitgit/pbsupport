@@ -47,7 +47,8 @@
                                         <option value="">Select Status</option>
                                     </select>
                                 </li>
-                                <li><label>Follow-up Date</label><input type="text" id="product-key" class="form-control" ng-model="TicketDetails[0].FollowUp"></li>
+                                <li><label>Follow-up Date</label>
+                                    <input type="date" placeholder="yyyy-MM-dd" value="{{ TicketDetails[0].FollowUp | date: 'yyyy-MM-dd' }}" id="product-key" class="form-control" ng-model="TicketDetails[0].FollowUp"></li>
                                 <li>
                                     <label>Issue</label>
                                     <select class="form-control" ng-model="Selected.IssueType"
