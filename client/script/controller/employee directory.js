@@ -1,6 +1,6 @@
 HRSupport.controller("EmployeeDirectoryCTRL", function ($scope, HRSupportService, $rootScope, $uibModal, $routeParams, $window) {
     $scope.UserDetails = JSON.parse($window.localStorage.getItem('UserDetails'));
-    $scope.FilterType = [{ FilterID: 1, FilterType: 'Name' }, { FilterID: 2, FilterType: 'Employee ID' }, { FilterID: 3, FilterType: 'Email ID' }];
+    $scope.FilterType = [{ FilterID: 1, FilterType: 'Name' }, { FilterID: 2, FilterType: 'Employee ID' }, { FilterID: 3, FilterType: 'Email ID' }, { FilterID: 5, FilterType: 'HR Spoc(Emp ID)' }];
     $scope.Selected = { FilterType: undefined };
     $scope.SearchEmployee = function (type) {
         var objRequest = {

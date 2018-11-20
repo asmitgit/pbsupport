@@ -13,14 +13,55 @@
         </div>
     </div>
     
+    <div class="row clearfix">
+        <div class="col-md-12">
+            <div class="card">
 
+                <div class="body">
+                   
+                    <div class="row clearfix">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="form-group grp1">
+                                <label for="tax-id" class="control-label">Fiter Type</label>
+                                <select class="form-control" ng-model="Selected.FilterType"
+                                        ng-options="data.FilterType for data in FilterType
+                                    |  unique: 'FilterType' | orderBy:['FilterType'] track by data.FilterType ">
+                                    <option value="">Select Key</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group grp1">
+                                <label for="tax-id" class="control-label">Key Filter</label>
+                                <input type="search" class="searchdata search_key" value="" placeholder="Enter Key" ng-model="KeyValue">
+
+                            </div>
+                        </div>
+                        <!--<div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="form-group grp1">
+                                <label for="product-key" class="control-label">Assigned to</label>
+                                <input type="text" id="product-key" class="form-control">
+                            </div>
+                        </div>-->
+                    
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="m-t-15 advance_search_btn">
+                                <button class="btn btn-primary" ng-click="SearchEmployee(1)">Search</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="row clearfix">
         <div class="col-md-12">
             <div class="card">
 
                 <div class="body">
-                    <div class="search_box">
+                    <!--<div class="search_box">
                         <select class="form-control" ng-model="Selected.FilterType"
                                 ng-options="data.FilterType for data in FilterType
                                     |  unique: 'FilterType' | orderBy:['FilterType'] track by data.FilterType ">
@@ -28,8 +69,8 @@
                         </select>
                         <input type="search" class="searchdata" value="" placeholder="Enter Key" ng-model="KeyValue">
                         <button type="button" class="btn btn-success" ng-click="SearchEmployee(1)">Search</button>
-                    </div>
-                    <div class="table-responsive">
+                    </div>-->
+                    <div class="table-responsive" ng-if="EmpData.length>0">
                         <table class="table table-hover js-basic-example dataTable table-custom">
                             <thead class="thead-dark">
                                 <tr>
@@ -40,7 +81,7 @@
                                     <th>HR Spoc</th>
                                     <th>First Reporting</th>
                                     <th>Second Reporting</th>
-                                  
+
                                 </tr>
                             </thead>
 
@@ -54,7 +95,7 @@
                                     <td>{{data.HRSpocName}}</td>
                                     <td>{{data.FirstLevelReportingName}}</td>
                                     <td>{{data.SecondLevelReportingName}}</td>
-                                 
+
                                 </tr>
 
 

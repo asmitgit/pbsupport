@@ -15,20 +15,20 @@
                                     <th>Open</th>
                                     <th>TAT Bust</th>
                                     <th>Closed Today</th>
+                                    <th>Support Required</th>
                                     <th>MTD Closed</th>
                                 </tr>
                             </thead>
 
-                            <tbody ng-repeat ="data in Report">
-                             
+                            <tbody ng-repeat ="data in Report">                             
                                 <tr>
-
                                     <td>{{data.Name}}</td>
                                     <td ng-click="GetUserTicketData(data,1)">{{data.NewTickets}}</td>
                                     <td ng-click="GetUserTicketData(data,2)">{{data.OpenTickets}}</td>
                                     <td ng-click="GetUserTicketData(data,3)">{{data.TATTickets}}</td>
                                     <td ng-click="GetUserTicketData(data,4)">{{data.ClosedTickets}}</td>
-                                    <td ng-click="GetUserTicketData(data,5)">{{data.MTDClosedTickets}}</td>
+                                    <td ng-click="GetUserTicketData(data,6)">{{data.SupportRequired}}</td>
+                                    <td ng-click="GetUserTicketData(data,4)">{{data.MTDClosedTickets}}</td>
                                 </tr>
                                 <tr>
                                     <td colspan="6" class="tkt_detailbox" ng-if="data.SubData.length>0">

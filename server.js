@@ -47,7 +47,7 @@ const mc = mysql.createConnection(mysqldb);
 
 
 const validateLoginInput = require('./validation/login');
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 80;
 var cors = require('cors');
 
 // use it before all route definitions

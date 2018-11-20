@@ -16,24 +16,51 @@ HRSupport.controller("CreateTicketCTRL", function ($scope, HRSupportService, $ro
         });
     };
     $scope.GetAllIssueSubIssue();
-    
+   
     $scope.CreateTicket = function () {
-        var objCreateTicket = {
-            "EmpID": $scope.UserDetails.EMPData[0].EmpID,
-            "IssueID": $scope.Selected.IssueType.ISSUEID,
-            "SubIssueID": $scope.Selected.SubIssueType.SUBISSUEID,
-            "TicketSubject": $scope.Selected.IssueType.ISSUENAME + '(' + $scope.Selected.SubIssueType.SUBISSUENAME + ')' + $scope.UserDetails.EMPData[0].EmployeeID,
-            "Comments": $scope.Comments,
-            "FileURL": "",
-            "FileName": ""
-        };
-        if ($scope.FileAttachments.length > 0) {
-            HRSupportService.UploadFile($scope.FileAttachments, $scope.UserDetails.Toket).success(function (data) {
-                console.log(data);
-                $scope.FileAttachments = data
-                objCreateTicket.FileURL = $scope.FileAttachments[0].AttachmentURL;
-                objCreateTicket.FileName = $scope.FileAttachments[0].FileName;
+        if ($scope.isEmpty($scope.Selected.IssueType)) {
+            alert('Please select issue type');
+            return false;
+        }
+        else if ($scope.isEmpty($scope.Selected.SubIssueType)) {
+            alert('Please select sub issue type');
+            return false;
+        }
+        else if ($scope.isEmpty($scope.Comments)) {
+            alert('Please enter your query');
+            return false;
+        }
+        else {
+            var objCreateTicket = {
+                "EmpID": $scope.UserDetails.EMPData[0].EmpID,
+                "IssueID": $scope.Selected.IssueType.ISSUEID,
+                "SubIssueID": $scope.Selected.SubIssueType.SUBISSUEID,
+                "TicketSubject": $scope.Selected.IssueType.ISSUENAME + '(' + $scope.Selected.SubIssueType.SUBISSUENAME + ')' + $scope.UserDetails.EMPData[0].EmployeeID,
+                "Comments": $scope.Comments,
+                "FileURL": "",
+                "FileName": ""
+            };
+            if ($scope.FileAttachments.length > 0) {
+                HRSupportService.UploadFile($scope.FileAttachments, $scope.UserDetails.Toket).success(function (data) {
+                    console.log(data);
+                    $scope.FileAttachments = data
+                    objCreateTicket.FileURL = $scope.FileAttachments[0].AttachmentURL;
+                    objCreateTicket.FileName = $scope.FileAttachments[0].FileName;
 
+                    HRSupportService.CreateNewTicket(objCreateTicket, $scope.UserDetails.Toket).success(function (data) {
+                        alert('Ticket created successfully.');
+                        $scope.Comments = '';
+                        $scope.Selected.IssueType = undefined;
+                        $scope.Selected.SubIssueType = undefined;
+                        //$scope.IssueSubIssue = data.data.length > 0 ? data.data[0] : [];
+                        //if (!$scope.isEmpty($routeParams.IssueID) && !$scope.isEmpty($routeParams.SubIssueID)) {
+                        //    $scope.Selected.IssueType = { ISSUEID: $routeParams.IssueID };
+                        //    $scope.Selected.SubIssueType = { SUBISSUEID: $routeParams.SubIssueID };
+                        //}
+                    });
+                });
+            }
+            else {
                 HRSupportService.CreateNewTicket(objCreateTicket, $scope.UserDetails.Toket).success(function (data) {
                     alert('Ticket created successfully.');
                     $scope.Comments = '';
@@ -45,22 +72,8 @@ HRSupport.controller("CreateTicketCTRL", function ($scope, HRSupportService, $ro
                     //    $scope.Selected.SubIssueType = { SUBISSUEID: $routeParams.SubIssueID };
                     //}
                 });
-            });
+            }
         }
-        else {
-            HRSupportService.CreateNewTicket(objCreateTicket, $scope.UserDetails.Toket).success(function (data) {
-                alert('Ticket created successfully.');
-                $scope.Comments = '';
-                $scope.Selected.IssueType = undefined;
-                $scope.Selected.SubIssueType = undefined;
-                //$scope.IssueSubIssue = data.data.length > 0 ? data.data[0] : [];
-                //if (!$scope.isEmpty($routeParams.IssueID) && !$scope.isEmpty($routeParams.SubIssueID)) {
-                //    $scope.Selected.IssueType = { ISSUEID: $routeParams.IssueID };
-                //    $scope.Selected.SubIssueType = { SUBISSUEID: $routeParams.SubIssueID };
-                //}
-            });
-        }
-        
 
         
     };
