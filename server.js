@@ -167,9 +167,11 @@ app.post('/api/auth', (req, res) => {
         ad.findUser(username, function(err, user) {            
             if (err) {
                 console.log('ERROR: ' +JSON.stringify(err));
-                return;
+                return  res.send({ error: true, data: null, message: 'User not found', token: null });;
             }        
-            if (! user) console.log('User: ' + username + ' not found.');
+            if (! user) {console.log('User: ' + username + ' not found.');
+            return  res.send({ error: true, data: null, message: 'User not found', token: null });;
+        }
             else 
             {
                 console.log(user);
@@ -177,7 +179,7 @@ app.post('/api/auth', (req, res) => {
                 ad.authenticate(username, password, function(error, auth) {
                     if (error) {
                       console.log('ERROR: '+JSON.stringify(error));
-                      return res.send({ error: true, data: error, message: error, token: null });
+                      return res.send({ error: true, data: error, message: 'Incorrect password.', token: null });
                     }
                     else{
                         if (auth) {
@@ -206,10 +208,10 @@ app.post('/api/auth', (req, res) => {
                                             if (results.length > 0 && results[0].length>0)
                                                 return res.send({ error: false, data: results, message: 'success', token: token });
                                             else
-                                                return res.send({ error: true, data: null, message: 'Incorrect User/Password1', token: null });
+                                                return res.send({ error: true, data: null, message: 'Incorrect User/Password', token: null });
                                         }
                                         else {
-                                            return res.send({ error: true, data: null, message: 'Incorrect User/Password2', token: null });
+                                            return res.send({ error: true, data: null, message: 'Incorrect User/Password', token: null });
                                         }
                         
                                     }
@@ -217,13 +219,13 @@ app.post('/api/auth', (req, res) => {
                                 });
                             }
                             catch (err) {
-                                return res.send({ error: true, data: null, message: err, token: null });
+                                return res.send({ error: true, data: null, message: 'Incorrect User/Password2', token: null });
                             }
                             //return res.send({ error: false, data: auth, message: error, token: null });
                         }
                         else {
                             console.log('Authentication failed!');
-                            return res.send({ error: true, data: error, message: error, token: null });
+                            return res.send({ error: true, data: error, message: 'Incorrect User/Password2', token: null });
                           }
                         }
                   });

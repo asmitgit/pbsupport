@@ -196,14 +196,18 @@
                                         <!--<input type="text" class="form-control" ng-model="UserDetails.Location[0].Building">-->
                                         <select class="form-control" ng-model="Selected.building_name"
                                                 ng-options="data.building_name for data in UserDetails.LocationMaster
-                               | filter :  {area_name:Selected.area_name.area_name}:true
-                                                     | filter : {area_name:Selected.area_name.area_name}:true | orderBy:['building_name']  track by data.building_name" ng-disabled="!(Selected.area_name)">
+                               | filter :  {city_name:Selected.city_name.city_name}:true
+                                                     | filter : {area_name:Selected.area_name.area_name}:true | orderBy:['building_name']  track by data.building_name" ng-disabled="!(Selected.city_name)">
                                             <option value="">Select Building</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Floor</label>
-                                        <input type="text" class="form-control" ng-model="UserDetails.Location[0].FloorNo">
+                                        <select class="form-control" ng-model="Selected.floor"
+                                                ng-options="data.FloorNo for data in Floor track by data.FloorNo">
+                                            <option value="">Select Floor</option>
+                                        </select>
+                                        <!--<input type="text" class="form-control" ng-model="UserDetails.Location[0].FloorNo">-->
                                     </div>
                                     <div class="form-group">
                                         <label>Seat</label>

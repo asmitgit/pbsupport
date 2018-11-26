@@ -23,8 +23,14 @@ HRSupport.controller("LoginCTRL", function ($scope, HRSupportService, $rootScope
             results = regex.exec(location.search);
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
+    $scope.isEmpty = function (str) {
+        return typeof str == 'string' && !str.trim() || typeof str == 'undefined' || str === null;
+    };
     $scope.Login = function () {
-       
+        if ($scope.isEmpty($scope.EmployeeID) || $scope.isEmpty($scope.EmployeeID)) {
+            alert('User name & password could not be blank');
+            return false;
+        }
         var objLogin = { "username": $scope.EmployeeID, "password": $scope.Password };
         HRSupportService.login(objLogin).success(function (data) {
             debugger;

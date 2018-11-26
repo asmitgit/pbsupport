@@ -238,7 +238,7 @@ p {
 }
 .banner_content {
     position: absolute;
-    top: 30%;
+    top: 46%;
     left: 24%;
     z-index: 999;
     color: rgb(255, 255, 255);
@@ -261,13 +261,16 @@ p {
 }
 
 .search_data {
-   display: table;
-    width: 440px;
-    opacity: 0.7;
+    display: table;
+    width: 520px;
+    /* opacity: 0.7; */
     background: rgb(38, 71, 108);
     padding: 7px;
     border-radius: 8px;
     margin: 0 auto;
+    position: absolute;
+    right: 74px;
+    top: 19px;
 }
 .search_data span {
        width: 87%;
@@ -285,7 +288,7 @@ p {
     vertical-align: top;
 }
 
-.search_data span > select{    width: 49%;
+.search_data span > select{    width: 48%;
     display: inline-block;
     border: none;
     border-radius: 5px;
@@ -300,6 +303,8 @@ p {
     border-radius: 5px;
     vertical-align: middle;}
 	
+.search_subtxt{font-size: 11px !important; color: #fff; position: absolute; right: 126px; top: 67px;}
+.search_subtxt a{color: #5cfdff !important;  font-weight: bold;  cursor: pointer;}
 .search_data > button {
     vertical-align: top;
     box-sizing: border-box;
@@ -315,6 +320,7 @@ p {
     background: transparent;
 }
 
+.search_data > button > i{    font-size: 29px; color: #fff;}
 .header {
     position: fixed;
     top: 0;
@@ -364,7 +370,7 @@ p {
 .login_btn {
     position: absolute;
     right: 30px;
-    top: 13px;
+    top: 28px;
 }
 .navbar-brand:before,
 .navbar-brand:after {
@@ -462,7 +468,6 @@ p {
 .navbar-default .navbar-nav > li > a.active {
     color: #fff;
 }
-
 .navbar-default .navbar-nav > li > a:after {
     background-color: #f9ba48;
 }
@@ -583,8 +588,6 @@ p {
 .btn-default.focus, .btn-default:focus{background:transparent !important;border-color:transparent !important;}
 .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover
 {border-color: transparent;box-shadow: none;}
-
-
 .card .headers>h2{    font-size: 22px;
     font-weight: normal;
     padding: 0 0 20px 0;
@@ -809,10 +812,6 @@ button:hover {
 img.avatar {
     width: 40%;
     border-radius: 50%;
-}
-
-.container {
-    padding: 16px;
 }
 
 span.psw {

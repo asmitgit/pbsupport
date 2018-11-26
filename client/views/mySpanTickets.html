@@ -147,7 +147,7 @@
 
                 <div class="body">
                     <div class="table-responsive">
-                        <table class="table table-hover js-basic-example dataTable table-custom">
+                        <table class="table table-hover js-basic-example dataTable table-custom" ng-show="TicketList.length>0">
                             <thead class="thead-dark">
                                 <tr>
                                     <th>Ticket Id</th>
@@ -172,6 +172,7 @@
 
                             </tbody>
                         </table>
+                        <div ng-show="!TicketList  || TicketList.length<=0">No record found</div>
                     </div>
                 </div>
             </div>

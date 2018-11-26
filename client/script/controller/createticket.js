@@ -49,9 +49,8 @@ HRSupport.controller("CreateTicketCTRL", function ($scope, HRSupportService, $ro
 
                     HRSupportService.CreateNewTicket(objCreateTicket, $scope.UserDetails.Toket).success(function (data) {
                         alert('Ticket created successfully.');
-                        $scope.Comments = '';
-                        $scope.Selected.IssueType = undefined;
-                        $scope.Selected.SubIssueType = undefined;
+                        console.log('/home.html#/pbsupport/MyTicketDetails/' + data.data[0][0].TicketID);
+                        $window.location.href = '/home.html#/pbsupport/MyTicketDetails/' + data.data[0][0].TicketID;
                         //$scope.IssueSubIssue = data.data.length > 0 ? data.data[0] : [];
                         //if (!$scope.isEmpty($routeParams.IssueID) && !$scope.isEmpty($routeParams.SubIssueID)) {
                         //    $scope.Selected.IssueType = { ISSUEID: $routeParams.IssueID };
@@ -63,9 +62,7 @@ HRSupport.controller("CreateTicketCTRL", function ($scope, HRSupportService, $ro
             else {
                 HRSupportService.CreateNewTicket(objCreateTicket, $scope.UserDetails.Toket).success(function (data) {
                     alert('Ticket created successfully.');
-                    $scope.Comments = '';
-                    $scope.Selected.IssueType = undefined;
-                    $scope.Selected.SubIssueType = undefined;
+                    $window.location.href = '/home.html#/pbsupport/MyTicketDetails/' + data.data[0][0].TicketID;
                     //$scope.IssueSubIssue = data.data.length > 0 ? data.data[0] : [];
                     //if (!$scope.isEmpty($routeParams.IssueID) && !$scope.isEmpty($routeParams.SubIssueID)) {
                     //    $scope.Selected.IssueType = { ISSUEID: $routeParams.IssueID };
