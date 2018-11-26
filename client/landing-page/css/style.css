@@ -112,7 +112,7 @@ p {
 }
 
 .section {
-    padding-top:0px !important;
+    padding-top: 30px;
     padding-bottom: 10px;
 }
 .section-heading {
@@ -121,7 +121,7 @@ p {
 }
 
 .section-heading .title, .section-heading .title h2 {
-    font-size: 20px;
+    font-size: 36px;
     text-transform: capitalize;
     color: rgb(38, 71, 108);
     font-weight: 700;
@@ -237,8 +237,8 @@ p {
     margin: 0px;
 }
 .banner_content {
-       position: absolute;
-    top: 46%;
+    position: absolute;
+    top: 30%;
     left: 24%;
     z-index: 999;
     color: rgb(255, 255, 255);
@@ -261,16 +261,13 @@ p {
 }
 
 .search_data {
-      display: table;
-    width: 520px;
-    /* opacity: 0.7; */
+   display: table;
+    width: 440px;
+    opacity: 0.7;
     background: rgb(38, 71, 108);
     padding: 7px;
     border-radius: 8px;
     margin: 0 auto;
-    position: absolute;
-    right: 74px;
-    top: 19px;
 }
 .search_data span {
        width: 87%;
@@ -288,7 +285,7 @@ p {
     vertical-align: top;
 }
 
-.search_data span > select:first-child{    width: 49%;
+.search_data span > select{    width: 49%;
     display: inline-block;
     border: none;
     border-radius: 5px;
@@ -312,17 +309,11 @@ p {
     border-style: initial;
     border-color: initial;
     border-image: initial;
-    padding: 3px 18px;
+    padding: 3px 13px;
     border-radius: 0px 8px 8px 0px;
     /* background: rgb(17, 30, 44); */
     background: transparent;
-    cursor: pointer;
 }
-.search_data > button > i{font-size:29px;    color: #fff;}
-
-.search_subtxt{    font-size: 11px !important;  text-align: center;  color: #fff; position: absolute;  right: 126px;top: 67px;}
-.search_subtxt a{ color:#5cfdff !important; font-weight:bold !important; cursor: pointer;}
-.search_subtxt a:hover{ text-decoration:none; color:#5cfdff !important;}
 
 .header {
     position: fixed;
@@ -333,7 +324,7 @@ p {
     -moz-transition: all 0.4s ease-in-out;
     -webkit-transition: all 0.4s ease-in-out;
     -o-transition: all 0.4s ease-in-out;
-    z-index: 5000;
+    z-index:9;
 }
 .fixed-header {
     opacity: 1;
@@ -373,7 +364,7 @@ p {
 .login_btn {
     position: absolute;
     right: 30px;
-    top:28px;
+    top: 13px;
 }
 .navbar-brand:before,
 .navbar-brand:after {
@@ -471,6 +462,7 @@ p {
 .navbar-default .navbar-nav > li > a.active {
     color: #fff;
 }
+
 .navbar-default .navbar-nav > li > a:after {
     background-color: #f9ba48;
 }
@@ -517,7 +509,7 @@ p {
 
 .navbar_inner{background: #26476c !important;}
 .affix .navbar-brand {
-    padding-top: 16px;
+    padding-top: 9px;
     padding-bottom: 8px;
 }
 .affix .navbar-default .navbar-nav {
@@ -591,6 +583,8 @@ p {
 .btn-default.focus, .btn-default:focus{background:transparent !important;border-color:transparent !important;}
 .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover
 {border-color: transparent;box-shadow: none;}
+
+
 .card .headers>h2{    font-size: 22px;
     font-weight: normal;
     padding: 0 0 20px 0;
@@ -778,6 +772,58 @@ p {
     color:#5b5b5b;
 }
 
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button.login {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+.loginbtn{background-color: #4CAF50 !important; color: #fff !important;}
+.loginbtn:hover{background-color: #4CAF50 !important; color: #fff !important;}
+
+.modal-footer .btn+.btn:hover{border: 1px solid #ddd !important;color: #444 !important;background: #cacaca !important;}
+
 .service {
     text-align: center;
     position: relative;
@@ -899,10 +945,7 @@ ul.tabs li.active {
     border-radius:10px;
     min-height: 210px;
 	box-sizing:border-box;
-	cursor:pointer; padding-top:8px;
-    box-shadow: 0 14px 24px rgba(62,57,107,.2);
-    transform: translateY(-4px) scale(1.02);
-    transition: all .50s ease;
+	cursor:pointer; padding-top:8px; box-shadow:0 14px 24px rgba(62,57,107,.2);     transform: translateY(-4px) scale(1.02);   transition: all .50s ease;
 }
 .col-md-4.service-box:hover > .service-content > p{ color:#ffffff;}
 

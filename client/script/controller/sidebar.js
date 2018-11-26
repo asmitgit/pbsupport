@@ -23,8 +23,15 @@ HRSupport.controller("SideBarCTRL", function ($scope, HRSupportService, $rootSco
                    {
                        $scope.Selected = {
                            city_name: { city_name: $scope.UserDetails.Location[0].City },
-                           area_name: { city_name: $scope.UserDetails.Location[0].City, area_name: $scope.UserDetails.Location[0].Sector },
+                           //area_name: { city_name: $scope.UserDetails.Location[0].City, area_name: $scope.UserDetails.Location[0].Sector },
                            building_name: { city_name: $scope.UserDetails.Location[0].City, area_name: $scope.UserDetails.Location[0].Sector, building_name: $scope.UserDetails.Location[0].Building }
+                       };
+                   }
+                   else {
+                       $scope.Selected = {
+                           city_name: { city_name: "Gurugram" },
+                           //area_name: { city_name: $scope.UserDetails.Location[0].City, area_name: $scope.UserDetails.Location[0].Sector },
+                           //building_name: { city_name: $scope.UserDetails.Location[0].City, area_name: $scope.UserDetails.Location[0].Sector, building_name: $scope.UserDetails.Location[0].Building }
                        };
                    }
                }

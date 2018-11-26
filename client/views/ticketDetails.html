@@ -3,10 +3,12 @@
         <div class="row">
             <div class="col-lg-6 col-md-8 col-lg-12">
                 <div class="detail_links">
-                    <!--<h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a><button type="button" class="btn btn-success"><i class="fa fa-arrow-right" aria-hidden="true"></i> Next</button></h2>-->
+                    <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>
+                    <!--    <button type="button" class="btn btn-success"><i class="fa fa-arrow-right" aria-hidden="true"></i> Next</button>-->
+                    </h2>
                     <p class="demo-button">
 
-                        <button type="button" class="btn btn-outline-primary">{{TicketDetails[0].AssignToName}}({{TicketDetails[0].AssignToEmployeeID}})</button>
+                        <button type="button" class="btn btn-outline-primary">{{TicketDetails[0].AssignToName != null ? TicketDetails[0].AssignToName : 'Not assigned'}}{{TicketDetails[0].AssignToEmployeeID != null ? '('+TicketDetails[0].AssignToEmployeeID+')' :'' }}</button>
                         <!--<button type="button" class="btn btn-outline-success" title="New"> <span>{{TicketDetails[0].AssignToEmployeeID}}</span></button>-->
                        
                         <!--<button type="button" class="btn btn-outline-danger" title="Log"><i class="fa fa-file-text-o"></i> <span>Log</span></button>-->
@@ -43,17 +45,25 @@
                                     <label>Status</label>
                                     <select class="form-control" ng-model="Selected.Status"
                                             ng-options="data.StatusName for data in StatusList
-                                    |  unique: 'StatusID' | orderBy:['Sequence'] track by data.StatusID ">
+                                    |  unique: 'StatusID' | orderBy:['Sequence'] track by data.StatusID " ng-disabled="IsEdit==0">
                                         <option value="">Select Status</option>
                                     </select>
                                 </li>
                                 <li><label>Follow-up Date</label>
-                                    <input type="date" placeholder="yyyy-MM-dd" value="{{ TicketDetails[0].FollowUp | date: 'yyyy-MM-dd' }}" id="product-key" class="form-control" ng-model="TicketDetails[0].FollowUp"></li>
+                                    <!--<input type="date" value="{{ TicketDetails[0].FollowUp }}"
+                                           id="product-key" class="form-control" ng-model="TicketDetails[0].FollowUp"
+                                           placeholder="MM-dd-yyyy" min={{ TicketDetails[0].FollowUp}} max="12-31-2019" />-->
+                                    <input type="text" class="form-control cal" uib-datepicker-popup="{{format}}"
+                                           ng-model="TicketDetails[0].FollowUp" is-open="popup1.opened"
+                                           datepicker-options="dateOptions" ng-click="open1()"
+                                           ng-required="true" close-text="Close" alt-input-formats="altInputFormats" ng-disabled="IsEdit==0" />
+                                
+                                </li>
                                 <li>
                                     <label>Issue</label>
                                     <select class="form-control" ng-model="Selected.IssueType"
                                             ng-options="data.ISSUENAME for data in IssueSubIssue
-                                    |  unique: 'ISSUEID' | orderBy:['SUBISSUENAME'] track by data.ISSUEID ">
+                                    |  unique: 'ISSUEID' | orderBy:['SUBISSUENAME'] track by data.ISSUEID " ng-disabled="IsEdit==0">
                                         <option value="">Select Issue</option>
                                     </select>
                                 </li>
@@ -61,7 +71,8 @@
                                     <label>Sub Issue</label>
                                     <select class="form-control" ng-model="Selected.SubIssueType"
                                             ng-options="data.SUBISSUENAME for data in IssueSubIssue
-                                    | filter : {ISSUEID:Selected.IssueType.ISSUEID}:true | orderBy:['SUBISSUENAME']  track by data.SUBISSUEID" ng-disabled="!(Selected.IssueType.ISSUEID>0)">
+                                    | filter : {ISSUEID:Selected.IssueType.ISSUEID}:true | orderBy:['SUBISSUENAME']  track by data.SUBISSUEID"
+                                            ng-disabled="!(Selected.IssueType.ISSUEID>0) || IsEdit==0">
                                         <option value="">Select Sub Issue</option>
                                     </select>
                                 </li>
@@ -76,8 +87,10 @@
 
                             </ul>
                             <div class="m-t-30 compose_action_button">
-                                <button type="button" class="btn btn-success" ng-click="UpdateTicketDetails();">Submit</button>
-                                <a href="#" class="btn btn-outline-secondary">Cancel</a>
+                                <button type="button" class="btn btn-success" ng-click="UpdateTicketDetails();" ng-show="IsEdit>0" >Submit</button>
+                                <a href="javascript:void(0)" class="btn btn-outline-secondary" ng-click="EditCancel(0)" ng-show="IsEdit>0">Cancel</a>
+                                <a href="javascript:void(0)" class="btn btn-outline-secondary" ng-click="EditCancel(1)" ng-show="IsEdit==0">Edit</a>
+
                             </div>
                         </div>
                     </div>
@@ -151,7 +164,7 @@
                                                                                     </label>
                                                                                 </div>
                                                                                 <button type="button" class="btn btn-success" ng-click="UpdateTicketRemarks(2)">Post</button>
-                                                                                <a href="app-inbox.html" class="btn btn-outline-secondary">Cancel</a>
+                                                                                
                                                                             </div>
                                                                         </div>
                                                                     </div>

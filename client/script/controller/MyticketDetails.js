@@ -32,6 +32,10 @@
 
         _Comments = $scope.TicketReply;
 
+        if ($scope.isEmpty(_Comments)) {
+            alert('Remark should not be blank');
+            return false;
+        }
         var objRequest = {
             "TicketID": $scope.TicketID,
             "Comments": _Comments,

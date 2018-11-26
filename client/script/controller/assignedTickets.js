@@ -46,13 +46,24 @@
     };
     $scope.ActiveSearchType = 2;
 
+    function getMonth(date) {
+        var month = date.getMonth() + 1;
+        return month < 10 ? '0' + month : '' + month; // ('' + month) for string result
+    }
+
+    function getDate(date) {
+        var month = date.getDate();
+        return month < 10 ? '0' + month : '' + month; // ('' + month) for string result
+    }
+    $scope.ToDate = new Date;
+    $scope.FromDate = new Date;
     $scope.GetAllTicketList = function (QUERY) {
         var objRequest = {
             "EmpID": $scope.UserDetails.EMPData[0].EmpID,
             "Type": 2,
             "QUERY": QUERY,
-            "From": moment($scope.FromDate).format("YYYY-MM-YY"),
-            "To": moment($scope.ToDate).format("YYYY-MM-YY"),
+            "From": $scope.FromDate.getFullYear() + "-" + (getMonth($scope.FromDate)) + '-' + getDate($scope.FromDate), //moment($scope.FromDate).format("YYYY-MM-YY"),
+            "To": $scope.ToDate.getFullYear() + "-" + (getMonth($scope.ToDate)) + '-' + getDate($scope.ToDate), //moment($scope.FromDate).format("YYYY-MM-YY"),
             "IssueID": $scope.Selected.IssueType ? $scope.Selected.IssueType.ISSUEID : 0,
             "SubIssueID": $scope.Selected.SubIssueType ? $scope.Selected.SubIssueType.SUBISSUEID : 0,
             "StatusID": $scope.Selected.Status ? $scope.Selected.Status.StatusID : 0
@@ -114,8 +125,7 @@
         showWeeks: true
     };
     $scope.NumberOfDays = 0;
-    $scope.ToDate = Date.now();
-    $scope.FromDate = Date.now() + ($scope.NumberOfDays * 24 * 60 * 60 * 1000);
+  
     $scope.DateChange = function () {
         if ($scope.Selected.DateRange.ID == 1) {
             $scope.NumberOfDays = 0;

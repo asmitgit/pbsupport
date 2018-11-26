@@ -32,6 +32,10 @@
     $scope.ChangeActive = function (type) {
         $scope.ActivType = type;
     };
+    $scope.IsEdit = 0;
+    $scope.EditCancel = function (type) {
+        $scope.IsEdit = type;
+    };
     $scope.TicketReply = '';
     $scope.HRComments = '';
     $scope.GetTicketDetails = function () {
@@ -44,6 +48,7 @@
             $scope.Selected.Status = { StatusID: $scope.TicketDetails[0].StatusID };
             $scope.Selected.IssueType = { ISSUEID: $scope.TicketDetails[0].IssueID };
             $scope.Selected.SubIssueType = { SUBISSUEID: $scope.TicketDetails[0].SubIssueID };
+            $scope.TicketDetails[0].FollowUp = new Date($scope.TicketDetails[0].FollowUp) ;
             //if (!$scope.isEmpty($routeParams.IssueID) && !$scope.isEmpty($routeParams.SubIssueID)) {
             //    $scope.Selected.IssueType = { ISSUEID: $routeParams.IssueID };
             //    $scope.Selected.SubIssueType = { SUBISSUEID: $routeParams.SubIssueID };
@@ -59,6 +64,10 @@
         }
         else{
             _Comments= $scope.HRComments ;
+        }
+        if ($scope.isEmpty(_Comments)) {
+            alert('Remark should not be blank.');
+            return false;
         }
         var objRequest = {
             "TicketID": $scope.TicketID,
@@ -119,7 +128,8 @@
             "StatusID": $scope.Selected.Status.StatusID,
             "IssueID": $scope.Selected.IssueType.ISSUEID,
             "SubIssueID": $scope.Selected.SubIssueType.SUBISSUEID,
-            "FollowUp": $scope.isEmpty($scope.TicketDetails[0].FollowUp) ? '' : moment($scope.TicketDetails[0].FollowUp).format("YYYY-MM-YY")
+            //"FollowUp": $scope.isEmpty($scope.TicketDetails[0].FollowUp) ? '' : moment($scope.TicketDetails[0].FollowUp).format("YYYY-MM-YY")
+            "FollowUp": $scope.isEmpty($scope.TicketDetails[0].FollowUp) ? '' : $scope.TicketDetails[0].FollowUp.getFullYear() + "-" + (getMonth($scope.TicketDetails[0].FollowUp)) + '-' + getDate($scope.TicketDetails[0].FollowUp)
         };
 
         HRSupportService.UpdateTicketDetails(objRequest, $scope.UserDetails.Toket).success(function (data) {
@@ -176,4 +186,158 @@
 
         //alert($scope.FileAttachments.length);
     };
+
+    /*
+   Datepicker
+   */
+
+    $scope.noitems = [];
+
+    $scope.clickRow = function () {
+        alert('You clicked the row.');
+    }
+
+    function swapBeforeAndAfterDecimal(number) {
+        var beforeDecimal = Math.floor(number).toString();
+        var afterDecimal = number.toString().replace(/.*\./, '');
+
+        return afterDecimal + '.' + beforeDecimal;
+    }
+
+    $scope.centsThenDollars = function (a, b) {
+        var aSwapped = swapBeforeAndAfterDecimal(a);
+        var bSwapped = swapBeforeAndAfterDecimal(b);
+
+        if (aSwapped > bSwapped) {
+            return 1;
+        } else if (aSwapped === bSwapped) {
+            return 0;
+        } else {
+            return -1;
+        }
+    }
+
+    $scope.today = function () {
+        $scope.dt = new Date();
+    };
+    $scope.today();
+
+    $scope.clear = function () {
+        $scope.dt = null;
+    };
+
+    $scope.inlineOptions = {
+        customClass: getDayClass,
+        minDate: new Date(),
+        showWeeks: true
+    };
+    $scope.NumberOfDays = 0;
+    $scope.ToDate = Date.now();
+    
+    $scope.DateChange = function () {
+        if ($scope.Selected.DateRange.ID == 1) {
+            $scope.NumberOfDays = 0;
+        }
+        else if ($scope.Selected.DateRange.ID == 2) {
+            $scope.NumberOfDays = 7;
+        }
+        else if ($scope.Selected.DateRange.ID == 3) {
+            $scope.NumberOfDays = 15;
+        }
+        else if ($scope.Selected.DateRange.ID == 4) {
+            $scope.NumberOfDays = 30;
+        }
+
+        $scope.ToDate = Date.now();
+        //$scope.FromDate = Date.now() - ($scope.NumberOfDays * 24 * 60 * 60 * 1000);
+    };
+    $scope.dateOptions = {
+        //dateDisabled: disabled,
+        formatYear: 'yy',
+        maxDate: new Date(2020, 5, 22),
+        minDate: new Date(),
+        startingDay: 1
+    };
+
+    // Disable weekend selection
+    function disabled(data) {
+        var date = data.date,
+          mode = data.mode;
+        return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+    }
+
+    $scope.toggleMin = function () {
+        $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
+        $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
+    };
+
+    $scope.toggleMin();
+
+    $scope.open1 = function () {
+        $scope.popup1.opened = true;
+    };
+
+    $scope.open2 = function () {
+        $scope.popup2.opened = true;
+    };
+
+    $scope.setDate = function (year, month, day) {
+        $scope.dt = new Date(year, month, day);
+    };
+
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+    $scope.altInputFormats = ['M!/d!/yyyy'];
+
+    $scope.popup1 = {
+        opened: false
+    };
+
+    $scope.popup2 = {
+        opened: false
+    };
+
+    var tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    var afterTomorrow = new Date();
+    afterTomorrow.setDate(tomorrow.getDate() + 1);
+    $scope.events = [
+      {
+          date: tomorrow,
+          status: 'full'
+      },
+      {
+          date: afterTomorrow,
+          status: 'partially'
+      }
+    ];
+
+    function getDayClass(data) {
+        var date = data.date,
+          mode = data.mode;
+        if (mode === 'day') {
+            var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+            for (var i = 0; i < $scope.events.length; i++) {
+                var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+
+                if (dayToCheck === currentDay) {
+                    return $scope.events[i].status;
+                }
+            }
+        }
+
+        return '';
+    };
+    function getMonth(date) {
+        var month = date.getMonth() + 1;
+        return month < 10 ? '0' + month : '' + month; // ('' + month) for string result
+    };
+
+    function getDate(date) {
+        var month = date.getDate();
+        return month < 10 ? '0' + month : '' + month; // ('' + month) for string result
+    };
+
+
 });
