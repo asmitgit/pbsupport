@@ -44,6 +44,7 @@
         };
         HRSupportService.GetTicketDetails(objRequest, $scope.UserDetails.Toket).success(function (data) {
             $scope.TicketDetails = data.data.length > 1 ? data.data[0] : [];
+            $scope.Location = data.data.length > 1 ? data.data[2] : [];
             $scope.TicketComments = data.data.length > 2 ? data.data[1] : [];
             $scope.Selected.Status = { StatusID: $scope.TicketDetails[0].StatusID };
             $scope.Selected.IssueType = { ISSUEID: $scope.TicketDetails[0].IssueID };
