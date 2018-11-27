@@ -206,6 +206,7 @@ app.post('/api/auth', (req, res) => {
             
                     });
                 }
+                else{
                 console.log(user);
                 username =username+ '@etechaces.com';     
                 ad.authenticate(username, password, function(error, auth) {
@@ -261,6 +262,7 @@ app.post('/api/auth', (req, res) => {
                         }
                   });
                 console.log(JSON.stringify(user));
+                }
             }
         });
 
