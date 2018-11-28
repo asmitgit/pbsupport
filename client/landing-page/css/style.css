@@ -611,9 +611,10 @@ p {
     background-color: transparent !important;
     border-radius: 4px;
 }
-.tag_list{ margin:10px 0;}
-.tag_list > button{font-size: 13px;color: #8a8a8a; padding: 5px 10px; margin: 0 2px 0 0;}
-.tag_list > button:focus {outline: 0;  box-shadow: 0 0 0 0.1rem rgba(0,123,255,.25);  background: #bfdeff !important;}
+.tag_list{ margin: 0 10px 0 0;}
+.tag_list > button{font-size: 13px; color: #8a8a8a; padding: 5px 10px; margin: 0 2px 4px 0;width: 100%; border: 1px solid #ddd;}
+.tag_list > button:hover{border: 1px solid #ddd !important; background:#fff !important;}
+/*.tag_list > button:focus {outline: 0;  box-shadow: 0 0 0 0.1rem rgba(0,123,255,.25);  background: #bfdeff !important;}*/
 .mb-0{padding:0 !important; margin:0 0 0px 0!important;}
 .accordion{ width: 100%;box-sizing: border-box;}
 .accordion .card-header .btn {    color: #26476c;
@@ -641,13 +642,9 @@ p {
 .faq_reply button.yes{border-radius: 20px;background: #f9bc4d; border:1px solid #f9bc4d; padding: 6px 27px;font-size: 15px;margin: 0;color: #fff; width:100px;margin-right: 5px; }
 .faq_reply button.no{border-radius: 20px;background: #fff;padding: 6px 27px;font-size: 15px;margin: 0;color: #7a7a7a; width:100px;margin-right: 5px; border:1px solid #ddd; }
 .faq_block{margin: 100px 0 0 0;}
-.dropdown li a, 
-
-
-
-
-
-
+.faqs_section{display:table; width:100%; padding:0; margin:0;}
+.faqs_section .tags_list{display:table-cell; width:20%; vertical-align:top;}
+.faqs_section .faqlist{display:table-cell; width:80%;}
 
 .service-box .flaticon-img {
     transform: scale(1);
@@ -874,6 +871,13 @@ ul.tabs {
 	width: 100%;
 }
 
+
+ul.tabs li:first-child{ width: 21%;text-align: center;background: #40a8fe; color: #fff;border-bottom-color: #40a8fe;}
+ul.tabs li:first-child:hover{    background-color: #40a8fe;
+    color: #fff;
+    cursor: auto;}
+ul.tabs li:last-child{width:17.888888888%;}
+
 ul.tabs li {
 	float: left;
 	margin: 0;
@@ -937,7 +941,7 @@ ul.tabs li.active {
 }
 #navbar-search > button{    position: absolute;top: 10px; right: 17px; cursor: pointer;}
 #navbar-search > i{position:absolute;top: 15px;}
-
+.btn.active{ background:#bfdeff !important;}
 
 .col-md-4.service-box:hover{
     background: #26476c;
@@ -947,7 +951,6 @@ ul.tabs li.active {
 	cursor:pointer; padding-top:8px; box-shadow:0 14px 24px rgba(62,57,107,.2);     transform: translateY(-4px) scale(1.02);   transition: all .50s ease;
 }
 .col-md-4.service-box:hover > .service-content > p{ color:#ffffff;}
-
 
 @media screen and (max-width:320px) {
 .card .headers > h2{ display:none;}
@@ -991,7 +994,7 @@ ul.tabs li.active {
 
 @media (min-width:768px) and (max-width:991px) {
 .container {width:100% !important;}
-#navbar-search > button{position: absolute;top: 8px;right: 13px;scursor: pointer;}
+#navbar-search > button{position: absolute;top: 8px;right: 13px;cursor: pointer;}
 #navbar-search > i{position:absolute;top: 15px;}
 }
 

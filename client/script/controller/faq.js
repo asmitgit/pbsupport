@@ -74,13 +74,13 @@ HRSupport.controller("FAQCtrl", function ($scope, HRSupportService, $rootScope,$
                 }
                 else {
                     angular.forEach($scope.FAQData, function (value, key) {
-                        value.Selected = true;
+                        value.Selected = false;
                     });
                 }
             }
             else {
                 angular.forEach($scope.FAQData, function (value, key) {
-                    value.Selected = true;
+                    value.Selected = false;
                 });
             }
         });
@@ -91,7 +91,7 @@ HRSupport.controller("FAQCtrl", function ($scope, HRSupportService, $rootScope,$
 
     $scope.changeActive = function (data) {
         angular.forEach($scope.FAQData, function (value, key) {
-            value.Selected = true;
+            value.Selected = false;
             if(value.IssueID==data.IssueID)
                 value.FAQIsActive=1;
             else

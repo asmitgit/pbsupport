@@ -53,7 +53,7 @@ router.post('/CreateNewTicket', (req, res) => {
         let _FileName = req.body.FileName;
         let _FileURL = req.body.FileURL;
         mc.query('CALL sp_CreateNewTicket(?,?,?,?,?,?,?)',
-         [_EmpID,_IssueID,_SubIssueID,_TicketSubject,_Comments,_FileName,_FileURL], function (error, results, fields) {
+         [_EmpID,_IssueID,_SubIssueID,_TicketSubject,_Comments,_FileURL,_FileName], function (error, results, fields) {
             console.log(results);
             if (error) 
             {
@@ -138,7 +138,7 @@ router.post('/UpdateTicketRemarks', (req, res) => {
         let _FileName = req.body.FileName;
         let _FileURL = req.body.FileURL;
         mc.query('CALL sp_UpdateTicketRemarks(?,?,?,?,?,?)',
-         [_TicketID,_Comments,_CreatedBy,_ReplyType,_FileName,_FileURL], function (error, results, fields) {
+         [_TicketID,_Comments,_CreatedBy,_ReplyType,_FileURL,_FileName], function (error, results, fields) {
             console.log(results);
             if (error) 
             {
