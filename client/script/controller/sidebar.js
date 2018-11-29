@@ -73,9 +73,14 @@ HRSupport.controller("SideBarCTRL", function ($scope, HRSupportService, $rootSco
        });
    };
    $scope.Skip = function () {
-       $scope.UserDetails.IsLocSet = 1;
-       $window.localStorage.setItem('UserDetails',
-        JSON.stringify($scope.UserDetails));
+       if ($scope.UserDetails.Location.length > 0) {
+           $scope.UserDetails.IsLocSet = 1;
+           $window.localStorage.setItem('UserDetails',
+            JSON.stringify($scope.UserDetails));
+       }
+       else {
+           alert("You cann't skip without saving your location details");
+       }
    };
    $scope.MenuActive = function (_type) {
        $scope.ActiveBar = _type;

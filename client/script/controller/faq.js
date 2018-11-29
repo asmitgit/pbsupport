@@ -48,6 +48,7 @@ HRSupport.controller("FAQCtrl", function ($scope, HRSupportService, $rootScope,$
         $scope.KeyValue = getParameterByName('key');
     }
     $scope.IsNo = 0;
+    $scope.IsTag = 0;
     $scope.GetFAQ = function () {
         var _objGetFAQ = { "ISSUEID": 0, "SUBISSUEID": 0, "KeyWord": 'blank'};
 
@@ -66,6 +67,7 @@ HRSupport.controller("FAQCtrl", function ($scope, HRSupportService, $rootScope,$
                     angular.forEach($scope.FAQData, function (value, key) {
                         if (value.SubIssueID == getParameterByName('subissue')) {
                             value.Selected = true;
+                            $scope.IsTag = 1;
                         }
                         else {
                             value.Selected = false;
@@ -90,6 +92,7 @@ HRSupport.controller("FAQCtrl", function ($scope, HRSupportService, $rootScope,$
     $scope.GetFAQ();
 
     $scope.changeActive = function (data) {
+        $scope.IsTag = 0;
         angular.forEach($scope.FAQData, function (value, key) {
             value.Selected = false;
             if(value.IssueID==data.IssueID)
@@ -104,6 +107,7 @@ HRSupport.controller("FAQCtrl", function ($scope, HRSupportService, $rootScope,$
         angular.forEach($scope.FAQData, function (value, key) {
             if (value.SubIssueID == data.SubIssueID) {
                 value.Selected = true;
+                $scope.IsTag = 1;
             }
             else {
                 value.Selected = false;

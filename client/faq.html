@@ -53,7 +53,7 @@
                       </a>
                   </div>
                </div>
-                <a href="http://pbsupportuat.policybazaar.com//light/login.html" class="login_btn"><img alt="login" src="landing-page/images/login.png"></a>
+                <a href="http://pbsupportuat.policybazaar.com//light/login.html" class="login_btn">Login</a>
                
             </div>
          </div>
@@ -69,7 +69,7 @@
                      <!-- Modal content-->
                      <div class="modal-content">
                          <div class="modal-header">
-                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                             <button type="button" class="close" data-dismiss="modal" ng-click="Cancel()">&times;</button>
                              <h4 class="modal-title">Login</h4>
                          </div>
                          <div class="modal-body">
@@ -130,7 +130,7 @@
                                  </div>
                              </div>
                              <div class="faqlist">
-                                 <div class="accordion_innerbox" ng-if="data.FAQIsActive==1 && data.Selected"
+                                 <div class="accordion_innerbox" ng-if="data.FAQIsActive==1 && ((IsTag==1 && data.Selected)||(IsTag==0) )"
                                       ng-repeat="data in FAQData  | filter:{ QUESTION: KeyValue } | unique: 'FAQDetailsID' track by data.FAQDetailsID ">
                                      <div class="card-header" id="headingOne{{data.FAQDetailsID}}">
                                          <h5 class="mb-0">

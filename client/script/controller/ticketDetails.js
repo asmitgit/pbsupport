@@ -54,6 +54,17 @@
             //    $scope.Selected.IssueType = { ISSUEID: $routeParams.IssueID };
             //    $scope.Selected.SubIssueType = { SUBISSUEID: $routeParams.SubIssueID };
             //}
+            
+            if ($scope.TicketDetails[0].StatusID == 4 || $scope.TicketDetails[0].StatusID == 6) {
+                $scope.InActive = true;
+            }
+            else if ($scope.TicketDetails[0].StatusID == 5) {
+                $scope.StatusList.splice(5, 1);
+                $scope.StatusList.splice(0, 3);
+            }
+            else {
+                $scope.StatusList.splice(4, 2);
+            }
         });
     };
     $scope.GetTicketDetails();
@@ -137,6 +148,7 @@
             if (!data.error) {
                 alert('Updated sussessfully');
                 $scope.GetTicketDetails();
+                $scope.IsEdit = 0;
             }
         });
 
