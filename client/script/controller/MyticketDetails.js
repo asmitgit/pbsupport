@@ -54,6 +54,7 @@
                 HRSupportService.UpdateTicketRemarks(objRequest, $scope.UserDetails.Toket).success(function (data) {
                     if (!data.error) {
                         alert('Updated sussessfully');
+                        $scope.FileAttachments = [];
                         $scope.GetTicketDetails();
                         $scope.TicketReply = '';
 

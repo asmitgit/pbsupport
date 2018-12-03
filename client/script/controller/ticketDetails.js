@@ -98,6 +98,7 @@
                 HRSupportService.UpdateTicketRemarks(objRequest, $scope.UserDetails.Toket).success(function (data) {
                     if (!data.error) {
                         alert('Updated sussessfully');
+                        $scope.FileAttachments = [];
                         if (ReplyType == 2) {
                             $scope.TicketReply = '';
                         }
@@ -113,6 +114,7 @@
             HRSupportService.UpdateTicketRemarks(objRequest, $scope.UserDetails.Toket).success(function (data) {
                 if (!data.error) {
                     alert('Updated sussessfully');
+                    $scope.FileAttachments = [];
                     if (ReplyType == 2) {
                         $scope.TicketReply = '';
                     }

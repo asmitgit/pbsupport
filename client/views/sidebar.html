@@ -42,15 +42,14 @@
                 <nav class="sidebar-nav">
                     <ul class="main-menu metismenu">
                         <!--<li><a href="index2.html"><i class="icon-speedometer"></i><span>Dashboard</span></a></li>-->
-                        <li ng-if="('1,2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/AssignedTickets"><i class="icon-envelope"></i>Assigned Tickets</a></li>
+                        <li ng-if="('2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/AssignedTickets"><i class="icon-envelope"></i>Assigned Tickets</a></li>
 
-                        <li ng-if="('3').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/MySpanTickets"><i class="icon-envelope"></i>My Span Tickets</a></li>
+                        <li ng-if="('2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/MySpanTickets"><i class="icon-envelope"></i>My Span Tickets</a></li>
+                        <li ng-if="('2').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/Admin/AllTickets"><i class="icon-envelope"></i>All Tickets</a></li>
                         <!--<li ng-if="('1,2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/MGRDashboardTickets"><i class="icon-bubbles"></i>Dashboard</a></li>-->
-                        <li ng-if="('1,2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/UserReport"><i class="icon-bubbles"></i>User Report</a></li>
-                        <li ng-if="('2').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/AdminUserReport"><i class="icon-bubbles"></i>User Report</a></li>
-                        <li ng-if="('3').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/EmployeeDirectory"><i class="icon-envelope"></i>Employee Master</a></li>
-
-
+                        <li ng-if="('2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/UserReport"><i class="icon-bubbles"></i>Supervisor Report</a></li>
+                        <li ng-if="('2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/AdminUserReport"><i class="icon-bubbles"></i>Manager Report</a></li>
+                        <li ng-if="('2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/EmployeeDirectory"><i class="icon-envelope"></i>Employee Master</a></li>
                     </ul>
 
                 </nav>

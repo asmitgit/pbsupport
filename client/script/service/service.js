@@ -174,6 +174,26 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         return request;
     }
 
+    this.GetAdminTicketList = function (objGetAllTicketList, Token) {
+        var request = $http({
+            method: "POST",
+            url: config.serviceURL + "api/ticket/GetAdminTicketList",
+            headers: {
+                'Content-Type': "application/json; charset=utf-8"
+            },
+            data: JSON.stringify(objGetAllTicketList)
+        }).success(function (data) {
+            var test = data;
+            debugger;
+            console.log(data);
+        })
+        .error(function (error, status) {
+            if (status == 401) {
+                alert('401');
+            }
+        });
+        return request;
+    }
     this.GetTicketDetails = function (objRequest, Token) {
         var request = $http({
             method: "POST",
@@ -261,6 +281,27 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         var request = $http({
             method: "POST",
             url: config.serviceURL + "api/ticket/GetUserTicketReport",
+            headers: {
+                'Content-Type': "application/json; charset=utf-8"
+            },
+            data: JSON.stringify(objRequest)
+        }).success(function (data) {
+            var test = data;
+            debugger;
+            console.log(data);
+        })
+        .error(function (error, status) {
+            if (status == 401) {
+                alert('401');
+            }
+        });
+        return request;
+    }
+
+    this.GetMGRDashboard = function (objRequest, Token) {
+        var request = $http({
+            method: "POST",
+            url: config.serviceURL + "api/ticket/GetMGRDashboard",
             headers: {
                 'Content-Type': "application/json; charset=utf-8"
             },

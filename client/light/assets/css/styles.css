@@ -120,16 +120,21 @@
 .info_items .progress, .info_items .progress .progress-bar {
 	border-radius: 0;
 }
-
+.card .body.emp_data{padding:10px !important;}
 emp_detail_hd{font-size: 16px; margin: 10px 0; width: 100%; float: left;  border-bottom: 1px dashed #ddd; padding: 0 0 4px 0;}
 ul.emp_data{    width: 100%;padding: 0; margin: 0; display: block;}
-ul.emp_data li{width: 100%; padding: 0; margin: 0; display: table;}
-ul.emp_data li label{    display: table-cell; width: 30%; padding:0; margin:0;}
-ul.emp_data li span{    display: table-cell; padding: 0; margin: 0; width:70%;}
-.header{    padding-bottom: 10px !important;
+ul.emp_data li{width: 100%; padding:0 0 3px 0; margin: 0; display: table;}
+ul.emp_data li label{    display: table-cell; width:40%; padding:0; margin:0; font-size: 13px;}
+ul.emp_data li span{       display: table-cell; padding: 0 0 0 6px; margin: 0; width: 60%; font-size: 13px; box-sizing: border-box;}
+.header{       padding: 10px !important;
+    font-weight: bold;}
+
+.card_header{    padding-bottom: 10px !important;
     background: rgba(14,155,226,0.2) !important;
     border-radius: .55rem .55rem 0 0 !important;
     padding-top: 10px !important;}
+
+.card_header > h2{font-size: 16px; padding: 0 10px; margin: 0;}
 
 .logo_block img{width:auto !important;}
 .advance_search_btn{    margin-top: 28px;    text-align: center;}
@@ -403,13 +408,14 @@ ul.ui-form li.inline-field input[type="text"] { border-radius: 4px; border: 1px 
     background-color: #722040;
 }
 
-.navbar-nav .icon-menu{    background: #555555;
-    height: 25px;
-    width: 25px;
-    border-radius: 100%;
+.navbar-nav .icon-menu{       background: #ffffff;
     text-align: center;
     display: inline-block;
-    position: relative;}
+    border-radius: 5px;
+    border: 1px solid;
+    padding: 3px 10px;
+    margin: 0;
+    font-size: 13px;}
 
 .navbar-nav .icon-menu > i{    font-size: 20px;
     color: #fff;

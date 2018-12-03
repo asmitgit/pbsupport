@@ -36,7 +36,7 @@ angular.module("HRSupport", ["ngRoute", "ui.bootstrap", "ui.filters"]).config(["
              })
             .when('/pbsupport/AdminUserReport', {
                 templateUrl: 'views/admin-user-report.html',
-                controller: 'AdminUserReportCTRL'
+                controller: 'mgrUserReportCTRL'
             })
             .when('/pbsupport/TicketDetails/:TicketID', {
                 templateUrl: 'views/ticketDetails.html',
@@ -54,7 +54,10 @@ angular.module("HRSupport", ["ngRoute", "ui.bootstrap", "ui.filters"]).config(["
                  templateUrl: 'views/EmployeeDetails.html',
                  controller: 'EmployeeDirectoryCTRL'
              })
-
+             .when('/pbsupport/Admin/AllTickets', {
+                 templateUrl: 'views/AllTickets.html',
+                 controller: 'AllTicketsCTRL'
+             })
 
 
             .when('/TicketSystem/OpenTicket/:UserID/:UserName/:UserRole/:ProductID/:GroupID/:EmployeeID/:TicketID', {

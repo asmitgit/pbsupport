@@ -1,5 +1,12 @@
 HRSupport.controller("SideBarCTRL", function ($scope, HRSupportService, $rootScope, $uibModal, $routeParams, $window) {
 
+    //$cookies.userName = 'Sandeep';
+    //$scope.platformCookie = $cookies.userName;
+    //$cookieStore.put('fruit', 'Apple');
+    //$cookieStore.put('flower', 'Rose');
+    //$scope.myFruit = $cookieStore.get('fruit');
+
+
    $scope.UserDetails = JSON.parse($window.localStorage.getItem('UserDetails'));
    
    var modalInstanceSameCtrl;

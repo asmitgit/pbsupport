@@ -68,7 +68,42 @@ router.post('/CreateNewTicket', (req, res) => {
         return res.send({ error: true, data: null, message: err});
     }
 });
+router.post('/GetAdminTicketList', (req, res) => {
+    console.log(req.body);
+    if(isEmpty(req.body))
+        return res.send({ error: true, data: null, message: 'error in request' });
+    try{
+        
+        let _EmpID = req.body.EmpID;
+        let _Type =  req.body.Type;
+        let _QUERY =  req.body.QUERY;
 
+        // var timestampFrom = moment.unix(req.body.From);
+        // var timestampTo = moment.unix(req.body.To);
+        let _From =  req.body.From;
+        let _To =    req.body.To;
+       
+
+
+        let _IssueID = req.body.IssueID;
+        let _SubIssueID =  req.body.SubIssueID;
+        let _StatusID =  req.body.StatusID;
+        console.log(_From,_To);
+        mc.query('CALL sp_GetAdminTicketList(?,?,?,?,?,?,?,?)', [_EmpID,_Type,_QUERY,_From,_To,_IssueID,_SubIssueID,_StatusID], function (error, results, fields) {
+            console.log(results);
+            if (error) 
+            {
+                return res.send({ error: true, data: null, message: error});
+            }
+            else
+                return res.send({ error: false, data: results, message: 'success' });
+        });  
+    }
+    catch(err){
+        console.error(err);
+        return res.send({ error: true, data: null, message: err});
+    }
+});
 router.post('/GetAllTicketList', (req, res) => {
     console.log(req.body);
     if(isEmpty(req.body))
@@ -214,6 +249,30 @@ router.post('/GetUserTicketReport', (req, res) => {
         let _Type = req.body.Type; 
         
         mc.query('CALL sp_GetUserTicketReport(?,?)', [_MgrID,_Type], function (error, results, fields) {
+            console.log(results);   
+            if (error) 
+            {
+                return res.send({ error: true, data: null, message: error});
+            }
+            else
+                return res.send({ error: false, data: results, message: 'success' });
+        });  
+    }
+    catch(err){
+        console.error(err);
+        return res.send({ error: true, data: null, message: err});
+    }
+});
+router.post('/GetMGRDashboard', (req, res) => {
+    if(isEmpty(req.body))
+        return res.send({ error: true, data: null, message: 'error in request' });
+    try{
+        
+        let _MgrEmployeeID = req.body.MgrEmployeeID;   
+        let _UserEmployeeID = req.body.UserEmployeeID; 
+        let _Type = req.body.Type; 
+        console.log(req.body);   
+        mc.query('CALL sp_GetMGRDashboard(?,?,?)', [_MgrEmployeeID,_UserEmployeeID,_Type], function (error, results, fields) {
             console.log(results);   
             if (error) 
             {

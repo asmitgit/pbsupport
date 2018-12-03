@@ -1,4 +1,17 @@
  <div class="container-fluid">
+     <div class="block-header">
+         <div class="row">
+             <div class="col-lg-6 col-md-8 col-lg-12">
+
+                 <ul class="breadcrumb adv_search">
+                     <!--<li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>-->
+                     <li class="breadcrumb-item active">Supervisor Report</li>
+                 </ul>
+
+             </div>
+
+         </div>
+     </div>
     <div class="row clearfix">
         <div class="col-md-12">
             <div class="card">
@@ -41,11 +54,7 @@
                                                     <table class="table table-striped">
                                                         <thead>
                                                             <tr>
-                                                                <!--<th>
-                                                <div class="fancy-checkbox">
-                                                    <label><input type="checkbox"><span>&nbsp;</span></label>
-                                                </div>
-                                            </th>-->
+                                                               
                                                                 <th>Ticket#</th>
                                                                 <th>Date</th>
                                                                 <th>Issue</th>
@@ -59,11 +68,7 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr ng-repeat="childData in data.SubData">
-                                                                <!--<td>
-                                                <div class="fancy-checkbox">
-                                                    <label><input type="checkbox"><span>&nbsp;</span></label>
-                                                </div>
-                                            </td>-->
+                                                                
                                                                 <td><a class="btn btn-link mybtn-link" href="home.html#/pbsupport/TicketDetails/{{childData.TicketID}}">{{childData.TicketDispID}}</a></td>
                                                                 <td>{{childData.CreatedON | date:'medium'}}</td>
                                                                 <td>{{childData.ISSUENAME}}</td>

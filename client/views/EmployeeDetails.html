@@ -15,7 +15,7 @@
 
 
 
-    <div class="row clearfix">
+    <div class="row clearfix" style="display:none">
         <div class="col-lg-12 col-md-12">
             <div class="card client-detail">
                 <div class="body">
@@ -56,29 +56,88 @@
     <div class="row clearfix">
         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
             <div class="card">
-                <div class="header">
-                    <h2>Location Details</small></h2>
-                    </div>
-                <div class="body">
-                   
+                <div class="card_header">
+                    <h2>Employment Details</h2>
+                </div>
+                <div class="body emp_data">
+
                     <ul class="emp_data">
-                        <li><label>Company</label><span>Policy Bazaar</span></li>
+                        <li><label>EmpID</label><span>{{EmpData[0].EmployeeID}}</span></li>
+                        <li><label>Name</label><span>{{EmpData[0].Name}}</span></li>
+                        <li><label>Original DOJ</label><span>{{EmpData[0].DOJ}}</span></li>
+
+                        <li><label>Photograph</label><span>{{EmpData[0].Photograph}}</span></li>
+                        <li><label>Confirmation Status</label><span>{{EmpData[0].ConfirmationStatus.data==1? 'Yes':'No'}}</span></li>
+                        <li><label>Level</label><span>{{EmpData[0].LevelName}}</span></li>
+                        <li><label>Band</label><span>{{EmpData[0].BandName}}</span></li>
+                        <li><label>Notice Period</label><span>{{EmpData[0].NoticePeriod}}</span></li>
+                        <li><label>Designation</label><span>{{EmpData[0].Designation}}</span></li>
+                        <li><label>Entity</label><span>{{EmpData[0].EntityName}}</span></li>
+                        <li><label>Department</label><span>{{EmpData[0].DepartmentName}}</span></li>
+                        <li><label>Category</label><span>{{EmpData[0].CategoryName}}</span></li>
+                        <li><label>SubCategory</label><span>{{EmpData[0].SubCategoryName}}</span></li>
+                        <li><label>Vertical</label><span>{{EmpData[0].VerticalName}}</span></li>
+                        <li><label>Unit</label><span>{{EmpData[0].UnitName}}</span></li>
+                        <li><label>Function</label><span>{{EmpData[0].FunctionName}}</span></li>
+                        <li><label>SubFunction</label><span>{{EmpData[0].SubFunctionName}}</span></li>
+                        <li><label>First Level Reporting</label><span>{{EmpData[0].FirstLevelReportingName}}</span></li>
+                        <li><label>Second Level Reporting</label><span>{{EmpData[0].SecondLevelReportingName}}</span></li>
+
+                        <li><label>UAN Number</label><span>{{EmpData[0].uan_number}}</span></li>
+                        <li><label>ESIC Number</label><span>{{EmpData[0].ESICNumber}}</span></li>
+                        <li><label>Re-Joining Case</label><span>{{EmpData[0].ReJoiningCase}}</span></li>
+                        <li><label>BGC (Background Check)</label><span>N/A</span></li>
+                        <li><label>Uninformed Absence LWD</label><span>{{EmpData[0].UninformedAbsenceLWD}}</span></li>
+                        <li><label>Loan Amount</label><span>{{EmpData[0].LoanAmount}}</span></li>
+                        <li><label>GMC ID</label><span>{{EmpData[0].gmc_number}}</span></li>
                     </ul>
-                   
-                  
+
+
                 </div>
             
             </div></div>
     
         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
             <div class="card">
-                <div class="header">
-                    <h2>Location Details</small></h2>
+                <div class="card_header">
+                    <h2>Personal Details</h2>
                 </div>
-                <div class="body">
+                <div class="body emp_data">
 
                     <ul class="emp_data">
-                        <li><label>Company</label><span>Policy Bazaar</span></li>
+                        <li><label>DOB</label><span>{{EmpData[0].DOB}}</span></li>
+                        <li><label>Father Name	</label><span>{{EmpData[0].FatherName}}</span></li>
+                        <li><label>Gender</label><span>{{EmpData[0].Gender}}</span></li>
+                        <li><label>Marital Status</label><span>{{EmpData[0].MaritalStatus}}</span></li>
+                        <li><label>Date of Marriage</label><span>{{EmpData[0].DateOfMarriage}}</span></li>
+                        <li><label>Spouse Name</label><span>{{EmpData[0].SpouseName}}</span></li>
+                        <li><label>Spouse DOB</label><span>{{EmpData[0].SpouseDOB}}</span></li>
+                        <li><label>Child 1 Name	</label><span>{{EmpData[0].Child1Name}}</span></li>
+                        <li><label>Child 1 Gender</label><span>{{EmpData[0].Child1Gender}}</span></li>
+                        <li><label>Child 1 DOB</label><span>{{EmpData[0].Child1DOB}}</span></li>
+                        <li><label>Child 2 Name</label><span>{{EmpData[0].Child2Name}}</span></li>
+                        <li><label>Child 2 Gender</label><span>{{EmpData[0].Child2Gender}}</span></li>
+                        <li><label>Child 2 DOB</label><span>{{EmpData[0].Child2DOB}}</span></li>
+                        <li><label>Highest Qualification</label><span>{{EmpData[0].HighestQualification}}</span></li>
+                        <li><label>University/ Institute High Qual</label><span>{{EmpData[0].UniversityInstituteHighQual}}</span></li>
+                        <li><label>Total Exp</label><span>{{EmpData[0].TotalExp}}</span></li>
+
+                    </ul>
+
+
+                </div>
+
+            </div>
+
+            <div class="card">
+                <div class="card_header">
+                    <h2>Exit Details</h2>
+                </div>
+                <div class="body emp_data">
+
+                    <ul class="emp_data">
+                        <li><label>Type of exit</label><span>{{EmpData[0].TypeOfExitName}}</span></li>
+                        <li><label>LWD (Last Workingday)</label><span>{{EmpData[0].LWD_LastWorking}}</span></li>
                     </ul>
 
 
@@ -89,73 +148,46 @@
 
         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
             <div class="card">
-                <div class="header">
-                    <h2>Location Details</small></h2>
+                <div class="card_header">
+                    <h2>Location Details</h2>
                 </div>
-                <div class="body">
+                <div class="body emp_data">
 
                     <ul class="emp_data">
-                        <li><label>Company</label><span>Policy Bazaar</span></li>
+                        <li><label>Working Location</label><span>{{EmpData[0].City}}</span></li>
+                        <li><label>Seat Location</label><span>{{EmpData[0].Seat}}</span></li>
+                        <li><label>HR Spoc</label><span>{{EmpData[0].HRSpocName}}</span></li>
+                        <li><label>Admin Spoc</label><span></span></li>
+                        <li><label>IT Spoc</label><span>{{EmpData[0].ITSpocName}}</span></li>
+                        <li><label>Building Number</label><span>{{EmpData[0].Building}}</span></li>
                     </ul>
 
 
                 </div>
 
             </div>
-        </div>
 
-        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
             <div class="card">
-                <div class="header">
-                    <h2>Location Details</small></h2>
+                <div class="card_header">
+                    <h2>Emergency Contact</h2>
                 </div>
-                <div class="body">
+                <div class="body emp_data">
 
                     <ul class="emp_data">
-                        <li><label>Company</label><span>Policy Bazaar</span></li>
+                        <li><label>Permanent Address</label><span>{{EmpData[0].PermanentAddress}}</span></li>
+                        <li><label>Emergency Contact Number</label><span>{{EmpData[0].EmergencyContactNumber}}</span></li>
+                        <li><label>Emergency Contact Person Name</label><span>{{EmpData[0].EmergencyContactPersonName}}</span></li>
+                        <li><label>Emergency Contact Person Relation</label><span>{{EmpData[0].EmergencyContactPersonRelation}}</span></li>
+
                     </ul>
 
 
                 </div>
 
             </div>
+       
         </div>
-
-        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
-            <div class="card">
-                <div class="header">
-                    <h2>Location Details</small></h2>
-                </div>
-                <div class="body">
-
-                    <ul class="emp_data">
-                        <li><label>Company</label><span>Policy Bazaar</span></li>
-                    </ul>
-
-
-                </div>
-
-            </div>
-        </div>
-
-        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
-            <div class="card">
-                <div class="header">
-                    <h2>Location Details</small></h2>
-                </div>
-                <div class="body">
-
-                    <ul class="emp_data">
-                        <li><label>Company</label><span>Policy Bazaar</span></li>
-                    </ul>
-
-
-                </div>
-
-            </div>
-        </div>
-    
-    </div>
+          </div>
 
                 </div>
 

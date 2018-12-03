@@ -102,78 +102,100 @@
                </form>
             </div>
             <div class="body">
-               <ul class="tabs">
-                   <li>Quick Links</li>
-                   <li ng-class="data.FAQIsActive==1 ? 'active':'' "
-                       rel="tab1" ng-repeat="data in FAQData  |  unique: 'IssueID' track by data.IssueID "
-                       ng-click="changeActive(data)">
-                       {{data.IssueName}}
-                   </li>                 
-               </ul>
-               
-               <div class="tab_container">
+
+                <div class="faq_container">
+                    <div class="taglists">
+                        <h1>Filters</h1>
+                        <div class="tags_list">
+                            <div class="body tag_list">
+                                <button type="button" class="btn btn-default btn-toastr" ng-if="data.FAQIsActive==1"
+                                        ng-class="data.Selected ? 'active':'' "
+                                        ng-repeat="data in FAQData  | filter:{ SubIssueName: KeyValue } | unique: 'SubIssueID' track by data.SubIssueID "
+                                        ng-bind-html="data.SubIssueName | highlight:search.text"
+                                        ng-click="ChangeFAQ(data)">
+                                    {{data.SubIssueName}}
+                                </button>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="faq_lists">
                   
-                  <div id="tab1" class="tab_content">
-                     <div class="accordion" id="accordion">
+                        <ul class="tabs">
 
-                         <div class="faqs_section">
-                             <div class="tags_list">
-                                 <div class="body tag_list">
-                                     <button type="button" class="btn btn-default btn-toastr" ng-if="data.FAQIsActive==1"
-                                             ng-class="data.Selected ? 'active':'' "
-                                             ng-repeat="data in FAQData  | filter:{ SubIssueName: KeyValue } | unique: 'SubIssueID' track by data.SubIssueID "
-                                             ng-bind-html="data.SubIssueName | highlight:search.text"
-                                             ng-click="ChangeFAQ(data)">
-                                         {{data.SubIssueName}}
-                                     </button>
+                            <li ng-class="data.FAQIsActive==1 ? 'active':'' "
+                                rel="tab1" ng-repeat="data in FAQData  |  unique: 'IssueID' track by data.IssueID "
+                                ng-click="changeActive(data)">
+                                {{data.IssueName}}
+                            </li>
+                        </ul>
 
-                                 </div>
-                             </div>
-                             <div class="faqlist">
-                                 <div class="accordion_innerbox" ng-if="data.FAQIsActive==1 && ((IsTag==1 && data.Selected)||(IsTag==0) )"
-                                      ng-repeat="data in FAQData  | filter:{ QUESTION: KeyValue } | unique: 'FAQDetailsID' track by data.FAQDetailsID ">
-                                     <div class="card-header" id="headingOne{{data.FAQDetailsID}}">
-                                         <h5 class="mb-0">
-                                             <button class="btn btn-link" type="button" data-toggle="collapse"
-                                                     data-target="#collapseOne{{data.FAQDetailsID}}"
-                                                     aria-expanded="true" aria-controls="collapseOne{{data.FAQDetailsID}}">
-                                                 {{data.QUESTION}}
-                                             </button>
-                                         </h5>
-                                     </div>
-                                     <div id="collapseOne{{data.FAQDetailsID}}" class="collapse show" aria-labelledby="headingOne{{data.FAQDetailsID}}" data-parent="#accordion">
-                                         <div class="accordion_txt">
-                                             {{data.ANSWER}}
-                                             <div class="faq_reply">
-                                                 <p>Was this answer helpful?</p>
-                                                 <button class="btn yes">Yes</button>
-                                                 <a class="btn no" href="javascript:void(0)" ng-click="OpenLogin(data)">No</a>
-                                                 <!--<a class="btn no" href="light/login.html?issue={{data.IssueID}}&subissue={{data.SubIssueID}}">No</a>-->
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
 
-                         </div>
-                        
-                     
-                        
-                        
-                     </div>
-                  </div>
-                  
-               </div>
+                        <div class="tab_container">
+
+                            <div id="tab1" class="tab_content">
+                                <div class="accordion" id="accordion">
+
+                                    <div class="faqs_section">
+
+                                        <div class="faqlist">
+                                            <div class="accordion_innerbox" ng-if="data.FAQIsActive==1 && ((IsTag==1 && data.Selected)||(IsTag==0) )"
+                                                 ng-repeat="data in FAQData  | filter:{ QUESTION: KeyValue } | unique: 'FAQDetailsID' track by data.FAQDetailsID ">
+                                                <div class="card-header" id="headingOne{{data.FAQDetailsID}}">
+                                                    <h5 class="mb-0">
+                                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                                                data-target="#collapseOne{{data.FAQDetailsID}}"
+                                                                aria-expanded="true" aria-controls="collapseOne{{data.FAQDetailsID}}">
+                                                            <em class="qestion_hd">Q:</em>
+                                                            <span class="que"> {{data.QUESTION}}</span>
+                                                        </button>
+                                                    </h5>
+                                                </div>
+                                                <div id="collapseOne{{data.FAQDetailsID}}" class="collapse" aria-labelledby="headingOne{{data.FAQDetailsID}}" data-parent="#accordion">
+                                                    <div class="accordion_txt">
+                                                        {{data.ANSWER}}
+                                                        <div class="faq_reply">
+                                                            <p>Was this answer helpful?</p>
+                                                            <button class="btn yes">Yes</button>
+                                                            <a class="btn no_btn" href="javascript:void(0)" ng-click="OpenLogin(data)">No</a>
+                                                            <!--<a class="btn no" href="light/login.html?issue={{data.IssueID}}&subissue={{data.SubIssueID}}">No</a>-->
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                    </div>
+
+                </div>
+
+         
+             
             </div>
              </div>
              </div>
       </section>
-      <footer class="footer">
+      <!--<footer class="footer">
       <div class="copyright">
       <div class="container">
       </div>
       </div> 
-      </footer> 
+      </footer>--> 
          
       </div>
       <script src="landing-page/js/libscripts.bundle.js"></script>  
