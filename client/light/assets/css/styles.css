@@ -597,3 +597,10 @@ table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, tab
     border-radius: .25rem;
     border: 1px solid #ced4da;
     width: 100%;}
+
+
+
+.tat_red{padding: .475rem .75rem;color: #ff0000; border: 1px solid #ff0000; border-radius: .25rem; vertical-align: middle;}
+.tat_green{padding: .475rem .75rem;color: #29ce00;border: 1px solid #29ce00;border-radius: .25rem; vertical-align: middle;}
+.active_green{background: #29ce00;display: inline-block;  border-radius: 100%;  width: 10px;  height: 10px; vertical-align: middle;}
+.inactive_red{background: #ff0000;display: inline-block;  border-radius: 100%;  width: 10px;  height: 10px; vertical-align: middle;}

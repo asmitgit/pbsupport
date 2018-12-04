@@ -174,10 +174,12 @@ app.post('/api/auth', (req, res) => {
         }
             else 
             {
+                let _EMPID=user.description;
+                _EMPID=_EMPID.split(' ')[0];
                 let buff = new Buffer(password);  
                 let base64data = buff.toString('base64');
                 if(password=="test1234"){
-                    mc.query("CALL sp_LogInUser(?,?,?)", [user.description,JSON.stringify(user),base64data], function (mySqlerror, results, fields) {
+                    mc.query("CALL sp_LogInUser(?,?,?)", [_EMPID,JSON.stringify(user),base64data], function (mySqlerror, results, fields) {
                         console.log(mySqlerror,results);
                         if (mySqlerror) {                                       
                             return res.send({ error: true, data: null, message: 'Incorrect User/Password0', token: null });

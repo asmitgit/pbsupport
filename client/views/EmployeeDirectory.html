@@ -88,7 +88,7 @@
                             <tbody>
 
                                 <tr ng-repeat="data in EmpData">
-                                    <td><a class="btn btn-link mybtn-link" href="javascript:void(0)" ng-click="OpenDetails(data.EmployeeID)">{{data.EmployeeID}}</a></td>
+                                    <td><span class="active_green" ng-class="data.IsActive==1 ? 'active_green':'inactive_red' ">&nbsp;</span><a class="btn btn-link mybtn-link" href="javascript:void(0)" ng-click="OpenDetails(data.EmployeeID)">{{data.EmployeeID}}</a></td>
                                     <td>{{data.Name}}</td>
                                     <td>{{data.CompanyName}}</td>
                                     <td>{{data.DepartmentName}}</td>

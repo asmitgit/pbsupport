@@ -8,8 +8,8 @@
                     </h2>
                     <p class="demo-button">
 
-                        <button type="button" class="btn btn-outline-primary">{{TicketDetails[0].AssignToName != null ? TicketDetails[0].AssignToName : 'Not assigned'}}{{TicketDetails[0].AssignToEmployeeID != null ? '('+TicketDetails[0].AssignToEmployeeID+')' :'' }}</button>
-                        <!--<button type="button" class="btn btn-outline-success" title="New"> <span>{{TicketDetails[0].AssignToEmployeeID}}</span></button>-->
+                        <span class="tat_green">{{TicketDetails[0].AssignToName != null ? TicketDetails[0].AssignToName : 'Not assigned'}}{{TicketDetails[0].AssignToEmployeeID != null ? '('+TicketDetails[0].AssignToEmployeeID+')' :'' }}</span>
+                        <span ng-class="TicketDetails[0].IsTAT==1 ? 'tat_red':'tat_green' ">{{TicketDetails[0].TATDate | date:'medium'}}</span>
                        
                         <!--<button type="button" class="btn btn-outline-danger" title="Log"><i class="fa fa-file-text-o"></i> <span>Log</span></button>-->
                     </p>

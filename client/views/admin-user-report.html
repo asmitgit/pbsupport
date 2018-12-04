@@ -28,7 +28,7 @@
                                 </tr>
                             </thead>
                             <tbody ng-repeat="data in SupervisorList">
-                                <tr ng-click="GetUserCount(data)">
+                                <tr ng-click="GetUserCount(data)" style="cursor:pointer">
 
                                     <td>{{data.EmployeeID}}</td>
                                     <td>{{data.Name}}</td>
@@ -53,12 +53,12 @@
                                                 <tbody ng-repeat="child1 in data.Supervisordetails">
                                                     <tr>
                                                         <td>{{child1.Name}}({{child1.EmployeeID}})</td>
-                                                        <td ng-click="GetUserTicketData(child1,1)">{{child1.NewTickets}}</td>
-                                                        <td ng-click="GetUserTicketData(child1,2)">{{child1.OpenTickets}}</td>
-                                                        <td ng-click="GetUserTicketData(child1,3)">{{child1.TATTickets}}</td>
-                                                        <td ng-click="GetUserTicketData(child1,4)">{{child1.ClosedTickets}}</td>
-                                                        <td ng-click="GetUserTicketData(child1,6)">{{child1.SupportRequired}}</td>
-                                                        <td ng-click="GetUserTicketData(child1,4)">{{child1.MTDClosedTickets}}</td>
+                                                        <td ng-click="GetUserTicketData(child1,1)" style="cursor:pointer">{{child1.NewTickets}}</td>
+                                                        <td ng-click="GetUserTicketData(child1,2)" style="cursor:pointer">{{child1.OpenTickets}}</td>
+                                                        <td ng-click="GetUserTicketData(child1,3)" style="cursor:pointer">{{child1.TATTickets}}</td>
+                                                        <td ng-click="GetUserTicketData(child1,4)" style="cursor:pointer">{{child1.ClosedTickets}}</td>
+                                                        <td ng-click="GetUserTicketData(child1,6)" style="cursor:pointer">{{child1.SupportRequired}}</td>
+                                                        <td ng-click="GetUserTicketData(child1,4)" style="cursor:pointer">{{child1.MTDClosedTickets}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td colspan="6">
