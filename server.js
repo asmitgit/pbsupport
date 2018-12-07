@@ -14,7 +14,22 @@ const app = express();
 app.set('superSecret', keys.secretOrKey); // secret variable
 const isEmpty = require('./validation/is-empty');
 const moment = require('moment');
+
+const cron = require('node-cron');
 //var stringify = require('json-stringify');
+
+ 
+// DB Config
+//const db = require('./config/keys').mongoURI;
+// connection configurations
+const mysqldb = require('./config/keys').mysqldb;
+
+ const mc = mysql.createConnection(mysqldb);
+// cron.schedule('*/1 * * * *', () => {
+//     mc.query('CALL sp_GETFaqDetails(?,?,?)', [0,0,0], function (error, results, fields) {
+//         console.log(results);        
+//     });
+// });
 
 const ActiveDirectory = require('activedirectory');
 const config = { url: 'ldap://10.0.10.10:389',
@@ -30,12 +45,6 @@ const config = { url: 'ldap://10.0.10.10:389',
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// DB Config
-//const db = require('./config/keys').mongoURI;
-// connection configurations
-const mysqldb = require('./config/keys').mysqldb;
-
-const mc = mysql.createConnection(mysqldb);
 
 // Connect to MongoDB
 // mongoose

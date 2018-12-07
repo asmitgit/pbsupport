@@ -56,28 +56,41 @@ HRSupport.controller("SideBarCTRL", function ($scope, HRSupportService, $rootSco
    $scope.getlocationmaster();
    
   
-   $scope.UpdateLocation = function () {
-       var objRequest = {
-           "EmployeeID": $scope.UserDetails.EMPData[0].EmployeeID,
-           "State": $scope.UserDetails.Location[0].State,
-           "City": $scope.Selected.city_name.city_name,
-           "Sector": "",
-           "Building": $scope.Selected.building_name.building_name,
-           //"FloorNo": $scope.UserDetails.Location[0].FloorNo ? $scope.UserDetails.Location[0].FloorNo : 0,
-           "FloorNo":$scope.Selected.floor.FloorNo,
-           "Seat": $scope.UserDetails.Location[0].Seat
-       };
-       HRSupportService.UpdateLocation(objRequest, $scope.UserDetails.Toket).success(function (data) {
-           if (data.data != null) {
-               $scope.UserDetails.Location = data.data.length > 1 ? data.data[0] : [];
-               $scope.UserDetails.IsLocSet = 1;
-               $window.localStorage.setItem('UserDetails',
-                JSON.stringify($scope.UserDetails));
+   $scope.UpdateLocation = function () {      
+       if (!$scope.isEmpty($scope.Selected.building_name) && !$scope.isEmpty($scope.Selected.floor) && !$scope.isEmpty($scope.Selected.city_name) && !$scope.isEmpty($scope.UserDetails.Location) && $scope.UserDetails.Location.length > 0) {
+           if (!$scope.isEmpty($scope.UserDetails.Location[0].Seat) ) {
+               var objRequest = {
+                   "EmployeeID": $scope.UserDetails.EMPData[0].EmployeeID,
+                   "State": $scope.UserDetails.Location[0].State,
+                   "City": $scope.Selected.city_name.city_name,
+                   "Sector": "",
+                   "Building": $scope.Selected.building_name.building_name,
+                   //"FloorNo": $scope.UserDetails.Location[0].FloorNo ? $scope.UserDetails.Location[0].FloorNo : 0,
+                   "FloorNo": $scope.Selected.floor.FloorNo,
+                   "Seat": $scope.UserDetails.Location[0].Seat
+               };
+               HRSupportService.UpdateLocation(objRequest, $scope.UserDetails.Toket).success(function (data) {
+                   if (data.data != null) {
+                       $scope.UserDetails.Location = data.data.length > 1 ? data.data[0] : [];
+                       $scope.UserDetails.IsLocSet = 1;
+                       $window.localStorage.setItem('UserDetails',
+                        JSON.stringify($scope.UserDetails));
+                   }
+                   else {
+
+                   }
+               });
            }
            else {
-
+               alert('Please enter valid information.');
            }
-       });
+       }
+       else {
+           alert('Please enter valid information.');
+       }
+   };
+   $scope.isEmpty = function (str) {
+       return typeof str == 'string' && !str.trim() || typeof str == 'undefined' || str === null;
    };
    $scope.Skip = function () {
        if ($scope.UserDetails.Location.length > 0) {

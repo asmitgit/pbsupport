@@ -67,27 +67,33 @@
                                                                     <thead>
                                                                         <tr>
                                                                             <th>Ticket#</th>
+                                                                            <th>Emp ID</th>
+                                                                            <th>Emp Name</th>
+                                                                            <th>TAT</th>
                                                                             <th>Date</th>
                                                                             <th>Issue</th>
                                                                             <th>Sub Issue</th>
                                                                             <th>Status</th>
                                                                             <th>Last Updated on</th>
                                                                             <th>Agent Name</th>
-
-                                                                            <th>TAT</th>
+                                                                            <th>FollowUp</th>
+                                                                           
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
-                                                                        <tr ng-repeat="childData in child1.SubData">
+                                                                        <tr ng-repeat="childData in child1.SubData | orderBy : 'childData.CreatedON' :true">
 
                                                                             <td><a class="btn btn-link mybtn-link" href="home.html#/pbsupport/TicketDetails/{{childData.TicketID}}">{{childData.TicketDispID}}</a></td>
-                                                                            <td>{{childData.CreatedON | date:'medium'}}</td>
+                                                                            <td>{{childData.EmployeeID}}</td>
+                                                                            <td>{{childData.Name}}</td>
+                                                                            <td>{{childData.TATDate | date:"dd-MM-yyyy  h:mma"}}</td>
+                                                                            <td>{{childData.CreatedON | date:"dd-MM-yyyy  h:mma"}}</td>
                                                                             <td>{{childData.ISSUENAME}}</td>
                                                                             <td>{{childData.SUBISSUENAME}}</td>
                                                                             <td>{{childData.StatusName}}</td>
-                                                                            <td>{{childData.LastUpdatedOn | date:'medium'}}</td>
+                                                                            <td>{{childData.LastUpdatedOn | date:"dd-MM-yyyy  h:mma"}}</td>
                                                                             <td>{{childData.Name}}</td>
-                                                                            <td>{{childData.TATDate | date:'medium'}}</td>
+                                                                            <td>{{childData.FollowUp && childData.FollowUp!=null ? (childData.FollowUp | date:"dd-MM-yyyy"):''}}</td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>

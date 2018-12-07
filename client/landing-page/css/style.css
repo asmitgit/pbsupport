@@ -934,8 +934,6 @@ ul.tabs {
     background: #26476c;
 }
 
-.
-
 ul.tabs li:first-child{ width: 21%;text-align: center;background: #40a8fe; color: #fff;border-bottom-color: #40a8fe;}
 ul.tabs li {
 	float: left;

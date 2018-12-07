@@ -41,6 +41,7 @@
     <script src="script/controller/employee%20directory.js"></script>
     <script src="script/controller/admin-user-report.js"></script>
     <script src="script/controller/AllTickets.js"></script>
+    <script src="script/controller/faq.js"></script>
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="light/assets/css/inbox.css">
     <link rel="stylesheet" href="light/assets/css/main.css">
@@ -180,7 +181,7 @@
                                         <label> Current City</label>
                                         <select class="form-control" ng-model="Selected.city_name"
                                                 ng-options="data.city_name for data in UserDetails.LocationMaster
-                                    |  unique: 'city_name' | orderBy:['city_name'] track by data.city_name">
+                                    |  unique: 'city_name' | orderBy:['city_name'] track by data.city_name" >
                                             <option value="">Select City</option>
                                         </select>
 

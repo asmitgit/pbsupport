@@ -15,6 +15,33 @@
             //}
         });
     };
+    $scope.UpdateAssignmentFlag = 0;
+    $scope.UpdateAssignment = function (inType) {
+        if (inType == 1) {
+            var _objReq = { TicketID: $scope.TicketID, AssignTo: 0, UserID: $scope.UserDetails.EMPData[0].EmpID, Type: 1 };
+            HRSupportService.GetSpocListANDUpdate(_objReq, $scope.UserDetails.Toket).success(function (data) {
+                $scope.SpocList = data.data.length > 0 ? data.data[0] : [];
+            });
+            $scope.UpdateAssignmentFlag = 1;
+        }
+        else if (inType == 2) {
+            if ($scope.Selected.Spoc && $scope.Selected.Spoc != undefined) {
+                var _objReq = { TicketID: $scope.TicketID, AssignTo: $scope.Selected.Spoc.EmpID, UserID: $scope.UserDetails.EMPData[0].EmpID, Type: 2 };
+                HRSupportService.GetSpocListANDUpdate(_objReq, $scope.UserDetails.Toket).success(function (data) {
+                    $scope.SpocList = data.data.length > 0 ? data.data[0] : [];
+                });
+                $scope.UpdateAssignmentFlag = 0;
+                alert('Úpdated successfully.');
+            }
+            else{
+                alert('Please select spoc.');
+                return false;
+            }
+        }
+        else if (inType == 3) {
+            $scope.UpdateAssignmentFlag = 0;
+        }
+    };
 
     $scope.GetAllIssueSubIssue = function () {
         HRSupportService.getAllIssueSubIssue($scope.UserDetails.Toket).success(function (data) {
@@ -136,23 +163,26 @@
         else {
             _Comments = $scope.HRComments;
         }
-        var objRequest = {
-            "TicketID": $scope.TicketID,
-            "CreatedBy": $scope.UserDetails.EMPData[0].EmpID,
-            "StatusID": $scope.Selected.Status.StatusID,
-            "IssueID": $scope.Selected.IssueType.ISSUEID,
-            "SubIssueID": $scope.Selected.SubIssueType.SUBISSUEID,
-            //"FollowUp": $scope.isEmpty($scope.TicketDetails[0].FollowUp) ? '' : moment($scope.TicketDetails[0].FollowUp).format("YYYY-MM-YY")
-            "FollowUp": $scope.isEmpty($scope.TicketDetails[0].FollowUp) ? '' : $scope.TicketDetails[0].FollowUp.getFullYear() + "-" + (getMonth($scope.TicketDetails[0].FollowUp)) + '-' + getDate($scope.TicketDetails[0].FollowUp)
-        };
+       
+      
+            var objRequest = {
+                "TicketID": $scope.TicketID,
+                "CreatedBy": $scope.UserDetails.EMPData[0].EmpID,
+                "StatusID": $scope.Selected.Status.StatusID,
+                "IssueID": $scope.Selected.IssueType.ISSUEID,
+                "SubIssueID": $scope.Selected.SubIssueType.SUBISSUEID,
+                //"FollowUp": $scope.isEmpty($scope.TicketDetails[0].FollowUp) ? '' : moment($scope.TicketDetails[0].FollowUp).format("YYYY-MM-YY")
+                "FollowUp": $scope.isEmpty($scope.TicketDetails[0].FollowUp) ? '' : $scope.TicketDetails[0].FollowUp.getFullYear() + "-" + (getMonth($scope.TicketDetails[0].FollowUp)) + '-' + getDate($scope.TicketDetails[0].FollowUp)
+            };
 
-        HRSupportService.UpdateTicketDetails(objRequest, $scope.UserDetails.Toket).success(function (data) {
-            if (!data.error) {
-                alert('Updated sussessfully');
-                $scope.GetTicketDetails();
-                $scope.IsEdit = 0;
-            }
-        });
+            HRSupportService.UpdateTicketDetails(objRequest, $scope.UserDetails.Toket).success(function (data) {
+                if (!data.error) {
+                    alert('Updated sussessfully');
+                    $scope.GetTicketDetails();
+                    $scope.IsEdit = 0;
+                }
+            });
+        
 
     };
 

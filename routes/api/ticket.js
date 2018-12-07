@@ -68,6 +68,34 @@ router.post('/CreateNewTicket', (req, res) => {
         return res.send({ error: true, data: null, message: err});
     }
 });
+router.post('/GetSpocListANDUpdate', (req, res) => {
+    console.log(req.body);
+    if(isEmpty(req.body))
+        return res.send({ error: true, data: null, message: 'error in request' });
+    try{
+        
+        let _TicketID = req.body.TicketID;
+        let _AssignTo =  req.body.AssignTo;
+        let _UserID =  req.body.UserID;
+        let _Type =  req.body.Type;
+        
+       
+
+        mc.query('CALL sp_GetSpocListANDUpdate(?,?,?,?)', [_TicketID,_AssignTo,_UserID,_Type], function (error, results, fields) {
+            console.log(results);
+            if (error) 
+            {
+                return res.send({ error: true, data: null, message: error});
+            }
+            else
+                return res.send({ error: false, data: results, message: 'success' });
+        });  
+    }
+    catch(err){
+        console.error(err);
+        return res.send({ error: true, data: null, message: err});
+    }
+});
 router.post('/GetAdminTicketList', (req, res) => {
     console.log(req.body);
     if(isEmpty(req.body))

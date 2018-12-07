@@ -11,7 +11,7 @@ HRSupport.controller("CreateTicketCTRL", function ($scope, HRSupportService, $ro
             $scope.IssueSubIssue = data.data.length > 0 ? data.data[0] : [];
             if (!$scope.isEmpty($routeParams.IssueID) && !$scope.isEmpty($routeParams.SubIssueID)) {
                 $scope.Selected.IssueType = { ISSUEID: $routeParams.IssueID };
-                $scope.Selected.SubIssueType = {  ISSUEID: $routeParams.IssueID, SUBISSUEID: $routeParams.SubIssueID };
+                //$scope.Selected.SubIssueType = {  ISSUEID: $routeParams.IssueID, SUBISSUEID: $routeParams.SubIssueID };
             }
         });
     };
@@ -26,8 +26,8 @@ HRSupport.controller("CreateTicketCTRL", function ($scope, HRSupportService, $ro
             alert('Please select sub issue type');
             return false;
         }
-        else if ($scope.isEmpty($scope.Comments)) {
-            alert('Please enter your query');
+        else if ($scope.isEmpty($scope.Comments) || $scope.Comments.length<=10) {
+            alert('Query should be more than 10 char');
             return false;
         }
         else {

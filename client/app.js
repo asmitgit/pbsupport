@@ -26,6 +26,10 @@ angular.module("HRSupport", ["ngRoute", "ui.bootstrap", "ui.filters"]).config(["
                  templateUrl: 'views/mgrDashboard.html',
                  controller: 'MGRDashboardCTRL'
              })
+             .when('/pbsupport/FAQ', {
+                 templateUrl: 'views/faq.html',
+                 controller: 'FAQCtrl'
+             })
               .when('/pbsupport/MySpanTickets', {
                   templateUrl: 'views/mySpanTickets.html',
                   controller: 'SpanTicketsCTRL'

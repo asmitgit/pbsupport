@@ -8,11 +8,22 @@
                     </h2>
                     <p class="demo-button">
 
-                        <span class="tat_green">{{TicketDetails[0].AssignToName != null ? TicketDetails[0].AssignToName : 'Not assigned'}}{{TicketDetails[0].AssignToEmployeeID != null ? '('+TicketDetails[0].AssignToEmployeeID+')' :'' }}</span>
-                        <span ng-class="TicketDetails[0].IsTAT==1 ? 'tat_red':'tat_green' ">{{TicketDetails[0].TATDate | date:'medium'}}</span>
+                        
+                        
+                        <span ng-class="TicketDetails[0].IsTAT==1 ? 'tat_red':'tat_green' ">{{TicketDetails[0].TATDate | date:"dd-MM-yyyy  h:mma"}}</span>
+                        <span class="tat_green" ng-show="UpdateAssignmentFlag==0">{{TicketDetails[0].AssignToName != null ? TicketDetails[0].AssignToName : 'Not assigned'}}{{TicketDetails[0].AssignToEmployeeID != null ? '('+TicketDetails[0].AssignToEmployeeID+')' :'' }}</span>
                        
-                        <!--<button type="button" class="btn btn-outline-danger" title="Log"><i class="fa fa-file-text-o"></i> <span>Log</span></button>-->
-                    </p>
+                        <select ng-model="Selected.Spoc"
+                                ng-options="data.Name for data in SpocList
+                                    |  unique: 'EmployeeID' | orderBy:['EmployeeID'] track by data.EmployeeID " ng-show="UpdateAssignmentFlag==1" class="data_list">
+                            <option value="">Select Spoc</option>
+                        </select>
+                      
+                            <button type="button" class="btn btn-outline-success" title="Log" ng-click="UpdateAssignment(1)" ng-show="UpdateAssignmentFlag==0"><span>Edit</span></button>
+                            <button type="button" class="btn btn-outline-success" title="Log" ng-click="UpdateAssignment(2)" ng-show="UpdateAssignmentFlag==1"><span>Update</span></button>
+                            <button type="button" class="btn btn-outline-success" title="Log" ng-click="UpdateAssignment(3)" ng-show="UpdateAssignmentFlag==1"><span>Cancel</span></button>
+                            <!--<button type="button" class="btn btn-outline-danger" title="Log"><i class="fa fa-file-text-o"></i> <span>Log</span></button>-->
+</p>
                 </div>
 
             </div>

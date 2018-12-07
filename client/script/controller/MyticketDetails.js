@@ -36,6 +36,12 @@
             alert('Remark should not be blank');
             return false;
         }
+
+        if ($scope.isEmpty(_Comments) || _Comments.length <= 10) {
+            alert('Query should be more than 10 char');
+            return false;
+        }
+
         var objRequest = {
             "TicketID": $scope.TicketID,
             "Comments": _Comments,

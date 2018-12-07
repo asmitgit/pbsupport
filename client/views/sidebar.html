@@ -34,7 +34,7 @@
                     <ul class="main-menu metismenu">
                         <li><a href="/home.html#/pbsupport/CreateTicket"><i class="icon-speedometer"></i><span>Create Ticket</span></a></li>
                         <li><a href="/home.html#/pbsupport/MyTickets"><i class="icon-list"></i>My Tickets</a></li>
-
+                        <li ng-if="('2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/FAQ"><i class="icon-envelope"></i>FAQ</a></li>
                     </ul>
                 </nav>
             </div>
@@ -50,6 +50,7 @@
                         <li ng-if="('2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/UserReport"><i class="icon-bubbles"></i>Supervisor Report</a></li>
                         <li ng-if="('2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/AdminUserReport"><i class="icon-bubbles"></i>Manager Report</a></li>
                         <li ng-if="('2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/EmployeeDirectory"><i class="icon-envelope"></i>Employee Master</a></li>
+
                     </ul>
 
                 </nav>

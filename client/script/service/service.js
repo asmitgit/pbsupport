@@ -27,7 +27,27 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             });
         return request;
     }
-
+    
+    this.GetSpocListANDUpdate = function (objReq, Token) {
+        var request = $http({
+            method: "POST",
+            url: config.serviceURL + "api/ticket/GetSpocListANDUpdate",
+            headers: {
+                'Content-Type': "application/json; charset=utf-8"
+            },
+            data: JSON.stringify(objReq)
+        }).success(function (data) {
+            var test = data;
+            debugger;
+            console.log(data);
+        })
+            .error(function (error, status) {
+                if (status == 401) {
+                    alert('401');
+                }
+            });
+        return request;
+    }
     this.UploadFile = function (objReq) {
 
         var request = $http({

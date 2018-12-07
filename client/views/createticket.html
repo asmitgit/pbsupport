@@ -49,7 +49,9 @@
                                                             <label>Sub Issue</label>
                                                             <select class="form-control" ng-model="Selected.SubIssueType"
                                                                     ng-options="data.SUBISSUENAME for data in IssueSubIssue
-                                    | filter : {IsVisible:1}:true | filter : {ISSUEID:Selected.IssueType.ISSUEID}:true | orderBy:['SUBISSUENAME']  track by data.SUBISSUEID" ng-disabled="!(Selected.IssueType.ISSUEID>0)">
+                                                                    | filter : {IsVisible:1}:true 
+                                                                    | filter : {ISSUEID:Selected.IssueType.ISSUEID}:true 
+                                                                    | orderBy:['SUBISSUENAME']  track by data.SUBISSUEID" ng-disabled="!(Selected.IssueType.ISSUEID>0)">
                                                                 <option value="">Select Sub Issue</option>
                                                             </select>
                                                         </div>

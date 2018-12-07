@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="row clearfix" ng-show="ActiveSearchType==2">
-        <div class="col-lg-3 col-md-9 col-lg-12 tkt_listing4">
+        <div class="col-lg-3 col-md-9 col-lg-12 tkt_listing5">
             <div class="card text-center bg-info new">
                 <div class="body">
                     <div class="p-15 text-light" ng-click="GetAllTicketList(1)">
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-9 col-lg-12 tkt_listing4">
+        <div class="col-lg-3 col-md-9 col-lg-12 tkt_listing5">
             <div class="card text-center bg-secondary open">
                 <div class="body">
                     <div class="p-15 text-light" ng-click="GetAllTicketList(2)">
@@ -37,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-9 col-lg-12 tkt_listing4">
+        <div class="col-lg-3 col-md-9 col-lg-12 tkt_listing5">
             <div class="card text-center bg-warning tatbust">
                 <div class="body">
                     <div class="p-15 text-light" ng-click="GetAllTicketList(3)">
@@ -47,12 +47,22 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-9 col-lg-12 tkt_listing4">
-            <div class="card text-center bg-warning tatbust">
+        <div class="col-lg-3 col-md-9 col-lg-12 tkt_listing5">
+            <div class="card text-center bg-warning closed">
                 <div class="body">
                     <div class="p-15 text-light" ng-click="GetAllTicketList(4)">
                         <h3>{{TicketCount[0].Closed?TicketCount[0].Closed:0}}</h3>
                         <span>Closed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-9 col-lg-12 tkt_listing5">
+            <div class="card text-center bg-warning resolved">
+                <div class="body">
+                    <div class="p-15 text-light" ng-click="GetAllTicketList(9)">
+                        <h3>{{TicketCount[0].Resolved?TicketCount[0].Resolved:0}}</h3>
+                        <span>Resolved</span>
                     </div>
                 </div>
             </div>
@@ -150,21 +160,32 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th>Ticket Id</th>
+                                    <th>Emp ID</th>
+                                    <th>Emp Name</th>
+                                    <th>TAT</th>
                                     <th>Created On</th>
                                     <th>Issue</th>
+                                    <th>Sub Issue</th>
                                     <th>Status</th>
+                                    
                                     <th>Updated On</th>
+                                    <th>FollowUp</th>
                                 </tr>
                             </thead>
 
                             <tbody>
 
-                                <tr ng-repeat="data in TicketList">
+                                <tr ng-repeat="data in TicketList | orderBy : 'data.CreatedON' :true">
                                     <td><a class="btn btn-link mybtn-link" href="home.html#/pbsupport/TicketDetails/{{data.TicketID}}">{{data.TicketDispID}}</a></td>
-                                    <td>{{data.CreatedON| date:'medium'}}</td>
+                                    <td>{{data.EmployeeID}}</td>
+                                    <td>{{data.Name}}</td>
+                                    <td>{{data.TATDate | date:"dd-MM-yyyy  h:mma"}}</td>
+                                    <td>{{data.CreatedON | date:"dd-MM-yyyy  h:mma"}}</td>
                                     <td>{{data.ISSUENAME}}</td>
+                                    <td>{{data.SUBISSUENAME}}</td>
                                     <td>{{data.StatusName}}</td>
-                                    <td>{{data.LastUpdatedOn| date:'medium'}}</td>
+                                    <td>{{data.LastUpdatedOn | date:"dd-MM-yyyy  h:mma"}}</td>
+                                    <td>{{data.FollowUp && data.FollowUp!=null ? (data.FollowUp | date:"dd-MM-yyyy"):''}}</td>
                                 </tr>
 
 
