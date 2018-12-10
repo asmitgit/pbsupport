@@ -737,3 +737,7 @@ ul.accord_tabs li.active {
 	border-bottom: 1px solid #fff;
 	display: block;
 }
+.table tbody+tbody { border-top: 1px solid #dee2e6 !important;}
+
+.table.table-custom.table tr:last-child{border-bottom:1px solid #ddd;}
+.table td{border-bottom:1px solid #ddd !important;}

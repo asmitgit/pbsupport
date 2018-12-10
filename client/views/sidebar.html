@@ -32,9 +32,9 @@
             <div class="tab-pane animated fadeIn " ng-class="ActiveBar==1 ? 'show active':'' ">
                 <nav class="sidebar-nav">
                     <ul class="main-menu metismenu">
-                        <li><a href="/home.html#/pbsupport/CreateTicket"><i class="icon-speedometer"></i><span>Create Ticket</span></a></li>
-                        <li><a href="/home.html#/pbsupport/MyTickets"><i class="icon-list"></i>My Tickets</a></li>
-                        <li ng-if="('2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/FAQ"><i class="icon-envelope"></i>FAQ</a></li>
+                        <li><a href="/home.html#/pbsupport/CreateTicket"><i class="fa fa-plus-circle" aria-hidden="true"></i><span>Create Ticket</span></a></li>
+                        <li><a href="/home.html#/pbsupport/MyTickets"><i class="fa fa-ticket" aria-hidden="true"></i>My Tickets</a></li>
+                        <li ng-if="('2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/FAQ"><i class="fa fa-question-circle" aria-hidden="true"></i>FAQ</a></li>
                     </ul>
                 </nav>
             </div>
@@ -42,14 +42,14 @@
                 <nav class="sidebar-nav">
                     <ul class="main-menu metismenu">
                         <!--<li><a href="index2.html"><i class="icon-speedometer"></i><span>Dashboard</span></a></li>-->
-                        <li ng-if="('2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/AssignedTickets"><i class="icon-envelope"></i>Assigned Tickets</a></li>
+                        <li ng-if="('2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/AssignedTickets"><i class="fa fa-check" aria-hidden="true"></i>Assigned Tickets</a></li>
 
                         <li ng-if="('2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/MySpanTickets"><i class="icon-envelope"></i>My Span Tickets</a></li>
-                        <li ng-if="('2').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/Admin/AllTickets"><i class="icon-envelope"></i>All Tickets</a></li>
+                        <li ng-if="('2').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/Admin/AllTickets"><i class="fa fa-ticket" aria-hidden="true"></i>All Tickets</a></li>
                         <!--<li ng-if="('1,2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/MGRDashboardTickets"><i class="icon-bubbles"></i>Dashboard</a></li>-->
-                        <li ng-if="('2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/UserReport"><i class="icon-bubbles"></i>Supervisor Report</a></li>
-                        <li ng-if="('2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/AdminUserReport"><i class="icon-bubbles"></i>Manager Report</a></li>
-                        <li ng-if="('2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/EmployeeDirectory"><i class="icon-envelope"></i>Employee Master</a></li>
+                        <li ng-if="('2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/UserReport"><i class="fa fa-flag" aria-hidden="true"></i>Supervisor Report</a></li>
+                        <li ng-if="('2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/AdminUserReport"><i class="fa fa-flag-o" aria-hidden="true"></i>Manager Report</a></li>
+                        <li ng-if="('2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/EmployeeDirectory"><i class="fa fa-info-circle" aria-hidden="true"></i>Employee Master</a></li>
 
                     </ul>
 

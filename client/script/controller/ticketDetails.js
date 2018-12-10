@@ -29,6 +29,7 @@
                 var _objReq = { TicketID: $scope.TicketID, AssignTo: $scope.Selected.Spoc.EmpID, UserID: $scope.UserDetails.EMPData[0].EmpID, Type: 2 };
                 HRSupportService.GetSpocListANDUpdate(_objReq, $scope.UserDetails.Toket).success(function (data) {
                     $scope.SpocList = data.data.length > 0 ? data.data[0] : [];
+                    $scope.GetTicketDetails();
                 });
                 $scope.UpdateAssignmentFlag = 0;
                 alert('Úpdated successfully.');

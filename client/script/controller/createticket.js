@@ -40,6 +40,7 @@ HRSupport.controller("CreateTicketCTRL", function ($scope, HRSupportService, $ro
                 "FileURL": "",
                 "FileName": ""
             };
+            
             if ($scope.FileAttachments.length > 0) {
                 HRSupportService.UploadFile($scope.FileAttachments, $scope.UserDetails.Toket).success(function (data) {
                     console.log(data);
@@ -48,9 +49,42 @@ HRSupport.controller("CreateTicketCTRL", function ($scope, HRSupportService, $ro
                     objCreateTicket.FileName = $scope.FileAttachments[0].FileName;
 
                     HRSupportService.CreateNewTicket(objCreateTicket, $scope.UserDetails.Toket).success(function (data) {
+                        var _EmailRequest = {
+                            "CommunicationDetails": {
+                                "LeadID": 0,
+                                "Conversations": [
+                                  {
+                                      "From": "noreply-pbsupprt@policybazaar.com",
+                                      "ToReceipent":
+                                          data.data[0][0].EmailID.split(',')
+                                      ,
+                                      "BccEmail": ["asmit@policybazaar.com"],
+                                      "CCEmail": null,
+                                      "Body": "<html><body>Hi , <br/> A new ticket is raised by employee, request you to address it immediately. <br/>Issue : " + $scope.Selected.IssueType.ISSUENAME + "(" + $scope.Selected.SubIssueType.SUBISSUENAME +
+                                          ") <br/>Employee Concern : " + $scope.Comments + "<br/>Employee Details <br/>Ticket# : " + data.data[0][0].TicketDispID +
+                                          "<br/>Employee Name : " + $scope.UserDetails.EMPData[0].Name +
+                                          "<br/>Employee ID : " + $scope.UserDetails.EMPData[0].EmployeeID +
+
+                                           "</body></html>",//$scope.Comments,
+                                      "Subject": "New Ticket " + $scope.Selected.IssueType.ISSUENAME + "(" + $scope.Selected.SubIssueType.SUBISSUENAME + ") " + data.data[0][0].TicketDispID,
+                                      "CreatedBy": "Asmit",
+                                      "MailAttachments": [],
+                                      "UserID": 124,
+                                      "AutoTemplate": true
+                                  }
+                                ],
+                                "CommunicationType": 1
+                            }
+                        };
+                        HRSupportService.SendEmail(_EmailRequest).success(function (data) {
+
+                        });
                         alert('Ticket created successfully.');
                         console.log('/home.html#/pbsupport/MyTicketDetails/' + data.data[0][0].TicketID);
                         $window.location.href = '/home.html#/pbsupport/MyTicketDetails/' + data.data[0][0].TicketID;
+
+                       
+
                         //$scope.IssueSubIssue = data.data.length > 0 ? data.data[0] : [];
                         //if (!$scope.isEmpty($routeParams.IssueID) && !$scope.isEmpty($routeParams.SubIssueID)) {
                         //    $scope.Selected.IssueType = { ISSUEID: $routeParams.IssueID };
@@ -61,6 +95,36 @@ HRSupport.controller("CreateTicketCTRL", function ($scope, HRSupportService, $ro
             }
             else {
                 HRSupportService.CreateNewTicket(objCreateTicket, $scope.UserDetails.Toket).success(function (data) {
+                    var _EmailRequest = {
+                        "CommunicationDetails": {
+                            "LeadID": 0,
+                            "Conversations": [
+                              {
+                                  "From": "noreply-pbsupprt@policybazaar.com",
+                                  "ToReceipent": 
+                                      data.data[0][0].EmailID.split(',')
+                                  ,
+                                  "BccEmail": ["asmit@policybazaar.com"],
+                                  "CCEmail": null,
+                                  "Body": "<html><body>Hi , <br/> A new ticket is raised by employee, request you to address it immediately. <br/>Issue : " + $scope.Selected.IssueType.ISSUENAME + "(" + $scope.Selected.SubIssueType.SUBISSUENAME +
+                                      ") <br/>Employee Concern : " + $scope.Comments + "<br/>Employee Details <br/>Ticket# : " + data.data[0][0].TicketDispID+
+                                      "<br/>Employee Name : " + $scope.UserDetails.EMPData[0].Name +
+                                      "<br/>Employee ID : " + $scope.UserDetails.EMPData[0].EmployeeID +
+                                    
+                                       "</body></html>",//$scope.Comments,
+                                  "Subject": "New Ticket " + $scope.Selected.IssueType.ISSUENAME + "(" + $scope.Selected.SubIssueType.SUBISSUENAME +") "+ data.data[0][0].TicketDispID,
+                                  "CreatedBy": "Asmit",
+                                  "MailAttachments": [],
+                                  "UserID": 124,
+                                  "AutoTemplate": true
+                              }
+                            ],
+                            "CommunicationType": 1
+                        }
+                    };
+                    HRSupportService.SendEmail(_EmailRequest).success(function (data) {
+
+                    });
                     alert('Ticket created successfully.');
                     $window.location.href = '/home.html#/pbsupport/MyTicketDetails/' + data.data[0][0].TicketID;
                     //$scope.IssueSubIssue = data.data.length > 0 ? data.data[0] : [];

@@ -18,6 +18,7 @@ const moment = require('moment');
 const cron = require('node-cron');
 //var stringify = require('json-stringify');
 
+
  
 // DB Config
 //const db = require('./config/keys').mongoURI;
@@ -25,11 +26,15 @@ const cron = require('node-cron');
 const mysqldb = require('./config/keys').mysqldb;
 
  const mc = mysql.createConnection(mysqldb);
-// cron.schedule('*/1 * * * *', () => {
-//     mc.query('CALL sp_GETFaqDetails(?,?,?)', [0,0,0], function (error, results, fields) {
-//         console.log(results);        
-//     });
-// });
+cron.schedule('*/1 * * * *', () => {
+    mc.query('CALL sp_AutoAssignment()', [], function (error, results, fields) {
+        console.log(results);        
+    });
+    mc.query('CALL sp_AutoClose()', [], function (error, results, fields) {
+        console.log(results);        
+    });
+   
+});
 
 const ActiveDirectory = require('activedirectory');
 const config = { url: 'ldap://10.0.10.10:389',
