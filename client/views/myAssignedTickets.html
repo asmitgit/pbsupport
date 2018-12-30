@@ -40,9 +40,20 @@
         <div class="col-lg-3 col-md-9 col-lg-12 tkt_listing5">
             <div class="card text-center bg-warning tatbust">
                 <div class="body">
-                    <div class="p-15 text-light" ng-click="GetAllTicketList(3)">
+                    <div class="p-15 text-light" ng-click="GetAllTicketList(5)">
                         <h3>{{TicketCount[0].TATCASE?TicketCount[0].TATCASE:0}}</h3>
                         <span>TAT Bust</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <div class="col-lg-3 col-md-9 col-lg-12 tkt_listing5">
+            <div class="card text-center bg-warning resolved">
+                <div class="body">
+                    <div class="p-15 text-light" ng-click="GetAllTicketList(4)">
+                        <h3>{{TicketCount[0].Resolved?TicketCount[0].Resolved:0}}</h3>
+                        <span>Resolved</span>
                     </div>
                 </div>
             </div>
@@ -50,19 +61,9 @@
         <div class="col-lg-3 col-md-9 col-lg-12 tkt_listing5">
             <div class="card text-center bg-warning closed">
                 <div class="body">
-                    <div class="p-15 text-light" ng-click="GetAllTicketList(4)">
+                    <div class="p-15 text-light" ng-click="GetAllTicketList(3)">
                         <h3>{{TicketCount[0].Closed?TicketCount[0].Closed:0}}</h3>
                         <span>Closed</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-9 col-lg-12 tkt_listing5">
-            <div class="card text-center bg-warning resolved">
-                <div class="body">
-                    <div class="p-15 text-light" ng-click="GetAllTicketList(9)">
-                        <h3>{{TicketCount[0].Resolved?TicketCount[0].Resolved:0}}</h3>
-                        <span>Resolved</span>
                     </div>
                 </div>
             </div>
@@ -141,7 +142,7 @@
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-12">
                             <div class="m-t-15 advance_search_btn">
-                                <button class="btn btn-primary" ng-click="GetAllTicketList(4)">Search</button>
+                                <button class="btn btn-primary" ng-click="GetAllTicketList(8)">Search</button>
                                 <button class="btn btn-outline-secondary">Cancel</button>
                             </div>
                         </div>

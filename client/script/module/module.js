@@ -17,6 +17,20 @@ HRSupport.filter("JsonToNormalDate", function () {
     };
 });
 
+
+HRSupport.directive('myEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if (event.which === 13) {
+                scope.$apply(function () {
+                    scope.$eval(attrs.myEnter);
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
+});
 HRSupport.directive(
     'dateInput',
     function (dateFilter) {
@@ -37,10 +51,10 @@ HRSupport.directive(
     });
 
 HRSupport.filter('highlight', function ($sce) {
-    return function(text, phrase) {
-        if (phrase) text = text.replace(new RegExp('('+phrase+')', 'gi'),
+    return function (text, phrase) {
+        if (phrase) text = text.replace(new RegExp('(' + phrase + ')', 'gi'),
           '<span class="highlighted">$1</span>')
 
         return $sce.trustAsHtml(text)
     }
-})
+});

@@ -27,7 +27,7 @@
                         <li><label>EmpID</label><span>{{EmpData[0].EmployeeID}}</span></li>
                         <li><label>Name</label><span>{{EmpData[0].Name}}</span></li>
                         <li><label>Original DOJ</label><span>{{EmpData[0].DOJ| date:"dd-MM-yyyy"}}</span></li>
-
+                        <li><label>EmailID</label><span>{{EmpData[0].EmailID}}</span></li>
                         <li><label>Photograph</label><span>{{EmpData[0].Photograph}}</span></li>
                         <li><label>Confirmation Status</label><span>{{EmpData[0].ConfirmationStatus.data==1? 'Yes':'No'}}</span></li>
                         <li><label>Level</label><span>{{EmpData[0].LevelName}}</span></li>
@@ -67,6 +67,7 @@
                 <div class="body emp_data">
 
                     <ul class="emp_data">
+                        <li><label>EmailID</label><span>{{EmpData[0].PersonalEmailID}}</span></li>
                         <li><label>DOB</label><span>{{EmpData[0].DOB | date:"dd-MM-yyyy"}}</span></li>
                         <li><label>Father Name	</label><span>{{EmpData[0].FatherName}}</span></li>
                         <li><label>Gender</label><span>{{EmpData[0].Gender}}</span></li>
@@ -144,6 +145,32 @@
                     </ul>
 
 
+                </div>
+
+            </div>
+            <div class="card">
+                <div class="card_header action_button" ng-click="RequestInfo(1)">
+                    <h2>Request Contact Details <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h2>
+                </div>
+                <div class="body emp_data" ng-show="RequestType==1">
+
+                    <ul class="emp_data">
+                        <li><label>Reason</label><input type="text" ng-model="ContactReason"/></li>
+
+
+                    </ul>
+                    <button class="btn btn-primary" ng-click="RaiseRequest(1)">Raise Request</button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card_header action_button" ng-click="RequestInfo(2)">
+                    <h2>Request CTC <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h2>
+                </div>
+                <div class="body emp_data" ng-show="RequestType==2">
+                    <ul class="emp_data">
+                        <li><label>Reason</label><span><input type="text" ng-model="CTCReason"/></span></li>
+                    </ul>
+                    <button class="btn btn-primary" ng-click="RaiseRequest(2)">Raise Request</button>
                 </div>
 
             </div>

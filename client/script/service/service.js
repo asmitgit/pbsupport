@@ -31,7 +31,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
     this.SendEmail = function (objReq) {
         var request = $http({
             method: "POST",
-            url: "http://matrixliveapi.policybazaar.com/Communication/Communication.svc/sendSendEmailSms_Comm",
+            url: "http://matrixliveapi.policybazaar.com/Communication/Communication.svc/send",
             headers: {
                 'Content-Type': "application/json; charset=utf-8"
             },
@@ -164,6 +164,28 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             var test = dataGetFAQ;
             debugger;
             console.log(dataGetFAQ);
+        })
+            .error(function (error, status) {
+                if (status == 401) {
+                    alert('401');
+                }
+            });
+        return request;
+    }
+
+    this.RaiseRequest = function (objCreateNewTicket, Token) {
+
+        var request = $http({
+            method: "POST",
+            url: config.serviceURL + "api/ticket/RaiseRequest",
+            headers: {
+                'Content-Type': "application/json; charset=utf-8"
+            },
+            data: JSON.stringify(objCreateNewTicket)
+        }).success(function (data) {
+            var test = data;
+            debugger;
+            console.log(data);
         })
             .error(function (error, status) {
                 if (status == 401) {

@@ -57,11 +57,12 @@
                             <form class="form-auth-small" >
                                 <div class="form-group">
                                     <label for="signin-EmployeeID" class="control-label sr-only">EmployeeID</label>
-                                    <input type="EmployeeID" class="form-control" id="signin-EmployeeID" placeholder="UserName" ng-model="EmployeeID">
+                                    <input type="EmployeeID" class="form-control" id="signin-EmployeeID" placeholder="UserName" ng-model="EmployeeID" my-enter="Login()">
                                 </div>
                                 <div class="form-group">
                                     <label for="signin-password" class="control-label sr-only">Password</label>
-                                    <input type="password" class="form-control" id="signin-password" placeholder="Password" ng-model="Password">
+                                    <input type="password" class="form-control" id="signin-password" placeholder="Password" ng-model="Password"
+                                            my-enter="Login()">
                                 </div>
                                 <!--<div class="form-group clearfix">
                                     <label class="fancy-checkbox element-left">

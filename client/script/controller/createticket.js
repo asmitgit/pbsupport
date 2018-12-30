@@ -10,13 +10,48 @@ HRSupport.controller("CreateTicketCTRL", function ($scope, HRSupportService, $ro
         HRSupportService.getAllIssueSubIssue($scope.UserDetails.Toket).success(function (data) {
             $scope.IssueSubIssue = data.data.length > 0 ? data.data[0] : [];
             if (!$scope.isEmpty($routeParams.IssueID) && !$scope.isEmpty($routeParams.SubIssueID)) {
-                $scope.Selected.IssueType = { ISSUEID: $routeParams.IssueID };
+                $scope.Selected.IssueType = { ISSUEID: parseInt($routeParams.IssueID), SUBISSUEID: parseInt($routeParams.SubIssueID) };
                 //$scope.Selected.SubIssueType = {  ISSUEID: $routeParams.IssueID, SUBISSUEID: $routeParams.SubIssueID };
             }
         });
     };
     $scope.GetAllIssueSubIssue();
-   
+    $scope.DeleteRow = function (index, type) {
+        if (type == 1) {
+
+        }
+        $scope.FileAttachments.splice(index, 1);
+
+    }
+
+
+    $scope.ClickOkCancel = function (clickType) {
+        //ok
+        if (clickType == 1) {
+            $scope.IsComments = true;
+            
+        }
+        //cancel
+        else if (clickType == 2) {
+            $scope.IsComments = true;
+            $scope.Selected.IssueType = undefined;
+            $scope.Selected.SubIssueType = undefined;
+        }
+
+       
+    }
+
+    $scope.CheckMessage = function () {       
+            if ($scope.Selected.IssueType.ISSUEID == 4) {
+                $scope.IsComments = false;
+            }
+            else {
+                $scope.IsComments = true;
+            }        
+    }
+
+    $scope.IsComments = true;
+
     $scope.CreateTicket = function () {
         if ($scope.isEmpty($scope.Selected.IssueType)) {
             alert('Please select issue type');

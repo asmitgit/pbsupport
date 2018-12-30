@@ -3,7 +3,8 @@
         <div class="row">
             <div class="col-lg-6 col-md-8 col-lg-12">
                 <div class="detail_links">
-                    <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>
+                    <h2>
+                        <a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>
                     <!--    <button type="button" class="btn btn-success"><i class="fa fa-arrow-right" aria-hidden="true"></i> Next</button>-->
                     </h2>
                     <p class="demo-button">
@@ -114,6 +115,7 @@
                             <ul class="nav nav-tabs">
                                 <li class="nav-item"><a class="nav-link active show" data-toggle="tab" ng-click="ChangeActive(1)">Ticket Detail</a></li>
                                 <li class="nav-item"><a class="nav-link" data-toggle="tab" ng-click="ChangeActive(2)">Internal Comment</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" ng-click="ChangeActive(3)">Log Details</a></li>
                             </ul>
                             <div class="tab-content table_databox">
                                 <div class="tab-pane " ng-class="ActivType==1 ? 'show active':'' ">
@@ -143,7 +145,7 @@
                                                     <td colspan="7" class="tkt_detailbox">
                                                         <div class="card detialbox">
                                                             <div class="body emailer_body">
-                                                                <div class="timeline-item green detail_data" ng-repeat="data in TicketComments" ng-if="data.ReplyType==1 || data.ReplyType==2">
+                                                                <div class="timeline-item detail_data" ng-class="data.ReplyType==1 ? 'green':data.ReplyType==2 ? 'blue':'' " ng-repeat="data in TicketComments " ng-if="data.ReplyType==1 || data.ReplyType==2">
                                                                     <div style="    margin: 0 0 14px 0;">
                                                                         <span class="date">From : <a>{{data.Name}}({{data.EmployeeID}})</a></span>
                                                                         <div class="right_section">
@@ -213,6 +215,35 @@
                                            
                                         </div>
                                     </p>
+                                </div>
+                                <div class="tab-pane " ng-class="ActivType==3 ? 'show active':'' ">
+                                    <div class="table-responsive">
+                                        <table class="table m-b-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>FieldName</th>
+                                                    
+                                                    <th>OldValue</th>
+                                                    <th>NewValue</th>
+                                                    <th>CreatedBy</th>
+                                                    <th>CreatedOn</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="log in TicketLog | orderBy : 'data.CreatedOn' :true">
+                                                    <td>{{log.FieldName}}</td>
+                                                    <td>{{log.OldValue}}</td>
+                                                    <td>{{log.NewValue}}</td>
+                                                    <td>{{log.CreatedBy}}</td>
+                                                    <td>{{log.CreatedOn| date:'medium'}}</td>
+
+                                                </tr>
+                                             
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
 
                             </div>

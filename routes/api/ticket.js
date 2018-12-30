@@ -11,41 +11,6 @@ const mc = mysql.createConnection(mysqldb);
 var moment = require('moment');
 var app         = express();
 
-const nodemailer = require('nodemailer');
-
-
-
-    let transporter = nodemailer.createTransport({
-        host: 'smtp.falconide.com',
-        port: 587,
-        secure: false, // true for 465, false for other ports
-        auth: {
-            user: 'policybazaarcom1', // generated ethereal user
-            pass: 'Sm@pbzc3' // generated ethereal password
-        }
-    });
-
-    // setup email data with unicode symbols
-    let mailOptions = {
-        from: '"Fred Foo 👻" <foo@example.com>', // sender address
-        to: 'asmit@policybazaar.com', // list of receivers
-        subject: 'Hello ✔', // Subject line
-        text: 'Hello world?', // plain text body
-        html: '<b>Hello world?</b>' // html body
-    };
-
-    // send mail with defined transport object
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return console.log(error);
-        }
-        console.log('Message sent: %s', info.messageId);
-        // Preview only available when sending through an Ethereal account
-        //console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-
-        // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-        // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
-    });
     
 
 app.set('superSecret', keys.secretOrKey); // secret variable
@@ -74,6 +39,34 @@ router.get('/getAllIssueSubIssue', (req, res) => {
     });  
 });
 
+router.post('/RaiseRequest', (req, res) => {
+    if(isEmpty(req.body))
+        return res.send({ error: true, data: null, message: 'error in request' });
+    try{
+        
+        let _EmpID = req.body.EmpID;
+        let _RequestType =  req.body.RequestType;
+       
+        let _TicketSubject =  req.body.TicketSubject;
+        let _Comments = req.body.Comments;
+        let _FileName = req.body.FileName;
+        let _FileURL = req.body.FileURL;
+        mc.query('CALL sp_RaiseRequest(?,?,?,?,?,?)',
+         [_EmpID,_RequestType,_TicketSubject,_Comments,_FileURL,_FileName], function (error, results, fields) {
+            console.log(results);
+            if (error) 
+            {
+                return res.send({ error: true, data: null, message: error});
+            }
+            else
+                return res.send({ error: false, data: results, message: 'success' });
+        });  
+    }
+    catch(err){
+        console.error(err);
+        return res.send({ error: true, data: null, message: err});
+    }
+});
 
 router.post('/CreateNewTicket', (req, res) => {
     if(isEmpty(req.body))

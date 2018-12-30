@@ -69,7 +69,7 @@
                                                     <td colspan="7" class="tkt_detailbox">
                                                         <div class="card detialbox">
                                                             <div class="body emailer_body">
-                                                                <div class="timeline-item green detail_data" ng-repeat="data in TicketComments" ng-if="data.ReplyType==1 || data.ReplyType==2">
+                                                                <div class="timeline-item detail_data" ng-class="data.ReplyType==1 ? 'green':data.ReplyType==2 ? 'blue':'' " ng-repeat="data in TicketComments" ng-if="data.ReplyType==1 || data.ReplyType==2">
                                                                     <div style="    margin: 0 0 14px 0;">
                                                                         <span class="date">From : <a>{{data.Name}}({{data.EmployeeID}})</a></span>
                                                                         <div class="right_section">

@@ -741,3 +741,7 @@ ul.accord_tabs li.active {
 
 .table.table-custom.table tr:last-child{border-bottom:1px solid #ddd;}
 .table td{border-bottom:1px solid #ddd !important;}
+
+
+.card_header.action_button{background: #40a8fe !important;color: #fff;text-transform: uppercase;cursor: pointer;}
+.card_header.action_button h2> i{float:right;}
