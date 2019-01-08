@@ -19,7 +19,7 @@ HRSupport.controller("FAQCtrl", function ($scope, HRSupportService, $rootScope,$
     $scope.Login = function () {
         var objLogin = { "username": $scope.LoginData.EmployeeID, "password": $scope.LoginData.Password };
         HRSupportService.login(objLogin).success(function (data) {
-            debugger;
+            //debugger;
             console.log(data);
             if (data.error) {
                 alert(data.message);

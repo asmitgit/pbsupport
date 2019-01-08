@@ -12,17 +12,17 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             method: "POST",
             url: config.serviceURL+"api/getAllFAQ",
             headers: {
-                'Content-Type': "application/json; charset=utf-8"
+                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             },
             data:JSON.stringify(objGetFAQ)
         }).success(function (dataGetFAQ) {
             var test=dataGetFAQ;
-            debugger;
+            //debugger;
             console.log(dataGetFAQ);
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    alert('401');
+                    $window.location.href = '/light/login.html';
                 }
             });
         return request;
@@ -33,17 +33,17 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             method: "POST",
             url: "http://matrixliveapi.policybazaar.com/Communication/Communication.svc/send",
             headers: {
-                'Content-Type': "application/json; charset=utf-8"
+                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             },
             data: JSON.stringify(objReq)
         }).success(function (data) {
             var test = data;
-            debugger;
+            //debugger;
             console.log(data);
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    alert('401');
+                    $window.location.href = '/light/login.html';
                 }
             });
         return request;
@@ -54,17 +54,17 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             method: "POST",
             url: config.serviceURL + "api/ticket/GetSpocListANDUpdate",
             headers: {
-                'Content-Type': "application/json; charset=utf-8"
+                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             },
             data: JSON.stringify(objReq)
         }).success(function (data) {
             var test = data;
-            debugger;
+            //debugger;
             console.log(data);
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    alert('401');
+                    $window.location.href = '/light/login.html';
                 }
             });
         return request;
@@ -75,17 +75,17 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             method: "POST",
             url: config.fileUpload + "care.svc/UploadFile",
             headers: {
-                'Content-Type': "application/json; charset=utf-8"
+                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             },
             data: JSON.stringify(objReq)
         }).success(function (data) {
             var test = data;
-            debugger;
+            //debugger;
             console.log(data);
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    alert('401');
+                    $window.location.href = '/light/login.html';
                 }
             });
         return request;
@@ -104,7 +104,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    alert('401');
+                    $window.location.href = '/light/login.html';
                 }
             });
         return request;
@@ -117,16 +117,16 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             url: config.serviceURL + "api/issue/getAllIssueSubIssue",
             headers: {
                 'Content-Type': "application/json; charset=utf-8",
-                'x-access-token': Token
+                "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             }
         }).success(function (dataGetFAQ) {
             var test = dataGetFAQ;
-            debugger;
+            //debugger;
             console.log(dataGetFAQ);
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    alert('401');
+                    $window.location.href = '/light/login.html';
                 }
             });
         return request;
@@ -137,16 +137,16 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             method: "GET",
             url: config.serviceURL + "api/ticket/getStatusMaster",
             headers: {
-                'Content-Type': "application/json; charset=utf-8"
+                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             }
         }).success(function (dataGetFAQ) {
             var test = dataGetFAQ;
-            debugger;
+            //debugger;
             console.log(dataGetFAQ);
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    alert('401');
+                    $window.location.href = '/light/login.html';
                 }
             });
         return request;
@@ -158,16 +158,16 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             method: "GET",
             url: config.serviceURL + "api/info/getlocationmaster",
             headers: {
-                'Content-Type': "application/json; charset=utf-8"
+                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             }
         }).success(function (dataGetFAQ) {
             var test = dataGetFAQ;
-            debugger;
+            //debugger;
             console.log(dataGetFAQ);
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    alert('401');
+                    $window.location.href = '/light/login.html';
                 }
             });
         return request;
@@ -179,17 +179,17 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             method: "POST",
             url: config.serviceURL + "api/ticket/RaiseRequest",
             headers: {
-                'Content-Type': "application/json; charset=utf-8"
+                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             },
             data: JSON.stringify(objCreateNewTicket)
         }).success(function (data) {
             var test = data;
-            debugger;
+            //debugger;
             console.log(data);
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    alert('401');
+                    $window.location.href = '/light/login.html';
                 }
             });
         return request;
@@ -201,17 +201,17 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             method: "POST",
             url: config.serviceURL + "api/ticket/CreateNewTicket",
             headers: {
-                'Content-Type': "application/json; charset=utf-8"
+                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             },
             data: JSON.stringify(objCreateNewTicket)
         }).success(function (data) {
             var test = data;
-            debugger;
+            //debugger;
             console.log(data);
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    alert('401');
+                    $window.location.href = '/light/login.html';
                 }
             });
         return request;
@@ -221,17 +221,17 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             method: "POST",
             url: config.serviceURL + "api/ticket/GetAllTicketList",
             headers: {
-                'Content-Type': "application/json; charset=utf-8"
+                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             },
             data: JSON.stringify(objGetAllTicketList)
         }).success(function (data) {
             var test = data;
-            debugger;
+            //debugger;
             console.log(data);
         })
         .error(function (error, status) {
                 if (status == 401) {
-                    alert('401');
+                    $window.location.href = '/light/login.html';
                 }
         });
         return request;
@@ -242,17 +242,17 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             method: "POST",
             url: config.serviceURL + "api/ticket/GetAdminTicketList",
             headers: {
-                'Content-Type': "application/json; charset=utf-8"
+                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             },
             data: JSON.stringify(objGetAllTicketList)
         }).success(function (data) {
             var test = data;
-            debugger;
+            //debugger;
             console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
-                alert('401');
+                $window.location.href = '/light/login.html';
             }
         });
         return request;
@@ -262,17 +262,17 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             method: "POST",
             url: config.serviceURL + "api/ticket/GetTicketDetails",
             headers: {
-                'Content-Type': "application/json; charset=utf-8"
+                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             },
             data: JSON.stringify(objRequest)
         }).success(function (data) {
             var test = data;
-            debugger;
+            //debugger;
             console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
-                alert('401');
+                $window.location.href = '/light/login.html';
             }
         });
         return request;
@@ -282,17 +282,18 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             method: "POST",
             url: config.serviceURL + "api/ticket/GetDashboardCount",
             headers: {
-                'Content-Type': "application/json; charset=utf-8"
+                'Content-Type': "application/json; charset=utf-8",
+                "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             },
             data: JSON.stringify(objRequest)
         }).success(function (data) {
             var test = data;
-            debugger;
+            //debugger;
             console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
-                alert('401');
+                $window.location.href = '/light/login.html';
             }
         });
         return request;
@@ -303,17 +304,17 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             method: "POST",
             url: config.serviceURL + "api/info/UpdateLocation",
             headers: {
-                'Content-Type': "application/json; charset=utf-8"
+                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             },
             data: JSON.stringify(objRequest)
         }).success(function (data) {
             var test = data;
-            debugger;
+            //debugger;
             console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
-                alert('401');
+                $window.location.href = '/light/login.html';
             }
         });
         return request;
@@ -324,17 +325,17 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             method: "POST",
             url: config.serviceURL + "api/profile/getAllEmployee",
             headers: {
-                'Content-Type': "application/json; charset=utf-8"
+                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             },
             data: JSON.stringify(objRequest)
         }).success(function (data) {
             var test = data;
-            debugger;
+            //debugger;
             console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
-                alert('401');
+                $window.location.href = '/light/login.html';
             }
         });
         return request;
@@ -345,17 +346,17 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             method: "POST",
             url: config.serviceURL + "api/ticket/GetUserTicketReport",
             headers: {
-                'Content-Type': "application/json; charset=utf-8"
+                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             },
             data: JSON.stringify(objRequest)
         }).success(function (data) {
             var test = data;
-            debugger;
+            //debugger;
             console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
-                alert('401');
+                $window.location.href = '/light/login.html';
             }
         });
         return request;
@@ -366,17 +367,17 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             method: "POST",
             url: config.serviceURL + "api/ticket/GetMGRDashboard",
             headers: {
-                'Content-Type': "application/json; charset=utf-8"
+                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             },
             data: JSON.stringify(objRequest)
         }).success(function (data) {
             var test = data;
-            debugger;
+            //debugger;
             console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
-                alert('401');
+                $window.location.href = '/light/login.html';
             }
         });
         return request;
@@ -387,17 +388,17 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             method: "POST",
             url: config.serviceURL + "api/logOut",
             headers: {
-                'Content-Type': "application/json; charset=utf-8"
+                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             },
             data: JSON.stringify(objRequest)
         }).success(function (data) {
             var test = data;
-            debugger;
+            //debugger;
             console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
-                alert('401');
+                $window.location.href = '/light/login.html';
             }
         });
         return request;
@@ -408,17 +409,17 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             method: "POST",
             url: config.serviceURL + "api/ticket/GetUserTicketData",
             headers: {
-                'Content-Type': "application/json; charset=utf-8"
+                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             },
             data: JSON.stringify(objRequest)
         }).success(function (data) {
             var test = data;
-            debugger;
+            //debugger;
             console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
-                alert('401');
+                $window.location.href = '/light/login.html';
             }
         });
         return request;
@@ -428,17 +429,17 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             method: "POST",
             url: config.serviceURL + "api/ticket/UpdateTicketRemarks",
             headers: {
-                'Content-Type': "application/json; charset=utf-8"
+                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             },
             data: JSON.stringify(objRequest)
         }).success(function (data) {
             var test = data;
-            debugger;
+            //debugger;
             console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
-                alert('401');
+                $window.location.href = '/light/login.html';
             }
         });
         return request;
@@ -449,17 +450,17 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             method: "POST",
             url: config.serviceURL + "api/ticket/UpdateTicketDetails",
             headers: {
-                'Content-Type': "application/json; charset=utf-8"
+                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             },
             data: JSON.stringify(objRequest)
         }).success(function (data) {
             var test = data;
-            debugger;
+            //debugger;
             console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
-                alert('401');
+                $window.location.href = '/light/login.html';
             }
         });
         return request;
@@ -474,14 +475,14 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             data: objGetFAQ,
             headers: {
                 'Content-Type': "application/json; charset=utf-8",
-                'x-access-token':token
+                "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             }
         }).success(function (data) {
             console.log(data);
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    alert('401');
+                    $window.location.href = '/light/login.html';
                 }
             });
         return request;
@@ -494,19 +495,14 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             data: JSON.stringify(objTicketBucketReq),
             headers: {
                 "Content-Type": "application/json; charset=utf-8",
-                "x-access-token": btoa(JSON.parse($window.localStorage.getItem('UserDetails')).Token + "~" + JSON.parse($window.localStorage.getItem('UserDetails')).UserID)
+                "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             }
         }).success(function (data) {
             console.log(data);
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    if (JSON.parse($window.localStorage.getItem('UserDetails')).UserRole.toLowerCase() == 'insurer') {
-                        $window.location.href = '/index.html';
-                    }
-                    else {
-                        $window.location.href = '/BMSLogout.html';
-                    }
+                    $window.location.href = '/light/login.html';
                 }
             });
         return request;

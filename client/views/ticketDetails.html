@@ -4,7 +4,7 @@
             <div class="col-lg-6 col-md-8 col-lg-12">
                 <div class="detail_links">
                     <h2>
-                        <a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>
+                        <!--<a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>-->
                     <!--    <button type="button" class="btn btn-success"><i class="fa fa-arrow-right" aria-hidden="true"></i> Next</button>-->
                     </h2>
                     <p class="demo-button">
@@ -53,7 +53,7 @@
 
                         <div class="mail-side mail-sidenew">
                             <ul class="nav">
-                                <li class="active">
+                                <!--<li class="active">
                                     <label>Status</label>
                                     <select class="form-control" ng-model="Selected.Status"
                                             ng-options="data.StatusName for data in StatusList
@@ -62,30 +62,28 @@
                                     </select>
                                 </li>
                                 <li><label>Follow-up Date</label>
-                                    <!--<input type="date" value="{{ TicketDetails[0].FollowUp }}"
-                                           id="product-key" class="form-control" ng-model="TicketDetails[0].FollowUp"
-                                           placeholder="MM-dd-yyyy" min={{ TicketDetails[0].FollowUp}} max="12-31-2019" />-->
+                                    
                                     <input type="text" class="form-control cal" uib-datepicker-popup="{{format}}"
                                            ng-model="TicketDetails[0].FollowUp" is-open="popup1.opened"
                                            datepicker-options="dateOptions" ng-click="open1()"
                                            ng-required="true" close-text="Close" alt-input-formats="altInputFormats" ng-disabled="IsEdit==0" />
                                 
-                                </li>
+                                </li>-->
                                 <li>
-                                    <label>Issue</label>
-                                    <select class="form-control" ng-model="Selected.IssueType"
+                                    <label>Issue</label>{{TicketDetails[0].ISSUENAME}}
+                                    <!--<select class="form-control" ng-model="Selected.IssueType"
                                             ng-options="data.ISSUENAME for data in IssueSubIssue
                                     |  unique: 'ISSUEID' | orderBy:['SUBISSUENAME'] track by data.ISSUEID " ng-disabled="IsEdit==0">
                                         <option value="">Select Issue</option>
-                                    </select>
+                                    </select>-->
                                 </li>
                                 <li>
-                                    <label>Sub Issue</label>
-                                    <select class="form-control" ng-model="Selected.SubIssueType"
+                                    <label>Sub Issue</label>{{TicketDetails[0].SUBISSUENAME}}
+                                    <!--<select class="form-control" ng-model="Selected.SubIssueType"
                                             ng-options="data.SUBISSUENAME for data in IssueSubIssue
                                     | filter : {IsVisible:1}:true | filter : {ISSUEID:Selected.IssueType.ISSUEID}:true | orderBy:['SUBISSUENAME']  track by data.SUBISSUEID" ng-disabled="!(Selected.IssueType.ISSUEID>0) || IsEdit==0">
                                         <option value="">Select Sub Issue</option>
-                                    </select>
+                                    </select>-->
 
                                     
                                 </li>
@@ -100,12 +98,12 @@
                                 <li><label>Location</label>Building:{{Location[0].Building}}, Floor:{{Location[0].Floor}}, Seat:{{Location[0].Seat}}, City:{{Location[0].City}}</li>
 
                             </ul>
-                            <div class="m-t-30 compose_action_button">
+                            <!--<div class="m-t-30 compose_action_button">
                                 <button type="button" class="btn btn-success" ng-click="UpdateTicketDetails();" ng-show="IsEdit>0" >Submit</button>
                                 <a href="javascript:void(0)" class="btn btn-outline-secondary" ng-click="EditCancel(0)" ng-show="IsEdit>0">Cancel</a>
                                 <a href="javascript:void(0)" class="btn btn-outline-secondary" ng-click="EditCancel(1)" ng-show="IsEdit==0 && !InActive">Edit</a>
 
-                            </div>
+                            </div>-->
                         </div>
                     </div>
 
@@ -145,7 +143,7 @@
                                                     <td colspan="7" class="tkt_detailbox">
                                                         <div class="card detialbox">
                                                             <div class="body emailer_body">
-                                                                <div class="timeline-item detail_data" ng-class="data.ReplyType==1 ? 'green':data.ReplyType==2 ? 'blue':'' " ng-repeat="data in TicketComments " ng-if="data.ReplyType==1 || data.ReplyType==2">
+                                                                <div class="timeline-item detail_data" ng-class="data.ReplyType==1 ? 'green':data.ReplyType==2 ? 'blue':'' " ng-repeat="data in CommentList " ng-if="data.ReplyType==1 || data.ReplyType==2">
                                                                     <div style="    margin: 0 0 14px 0;">
                                                                         <span class="date">From : <a>{{data.Name}}({{data.EmployeeID}})</a></span>
                                                                         <div class="right_section">
@@ -172,15 +170,29 @@
                                                                             <!--<input type="text" class="form-control" ng-model="TicketReply" style="height:200px;width:620px" />-->
                                                                             <textarea ng-model="TicketReply" cols="85" rows="10" ng-disabled="InActive"></textarea>
                                                                             <div class="m-t-30 compose_action_button">
+                                                                                <div style="display:block; width:100%; padding:0 0 10px 0;">
+                                                                                    <select class="form-control" ng-model="Selected.Status"
+                                                                                            ng-options="data.StatusName for data in StatusList
+                                    |  unique: 'StatusID' | orderBy:['Sequence'] track by data.StatusID " style="display:inline-block; width:auto; margin:0 5px 0 0;">
+                                                                                        <option value="">Select Status</option>
+                                                                                    </select>
+
+                                                                                    <input type="text" class="form-control cal" uib-datepicker-popup="{{format}}"
+                                                                                           ng-model="TicketDetails[0].FollowUp" is-open="popup1.opened"
+                                                                                           datepicker-options="dateOptions" ng-click="open1()"
+                                                                                           ng-required="true" close-text="Close" alt-input-formats="altInputFormats" style="display:inline-block; width:auto;" />
+
+                                                                                </div>
+
                                                                                 <div class="upload_box ng-scope">
                                                                                     <input type="file" name="file-3[]" id="file-3" class="inputfile inputfile-3" onchange="angular.element(this).scope().file_changed(this)" accept="file_extension|.jpg,.pdf,.xlsx" multiple="">
                                                                                     <label for="file-3" class="upload_docs" style="display:inline;">
                                                                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
                                                                                         <!--<span>Choose a file&hellip;</span>-->
                                                                                     </label>
-                                                                                    <span ng-repeat="data in FileAttachments" class="attachment_files">{{data.FileName}} <em class="close_btn">X</em></span>
+                                                                                    <span ng-repeat="data in FileAttachments" class="attachment_files">{{data.FileName}} <em class="close_btn" ng-click="DeleteRow($index,1)">X</em></span>
                                                                                 </div>
-                                                                                <button type="button" class="btn btn-success" ng-click="UpdateTicketRemarks(2)" ng-disabled="InActive">Post</button>
+                                                                                <button type="button" class="btn btn-success" ng-click="UpdateTicketRemarks(2)" ng-disabled="InActive" style="vertical-align:top; margin:0 0 0 10px;">Post</button>
                                                                                 
                                                                             </div>
                                                                         </div>

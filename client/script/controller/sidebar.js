@@ -20,7 +20,7 @@ HRSupport.controller("SideBarCTRL", function ($scope, HRSupportService, $rootSco
        area_name: undefined,
        building_name: undefined
    };
-   $scope.Floor = [{ FloorNo: "BS2" }, { FloorNo: "BS1" }, { FloorNo: "GR" }, { FloorNo: "1" }, { FloorNo: "2" }, { FloorNo: "3" }, { FloorNo: "4" }, { FloorNo: "5" }];
+   //$scope.Floor = [{ FloorNo: "BS2" }, { FloorNo: "BS1" }, { FloorNo: "GR" }, { FloorNo: "1" }, { FloorNo: "2" }, { FloorNo: "3" }, { FloorNo: "4" }, { FloorNo: "5" }];
    $scope.getlocationmaster = function () {
        if ($scope.UserDetails.IsLocSet != 1) {
            HRSupportService.getlocationmaster($scope.UserDetails.Toket).success(function (data) {
@@ -30,7 +30,7 @@ HRSupport.controller("SideBarCTRL", function ($scope, HRSupportService, $rootSco
                    {
                        $scope.Selected = {
                            city_name: { city_name: $scope.UserDetails.Location[0].City },
-                           floor: { FloorNo: $scope.UserDetails.Location[0].FloorNo },
+                           floor: { floor_name: $scope.UserDetails.Location[0].FloorNo },
                            //area_name: { city_name: $scope.UserDetails.Location[0].City, area_name: $scope.UserDetails.Location[0].Sector },
                            building_name: {
                                city_name: $scope.UserDetails.Location[0].City,
@@ -66,7 +66,7 @@ HRSupport.controller("SideBarCTRL", function ($scope, HRSupportService, $rootSco
                    "Sector": "",
                    "Building": $scope.Selected.building_name.building_name,
                    //"FloorNo": $scope.UserDetails.Location[0].FloorNo ? $scope.UserDetails.Location[0].FloorNo : 0,
-                   "FloorNo": $scope.Selected.floor.FloorNo,
+                   "FloorNo": $scope.Selected.floor.floor_name,
                    "Seat": $scope.UserDetails.Location[0].Seat
                };
                HRSupportService.UpdateLocation(objRequest, $scope.UserDetails.Toket).success(function (data) {

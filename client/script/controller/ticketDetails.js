@@ -1,4 +1,4 @@
-﻿HRSupport.controller("TicketDetailsCTRL", function ($scope, HRSupportService, $rootScope, $uibModal, $routeParams, $window) {
+﻿HRSupport.controller("TicketDetailsCTRL", function ($scope, HRSupportService, $rootScope, $uibModal, $routeParams, $sce, $window) {
     $scope.UserDetails = JSON.parse($window.localStorage.getItem('UserDetails'));
 
     $scope.isEmpty = function (str) {
@@ -73,12 +73,22 @@
         HRSupportService.GetTicketDetails(objRequest, $scope.UserDetails.Toket).success(function (data) {
             $scope.TicketDetails = data.data.length > 1 ? data.data[0] : [];
             $scope.Location = data.data.length > 2 ? data.data[2] : [];
+            
+
+            $scope.CommentList = [];
             $scope.TicketComments = data.data.length > 2 ? data.data[1] : [];
+
+            angular.forEach($scope.TicketComments, function (value, key) {
+                value.Comments = $sce.trustAsHtml(value.Comments);
+                this.push(value);
+            }, $scope.CommentList);
+
+
             $scope.TicketLog = data.data.length > 3 ? data.data[3] : [];
             $scope.Selected.Status = { StatusID: $scope.TicketDetails[0].StatusID };
             $scope.Selected.IssueType = { ISSUEID: $scope.TicketDetails[0].IssueID };
             $scope.Selected.SubIssueType = { SUBISSUEID: $scope.TicketDetails[0].SubIssueID };
-            $scope.TicketDetails[0].FollowUp = new Date($scope.TicketDetails[0].FollowUp) ;
+            $scope.TicketDetails[0].FollowUp = $scope.isEmpty($scope.TicketDetails[0].FollowUp) ? '' :new Date($scope.TicketDetails[0].FollowUp) ;
             //if (!$scope.isEmpty($routeParams.IssueID) && !$scope.isEmpty($routeParams.SubIssueID)) {
             //    $scope.Selected.IssueType = { ISSUEID: $routeParams.IssueID };
             //    $scope.Selected.SubIssueType = { SUBISSUEID: $routeParams.SubIssueID };
@@ -102,6 +112,10 @@
         var _Comments='';
         if(ReplyType==2){
             _Comments = $scope.TicketReply;
+            if ($scope.Selected.Status.StatusID == 1) {
+                alert('Please change the status to In Progress');
+                return false;
+            }
         }
         else{
             _Comments= $scope.HRComments ;
@@ -118,6 +132,17 @@
             "FileURL": "",
             "FileName": ""
         };
+        
+        var objStatusRequest = {
+            "TicketID": $scope.TicketID,
+            "CreatedBy": $scope.UserDetails.EMPData[0].EmpID,
+            "StatusID": $scope.Selected.Status.StatusID,
+            "IssueID": $scope.Selected.IssueType.ISSUEID,
+            "SubIssueID": $scope.Selected.SubIssueType.SUBISSUEID,
+            //"FollowUp": $scope.isEmpty($scope.TicketDetails[0].FollowUp) ? '' : moment($scope.TicketDetails[0].FollowUp).format("YYYY-MM-YY")
+            "FollowUp": $scope.isEmpty($scope.TicketDetails[0].FollowUp) ? '' : $scope.TicketDetails[0].FollowUp.getFullYear() + "-" + (getMonth($scope.TicketDetails[0].FollowUp)) + '-' + getDate($scope.TicketDetails[0].FollowUp)
+        };
+
         if ($scope.FileAttachments.length > 0) {
             HRSupportService.UploadFile($scope.FileAttachments, $scope.UserDetails.Toket).success(function (data) {
                 console.log(data);
@@ -126,7 +151,7 @@
                 objRequest.FileName = $scope.FileAttachments[0].FileName;
                 HRSupportService.UpdateTicketRemarks(objRequest, $scope.UserDetails.Toket).success(function (data) {
                     if (!data.error) {
-                        alert('Updated sussessfully');
+                        
                         $scope.FileAttachments = [];
                         if (ReplyType == 2) {
                             $scope.TicketReply = '';
@@ -134,7 +159,12 @@
                         else {
                             $scope.HRComments = '';
                         }
-                        $scope.GetTicketDetails();
+                        HRSupportService.UpdateTicketDetails(objStatusRequest, $scope.UserDetails.Toket).success(function (data) {
+                            if (!data.error) {
+                                alert('Updated sussessfully');
+                                $scope.GetTicketDetails();
+                            }
+                        });
                     }
                 });
             });
@@ -142,7 +172,6 @@
         else {
             HRSupportService.UpdateTicketRemarks(objRequest, $scope.UserDetails.Toket).success(function (data) {
                 if (!data.error) {
-                    alert('Updated sussessfully');
                     $scope.FileAttachments = [];
                     if (ReplyType == 2) {
                         $scope.TicketReply = '';
@@ -150,12 +179,28 @@
                     else {
                         $scope.HRComments = '';
                     }
-                    $scope.GetTicketDetails();
+                    HRSupportService.UpdateTicketDetails(objStatusRequest, $scope.UserDetails.Toket).success(function (data) {
+                        if (!data.error) {
+                            alert('Updated sussessfully');
+                            $scope.GetTicketDetails();
+                           
+                        }
+                    });
                 }
             });
         }
+
+       
       
     };
+
+    $scope.DeleteRow = function (index, type) {
+        if (type == 1) {
+
+        }
+        $scope.FileAttachments.splice(index, 1);
+
+    }
     $scope.minDate = new Date();
     $scope.UpdateTicketDetails = function (ReplyType) {
         var _Comments = '';

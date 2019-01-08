@@ -95,13 +95,13 @@ HRSupport.controller("CreateTicketCTRL", function ($scope, HRSupportService, $ro
                                       ,
                                       "BccEmail": ["asmit@policybazaar.com"],
                                       "CCEmail": null,
-                                      "Body": "<html><body>Hi , <br/> A new ticket is raised by employee, request you to address it immediately. <br/>Issue : " + $scope.Selected.IssueType.ISSUENAME + "(" + $scope.Selected.SubIssueType.SUBISSUENAME +
-                                          ") <br/>Employee Concern : " + $scope.Comments + "<br/>Employee Details <br/>Ticket# : " + data.data[0][0].TicketDispID +
-                                          "<br/>Employee Name : " + $scope.UserDetails.EMPData[0].Name +
-                                          "<br/>Employee ID : " + $scope.UserDetails.EMPData[0].EmployeeID +
-
-                                           "</body></html>",//$scope.Comments,
-                                      "Subject": "New Ticket " + $scope.Selected.IssueType.ISSUENAME + "(" + $scope.Selected.SubIssueType.SUBISSUENAME + ") " + data.data[0][0].TicketDispID,
+                                      "Body": "<html><body>Hi , <br/> A new ticket is raised by employee, request you to address it immediately. <br/>" +
+                                          "<table><tr>  <th >EmployeeID</th>  <th >Employee Name</th>  <th >Ticket#</th>  <th >Issue</th>  <th >Concern</th> </tr>"
+                                          + "<tr>  <td >" + $scope.UserDetails.EMPData[0].EmployeeID + "</td>  <td >" + $scope.UserDetails.EMPData[0].Name + "</td>  <td >" + data.data[0][0].TicketDispID + "</td>  <td >" + $scope.Selected.IssueType.ISSUENAME + "</td>  <td >" + $scope.Comments + "</td> </tr></table>"
+                                          + "<br/><a href='http://pbsupport.policybazaar.com/'>Click here to login</a></body></html>",
+                                      "Subject": "Ticket Service Request " + data.data[0][0].TicketDispID+": "
+                                          + $scope.Selected.IssueType.ISSUENAME
+                                         ,
                                       "CreatedBy": "Asmit",
                                       "MailAttachments": [],
                                       "UserID": 124,
@@ -141,13 +141,13 @@ HRSupport.controller("CreateTicketCTRL", function ($scope, HRSupportService, $ro
                                   ,
                                   "BccEmail": ["asmit@policybazaar.com"],
                                   "CCEmail": null,
-                                  "Body": "<html><body>Hi , <br/> A new ticket is raised by employee, request you to address it immediately. <br/>Issue : " + $scope.Selected.IssueType.ISSUENAME + "(" + $scope.Selected.SubIssueType.SUBISSUENAME +
-                                      ") <br/>Employee Concern : " + $scope.Comments + "<br/>Employee Details <br/>Ticket# : " + data.data[0][0].TicketDispID+
-                                      "<br/>Employee Name : " + $scope.UserDetails.EMPData[0].Name +
-                                      "<br/>Employee ID : " + $scope.UserDetails.EMPData[0].EmployeeID +
-                                    
-                                       "</body></html>",//$scope.Comments,
-                                  "Subject": "New Ticket " + $scope.Selected.IssueType.ISSUENAME + "(" + $scope.Selected.SubIssueType.SUBISSUENAME +") "+ data.data[0][0].TicketDispID,
+                                  "Body": "<html><body>Hi , <br/> A new ticket is raised by employee, request you to address it immediately. <br/>" +
+                                          "<table><tr>  <th >EmployeeID</th>  <th >Employee Name</th>  <th >Ticket#</th>  <th >Issue</th>  <th >Concern</th> </tr>"
+                                          + "<tr>  <td >" + $scope.UserDetails.EMPData[0].EmployeeID + "</td>  <td >" + $scope.UserDetails.EMPData[0].Name + "</td>  <td >" + data.data[0][0].TicketDispID + "</td>  <td >" + $scope.Selected.IssueType.ISSUENAME + "</td>  <td >" + $scope.Comments + "</td> </tr></table>"
+                                          + "<br/><a href='http://pbsupport.policybazaar.com/'>Click here to login</a></body></html>",
+                                  "Subject": "Ticket Service Request " + data.data[0][0].TicketDispID + ": "
+                                      + $scope.Selected.IssueType.ISSUENAME
+                                         ,
                                   "CreatedBy": "Asmit",
                                   "MailAttachments": [],
                                   "UserID": 124,

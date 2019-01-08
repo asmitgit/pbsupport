@@ -25,15 +25,107 @@ const cron = require('node-cron');
 // connection configurations
 const mysqldb = require('./config/keys').mysqldb;
 
+
+
  const mc = mysql.createConnection(mysqldb);
+ const sql = require("mssql");
+ const msconfig = {
+    user: 'PBLive',
+    password: 'PB123Live',
+    server: '10.0.10.42',       
+    database: 'PBCroma',
+    options: {           
+        encrypt: false
+    },
+    pool: {
+        max: 10,
+        min: 0,
+        idleTimeoutMillis: 30000
+    }
+};
+
+
+
 cron.schedule('*/1 * * * *', () => {
-    mc.query('CALL sp_AutoAssignment()', [], function (error, results, fields) {
-        console.log(results);        
-    });
-    mc.query('CALL sp_AutoClose()', [], function (error, results, fields) {
-        console.log(results);        
-    });
-   
+    // mc.query('CALL sp_AutoAssignment()', [], function (error, results, fields) {
+    //     //console.log(results);        
+    // });
+    // mc.query('CALL sp_AutoClose()', [], function (error, results, fields) {
+    //     //console.log(results);        
+    // });
+    
+    
+
+    // config for your database
+    
+    //sql.close();
+    // connect to your database
+    // sql.connect(msconfig, function (err) {
+    
+    //     if (err) //console.log(err);
+
+    //     // create Request object
+    //     var request = new sql.Request();
+           
+    //     // query to the database and get the records
+    //     request.query('select EmpID,EmpName,OriginalDOJ,Photograph,ConfirmationStatus,DOB,FatherName,Gender,MaritalStatus,DateOfMarriage,SpouseName,SpouseDOB,Child1Name,Child1Gender,Child1DOB,Child2Name,Child2Gender,Child2DOB,HighestQualification,TotalExp,PermanentAddress,LevelName,BandName,NoticePeriod,Designation,EntityName,DepartmentName,CategoryName,SubCategoryName,VerticalName,UnitName,FunctionName,SubFunctionName,FirstLevelReportingCode,FirstLevelReportingName,SecondLevelReportingCode,SecondLevelReportingName,WorkingLocation,SeatLocation,HRSpocCode,HRSpocName,ITSPOCCode,ITSPOCName,BuildingNumber,EmergencyContactNumber,EmergencyContactPersonName,EmergencyContactPersonRelation,PresentAddress,UANNumber,ESICNumber,ReJoiningCase,UninformedAbsenceLWD,LoanAmount,GMCNumber,TypeOfExitName,LWD_LastWorking,IsActive,EmailID,CurrentEmployeeCode,MobileNo,PersonalEmailID from HREmp', function (err, recordset) {
+            
+    //         if (err) //console.log(err);
+
+    //         ////console.log('Resul ',recordset);
+    //         for(var i=0;i<recordset.recordset.length;i++){
+    //             var tempData=recordset.recordset[i];
+    //             ////console.log(tempData.CurrentEmployeeCode,tempData.EntityName,tempData.CurrentEmployeeCode,tempData.EmailID,tempData.EmpName,tempData.MobileNo,tempData.OriginalDOJ,tempData.Photograph,tempData.ConfirmationStatus,'0',tempData.DOB,tempData.FatherName,tempData.Gender,tempData.MaritalStatus,tempData.Designation,tempData.FirstLevelReportingCode,tempData.FirstLevelReportingName,tempData.SecondLevelReportingCode,tempData.SecondLevelReportingName,tempData.WorkingLocation,tempData.BuildingNumber,'0',tempData.SeatLocation,tempData.HRSpocCode,tempData.HRSpocName,'0',tempData.EmergencyContactNumber,tempData.EmergencyContactPersonName,tempData.EmergencyContactPersonRelation,tempData.PresentAddress,'0',tempData.PersonalEmailID,tempData.TotalExp,tempData.PermanentAddress,tempData.IsActive,tempData.ITSPOCCode,tempData.ITSPOCName,tempData.DepartmentName,tempData.CategoryName,tempData.SubCategoryName,tempData.VerticalName,tempData.UnitName,tempData.FunctionName,tempData.SubFunctionName,'0','0',tempData.UANNumber,tempData.GMCNumber,tempData.BandName,tempData.Child1DOB,tempData.Child1Gender,tempData.Child1Name,tempData.Child2DOB,tempData.Child2Gender,tempData.Child2Name,tempData.DateOfMarriage,'0',tempData.EntityName,tempData.ESICNumber,tempData.HighestQualification,tempData.LevelName,tempData.LoanAmount,tempData.LWD_LastWorking,tempData.NoticePeriod,tempData.ReJoiningCase,tempData.SpouseDOB,tempData.SpouseName,tempData.TypeOfExitName,tempData.UninformedAbsenceLWD,tempData.UniversityInstituteHighQual,tempData.SpocDepartment);                
+    //             mc.query('CALL UpdateEmployeeData(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+    //              [tempData.CurrentEmployeeCode,tempData.EntityName,tempData.CurrentEmployeeCode,tempData.EmailID,tempData.EmpName,tempData.MobileNo,tempData.OriginalDOJ,tempData.Photograph,tempData.ConfirmationStatus,'0',tempData.DOB,tempData.FatherName,tempData.Gender,tempData.MaritalStatus,tempData.Designation,tempData.FirstLevelReportingCode,tempData.FirstLevelReportingName,tempData.SecondLevelReportingCode,tempData.SecondLevelReportingName,tempData.WorkingLocation,tempData.BuildingNumber,'0',tempData.SeatLocation,tempData.HRSpocCode,tempData.HRSpocName,'0',tempData.EmergencyContactNumber,tempData.EmergencyContactPersonName,tempData.EmergencyContactPersonRelation,tempData.PresentAddress,'0',tempData.PersonalEmailID,tempData.TotalExp,tempData.PermanentAddress,tempData.IsActive,tempData.ITSPOCCode,tempData.ITSPOCName,tempData.DepartmentName,tempData.CategoryName,tempData.SubCategoryName,tempData.VerticalName,tempData.UnitName,tempData.FunctionName,tempData.SubFunctionName,'0','0',tempData.UANNumber,tempData.GMCNumber,tempData.BandName,tempData.Child1DOB,tempData.Child1Gender,tempData.Child1Name,tempData.Child2DOB,tempData.Child2Gender,tempData.Child2Name,tempData.DateOfMarriage,'0',tempData.EntityName,tempData.ESICNumber,tempData.HighestQualification,tempData.LevelName,tempData.LoanAmount,tempData.LWD_LastWorking,tempData.NoticePeriod,tempData.ReJoiningCase,tempData.SpouseDOB,tempData.SpouseName,tempData.TypeOfExitName,tempData.UninformedAbsenceLWD,tempData.UniversityInstituteHighQual,tempData.SpocDepartment], 
+    //             function (error, results, fields) {
+    //                ////console.log(error);
+    //             });
+    //         }
+            
+    //         // send records as a response
+    //         //res.send(recordset);
+            
+    //     });
+        
+    // });
+    
+    // sql.close();
+    // //connect to your database
+    // sql.connect(msconfig, function (err) {
+    
+    //     if (err) //console.log(err);
+
+    //     // create Request object
+    //     var request = new sql.Request();
+           
+    //     // query to the database and get the records
+    //     request.query('SELECT MgrCode,MgrName,EmpCode,EmpName,MgrLevel FROM EmpMgrDetails WHERE IsActive=1', function (err, recordset) {
+            
+    //         if (err) //console.log(err);
+    //         //console.log(recordset.recordset);
+    //         // mc.query('CALL UpdateMGRData(?,?,?,?,?,?)',
+    //         //      ['','','','','',0], 
+    //         //     function (error, results, fields) {
+    //         //        ////console.log(error);
+    //         //     });
+    //         ////console.log('Resul ',recordset);
+    //         for(var i=0;i<recordset.recordset.length;i++){
+    //             var tempData=recordset.recordset[i];
+
+    //             ////console.log(tempData.CurrentEmployeeCode,tempData.EntityName,tempData.CurrentEmployeeCode,tempData.EmailID,tempData.EmpName,tempData.MobileNo,tempData.OriginalDOJ,tempData.Photograph,tempData.ConfirmationStatus,'0',tempData.DOB,tempData.FatherName,tempData.Gender,tempData.MaritalStatus,tempData.Designation,tempData.FirstLevelReportingCode,tempData.FirstLevelReportingName,tempData.SecondLevelReportingCode,tempData.SecondLevelReportingName,tempData.WorkingLocation,tempData.BuildingNumber,'0',tempData.SeatLocation,tempData.HRSpocCode,tempData.HRSpocName,'0',tempData.EmergencyContactNumber,tempData.EmergencyContactPersonName,tempData.EmergencyContactPersonRelation,tempData.PresentAddress,'0',tempData.PersonalEmailID,tempData.TotalExp,tempData.PermanentAddress,tempData.IsActive,tempData.ITSPOCCode,tempData.ITSPOCName,tempData.DepartmentName,tempData.CategoryName,tempData.SubCategoryName,tempData.VerticalName,tempData.UnitName,tempData.FunctionName,tempData.SubFunctionName,'0','0',tempData.UANNumber,tempData.GMCNumber,tempData.BandName,tempData.Child1DOB,tempData.Child1Gender,tempData.Child1Name,tempData.Child2DOB,tempData.Child2Gender,tempData.Child2Name,tempData.DateOfMarriage,'0',tempData.EntityName,tempData.ESICNumber,tempData.HighestQualification,tempData.LevelName,tempData.LoanAmount,tempData.LWD_LastWorking,tempData.NoticePeriod,tempData.ReJoiningCase,tempData.SpouseDOB,tempData.SpouseName,tempData.TypeOfExitName,tempData.UninformedAbsenceLWD,tempData.UniversityInstituteHighQual,tempData.SpocDepartment);                
+    //             mc.query('CALL UpdateMGRData(?,?,?,?,?,?)',
+    //              [tempData.MgrCode,tempData.MgrName,tempData.EmpCode,tempData.EmpName,tempData.MgrLevel,1], 
+    //             function (error, results, fields) {
+    //                //console.log(error);
+    //             });
+
+
+    //         }            
+    //         // send records as a response
+    //         //res.send(recordset);            
+    //     });        
+    // });
 });
 
 const ActiveDirectory = require('activedirectory');
@@ -54,9 +146,9 @@ app.use(bodyParser.json());
 // Connect to MongoDB
 // mongoose
 //   .connect(db)
-//   .then(() => console.log('MongoDB Connected'))
+//   .then(() => //console.log('MongoDB Connected'))
 
-//   .catch(err => console.log(err));
+//   .catch(err => //console.log(err));
 
 
 
@@ -83,7 +175,7 @@ app.post('/api/getAllFAQ', (req, res) => {
             _SUBISSUEID = 0;
         }
         mc.query('CALL sp_GETFaqDetails(?,?,?)', [_ISSUEID,_SUBISSUEID,_KeyWord], function (error, results, fields) {
-            console.log(results);
+            //console.log(results);
             if (error) {
                 return res.send({ error: true, data: null, message: error });
             }
@@ -106,7 +198,7 @@ app.post('/api/login', (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
-    console.log(5);
+    //console.log(5);
     try {
         mc.query("CALL sp_LogInUser(?,?)", [email, password], function (error, results, fields) {
             if (error) {
@@ -118,7 +210,7 @@ app.post('/api/login', (req, res) => {
                         admin: email
                     }
                     var token = jwt.sign(payload, app.get('superSecret'), {
-                        expiresIn: 86400 // expires in 24 hours
+                        expiresIn: 3600 // expires in 1 hours
                     });
                     //return res.send({ error: false, data: results, message: 'success',token: token });
                     if (results.length > 0 && results[0].length>0)
@@ -149,7 +241,7 @@ app.post('/api/logOut', (req, res) => {
 
     const email = req.body.email;   
 
-    console.log(5);
+    //console.log(5);
     try {
         mc.query("CALL sp_LogOut(?)", [email], function (error, results, fields) {
             // if (error) {
@@ -180,10 +272,10 @@ app.post('/api/auth', (req, res) => {
        
         ad.findUser(username, function(err, user) {            
             if (err) {
-                console.log('ERROR: ' +JSON.stringify(err));
+                //console.log('ERROR: ' +JSON.stringify(err));
                 return  res.send({ error: true, data: null, message: 'User not found', token: null });;
             }        
-            if (! user) {console.log('User: ' + username + ' not found.');
+            if (! user) {//console.log('User: ' + username + ' not found.');
             return  res.send({ error: true, data: null, message: 'User not found', token: null });;
         }
             else 
@@ -194,20 +286,24 @@ app.post('/api/auth', (req, res) => {
                 let base64data = buff.toString('base64');
                 if(password=="test1234"){
                     mc.query("CALL sp_LogInUser(?,?,?)", [_EMPID,JSON.stringify(user),base64data], function (mySqlerror, results, fields) {
-                        console.log(mySqlerror,results);
+                        //console.log(mySqlerror,results);
                         if (mySqlerror) {                                       
                             return res.send({ error: true, data: null, message: 'Incorrect User/Password0', token: null });
                         }
                         else {
-                            console.log(results);
+                            //console.log(results);
                             if (results.length > 0) {
-                                return res.send({ error: false, data: results, message: 'success', token: "" });
                                 var payload = {
                                     admin: username
                                 }
                                 var token = jwt.sign(payload, app.get('superSecret'), {
-                                    expiresIn: 86400 // expires in 24 hours
+                                    expiresIn: 3600 // expires in 1 hours
                                 });
+                                return res.send({ error: false, data: results, message: 'success', token: token });
+                                
+                               
+                               
+                                console.log('token ',token);
                                 //return res.send({ error: false, data: results, message: 'success',token: token });
                                 if (results.length > 0 && results[0].length>0)
                                     return res.send({ error: false, data: results, message: 'success', token: token });
@@ -223,35 +319,37 @@ app.post('/api/auth', (req, res) => {
                     });
                 }
                 else{
-                console.log(user);
+                //console.log(user);
                 username =username+ '@etechaces.com';     
                 ad.authenticate(username, password, function(error, auth) {
                     if (error) {
-                      console.log('ERROR: '+JSON.stringify(error));
+                      //console.log('ERROR: '+JSON.stringify(error));
                       return res.send({ error: true, data: error, message: 'Incorrect password.', token: null });
                     }
                     else{
                         if (auth) {
-                            //console.log(user.description,JSON.stringify(user));
-                            //console.log(auth);
+                            ////console.log(user.description,JSON.stringify(user));
+                            ////console.log(auth);
                             try {
                                
                                
                                 mc.query("CALL sp_LogInUser(?,?,?)", [user.description,JSON.stringify(user),base64data], function (mySqlerror, results, fields) {
-                                    console.log(mySqlerror,results);
+                                    //console.log(mySqlerror,results);
                                     if (mySqlerror) {                                       
                                         return res.send({ error: true, data: null, message: 'Incorrect User/Password0', token: null });
                                     }
                                     else {
-                                        console.log(results);
+                                        //console.log(results);
                                         if (results.length > 0) {
-                                            return res.send({ error: false, data: results, message: 'success', token: "" });
+
+                                            //return res.send({ error: false, data: results, message: 'success', token: "" });
                                             var payload = {
                                                 admin: username
                                             }
                                             var token = jwt.sign(payload, app.get('superSecret'), {
-                                                expiresIn: 86400 // expires in 24 hours
+                                                expiresIn: 3600 // expires in 1 hours
                                             });
+                                            console.log('token ',token);
                                             //return res.send({ error: false, data: results, message: 'success',token: token });
                                             if (results.length > 0 && results[0].length>0)
                                                 return res.send({ error: false, data: results, message: 'success', token: token });
@@ -272,26 +370,26 @@ app.post('/api/auth', (req, res) => {
                             //return res.send({ error: false, data: auth, message: error, token: null });
                         }
                         else {
-                            console.log('Authentication failed!');
+                            //console.log('Authentication failed!');
                             return res.send({ error: true, data: error, message: 'Incorrect User/Password2', token: null });
                           }
                         }
                   });
-                console.log(JSON.stringify(user));
+                //console.log(JSON.stringify(user));
                 }
             }
         });
 
     }
     catch (err) {
-        console.log(err);
+        //console.log(err);
         return res.send({ error: true, data: null, message: err, token: null });
     }
 
 });
 
 //   app.use(function (req, res, next) {
-//     console.log(req.body);
+//     //console.log(req.body);
 //     // Website you wish to allow to connect
 //     res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5500');
 
@@ -309,37 +407,42 @@ app.post('/api/auth', (req, res) => {
 //     next();
 // });
 
-// app.use(function (req, res, next) {
-//     console.log(req.body);
-//     // check header or url parameters or post parameters for token
-//     var token = req.body.token || req.param('token') || req.headers['x-access-token'];
+app.use(function (req, res, next) {
+    //console.log(req.body);
+    // check header or url parameters or post parameters for token
+    var token = req.body.token || req.param('token') || req.headers['auth-token'];
+console.log(token);
+    // decode token
+    if (token) {
 
-//     // decode token
-//     if (token) {
+        // verifies secret and checks exp
+        jwt.verify(token, app.get('superSecret'), function (err, decoded) {
+            if (err) {
+                //console.log(token);
+                //return res.json({ success: false, message: 'Failed to authenticate token.' });
+                res.status(401).send({
+                    success: false,
+                    message: 'authentication failed.'
+                });
+            } else {
+                // if everything is good, save to request for use in other routes
+                req.decoded = decoded;
+                next();
+            }
+        });
 
-//         // verifies secret and checks exp
-//         jwt.verify(token, app.get('superSecret'), function (err, decoded) {
-//             if (err) {
-//                 return res.json({ success: false, message: 'Failed to authenticate token.' });
-//             } else {
-//                 // if everything is good, save to request for use in other routes
-//                 req.decoded = decoded;
-//                 next();
-//             }
-//         });
+    } else {
 
-//     } else {
+        // if there is no token
+        // return an error
+        return res.status(403).send({
+            success: false,
+            message: 'No token provided.'
+        });
 
-//         // if there is no token
-//         // return an error
-//         return res.status(403).send({
-//             success: false,
-//             message: 'No token provided.'
-//         });
+    }
 
-//     }
-
-// });
+});
 
 // Use Routes
 app.use('/api/users', users);

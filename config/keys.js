@@ -8,4 +8,11 @@ module.exports = {
     password: 'pblive@1234@',
     database: 'ticketsystem'
 }
+,
+msconfig:{
+  user: 'BackofficeSys',
+  password: 'MT#123#C@re',
+  server: 'SQLEXPR-SERVER\SQLEXPRESS', // You can use 'localhost\\instance' to connect to named instance
+  database: 'HRDB'
+}
 };

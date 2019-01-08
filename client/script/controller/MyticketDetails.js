@@ -1,4 +1,4 @@
-﻿HRSupport.controller("MyTicketDetailsCTRL", function ($scope, HRSupportService, $rootScope, $uibModal, $routeParams, $window) {
+﻿HRSupport.controller("MyTicketDetailsCTRL", function ($scope, HRSupportService, $rootScope, $uibModal, $routeParams, $sce, $window) {
     $scope.UserDetails = JSON.parse($window.localStorage.getItem('UserDetails'));
 
     $scope.isEmpty = function (str) {
@@ -15,7 +15,16 @@
         };
         HRSupportService.GetTicketDetails(objRequest, $scope.UserDetails.Toket).success(function (data) {
             $scope.TicketDetails = data.data.length > 1 ? data.data[0] : [];
+
+            $scope.CommentList = [];
             $scope.TicketComments = data.data.length > 2 ? data.data[1] : [];
+
+            angular.forEach($scope.TicketComments, function (value, key) {                
+                value.Comments = $sce.trustAsHtml(value.Comments);
+                this.push(value);
+            }, $scope.CommentList);
+
+           
             //$scope.Selected.Status = { StatusID: $scope.TicketDetails[0].StatusID };
             //$scope.Selected.IssueType = { ISSUEID: $scope.TicketDetails[0].IssueID };
             //$scope.Selected.SubIssueType = { SUBISSUEID: $scope.TicketDetails[0].SubIssueID };

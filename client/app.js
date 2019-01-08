@@ -1,6 +1,6 @@
 angular.module("HRSupport", ["ngRoute", "ui.bootstrap", "ui.filters"]).config(["$routeProvider",
           function ($routeProvider) {
-              debugger;
+            
         $routeProvider.
             when('/pbsupport', {
                 templateUrl: 'views/dashboard.html',
