@@ -12,7 +12,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             method: "POST",
             url: config.serviceURL+"api/getAllFAQ",
             headers: {
-                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
+                'Content-Type': "application/json; charset=utf-8"
             },
             data:JSON.stringify(objGetFAQ)
         }).success(function (dataGetFAQ) {
@@ -114,10 +114,9 @@ HRSupport.service("HRSupportService", function ($http, $window) {
 
         var request = $http({
             method: "GET",
-            url: config.serviceURL + "api/issue/getAllIssueSubIssue",
+            url: config.serviceURL + "api/getAllIssueSubIssue",
             headers: {
-                'Content-Type': "application/json; charset=utf-8",
-                "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
+                'Content-Type': "application/json; charset=utf-8"
             }
         }).success(function (dataGetFAQ) {
             var test = dataGetFAQ;
@@ -362,6 +361,49 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         return request;
     }
 
+    this.GetAllUserReport = function (objRequest, Token) {
+        var request = $http({
+            method: "POST",
+            url: config.serviceURL + "api/ticket/GetAllUserReport",
+            headers: {
+                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
+            },
+            data: JSON.stringify(objRequest)
+        }).success(function (data) {
+            var test = data;
+            //debugger;
+            console.log(data);
+        })
+        .error(function (error, status) {
+            if (status == 401) {
+                $window.location.href = '/light/login.html';
+            }
+        });
+        return request;
+    }
+
+    this.GetAllUserReportData = function (objRequest, Token) {
+        var request = $http({
+            method: "POST",
+            url: config.serviceURL + "api/ticket/GetAllUserReportData",
+            headers: {
+                'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
+            },
+            data: JSON.stringify(objRequest)
+        }).success(function (data) {
+            var test = data;
+            //debugger;
+            console.log(data);
+        })
+        .error(function (error, status) {
+            if (status == 401) {
+                $window.location.href = '/light/login.html';
+            }
+        });
+        return request;
+    }
+
+
     this.GetMGRDashboard = function (objRequest, Token) {
         var request = $http({
             method: "POST",
@@ -474,8 +516,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
             url: config.serviceURL+"api/issue/getAllFAQ",
             data: objGetFAQ,
             headers: {
-                'Content-Type': "application/json; charset=utf-8",
-                "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
+                'Content-Type': "application/json; charset=utf-8"
             }
         }).success(function (data) {
             console.log(data);

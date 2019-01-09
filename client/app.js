@@ -38,6 +38,10 @@ angular.module("HRSupport", ["ngRoute", "ui.bootstrap", "ui.filters"]).config(["
                  templateUrl: 'views/user-report.html',
                  controller: 'UserReportCTRL'
              })
+            .when('/pbsupport/AllUserReport', {
+                templateUrl: 'views/AllUserReport.html',
+                controller: 'AllUserReportCTRL'
+            })
             .when('/pbsupport/AdminUserReport', {
                 templateUrl: 'views/admin-user-report.html',
                 controller: 'mgrUserReportCTRL'

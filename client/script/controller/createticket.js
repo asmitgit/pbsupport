@@ -96,9 +96,9 @@ HRSupport.controller("CreateTicketCTRL", function ($scope, HRSupportService, $ro
                                       "BccEmail": ["asmit@policybazaar.com"],
                                       "CCEmail": null,
                                       "Body": "<html><body>Hi , <br/> A new ticket is raised by employee, request you to address it immediately. <br/>" +
-                                          "<table><tr>  <th >EmployeeID</th>  <th >Employee Name</th>  <th >Ticket#</th>  <th >Issue</th>  <th >Concern</th> </tr>"
+                                          "<table border='1' style='border-collapse:collapse'><tr>  <th >EmployeeID</th>  <th >Employee Name</th>  <th >Ticket#</th>  <th >Issue</th>  <th >Concern</th> </tr>"
                                           + "<tr>  <td >" + $scope.UserDetails.EMPData[0].EmployeeID + "</td>  <td >" + $scope.UserDetails.EMPData[0].Name + "</td>  <td >" + data.data[0][0].TicketDispID + "</td>  <td >" + $scope.Selected.IssueType.ISSUENAME + "</td>  <td >" + $scope.Comments + "</td> </tr></table>"
-                                          + "<br/><a href='http://pbsupport.policybazaar.com/'>Click here to login</a></body></html>",
+                                          + "<br/><a href='http://pbsupport.policybazaar.com/' target='_blank'>Click here to login</a></body></html>",
                                       "Subject": "Ticket Service Request " + data.data[0][0].TicketDispID+": "
                                           + $scope.Selected.IssueType.ISSUENAME
                                          ,
@@ -142,9 +142,9 @@ HRSupport.controller("CreateTicketCTRL", function ($scope, HRSupportService, $ro
                                   "BccEmail": ["asmit@policybazaar.com"],
                                   "CCEmail": null,
                                   "Body": "<html><body>Hi , <br/> A new ticket is raised by employee, request you to address it immediately. <br/>" +
-                                          "<table><tr>  <th >EmployeeID</th>  <th >Employee Name</th>  <th >Ticket#</th>  <th >Issue</th>  <th >Concern</th> </tr>"
+                                          "<table border='1' style='border-collapse:collapse'><tr>  <th >EmployeeID</th>  <th >Employee Name</th>  <th >Ticket#</th>  <th >Issue</th>  <th >Concern</th> </tr>"
                                           + "<tr>  <td >" + $scope.UserDetails.EMPData[0].EmployeeID + "</td>  <td >" + $scope.UserDetails.EMPData[0].Name + "</td>  <td >" + data.data[0][0].TicketDispID + "</td>  <td >" + $scope.Selected.IssueType.ISSUENAME + "</td>  <td >" + $scope.Comments + "</td> </tr></table>"
-                                          + "<br/><a href='http://pbsupport.policybazaar.com/'>Click here to login</a></body></html>",
+                                          + "<br/><a href='http://pbsupport.policybazaar.com/' target='_blank'>Click here to login</a></body></html>",
                                   "Subject": "Ticket Service Request " + data.data[0][0].TicketDispID + ": "
                                       + $scope.Selected.IssueType.ISSUENAME
                                          ,

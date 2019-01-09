@@ -160,6 +160,13 @@ var cors = require('cors');
 
 app.use(cors({ origin: ['http://pbsupportuat.policybazaar.com','http://localhost:61750'] }));
 
+router.get('/api/getAllIssueSubIssue', (req, res) => {
+    mc.query('CALL sp_GETISSUEDETAILS()', function (error, results, fields) {
+        if (error) throw error;
+        return res.send({ error: false, data: results, message: 'success' });
+    });  
+});
+
 app.post('/api/getAllFAQ', (req, res) => {
     if (isEmpty(req.body))
         return res.send({ error: true, data: null, message: 'error in request' });
@@ -293,7 +300,7 @@ app.post('/api/auth', (req, res) => {
                         else {
                             //console.log(results);
                             if (results.length > 0) {
-                                var payload = {
+                                 var payload = {
                                     admin: username
                                 }
                                 var token = jwt.sign(payload, app.get('superSecret'), {
