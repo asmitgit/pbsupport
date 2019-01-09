@@ -160,7 +160,7 @@ var cors = require('cors');
 
 app.use(cors({ origin: ['http://pbsupportuat.policybazaar.com','http://localhost:61750'] }));
 
-router.get('/api/getAllIssueSubIssue', (req, res) => {
+app.get('/api/getAllIssueSubIssue', (req, res) => {
     mc.query('CALL sp_GETISSUEDETAILS()', function (error, results, fields) {
         if (error) throw error;
         return res.send({ error: false, data: results, message: 'success' });
