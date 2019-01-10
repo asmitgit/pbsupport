@@ -44,8 +44,6 @@ const mysqldb = require('./config/keys').mysqldb;
     }
 };
 
-
-
 cron.schedule('*/1 * * * *', () => {
     // mc.query('CALL sp_AutoAssignment()', [], function (error, results, fields) {
     //     //console.log(results);        
@@ -90,42 +88,7 @@ cron.schedule('*/1 * * * *', () => {
         
     // });
     
-    // sql.close();
-    // //connect to your database
-    // sql.connect(msconfig, function (err) {
     
-    //     if (err) //console.log(err);
-
-    //     // create Request object
-    //     var request = new sql.Request();
-           
-    //     // query to the database and get the records
-    //     request.query('SELECT MgrCode,MgrName,EmpCode,EmpName,MgrLevel FROM EmpMgrDetails WHERE IsActive=1', function (err, recordset) {
-            
-    //         if (err) //console.log(err);
-    //         //console.log(recordset.recordset);
-    //         // mc.query('CALL UpdateMGRData(?,?,?,?,?,?)',
-    //         //      ['','','','','',0], 
-    //         //     function (error, results, fields) {
-    //         //        ////console.log(error);
-    //         //     });
-    //         ////console.log('Resul ',recordset);
-    //         for(var i=0;i<recordset.recordset.length;i++){
-    //             var tempData=recordset.recordset[i];
-
-    //             ////console.log(tempData.CurrentEmployeeCode,tempData.EntityName,tempData.CurrentEmployeeCode,tempData.EmailID,tempData.EmpName,tempData.MobileNo,tempData.OriginalDOJ,tempData.Photograph,tempData.ConfirmationStatus,'0',tempData.DOB,tempData.FatherName,tempData.Gender,tempData.MaritalStatus,tempData.Designation,tempData.FirstLevelReportingCode,tempData.FirstLevelReportingName,tempData.SecondLevelReportingCode,tempData.SecondLevelReportingName,tempData.WorkingLocation,tempData.BuildingNumber,'0',tempData.SeatLocation,tempData.HRSpocCode,tempData.HRSpocName,'0',tempData.EmergencyContactNumber,tempData.EmergencyContactPersonName,tempData.EmergencyContactPersonRelation,tempData.PresentAddress,'0',tempData.PersonalEmailID,tempData.TotalExp,tempData.PermanentAddress,tempData.IsActive,tempData.ITSPOCCode,tempData.ITSPOCName,tempData.DepartmentName,tempData.CategoryName,tempData.SubCategoryName,tempData.VerticalName,tempData.UnitName,tempData.FunctionName,tempData.SubFunctionName,'0','0',tempData.UANNumber,tempData.GMCNumber,tempData.BandName,tempData.Child1DOB,tempData.Child1Gender,tempData.Child1Name,tempData.Child2DOB,tempData.Child2Gender,tempData.Child2Name,tempData.DateOfMarriage,'0',tempData.EntityName,tempData.ESICNumber,tempData.HighestQualification,tempData.LevelName,tempData.LoanAmount,tempData.LWD_LastWorking,tempData.NoticePeriod,tempData.ReJoiningCase,tempData.SpouseDOB,tempData.SpouseName,tempData.TypeOfExitName,tempData.UninformedAbsenceLWD,tempData.UniversityInstituteHighQual,tempData.SpocDepartment);                
-    //             mc.query('CALL UpdateMGRData(?,?,?,?,?,?)',
-    //              [tempData.MgrCode,tempData.MgrName,tempData.EmpCode,tempData.EmpName,tempData.MgrLevel,1], 
-    //             function (error, results, fields) {
-    //                //console.log(error);
-    //             });
-
-
-    //         }            
-    //         // send records as a response
-    //         //res.send(recordset);            
-    //     });        
-    // });
 });
 
 const ActiveDirectory = require('activedirectory');
@@ -165,6 +128,47 @@ app.get('/api/getAllIssueSubIssue', (req, res) => {
         if (error) throw error;
         return res.send({ error: false, data: results, message: 'success' });
     });  
+});
+
+app.get('/api/UpdateData', (req, res) => {
+    
+sql.close();
+//connect to your database
+sql.connect(msconfig, function (err) {
+
+    if (err) //console.log(err);
+
+    // create Request object
+    var request = new sql.Request();
+       
+    // query to the database and get the records
+    request.query('SELECT MgrCode,MgrName,EmpCode,EmpName,MgrLevel FROM EmpMgrDetails WHERE IsActive=1', function (err, recordset) {
+        
+        if (err) console.log(err);
+        console.log(recordset.recordset);
+        // mc.query('CALL UpdateMGRData(?,?,?,?,?,?)',
+        //      ['','','','','',0], 
+        //     function (error, results, fields) {
+        //        ////console.log(error);
+        //     });
+        ////console.log('Resul ',recordset);
+        for(var i=0;i<recordset.recordset.length;i++){
+            var tempData=recordset.recordset[i];
+
+            ////console.log(tempData.CurrentEmployeeCode,tempData.EntityName,tempData.CurrentEmployeeCode,tempData.EmailID,tempData.EmpName,tempData.MobileNo,tempData.OriginalDOJ,tempData.Photograph,tempData.ConfirmationStatus,'0',tempData.DOB,tempData.FatherName,tempData.Gender,tempData.MaritalStatus,tempData.Designation,tempData.FirstLevelReportingCode,tempData.FirstLevelReportingName,tempData.SecondLevelReportingCode,tempData.SecondLevelReportingName,tempData.WorkingLocation,tempData.BuildingNumber,'0',tempData.SeatLocation,tempData.HRSpocCode,tempData.HRSpocName,'0',tempData.EmergencyContactNumber,tempData.EmergencyContactPersonName,tempData.EmergencyContactPersonRelation,tempData.PresentAddress,'0',tempData.PersonalEmailID,tempData.TotalExp,tempData.PermanentAddress,tempData.IsActive,tempData.ITSPOCCode,tempData.ITSPOCName,tempData.DepartmentName,tempData.CategoryName,tempData.SubCategoryName,tempData.VerticalName,tempData.UnitName,tempData.FunctionName,tempData.SubFunctionName,'0','0',tempData.UANNumber,tempData.GMCNumber,tempData.BandName,tempData.Child1DOB,tempData.Child1Gender,tempData.Child1Name,tempData.Child2DOB,tempData.Child2Gender,tempData.Child2Name,tempData.DateOfMarriage,'0',tempData.EntityName,tempData.ESICNumber,tempData.HighestQualification,tempData.LevelName,tempData.LoanAmount,tempData.LWD_LastWorking,tempData.NoticePeriod,tempData.ReJoiningCase,tempData.SpouseDOB,tempData.SpouseName,tempData.TypeOfExitName,tempData.UninformedAbsenceLWD,tempData.UniversityInstituteHighQual,tempData.SpocDepartment);                
+            mc.query('CALL UpdateMGRData(?,?,?,?,?,?)',
+             [tempData.MgrCode,tempData.MgrName,tempData.EmpCode,tempData.EmpName,tempData.MgrLevel,1], 
+            function (error, results, fields) {
+               //console.log(error);
+            });
+
+
+        }            
+        // send records as a response
+        //res.send(recordset);            
+    });        
+});
+
 });
 
 app.post('/api/getAllFAQ', (req, res) => {

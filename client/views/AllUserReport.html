@@ -18,91 +18,90 @@
 
                 <div class="body">
                     <div class="table-responsive">
+                        <div class="inner_table">
+                            <table class="table" ng-show="Report.length>0">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Sno </th>
+                                        <th>Spoc </th>
+                                        <th>New</th>
+                                        <th>Open</th>
+                                        <th>TAT Bust</th>
+                                        <th>Closed</th>
+                                        <th>Support Required</th>
+                                        <th>Resolved</th>
+                                        <!--<th>MTD Closed</th>-->
+                                    </tr>
+                                </thead>
 
-                        <table class="table table-hover js-basic-example dataTable table-custom" ng-show="Report.length>0">
-                            <thead class="thead-dark">
-                                <tr>
+                                <tbody ng-repeat="dataResponse in Report">
+                                    <tr>
+                                        <td>{{dataResponse.SNO}}</td>
+                                        <td><a href="javascript:void(0)" ng-click="GetAllUserReportByID(dataResponse,$index)" ng-show="dataResponse.HasChild=='Yes' && dataResponse.IsClicked=='0'">+{{dataResponse.Name}}({{dataResponse.EmployeeID}})</a> <span ng-show="dataResponse.HasChild=='No' || dataResponse.IsClicked=='1'">{{dataResponse.Name}}({{dataResponse.EmployeeID}})</span> </td>
+                                        <td ng-click="GetAllUserReportData(dataResponse,2)" style="cursor:pointer">{{dataResponse.NewTickets}}</td>
+                                        <td ng-click="GetAllUserReportData(dataResponse,3)" style="cursor:pointer">{{dataResponse.OpenTickets}}</td>
+                                        <td ng-click="GetAllUserReportData(dataResponse,4)" style="cursor:pointer">{{dataResponse.TATTickets}}</td>
+                                        <td ng-click="GetAllUserReportData(dataResponse,5)" style="cursor:pointer">{{dataResponse.ClosedTickets}}</td>
+                                        <td ng-click="GetAllUserReportData(dataResponse,7)" style="cursor:pointer">{{dataResponse.SupportRequired}}</td>
+                                        <td ng-click="GetAllUserReportData(dataResponse,8)" style="cursor:pointer">{{dataResponse.Resolved}}</td>
+                                        <!--<td ng-click="GetAllUserReportData(dataResponse,7)" style="cursor:pointer">{{dataResponse.MTDClosedTickets}}</td>-->
+                                    </tr>
+                                    <tr>
+                                        <td colspan="8" class="tkt_detailbox" ng-show="dataResponse.SubData.length>0">
 
-                                    <th>Spoc </th>
-                                    <th>New</th>
-                                    <th>Open</th>
-                                    <th>TAT Bust</th>
-                                    <th>Closed</th>
-                                    <th>Support Required</th>
-                                    <th>Resolved</th>
-                                    <!--<th>MTD Closed</th>-->
-                                </tr>
-                            </thead>
+                                            <div class="card detialbox supervisor_block">
+                                                <div class="body expand_table">
+                                                    <div class="table-responsive">
 
-                            <tbody ng-repeat="data in Report">
-                                <tr>
-                                    <td><span> {{data.HasChild=='Yes'?'+':''}} </span>{{data.Name}} </td>
-                                    <td ng-click="GetAllUserReportData(data,2)" style="cursor:pointer">{{data.NewTickets}}</td>
-                                    <td ng-click="GetAllUserReportData(data,3)" style="cursor:pointer">{{data.OpenTickets}}</td>
-                                    <td ng-click="GetAllUserReportData(data,4)" style="cursor:pointer">{{data.TATTickets}}</td>
-                                    <td ng-click="GetAllUserReportData(data,5)" style="cursor:pointer">{{data.ClosedTickets}}</td>
-                                    <td ng-click="GetAllUserReportData(data,7)" style="cursor:pointer">{{data.SupportRequired}}</td>
-                                    <td ng-click="GetAllUserReportData(data,8)" style="cursor:pointer">{{data.Resolved}}</td>
-                                    <!--<td ng-click="GetAllUserReportData(data,7)" style="cursor:pointer">{{data.MTDClosedTickets}}</td>-->
-                                </tr>
-                                <tr>
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
 
-                                    <td colspan="7" class="tkt_detailbox" ng-if="data.SubData.length>0">
+                                                                    <th>Ticket#</th>
+                                                                    <th>Date</th>
+                                                                    <th>Issue</th>
+                                                                    <th>Sub Issue</th>
+                                                                    <th>Status</th>
+                                                                    <th>Last Updated on</th>
+                                                                    <th>Emp ID</th>
+                                                                    <th>Emp Name</th>
+                                                                    <th>AssignTo</th>
+                                                                    <th>TAT</th>
+                                                                    <th>FollowUp</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr ng-repeat="childData in dataResponse.SubData | orderBy : 'childData.CreatedON' :true">
 
-                                        <div class="card detialbox supervisor_block">
-                                            <!--<div style="text-align:right; padding:5px;"><button type="button" class="btn btn-info">Assign</button></div>-->
-                                            <div class="body expand_table">
-                                                <div class="table-responsive">
+                                                                    <td><a class="btn btn-link mybtn-link" href="home.html#/pbsupport/TicketDetails/{{childData.TicketID}}">{{childData.TicketDispID}}</a></td>
+                                                                    <td>{{childData.CreatedON | date:'medium'}}</td>
+                                                                    <td>{{childData.ISSUENAME}}</td>
+                                                                    <td>{{childData.SUBISSUENAME}}</td>
+                                                                    <td>{{childData.StatusName}}</td>
+                                                                    <td>{{childData.LastUpdatedOn | date:"dd-MM-yyyy  h:mma"}}</td>
+                                                                    <td>{{childData.EmployeeID}}</td>
+                                                                    <td>{{childData.Name}}</td>
+                                                                    <td>{{childData.AssignToName}}({{childData.AssignToEmpID}})</td>
+                                                                    <td>{{childData.TATDate | date:"dd-MM-yyyy  h:mma"}}</td>
+                                                                    <td>{{childData.FollowUp && childData.FollowUp!=null ? (childData.FollowUp | date:"dd-MM-yyyy"):''}}</td>
+                                                                </tr>
 
-                                                    <table class="table table-striped">
-                                                        <thead>
-                                                            <tr>
-
-                                                                <th>Ticket#</th>
-                                                                <th>Date</th>
-                                                                <th>Issue</th>
-                                                                <th>Sub Issue</th>
-                                                                <th>Status</th>
-                                                                <th>Last Updated on</th>
-                                                                <th>Emp ID</th>
-                                                                <th>Emp Name</th>
-                                                                <th>AssignTo</th>
-                                                                <th>TAT</th>
-                                                                <th>FollowUp</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr ng-repeat="childData in data.SubData | orderBy : 'childData.CreatedON' :true">
-
-                                                                <td><a class="btn btn-link mybtn-link" href="home.html#/pbsupport/TicketDetails/{{childData.TicketID}}">{{childData.TicketDispID}}</a></td>
-                                                                <td>{{childData.CreatedON | date:'medium'}}</td>
-                                                                <td>{{childData.ISSUENAME}}</td>
-                                                                <td>{{childData.SUBISSUENAME}}</td>
-                                                                <td>{{childData.StatusName}}</td>
-                                                                <td>{{childData.LastUpdatedOn | date:"dd-MM-yyyy  h:mma"}}</td>
-                                                                <td>{{childData.EmployeeID}}</td>
-                                                                <td>{{childData.Name}}</td>
-                                                                <td>{{childData.AssignToName}}({{childData.AssignToEmpID}})</td>
-                                                                <td>{{childData.TATDate | date:"dd-MM-yyyy  h:mma"}}</td>
-                                                                <td>{{childData.FollowUp && childData.FollowUp!=null ? (childData.FollowUp | date:"dd-MM-yyyy"):''}}</td>
-                                                            </tr>
-
-                                                        </tbody>
-                                                    </table>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
 
 
 
-                            </tbody>
+                                </tbody>
 
-                        </table>
-
-                        <div ng-show="!Report || Report.length<=0">No record found</div>
-                    </div>
+                            </table>
+                            </div>
+                            <div ng-show="!Report || Report.length<=0">No record found</div>
+                        </div>
                 </div>
             </div>
         </div>

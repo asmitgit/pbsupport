@@ -745,3 +745,6 @@ ul.accord_tabs li.active {
 
 .card_header.action_button{background: #40a8fe !important;color: #fff;text-transform: uppercase;cursor: pointer;}
 .card_header.action_button h2> i{float:right;}
+.inner_table{padding:0; margin:0;}
+.inner_table > .table .thead-dark th{     background: #a0a0a0 !important; font-weight: normal;  margin: 0 !important;  border: 0 !important;     border-right: 1px solid #fff !important;}
+.inner_table > .table td{border-right:1px solid #ddd !important;}
