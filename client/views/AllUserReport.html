@@ -38,12 +38,12 @@
                                     <tr>
                                         <td>{{dataResponse.SNO}}</td>
                                         <td><a href="javascript:void(0)" ng-click="GetAllUserReportByID(dataResponse,$index)" ng-show="dataResponse.HasChild=='Yes' && dataResponse.IsClicked=='0'">+{{dataResponse.Name}}({{dataResponse.EmployeeID}})</a> <span ng-show="dataResponse.HasChild=='No' || dataResponse.IsClicked=='1'">{{dataResponse.Name}}({{dataResponse.EmployeeID}})</span> </td>
-                                        <td ng-click="GetAllUserReportData(dataResponse,2)" style="cursor:pointer">{{dataResponse.NewTickets}}</td>
-                                        <td ng-click="GetAllUserReportData(dataResponse,3)" style="cursor:pointer">{{dataResponse.OpenTickets}}</td>
-                                        <td ng-click="GetAllUserReportData(dataResponse,4)" style="cursor:pointer">{{dataResponse.TATTickets}}</td>
-                                        <td ng-click="GetAllUserReportData(dataResponse,5)" style="cursor:pointer">{{dataResponse.ClosedTickets}}</td>
-                                        <td ng-click="GetAllUserReportData(dataResponse,7)" style="cursor:pointer">{{dataResponse.SupportRequired}}</td>
-                                        <td ng-click="GetAllUserReportData(dataResponse,8)" style="cursor:pointer">{{dataResponse.Resolved}}</td>
+                                        <td ng-click="GetAllUserReportData(dataResponse,2,dataResponse.NewTickets)" style="cursor:pointer">{{dataResponse.NewTickets}}</td>
+                                        <td ng-click="GetAllUserReportData(dataResponse,3,dataResponse.OpenTickets)" style="cursor:pointer">{{dataResponse.OpenTickets}}</td>
+                                        <td ng-click="GetAllUserReportData(dataResponse,4,dataResponse.TATTickets)" style="cursor:pointer">{{dataResponse.TATTickets}}</td>
+                                        <td ng-click="GetAllUserReportData(dataResponse,5,dataResponse.ClosedTickets)" style="cursor:pointer">{{dataResponse.ClosedTickets}}</td>
+                                        <td ng-click="GetAllUserReportData(dataResponse,7,dataResponse.SupportRequired)" style="cursor:pointer">{{dataResponse.SupportRequired}}</td>
+                                        <td ng-click="GetAllUserReportData(dataResponse,8,dataResponse.Resolved)" style="cursor:pointer">{{dataResponse.Resolved}}</td>
                                         <!--<td ng-click="GetAllUserReportData(dataResponse,7)" style="cursor:pointer">{{dataResponse.MTDClosedTickets}}</td>-->
                                     </tr>
                                     <tr>

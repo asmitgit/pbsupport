@@ -1,0 +1,106 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Login</title>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+<link href="login/css/style.css" type="text/css" rel="stylesheet" />
+    <link href="login/css/responsive.css" type="text/css" rel="stylesheet" />
+    <link href="login/css/animate.css" type="text/css" rel="stylesheet" />
+    
+    <script src="Script/lib/js/angular.js"></script>
+    <script src="Script/lib/angular-ui.js"></script>
+    <script src="Script/lib/js/angular-route.js"></script>
+    <script src="Script/lib/js/ui-bootstrap-custom-tpls-1.3.2.min.js"></script>
+    <script>
+   angular.module("HRSupport", ["ngRoute", "ui.bootstrap", "ui.filters"]).config(["$routeProvider",
+     function ($routeProvider) {
+    //   $routeProvider.
+    //       when('/Login/:Issue/:SubIssue', {
+    //           templateUrl: 'light/login.html',
+    //           controller: 'LoginCTRL'
+    //       })
+     }]);
+    </script>
+    <script src="Script/config/config.js"></script>
+    <script src="Script/module/module.js"></script>
+    <script src="Script/service/service.js"></script>
+    <script src="Script/controller/login.js"></script>
+</head>
+
+<body ng-app="HRSupport">
+
+    <div id="main_container" ng-controller="LoginCTRL">
+        <div class="left_block">
+
+            <div class="logo_block"><img src="login/images/pb-support_logo.png" width="168" height="38" alt="PB Support" /></div>
+            <div class="header_block">
+                <h1>Advantages of PB Support</h1>
+                <span>A self-help support & ticketing desk for all employees</span>
+            </div>
+            <div class="three_block">
+                <div class="box animated fadeInLeft box1">
+                    <span class="icons"><img src="login/images/comment.svg" alt="" /></span>
+                    <div class="rightbox">
+                        <span class="heading">Create & track tickets</span>
+                        <span class="text_box">Need help? Create tickets that get assigned to the right people instantly</span>
+                    </div>
+                </div>
+
+                <div class="box animated fadeInLeft box2">
+                    <span class="icons"><img src="login/images/responses.svg" alt="" /></span>
+                    <div class="rightbox">
+                        <span class="heading heading2">Get responses asap</span>
+                        <span class="text_box">For each ticket, the respective SPOC will resolve/update you within 24-48 hours</span>
+                    </div>
+                </div>
+
+                <div class="box animated fadeInLeft box3">
+                    <span class="icons"><img src="login/images/shield.svg" alt="" /></span>
+                    <div class="rightbox">
+                        <span class="heading heading3">Maintain your Privacy</span>
+                        <span class="text_box">All your escalations remain confidential between you & your SPOC</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="right_block">
+            <div class="top_block"><button>Back to FAQ's</button></div>
+            <div class="form_container">
+                <div class="alert_message">
+                    <span><em></em> Query not resolved?</span>
+                    <p>Don't worry! We're going to  help you create a ticket for your problem & assign a relevant SPOC to handle your concern</p>
+                </div>
+
+                <div class="form_block">
+                    <span class="heading">Sign in to PbSupport</span>
+                    <span class="message">Use your <strong>network / firewall username & password</strong> to sign in</span>
+
+                    <div class="form_fd">
+
+                        <ul>
+                            <li class="animated fadeIn input1">
+                                <label>Username</label>
+
+                                <input type="text" id="signin-EmployeeID" placeholder="First Name / Ecode" ng-model="EmployeeID" my-enter="Login()">
+                            </li>
+                            <li class="animated fadeIn input2">
+                                <label>Password</label>
+
+                                <input type="password" id="signin-password" placeholder="Enter your password" ng-model="Password"
+                                       my-enter="Login()">
+                            </li>
+                            <li class="animated fadeIn input3"><button ng-click="Login()">Sign In</button></li>
+                        </ul>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

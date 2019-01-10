@@ -120,6 +120,7 @@
         else{
             _Comments= $scope.HRComments ;
         }
+
         if ($scope.isEmpty(_Comments)) {
             alert('Remark should not be blank.');
             return false;
@@ -158,13 +159,16 @@
                         }
                         else {
                             $scope.HRComments = '';
+                            $scope.GetTicketDetails();
                         }
-                        HRSupportService.UpdateTicketDetails(objStatusRequest, $scope.UserDetails.Toket).success(function (data) {
-                            if (!data.error) {
-                                alert('Updated sussessfully');
-                                $scope.GetTicketDetails();
-                            }
-                        });
+                        if (ReplyType == 2) {
+                            HRSupportService.UpdateTicketDetails(objStatusRequest, $scope.UserDetails.Toket).success(function (data) {
+                                if (!data.error) {
+                                    alert('Updated sussessfully');
+                                    $scope.GetTicketDetails();
+                                }
+                            });
+                        }
                     }
                 });
             });
@@ -178,14 +182,18 @@
                     }
                     else {
                         $scope.HRComments = '';
+                        $scope.GetTicketDetails();
+                        alert('Updated sussessfully');
                     }
-                    HRSupportService.UpdateTicketDetails(objStatusRequest, $scope.UserDetails.Toket).success(function (data) {
-                        if (!data.error) {
-                            alert('Updated sussessfully');
-                            $scope.GetTicketDetails();
-                           
-                        }
-                    });
+                    if (ReplyType == 2) {
+                        HRSupportService.UpdateTicketDetails(objStatusRequest, $scope.UserDetails.Toket).success(function (data) {
+                            if (!data.error) {
+                                alert('Updated sussessfully');
+                                $scope.GetTicketDetails();
+
+                            }
+                        });
+                    }
                 }
             });
         }

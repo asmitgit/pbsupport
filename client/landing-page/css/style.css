@@ -279,20 +279,24 @@ p {
     vertical-align: top;
 }
 
-.search_data span > select{    width: 48%;
+.search_data span > select {
+    width: 48%;
     display: inline-block;
     border: none;
     border-radius: 5px;
     vertical-align: middle;
     margin-right: 5px;
-    padding: 8px;}
+    padding: 8px;
+    -webkit-appearance: none;
+    background: url(../images/down_arrow.png) no-repeat 188px 15px;
+}
 	
 .search_data span > select:last-child{width: 48%;
     display: inline-block;
     border: none;
     padding: 8px;
     border-radius: 5px;
-    vertical-align: middle;}
+    vertical-align: middle;background-position-x:197px;}
 	
 .search_subtxt{font-size: 11px !important; color: #fff;  position: absolute;  right: 32px; top: 49px;}
 .search_subtxt a{color: #5cfdff !important;  font-weight: bold;  cursor: pointer;}

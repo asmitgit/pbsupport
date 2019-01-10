@@ -1,0 +1,22 @@
+@charset "utf-8";
+/* CSS Document */
+
+@media screen and (max-width:639px){
+.login_container{width:98%;}
+ul.logininput li font{ display:none;}
+ul.logininput li label input.min_wid[type="text"] {width:25%; padding-right:0;}
+ul.logininput li label input.max_wid[type="text"] {width: 75%; padding-left: 0;}
+ul.logininput li label input[type="text"]{font-size:14px;}
+ul.logininput li label button {font-size: 15px;width:40%;margin: 0; padding: 17px 0; border: 0; box-sizing: border-box; border-radius: 0 4px 4px 0;}
+ul.logininput li label input.maxpassword_wid[type="text"] {width:60%;}
+.login_heading {font-size: 25px; padding: 15px 0;}
+.login_inner_box button {font-size: 18px;padding: 10px 0; font-weight:bold;}
+ul.subtext_data li {  font-size: 14px;  line-height: 21px; list-style: none;}
+ul.subtext_data li:before {position: relative; top:1px; font-size:18px;}
+ul.logininput li{margin: 0 0 15px 0;}
+.login_subtext h1{font-size:17px;}
+.login_subtext{padding:10px;}
+.login_inner_box{padding: 15px;}
+ul.logininput li span{    padding: 6px 15px;}
+ul.logininput li span em.mobile_icon{ background-position:-57px -10px;}
+}

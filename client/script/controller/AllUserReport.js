@@ -45,9 +45,11 @@
                             _tempObj.push($scope.Report[i]);
                         }
                     }
+
+                    //_data.IsClicked = '1';
                     $scope.Report = _tempObj;
                     //$scope.Report.splice(_index+1, 0, data.data.length > 1 ? data.data[0] : []);
-                    //_data.Report = data.data.length > 1 ? data.data[0] : [];
+                    
                     _data.SubData = [];
                 }
                 else {
@@ -61,20 +63,22 @@
         });
     };
 
-    $scope.GetAllUserReportData = function (_data, _Type) {
-        var objRequest = {
-            "EmpID": _data.EmployeeID,
-            "Type": _Type
-        };
-        HRSupportService.GetAllUserReportData(objRequest, $scope.UserDetails.Toket).success(function (ReportData) {
-            if (ReportData.data != null) {
-                _data.SubData = ReportData.data[0];
-                _data.Report = [];
-            }
-            else {
-                _data.Report = [];
-                _data.SubData = [];
-            }
-        });
+    $scope.GetAllUserReportData = function (_data, _Type, _value) {
+        if (_value > 0) {
+            var objRequest = {
+                "EmpID": _data.EmployeeID,
+                "Type": _Type
+            };
+            HRSupportService.GetAllUserReportData(objRequest, $scope.UserDetails.Toket).success(function (ReportData) {
+                if (ReportData.data != null) {
+                    _data.SubData = ReportData.data[0];
+                    _data.Report = [];
+                }
+                else {
+                    _data.Report = [];
+                    _data.SubData = [];
+                }
+            });
+        }
     };
 });

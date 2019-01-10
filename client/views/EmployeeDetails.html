@@ -148,36 +148,61 @@
                 </div>
 
             </div>
-            <div class="card">
-                <div class="card_header action_button" ng-click="RequestInfo(1)">
-                    <h2>Request Contact Details <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h2>
-                </div>
-                <div class="body emp_data" ng-show="RequestType==1">
-
-                    <ul class="emp_data">
-                        <li><label>Reason</label><input type="text" ng-model="ContactReason"/></li>
-
-
-                    </ul>
-                    <button class="btn btn-primary" ng-click="RaiseRequest(1)">Raise Request</button>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card_header action_button" ng-click="RequestInfo(2)">
-                    <h2>Request CTC <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h2>
-                </div>
-                <div class="body emp_data" ng-show="RequestType==2">
-                    <ul class="emp_data">
-                        <li><label>Reason</label><span><input type="text" ng-model="CTCReason"/></span></li>
-                    </ul>
-                    <button class="btn btn-primary" ng-click="RaiseRequest(2)">Raise Request</button>
-                </div>
-
-            </div>
+           
+      
        
         </div>
           </div>
 
+
+    <div class="row clearfix">
+   <div style="border-top: 1px solid #ddd;width: 100%;display: block; padding: 0 0 14px 0;margin: 0 15px;"></div>
+
+        <div class="col-xl-6 col-sm-12">
+            <div class="card">
+                <div class="card_header action_button" ng-click="RequestInfo(1)">
+                    <h2>Request Contact Details <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h2>
+                </div>
+                <div class="body emp_data">
+
+                    <ul class="emp_data">
+                        <li >
+                            <label style="width: 20%;font-weight: normal;font-size: 14px;">Reason</label><input type="text" ng-model="ContactReason" style="
+    border-radius: 4px; border: 1px solid #ddd; width: 100%;padding: 5px;box-sizing: border-box;" />
+                        </li>
+
+
+                    </ul>
+                    <div style="display:block;float: left;width: 100%;padding:6px 0 9px 0;">
+                        <button class="btn btn-primary" ng-click="RaiseRequest(1)" style="float:right;">Raise Request</button>
+                    </div>
+            </div>
+            </div>
                 </div>
 
+        <div class="col-xl-6 col-sm-12">
+            <div class="card">
+                <div class="card_header action_button" ng-click="RequestInfo(2)">
+                    <h2>Request CTC <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h2>
+                </div>
+                <div class="body emp_data">
+                    <ul class="emp_data">
+                        <li>
+                            <label style="width: 20%;font-weight: normal;font-size: 14px;">Reason</label><span>
+                                <input type="text" ng-model="CTCReason" style="
+    border-radius: 4px; border: 1px solid #ddd; width: 100%;padding: 5px;box-sizing: border-box;" />
+                            </span>
+                        </li>
+                    </ul>
+                    <div style="display:block;float: left;width: 100%;padding:6px 0 9px 0;">
+                        <button class="btn btn-primary" ng-click="RaiseRequest(2)" style="float:right;">Raise Request</button>
+                    </div>
 
+                </div>
+            </div>
+
+
+
+        </div>
+
+        </div>
