@@ -67,9 +67,9 @@
 
         </div>
         <div class="right_block">
-            <div class="top_block"><button>Back to FAQ's</button></div>
+            <div class="top_block"><button><a href="http://pbsupportuat.policybazaar.com/faq.html">Back to FAQ's</a></button></div>
             <div class="form_container">
-                <div class="alert_message">
+                <div class="alert_message" ng-show="IsFAQ">
                     <span><em></em> Query not resolved?</span>
                     <p>Don't worry! We're going to  help you create a ticket for your problem & assign a relevant SPOC to handle your concern</p>
                 </div>
@@ -84,12 +84,12 @@
                             <li class="animated fadeIn input1">
                                 <label>Username</label>
 
-                                <input type="text" id="signin-EmployeeID" placeholder="First Name / Ecode" ng-model="EmployeeID" my-enter="Login()">
+                                <input type="text" id="signin-EmployeeID" placeholder="First Name / Ecode" autocomplete="new-password" ng-model="EmployeeID" my-enter="Login()">
                             </li>
                             <li class="animated fadeIn input2">
                                 <label>Password</label>
 
-                                <input type="password" id="signin-password" placeholder="Enter your password" ng-model="Password"
+                                <input type="password" id="signin-password" placeholder="Enter your password" autocomplete="new-password" ng-model="Password"
                                        my-enter="Login()">
                             </li>
                             <li class="animated fadeIn input3"><button ng-click="Login()">Sign In</button></li>

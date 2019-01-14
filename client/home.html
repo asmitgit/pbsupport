@@ -17,12 +17,13 @@
     <link rel="stylesheet" href="assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
     <link rel="stylesheet" href="assets/vendor/parsleyjs/css/parsley.css">
-
+        
+    
     <script src="Script/lib/js/angular.js"></script>
     <script src="script/lib/angular-ui.js"></script>
     <script src="Script/lib/js/angular-route.js"></script>
-    <script src="Script/lib/js/ui-bootstrap-custom-tpls-1.3.2.min.js"></script>
-
+    
+    
     <script src="app.js"></script>
     <script src="Script/config/config.js"></script>
     <script src="Script/module/module.js"></script>
@@ -33,20 +34,27 @@
     <script src="script/controller/mytickets.js"></script>
     <script src="script/controller/MyticketDetails.js"></script>
     <script src="script/controller/assignedTickets.js"></script>
-    <script src="script/controller/mgrDashboard.js"></script>
+    <!--<script src="script/controller/mgrDashboard.js"></script>-->
     <script src="script/controller/sidebar.js"></script>
-    <script src="script/controller/user-report.js"></script>
+    <!--<script src="script/controller/user-report.js"></script>-->
     <script src="script/controller/spanTickets.js"></script>
     <script src="script/controller/employee%20directory.js"></script>
-    <script src="script/controller/admin-user-report.js"></script>
+    <!--<script src="script/controller/admin-user-report.js"></script>-->
     <script src="script/controller/AllTickets.js"></script>
     <script src="script/controller/faq.js"></script>
     <script src="script/controller/AllUserReport.js"></script>
+    <script src="script/Directives/TableSorting.js"></script>
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="light/assets/css/inbox.css">
     <link rel="stylesheet" href="light/assets/css/main.css">
     <link rel="stylesheet" href="light/assets/css/styles.css">
     <link rel="stylesheet" href="light/assets/css/color_skins.css">
+    <script src="script/lib/js/jquery-1.11.2.min.js"></script>
+    <script src="Script/lib/js/ui-bootstrap-custom-tpls-1.3.2.min.js"></script>
+    <!--<script src="script/lib/jquery-datatable.js"></script>-->
+    <script src="script/lib/datatablescripts.bundle.js"></script>
+    <script src="Script/lib/angular-tablesort.js"></script>
+
 </head>
 
 <body class="theme-orange">
@@ -75,86 +83,101 @@
                 <div class="navbar-right">
 
 
-                    <div id="navbar-menu">
+                    <div id="navbar-menu" style="position:relative;">
                         <ul class="nav navbar-nav">
                             <!--<li>
-                        <a href="app-events.html" class="icon-menu d-none d-sm-block d-md-none d-lg-block"><i
-                                class="icon-calendar"></i></a>
-                    </li>
-
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown">
-                            <i class="icon-bell"></i>
-                            <span class="notification-dot"></span>
-                        </a>
-                        <ul class="dropdown-menu notifications animated shake">
-                            <li class="header"><strong>You have 4 new Notifications</strong></li>
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <i class="icon-info text-warning"></i>
-                                        </div>
-                                        <div class="media-body">
-                                            <p class="text">Campaign <strong>Holiday Sale</strong> is nearly
-                                                reach budget limit.</p>
-                                            <span class="timestamp">10:00 AM Today</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <i class="icon-like text-success"></i>
-                                        </div>
-                                        <div class="media-body">
-                                            <p class="text">Your New Campaign <strong>Holiday Sale</strong> is
-                                                approved.</p>
-                                            <span class="timestamp">11:30 AM Today</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <i class="icon-pie-chart text-info"></i>
-                                        </div>
-                                        <div class="media-body">
-                                            <p class="text">Website visits from Twitter is 27% higher than last
-                                                week.</p>
-                                            <span class="timestamp">04:00 PM Today</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <i class="icon-info text-danger"></i>
-                                        </div>
-                                        <div class="media-body">
-                                            <p class="text">Error on website analytics configurations</p>
-                                            <span class="timestamp">Yesterday</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="footer"><a href="javascript:void(0);" class="more">See all notifications</a></li>
-                        </ul>
-                    </li>-->
+            <a href="app-events.html" class="icon-menu d-none d-sm-block d-md-none d-lg-block"><i
+                    class="icon-calendar"></i></a>
+        </li>
 
 
+                <li>
+                    <a href="javascript:void(0);">
+                        <div class="media">
+                            <div class="media-left">
+                                <i class="icon-like text-success"></i>
+                            </div>
+                            <div class="media-body">
+                                <p class="text">Your New Campaign <strong>Holiday Sale</strong> is
+                                    approved.</p>
+                                <span class="timestamp">11:30 AM Today</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <div class="media">
+                            <div class="media-left">
+                                <i class="icon-pie-chart text-info"></i>
+                            </div>
+                            <div class="media-body">
+                                <p class="text">Website visits from Twitter is 27% higher than last
+                                    week.</p>
+                                <span class="timestamp">04:00 PM Today</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <div class="media">
+                            <div class="media-left">
+                                <i class="icon-info text-danger"></i>
+                            </div>
+                            <div class="media-body">
+                                <p class="text">Error on website analytics configurations</p>
+                                <span class="timestamp">Yesterday</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="footer"><a href="javascript:void(0);" class="more">See all notifications</a></li>
+            </ul>
+        </li>-->
+                            <li class="dropdown" style="position:relative;">
+                                <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown" style="border:none;">
+                                    <i class="fa fa-bell-o" aria-hidden="true"></i>
+                                                                  
+                                </a>
+                              
+                                <!--<ul class="dropdown-menu notifications animated shake">
+                                    <li class="header"><strong>You have 4 new Notifications</strong></li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <i class="icon-info text-warning"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <p class="text">
+                                                        Campaign <strong>Holiday Sale</strong> is nearly
+                                                        reach budget limit.
+                                                    </p>
+                                                    <span class="timestamp">10:00 AM Today</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    
+                                </ul>-->
+                                </li>
                             <li>
                                 <!--<a href="http://localhost:61750" class="icon-menu"><i class="icon-logout"></i></a>-->
                                 <a href="javascript:void(0);" class="icon-menu" ng-click="LogOut()" title="Logout">Logout</a>
                             </li>
-                        </ul>
-                    </div>
+                            </ul>
+                        <iframe src="{{NotificationURL}}" id="iframNot" style="    position: absolute;
+    right: 44px;
+    z-index: 9999999;
+    border: none;
+    height: 271px !important;
+    width: 305px;
+    overflow: hidden;
+    top: -8px;"></iframe>
+
+</div>
                 </div>
             </div>
         </nav>
@@ -253,6 +276,38 @@
     <script src="light/assets/bundles/mainscripts.bundle.js"></script>
    
     <script src="light/assets/js/pages/ui/dialogs.js"></script>
+
+    <script>
+
+        function OpenNotification(count) {
+            console.log('ínside OpenNotification case');
+            console.log(count);
+            if (count == 1) {
+                $('#iframNot').css('height', '271px');
+            }
+            else {
+                $('#iframNot').css('height', '271px');
+            }
+        }
+
+
+
+
+        window.addEventListener('message', handleMessage, false);
+
+        function handleMessage(event) {
+            console.log(event.data);
+            switch (event.data.msg) {
+                case "NewTicket":
+                    console.log('ínside newticket case');
+                    OpenNotification(event.data.paramters);
+                    //code to do something
+                    break;
+
+            }
+        }
+
+    </script>
 </body>
 
 </html>

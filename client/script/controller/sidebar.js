@@ -1,4 +1,4 @@
-HRSupport.controller("SideBarCTRL", function ($scope, HRSupportService, $rootScope, $uibModal, $routeParams, $window) {
+HRSupport.controller("SideBarCTRL", function ($scope, HRSupportService, $rootScope, $uibModal, $routeParams, $sce, $window) {
 
     //$cookies.userName = 'Sandeep';
     //$scope.platformCookie = $cookies.userName;
@@ -9,6 +9,7 @@ HRSupport.controller("SideBarCTRL", function ($scope, HRSupportService, $rootSco
 
    $scope.UserDetails = JSON.parse($window.localStorage.getItem('UserDetails'));
    
+
    var modalInstanceSameCtrl;
 
    $scope.cancel = function () {
@@ -126,9 +127,18 @@ HRSupport.controller("SideBarCTRL", function ($scope, HRSupportService, $rootSco
 });
 
 
-HRSupport.controller("HeaderCTRL", function ($scope, HRSupportService, $rootScope, $uibModal, $routeParams, $window) {
+HRSupport.controller("HeaderCTRL", function ($scope, HRSupportService, $rootScope, $uibModal, $routeParams, $sce, $window) {
 
     $scope.UserDetails = JSON.parse($window.localStorage.getItem('UserDetails'));
+
+
+    var _notURL = notURL;// "http://localhost:8080/home1?eid=@eid&role=@role&empid=@empid";
+    _notURL = _notURL.replace("@empid", $scope.UserDetails.EMPData[0].EmployeeID);
+    _notURL = _notURL.replace("@eid", $scope.UserDetails.EMPData[0].EmployeeID);
+    _notURL = _notURL.replace("@role", $scope.UserDetails.EMPData[0].RoleID);
+    $scope.NotificationURL = $sce.trustAsResourceUrl(_notURL);
+
+    //$scope.NotificationURL = $sce.trustAsResourceUrl("http://notification.policybazaar.com:8080/home1?eid=16315&role=agent&empid=BPW11002");
 
     var modalInstanceSameCtrl;
 

@@ -66,6 +66,10 @@
     };
     $scope.TicketReply = '';
     $scope.HRComments = '';
+    
+  
+
+
     $scope.GetTicketDetails = function () {
         var objRequest = {
             "TicketID": $scope.TicketID
@@ -74,6 +78,7 @@
             $scope.TicketDetails = data.data.length > 1 ? data.data[0] : [];
             $scope.Location = data.data.length > 2 ? data.data[2] : [];
             
+            $scope.IsSupport = $scope.TicketDetails[0].IsSupport;
 
             $scope.CommentList = [];
             $scope.TicketComments = data.data.length > 2 ? data.data[1] : [];
@@ -98,11 +103,11 @@
                 $scope.InActive = true;
             }
             else if ($scope.TicketDetails[0].StatusID == 5) {
-                $scope.StatusList.splice(5, 1);
-                $scope.StatusList.splice(0, 3);
+                $scope.StatusList.splice(4, 1);
+                $scope.StatusList.splice(0, 2);
             }
-            else {
-                $scope.StatusList.splice(4, 2);
+            {
+                $scope.StatusList.splice(3, 2);
             }
         });
     };
@@ -140,6 +145,7 @@
             "StatusID": $scope.Selected.Status.StatusID,
             "IssueID": $scope.Selected.IssueType.ISSUEID,
             "SubIssueID": $scope.Selected.SubIssueType.SUBISSUEID,
+            "IsSupport": $scope.IsSupport,
             //"FollowUp": $scope.isEmpty($scope.TicketDetails[0].FollowUp) ? '' : moment($scope.TicketDetails[0].FollowUp).format("YYYY-MM-YY")
             "FollowUp": $scope.isEmpty($scope.TicketDetails[0].FollowUp) ? '' : $scope.TicketDetails[0].FollowUp.getFullYear() + "-" + (getMonth($scope.TicketDetails[0].FollowUp)) + '-' + getDate($scope.TicketDetails[0].FollowUp)
         };
@@ -179,21 +185,86 @@
                     $scope.FileAttachments = [];
                     if (ReplyType == 2) {
                         $scope.TicketReply = '';
-                    }
-                    else {
-                        $scope.HRComments = '';
-                        $scope.GetTicketDetails();
-                        alert('Updated sussessfully');
-                    }
-                    if (ReplyType == 2) {
                         HRSupportService.UpdateTicketDetails(objStatusRequest, $scope.UserDetails.Toket).success(function (data) {
                             if (!data.error) {
                                 alert('Updated sussessfully');
                                 $scope.GetTicketDetails();
+                                if ($scope.TicketDetails[0].StatusID != $scope.Selected.Status.StatusID) {
+                                    var _objNoti = [{
+
+                                        "empid": $scope.TicketDetails[0].EmployeeID,
+                                        "uid": $scope.TicketDetails[0].EmployeeID,
+                                        "entID": $scope.TicketDetails[0].TicketDispID,
+                                        "url": "http://pbsupportuat.policybazaar.com/home.html#/pbsupport/MyTicketDetails/" + $scope.TicketDetails[0].TicketID,
+                                        "msg": "Status change : " + $scope.TicketDetails[0].TicketDispID,
+                                        "read": false,
+                                        "type": 1,
+                                        "CBy": "124",
+                                        "Source": "PBSUPPORT"
+                                    }]
+                                    HRSupportService.AddNotification(_objNoti).success(function (dataNoti) {
+
+                                    });
+                                }
 
                             }
                         });
                     }
+                    else {
+                        $scope.HRComments = '';
+                        
+                        if ($scope.IsSupport != $scope.TicketDetails[0].IsSupport) {
+
+                            HRSupportService.UpdateTicketDetails(objStatusRequest, $scope.UserDetails.Toket).success(function (data) {
+                                if (!data.error) {
+                                    alert('Updated sussessfully');
+                                    $scope.GetTicketDetails();
+                                    if ($scope.TicketDetails[0].IsSupport == 0 && $scope.IsSupport == 1) {
+                                        var _objNoti = [{
+
+                                            "empid": $scope.UserDetails.EMPData[0].EmployeeID,
+                                            "uid": $scope.UserDetails.EMPData[0].EmployeeID,
+                                            "entID": $scope.TicketDetails[0].TicketDispID,
+                                            "url": "http://pbsupportuat.policybazaar.com/home.html#/pbsupport/TicketDetails/" + $scope.TicketDetails[0].TicketID,
+                                            "msg": "Support required on " + $scope.TicketDetails[0].TicketDispID,
+                                            "read": false,
+                                            "type": 1,
+                                            "CBy": "124",
+                                            "Source": "PBSUPPORT"
+                                        }]
+                                        HRSupportService.AddNotification(_objNoti).success(function (dataNoti) {
+                                           
+                                        });
+                                    }
+                                    else if ($scope.TicketDetails[0].IsSupport == 1 && $scope.IsSupport == 2) {
+                                        var _objNoti = [{
+
+                                            "empid": $scope.TicketDetails[0].AssignToEmployeeID,
+                                            "uid": $scope.TicketDetails[0].AssignToEmployeeID,
+                                            "entID": $scope.TicketDetails[0].TicketDispID,
+                                            "url": "http://pbsupportuat.policybazaar.com/home.html#/pbsupport/TicketDetails/" + $scope.TicketDetails[0].TicketID,
+                                            "msg": "Support done on " + $scope.TicketDetails[0].TicketDispID,
+                                            "read": false,
+                                            "type": 1,
+                                            "CBy": "124",
+                                            "Source": "PBSUPPORT"
+                                        }]
+                                        HRSupportService.AddNotification(_objNoti).success(function (dataNoti) {
+
+                                        });
+                                    }
+
+                                }
+                            });
+                        }
+                        else {
+                            $scope.GetTicketDetails();
+                            alert('Updated sussessfully');
+                        }
+
+                   
+                    }
+                  
                 }
             });
         }
@@ -226,6 +297,8 @@
                 "StatusID": $scope.Selected.Status.StatusID,
                 "IssueID": $scope.Selected.IssueType.ISSUEID,
                 "SubIssueID": $scope.Selected.SubIssueType.SUBISSUEID,
+                "IsSupport":$scope.IsSupport,
+                
                 //"FollowUp": $scope.isEmpty($scope.TicketDetails[0].FollowUp) ? '' : moment($scope.TicketDetails[0].FollowUp).format("YYYY-MM-YY")
                 "FollowUp": $scope.isEmpty($scope.TicketDetails[0].FollowUp) ? '' : $scope.TicketDetails[0].FollowUp.getFullYear() + "-" + (getMonth($scope.TicketDetails[0].FollowUp)) + '-' + getDate($scope.TicketDetails[0].FollowUp)
             };

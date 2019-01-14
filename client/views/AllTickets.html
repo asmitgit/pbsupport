@@ -107,6 +107,7 @@
                                     <th>Ticket Id</th>
                                     <th>Emp ID</th>
                                     <th>Emp Name</th>
+                                    <th>AssignTo</th>
                                     <th>TAT</th>
                                     <th>Created On</th>
                                     <th>Issue</th>
@@ -123,6 +124,7 @@
                                     <td><a class="btn btn-link mybtn-link" href="home.html#/pbsupport/TicketDetails/{{data.TicketID}}">{{data.TicketDispID}}</a></td>
                                     <td>{{data.EmployeeID}}</td>
                                     <td>{{data.Name}}</td>
+                                    <td>{{data.AssignName}}({{data.AssignToEID}})</td>
                                     <td>{{data.TATDate | date:"dd-MM-yyyy  h:mma"}}</td>
                                     <td>{{data.CreatedON | date:"dd-MM-yyyy  h:mma"}}</td>
                                     <td>{{data.ISSUENAME}}</td>

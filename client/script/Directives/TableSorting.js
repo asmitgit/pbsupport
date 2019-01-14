@@ -1,4 +1,4 @@
-﻿TicketSystem.provider('tableSortConfig', function () {
+﻿HRSupport.provider('tableSortConfig', function () {
     this.filterTemplate = '';                          //No filtering by default unless a template is provided
     this.filterFunction = undefined;                   //Empty by default - use the built in filter function when left blank
     this.paginationTemplate = '';                      //No pagination by default unless a template is provided
@@ -27,7 +27,7 @@
 
 
 
-TicketSystem.provider('tableSortConfig', function () {
+HRSupport.provider('tableSortConfig', function () {
     this.filterTemplate = '';                          //No filtering by default unless a template is provided
     this.filterFunction = undefined;                   //Empty by default - use the built in filter function when left blank
     this.paginationTemplate = '';                      //No pagination by default unless a template is provided
@@ -54,7 +54,7 @@ TicketSystem.provider('tableSortConfig', function () {
 
 });
 
-TicketSystem.directive('tsWrapper', ['$parse', '$compile', function ($parse, $compile) {
+HRSupport.directive('tsWrapper', ['$parse', '$compile', function ($parse, $compile) {
     'use strict';
 
     function replaceTemplateTokens($scope, templateString) {
@@ -470,7 +470,7 @@ TicketSystem.directive('tsWrapper', ['$parse', '$compile', function ($parse, $co
     };
 }]);
 
-TicketSystem.directive('tsCriteria', function () {
+HRSupport.directive('tsCriteria', function () {
     return {
         require: "^tsWrapper",
         scope: {
@@ -511,7 +511,7 @@ TicketSystem.directive('tsCriteria', function () {
     };
 });
 
-TicketSystem.directive('tsRepeat', ['$compile', '$interpolate', function ($compile, $interpolate) {
+HRSupport.directive('tsRepeat', ['$compile', '$interpolate', function ($compile, $interpolate) {
     return {
         terminal: true,
         multiElement: true,
@@ -572,14 +572,14 @@ TicketSystem.directive('tsRepeat', ['$compile', '$interpolate', function ($compi
     };
 }]);
 
-TicketSystem.filter('tablesortLimit', function () {
+HRSupport.filter('tablesortLimit', function () {
     return function (array, limitFun) {
         if (!array) return;
         return limitFun(array);
     };
 });
 
-TicketSystem.filter('tablesortOrderBy', function () {
+HRSupport.filter('tablesortOrderBy', function () {
     return function (array, sortfun) {
         if (!array) return;
         var arrayCopy = array.concat();
@@ -587,19 +587,19 @@ TicketSystem.filter('tablesortOrderBy', function () {
     };
 });
 
-TicketSystem.filter('parseInt', function () {
+HRSupport.filter('parseInt', function () {
     return function (input) {
         return parseInt(input) || null;
     };
 });
 
-TicketSystem.filter('parseFloat', function () {
+HRSupport.filter('parseFloat', function () {
     return function (input) {
         return parseFloat(input) || null;
     };
 });
 
-TicketSystem.filter('parseDate', function () {
+HRSupport.filter('parseDate', function () {
     return function (input) {
         var timestamp = Date.parse(input);
         return isNaN(timestamp) ? null : timestamp;

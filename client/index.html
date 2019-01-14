@@ -57,7 +57,7 @@
                         <span>
                             <select ng-model="Selected.IssueType"
                                     ng-options="data.ISSUENAME for data in IssueSubIssue
-                                    |  unique: 'ISSUEID' | orderBy:['SUBISSUENAME'] track by data.ISSUEID ">
+                                   | filter : {IsVisible:1}:true |  unique: 'ISSUEID' | orderBy:['SUBISSUENAME'] track by data.ISSUEID ">
                                 <option value="">Select Issue</option>
                             </select>
                             <select ng-model="Selected.SubIssueType"
@@ -68,10 +68,10 @@
                         </span>
 
                         <button><!--<img src="landing-page/images/landing_search.png" alt="Search" onclick="SearchKeywork();">--> <i class="fa fa-search" aria-hidden="true" alt="Search" ng-click="search()"></i></button>
-                        <p class="search_subtxt">Didn't find what you were looking for? Please <a href="http://pbsupportuat.policybazaar.com/light/login.html">click here</a> to Log in and raise a ticket.</p>
+                        <p class="search_subtxt">Didn't find what you were looking for? Please <a href="/login.html">click here</a> to Log in and raise a ticket.</p>
                      </div>
                    
-                    <a href="http://pbsupportuat.policybazaar.com/login.html" class="login_btn1">Login</a>
+                    <a href="/login.html" class="login_btn1">Login</a>
 
                 </div>
             </div>

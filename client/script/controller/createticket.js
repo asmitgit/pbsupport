@@ -111,6 +111,23 @@ HRSupport.controller("CreateTicketCTRL", function ($scope, HRSupportService, $ro
                                 "CommunicationType": 1
                             }
                         };
+                        
+                            var _objNoti = [{
+
+                                "empid": data.data[0][0].AssignToCode,
+                                "uid": data.data[0][0].AssignToCode,
+                                "entID": data.data[0][0].TicketDispID,
+                                "url": "http://pbsupportuat.policybazaar.com/home.html#/pbsupport/TicketDetails/" + data.data[0][0].TicketID,
+                                "msg": "New ticket : " + data.data[0][0].TicketDispID,
+                                "read": false,
+                                "type": 1,
+                                "CBy": "124",
+                                "Source": "PBSUPPORT"
+                            }]
+                            HRSupportService.AddNotification(_objNoti).success(function (dataNoti) {
+
+                            });
+                       
                         HRSupportService.SendEmail(_EmailRequest).success(function (data) {
 
                         });

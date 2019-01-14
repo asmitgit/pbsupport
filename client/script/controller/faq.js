@@ -16,6 +16,11 @@ HRSupport.controller("FAQCtrl", function ($scope, HRSupportService, $rootScope,$
     $scope.Cancel = function (data) {
         $scope.IsNo = 0;        
     };
+
+    $scope.NoClick = function (data) {
+        data.IsNo = true;
+    };
+
     $scope.Login = function () {
         var objLogin = { "username": $scope.LoginData.EmployeeID, "password": $scope.LoginData.Password };
         HRSupportService.login(objLogin).success(function (data) {

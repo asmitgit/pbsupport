@@ -418,10 +418,10 @@ ul.ui-form li.inline-field input[type="text"] { border-radius: 4px; border: 1px 
     font-size: 13px;}
 
 .navbar-nav .icon-menu > i{    font-size: 20px;
-    color: #fff;
+    /*color: #fff;*/
     vertical-align: middle;
     position: absolute;
-    top: 5px;
+    top:-5px;
     right:10px;}
 
 .upload_box span.attachment_files{    border: 1px solid #ddd;    vertical-align: top;

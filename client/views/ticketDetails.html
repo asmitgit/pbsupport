@@ -115,7 +115,7 @@
                         <div class="body ticket_detailbox">
                             <ul class="nav nav-tabs">
                                 <li class="nav-item"><a class="nav-link active show" data-toggle="tab" ng-click="ChangeActive(1)">Ticket Detail</a></li>
-                                <li class="nav-item"><a class="nav-link" data-toggle="tab" ng-click="ChangeActive(2)">Internal Comment</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" ng-click="ChangeActive(2)">Internal Comment {{TicketDetails[0].IsSupport==1? '*':''}}</a></li>
                                 <li class="nav-item"><a class="nav-link" data-toggle="tab" ng-click="ChangeActive(3)">Log Details</a></li>
                             </ul>
                             <div class="tab-content table_databox">
@@ -174,13 +174,13 @@
                                                                             <textarea ng-model="TicketReply" cols="85" rows="10" ng-disabled="InActive"></textarea>
                                                                             <div class="m-t-30 compose_action_button">
                                                                                 <div style="display:block; width:100%; padding:0 0 10px 0;">
-                                                                                    <select class="form-control" ng-model="Selected.Status"
+                                                                                    <select class="form-control" ng-model="Selected.Status" ng-disabled="InActive"
                                                                                             ng-options="data.StatusName for data in StatusList
                                     |  unique: 'StatusID' | orderBy:['Sequence'] track by data.StatusID " style="display:inline-block; width:auto; margin:0 5px 0 0;">
                                                                                         <option value="">Select Status</option>
                                                                                     </select>
 
-                                                                                    <input type="text" class="form-control cal" uib-datepicker-popup="{{format}}"
+                                                                                    <input type="text" class="form-control cal" uib-datepicker-popup="{{format}}" ng-disabled="InActive"
                                                                                            ng-model="TicketDetails[0].FollowUp" is-open="popup1.opened"
                                                                                            datepicker-options="dateOptions" ng-click="open1()"
                                                                                            ng-required="true" close-text="Close" alt-input-formats="altInputFormats" style="display:inline-block; width:auto;" />
@@ -188,14 +188,14 @@
                                                                                 </div>
 
                                                                                 <div class="upload_box ng-scope">
-                                                                                    <input type="file" name="file-3[]" id="file-3" class="inputfile inputfile-3" onchange="angular.element(this).scope().file_changed(this)" accept="file_extension|.jpg,.pdf,.xlsx" multiple="">
+                                                                                    <input type="file" name="file-3[]" id="file-3" class="inputfile inputfile-3" ng-disabled="InActive" onchange="angular.element(this).scope().file_changed(this)" accept="file_extension|.jpg,.pdf,.xlsx" multiple="">
                                                                                     <label for="file-3" class="upload_docs" style="display:inline;">
                                                                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
                                                                                         <!--<span>Choose a file&hellip;</span>-->
                                                                                     </label>
                                                                                     <span ng-repeat="data in FileAttachments" class="attachment_files">{{data.FileName}} <em class="close_btn" ng-click="DeleteRow($index,1)">X</em></span>
                                                                                 </div>
-                                                                                <button type="button" class="btn btn-success" ng-click="UpdateTicketRemarks(2)" ng-disabled="InActive" style="vertical-align:top; margin:0 0 0 10px;">Post</button>
+                                                                                <button type="button" class="btn btn-success" ng-disabled="InActive" ng-click="UpdateTicketRemarks(2)" ng-disabled="InActive" style="vertical-align:top; margin:0 0 0 10px;">Post</button>
                                                                                 
                                                                             </div>
                                                                         </div>
@@ -215,8 +215,15 @@
 
                                     <p>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" ng-model="HRComments"></input>
-                                            <button type="button" class="btn btn-success comment_submit" ng-click="UpdateTicketRemarks(3)">Submit</button>
+                                            <textarea ng-model="HRComments" cols="85" rows="10"></textarea>
+
+                                            <div class="upload_box ng-scope">
+                                                Support Required:
+                                                <label class="fancy-radio custom-color-green"><input name="IsSupport" value="0" type="radio" ng-model="IsSupport"><span><i></i>No</span></label>
+                                                <label class="fancy-radio custom-color-green"><input name="IsSupport" value="1" type="radio" ng-model="IsSupport"><span><i></i>Yes</span></label>
+                                                <label class="fancy-radio custom-color-green"><input name="IsSupport" value="2" type="radio" ng-model="IsSupport"><span><i></i>Done</span></label>
+                                            </div>
+                                            <button type="button" class="btn btn-success comment_submit" ng-click="UpdateTicketRemarks(3)" style="vertical-align:top; margin:0 0 0 10px;">Submit</button>
                                         </div>
 
                                         <div class="media">
@@ -280,7 +287,7 @@
 
 
 
-
+    
 
 
         </div>

@@ -22,7 +22,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    $window.location.href = '/light/login.html';
+                    $window.location.href = '/login.html';
                 }
             });
         return request;
@@ -43,7 +43,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    $window.location.href = '/light/login.html';
+                    $window.location.href = '/login.html';
                 }
             });
         return request;
@@ -64,7 +64,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    $window.location.href = '/light/login.html';
+                    $window.location.href = '/login.html';
                 }
             });
         return request;
@@ -85,11 +85,34 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    $window.location.href = '/light/login.html';
+                    $window.location.href = '/login.html';
                 }
             });
         return request;
     }
+
+    this.AddNotification = function (objReq) {
+
+        var request = $http({
+            method: "POST",
+            url: addnotification,
+            headers: {
+                'Content-Type': "application/json; charset=utf-8"
+            },
+            data: JSON.stringify(objReq)
+        }).success(function (data) {
+            var test = data;
+            //debugger;
+            console.log(data);
+        })
+            .error(function (error, status) {
+                if (status == 401) {
+                    $window.location.href = '/login.html';
+                }
+            });
+        return request;
+    }
+
     this.login = function (objlogin) {
         
         var request = $http({
@@ -104,7 +127,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    $window.location.href = '/light/login.html';
+                    $window.location.href = '/login.html';
                 }
             });
         return request;
@@ -125,7 +148,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    $window.location.href = '/light/login.html';
+                    $window.location.href = '/login.html';
                 }
             });
         return request;
@@ -145,7 +168,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    $window.location.href = '/light/login.html';
+                    $window.location.href = '/login.html';
                 }
             });
         return request;
@@ -166,7 +189,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    $window.location.href = '/light/login.html';
+                    $window.location.href = '/login.html';
                 }
             });
         return request;
@@ -188,7 +211,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    $window.location.href = '/light/login.html';
+                    $window.location.href = '/login.html';
                 }
             });
         return request;
@@ -210,7 +233,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    $window.location.href = '/light/login.html';
+                    $window.location.href = '/login.html';
                 }
             });
         return request;
@@ -230,7 +253,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
         .error(function (error, status) {
                 if (status == 401) {
-                    $window.location.href = '/light/login.html';
+                    $window.location.href = '/login.html';
                 }
         });
         return request;
@@ -251,7 +274,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
         .error(function (error, status) {
             if (status == 401) {
-                $window.location.href = '/light/login.html';
+                $window.location.href = '/login.html';
             }
         });
         return request;
@@ -271,7 +294,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
         .error(function (error, status) {
             if (status == 401) {
-                $window.location.href = '/light/login.html';
+                $window.location.href = '/login.html';
             }
         });
         return request;
@@ -292,7 +315,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
         .error(function (error, status) {
             if (status == 401) {
-                $window.location.href = '/light/login.html';
+                $window.location.href = '/login.html';
             }
         });
         return request;
@@ -313,7 +336,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
         .error(function (error, status) {
             if (status == 401) {
-                $window.location.href = '/light/login.html';
+                $window.location.href = '/login.html';
             }
         });
         return request;
@@ -334,7 +357,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
         .error(function (error, status) {
             if (status == 401) {
-                $window.location.href = '/light/login.html';
+                $window.location.href = '/login.html';
             }
         });
         return request;
@@ -355,7 +378,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
         .error(function (error, status) {
             if (status == 401) {
-                $window.location.href = '/light/login.html';
+                $window.location.href = '/login.html';
             }
         });
         return request;
@@ -376,7 +399,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
         .error(function (error, status) {
             if (status == 401) {
-                $window.location.href = '/light/login.html';
+                $window.location.href = '/login.html';
             }
         });
         return request;
@@ -397,7 +420,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
         .error(function (error, status) {
             if (status == 401) {
-                $window.location.href = '/light/login.html';
+                $window.location.href = '/login.html';
             }
         });
         return request;
@@ -419,7 +442,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
         .error(function (error, status) {
             if (status == 401) {
-                $window.location.href = '/light/login.html';
+                $window.location.href = '/login.html';
             }
         });
         return request;
@@ -440,7 +463,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
         .error(function (error, status) {
             if (status == 401) {
-                $window.location.href = '/light/login.html';
+                $window.location.href = '/login.html';
             }
         });
         return request;
@@ -461,7 +484,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
         .error(function (error, status) {
             if (status == 401) {
-                $window.location.href = '/light/login.html';
+                $window.location.href = '/login.html';
             }
         });
         return request;
@@ -481,7 +504,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
         .error(function (error, status) {
             if (status == 401) {
-                $window.location.href = '/light/login.html';
+                $window.location.href = '/login.html';
             }
         });
         return request;
@@ -502,7 +525,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
         .error(function (error, status) {
             if (status == 401) {
-                $window.location.href = '/light/login.html';
+                $window.location.href = '/login.html';
             }
         });
         return request;
@@ -523,7 +546,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    $window.location.href = '/light/login.html';
+                    $window.location.href = '/login.html';
                 }
             });
         return request;
@@ -543,7 +566,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         })
             .error(function (error, status) {
                 if (status == 401) {
-                    $window.location.href = '/light/login.html';
+                    $window.location.href = '/login.html';
                 }
             });
         return request;

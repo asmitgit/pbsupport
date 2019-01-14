@@ -26,6 +26,12 @@ HRSupport.controller("LoginCTRL", function ($scope, HRSupportService, $rootScope
     $scope.isEmpty = function (str) {
         return typeof str == 'string' && !str.trim() || typeof str == 'undefined' || str === null;
     };
+
+    $scope.IsFAQ = false;
+
+    if (getParameterByName("issue") != '') {
+        $scope.IsFAQ = true;
+    }
     $scope.Login = function () {
         if ($scope.isEmpty($scope.EmployeeID) || $scope.isEmpty($scope.EmployeeID)) {
             alert('User name & password could not be blank');

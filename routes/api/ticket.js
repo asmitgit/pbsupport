@@ -254,9 +254,11 @@ router.post('/UpdateTicketDetails', (req, res) => {
         let _StatusID = req.body.StatusID;
         let _IssueID = req.body.IssueID;
         let _SubIssueID = req.body.SubIssueID;
-        let _FollowUp = req.body.FollowUp;
+        let _FollowUp = req.body.FollowUp==''? '2001-01-07': req.body.FollowUp;
+        let _IsSupport = req.body.IsSupport;
         
-        mc.query('CALL sp_UpdateTicketDetails(?,?,?,?,?,?)', [_TicketID,_CreatedBy,_StatusID,_IssueID,_SubIssueID,_FollowUp], function (error, results, fields) {
+        mc.query('CALL sp_UpdateTicketDetails(?,?,?,?,?,?,?)',
+         [_TicketID,_CreatedBy,_StatusID,_IssueID,_SubIssueID,_FollowUp,_IsSupport], function (error, results, fields) {
             console.log(results);
             if (error) 
             {

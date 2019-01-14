@@ -53,7 +53,7 @@
                       </a>
                   </div>
                </div>
-                <a href="http://pbsupportuat.policybazaar.com//light/login.html" class="login_btn">Login</a>
+                <a href="http://pbsupportuat.policybazaar.com/login.html" class="login_btn">Login</a>
                
             </div>
          </div>
@@ -62,11 +62,11 @@
          <div class="container">
        
          <div class="card">
-             <!-- Modal -->
+             <!--
              <div class="modal fade in show" id="myModal" role="dialog" style="display: block; padding-right: 17px; transition: opacity .15s linear; background-color: rgba(0,0,0,0.4);" ng-if="IsNo==1">
                  <div class="modal-dialog">
 
-                     <!-- Modal content-->
+                   
                      <div class="modal-content">
                          <div class="modal-header">
                              <button type="button" class="close" data-dismiss="modal" ng-click="Cancel()">&times;</button>
@@ -93,7 +93,7 @@
                      </div>
 
                  </div>
-             </div> 
+             </div>--> 
             <div class="headers">
                <h2>FAQ</h2>
                <form id="navbar-search" class="navbar-form search-form">
@@ -157,9 +157,10 @@
                                                     <div class="accordion_txt">
                                                         {{data.ANSWER}}
                                                         <div class="faq_reply">
-                                                            <p>Was this answer helpful?</p>
-                                                            <button class="btn yes">Yes</button>
-                                                            <a class="btn no_btn" href="light/login.html?issue={{data.IssueID}}&subissue={{data.SubIssueID}}" >No</a>
+                                                            <p ng-show="(data.IsNo)">Thanks for your confirmation.</p>
+                                                            <p ng-show="!(data.IsNo)">Was this answer helpful?</p>
+                                                            <button class="btn yes" ng-click="NoClick(data)" ng-show="!(data.IsNo)">Yes</button>
+                                                            <a ng-show="!(data.IsNo)" class="btn no_btn" href="/login.html?issue={{data.IssueID}}&subissue={{data.SubIssueID}}">No</a>
                                                             <!--<a class="btn no_btn" href="light/login.html?issue={{data.IssueID}}&subissue={{data.SubIssueID}}" ng-click="OpenLogin(data)">No</a>-->
                                                             <!--<a class="btn no" href="light/login.html?issue={{data.IssueID}}&subissue={{data.SubIssueID}}">No</a>-->
                                                         </div>

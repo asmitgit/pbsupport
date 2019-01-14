@@ -144,7 +144,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-12">
                             <div class="m-t-15 advance_search_btn">
                                 <button class="btn btn-primary" ng-click="GetAllTicketList(8)">Search</button>
-                                <button class="btn btn-outline-secondary">Cancel</button>
+                                <!--<button class="btn btn-outline-secondary">Cancel</button>-->
                             </div>
                         </div>
                     </div>
@@ -158,12 +158,13 @@
 
                 <div class="body">
                     <div class="table-responsive">
-                        <table class="table table-hover js-basic-example dataTable table-custom" ng-show="TicketList.length>0">
+                        <table class="table table-hover table-striped" ng-show="TicketList.length>0" ts-wrapper>
                             <thead class="thead-dark">
-                                <tr>
-                                    <th>Ticket Id</th>
+                                <tr class="sortable">
+                                    <th ts-criteria="TicketID|parseFloat">Ticket Id</th>
                                     <th>Emp ID</th>
                                     <th>Emp Name</th>
+                                    <th>AssignTo</th>
                                     <th>TAT</th>
                                     <th>Created On</th>
                                     <th>Issue</th>
@@ -180,6 +181,7 @@
                                     <td><a class="btn btn-link mybtn-link" href="home.html#/pbsupport/TicketDetails/{{data.TicketID}}">{{data.TicketDispID}}</a></td>
                                     <td>{{data.EmployeeID}}</td>
                                     <td>{{data.Name}}</td>
+                                    <td>{{data.AssignName}}({{data.AssignToEID}})</td>
                                     <td>{{data.TATDate | date:"dd-MM-yyyy  h:mma"}}</td>
                                     <td>{{data.CreatedON | date:"dd-MM-yyyy  h:mma"}}</td>
                                     <td>{{data.ISSUENAME}}</td>
