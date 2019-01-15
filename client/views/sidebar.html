@@ -4,7 +4,8 @@
             <img src="assets/images/user.png" class="rounded-circle user-photo" alt="User Profile Picture">
             <div class="dropdown">
                 <span>Welcome,</span>
-                <a href="javascript:void(0);" class="user-name" data-toggle="dropdown"><strong>{{UserDetails.EMPData[0].Name}}</strong></a>
+                <strong class="agent_name">{{UserDetails.EMPData[0].Name}}</strong>
+                <!--<a href="javascript:void(0);" class="user-name" data-toggle="dropdown"><strong>{{UserDetails.EMPData[0].Name}}</strong></a>-->
                 <!--<ul class="dropdown-menu dropdown-menu-right account animated flipInY">-->
                     <!--<li><a href="page-profile2.html"><i class="icon-user"></i>My Profile</a></li>
                     <li><a href="app-inbox.html"><i class="icon-envelope-open"></i>Messages</a></li>
@@ -34,7 +35,7 @@
                     <ul class="main-menu metismenu">
                         <li><a href="/home.html#/pbsupport/CreateTicket"><i class="fa fa-plus-circle" aria-hidden="true"></i><span>Create Ticket</span></a></li>
                         <li><a href="/home.html#/pbsupport/MyTickets"><i class="fa fa-ticket" aria-hidden="true"></i>My Tickets</a></li>
-                        <li ng-if="('2,3,5').indexOf(UserDetails.EMPData[0].RoleID)>-1"><a href="/home.html#/pbsupport/FAQ"><i class="fa fa-question-circle" aria-hidden="true"></i>FAQ</a></li>
+                        <li ><a href="/home.html#/pbsupport/FAQ"><i class="fa fa-question-circle" aria-hidden="true"></i>FAQ</a></li>
                     </ul>
                 </nav>
             </div>

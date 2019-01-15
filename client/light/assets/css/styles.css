@@ -137,7 +137,7 @@ ul.emp_data li span{       display: table-cell; padding: 0 0 0 6px; margin: 0; w
 .card_header > h2{font-size: 16px; padding: 0 10px; margin: 0;}
 
 .logo_block img{width:auto !important;}
-.advance_search_btn{    margin-top: 28px;    text-align: center;}
+.advance_search_btn{    margin-top: 20px;    text-align: center;}
 .advance_search_btn > button:first-child{margin-right:4px;}
 .advance_search_btn > button{width:100px;}
 .card .body.ticket_detailbox{padding-left: 10px; padding-right: 10px;}
@@ -743,7 +743,7 @@ ul.accord_tabs li.active {
 .table td{border-bottom:1px solid #ddd !important;}
 
 
-.card_header.action_button{background:#052F5F !important;color: #fff;text-transform: capitalize;cursor: pointer;}
+.card_header.action_button{background:#052F5F !important;color: #fff;text-transform: capitalize;}
 .card_header.action_button h2> i{float:right;}
 .inner_table{padding:0; margin:0;}
 .inner_table > .table .thead-dark th{     background: #a0a0a0 !important; font-weight: normal;  margin: 0 !important;  border: 0 !important;     border-right: 1px solid #fff !important;}
@@ -751,3 +751,5 @@ ul.accord_tabs li.active {
 .assign_hd{ font-size: 16px;
     color: #40a8fe;
     padding: 0 13px 0 0;}
+
+.agent_name{display:block;}

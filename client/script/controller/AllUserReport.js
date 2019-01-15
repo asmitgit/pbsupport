@@ -63,11 +63,12 @@
         });
     };
 
-    $scope.GetAllUserReportData = function (_data, _Type, _value) {
+    $scope.GetAllUserReportData = function (_data, _Type, _value, _IsOwn) {
         if (_value > 0) {
             var objRequest = {
                 "EmpID": _data.EmployeeID,
-                "Type": _Type
+                "Type": _Type,
+                "IsOwn": _IsOwn
             };
             HRSupportService.GetAllUserReportData(objRequest, $scope.UserDetails.Toket).success(function (ReportData) {
                 if (ReportData.data != null) {

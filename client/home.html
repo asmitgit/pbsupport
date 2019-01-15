@@ -136,10 +136,10 @@
             </ul>
         </li>-->
                             <li class="dropdown" style="position:relative;">
-                                <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown" style="border:none;">
+                                <!--<a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown" style="border:none;">
                                     <i class="fa fa-bell-o" aria-hidden="true"></i>
                                                                   
-                                </a>
+                                </a>-->
                               
                                 <!--<ul class="dropdown-menu notifications animated shake">
                                     <li class="header"><strong>You have 4 new Notifications</strong></li>
@@ -168,7 +168,7 @@
                                 <a href="javascript:void(0);" class="icon-menu" ng-click="LogOut()" title="Logout">Logout</a>
                             </li>
                             </ul>
-                        <iframe src="{{NotificationURL}}" id="iframNot" style="    position: absolute;
+                        <iframe src="{{NotificationURL}}" id="iframNot" scrolling="no" style="    position: absolute;
     right: 44px;
     z-index: 9999999;
     border: none;
@@ -286,12 +286,14 @@
                 $('#iframNot').css('height', '271px');
             }
             else {
-                $('#iframNot').css('height', '271px');
+                $('#iframNot').css('height', '35px');
             }
         }
 
 
-
+        $(document).ready(function () {
+            $('#iframNot').css('height', '35px');
+        });
 
         window.addEventListener('message', handleMessage, false);
 

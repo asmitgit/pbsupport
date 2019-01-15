@@ -287,6 +287,7 @@ p {
     vertical-align: middle;
     margin-right: 5px;
     padding: 8px;
+    background:#fff;
     /*-webkit-appearance: none;
     background: url(../images/down_arrow.png) no-repeat 188px 15px;*/
 }
@@ -296,7 +297,7 @@ p {
     border: none;
     padding: 8px;
     border-radius: 5px;
-    vertical-align: middle;/*background-position-x:197px;*/ width:215px;}
+    vertical-align: middle;/*background-position-x:197px;*/ width:215px;  background:#fff;}
 	
 .search_subtxt{font-size: 11px !important; color: #fff;  position: absolute;  right: 32px; top: 49px;}
 .search_subtxt a{color: #5cfdff !important;  font-weight: bold;  cursor: pointer;}

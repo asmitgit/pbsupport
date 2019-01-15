@@ -352,9 +352,10 @@ router.post('/GetAllUserReportData', (req, res) => {
     try{
         
         let _EmpID = req.body.EmpID;   
-        let _Type = req.body.Type; 
+        let _Type = req.body.Type;
+        let _IsOwn = req.body.IsOwn; 
         
-        mc.query('CALL sp_GetAllUserReportData(?,?)', [_EmpID,_Type], function (error, results, fields) {
+        mc.query('CALL sp_GetAllUserReportData(?,?,?)', [_EmpID,_Type,_IsOwn], function (error, results, fields) {
             console.log(results);   
             if (error) 
             {

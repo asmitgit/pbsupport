@@ -66,6 +66,23 @@
                 $scope.FileAttachments = data
                 objRequest.FileURL = $scope.FileAttachments[0].AttachmentURL;
                 objRequest.FileName = $scope.FileAttachments[0].FileName;
+                if ($scope.TicketDetails[0].StatusID == 4) {
+                    var _objNoti = [{
+
+                        "empid": $scope.TicketDetails[0].AssignToEmployeeID,
+                        "uid": $scope.TicketDetails[0].AssignToEmployeeID,
+                        "entID": $scope.TicketDetails[0].TicketDispID,
+                        "url": "http://pbsupportuat.policybazaar.com/home.html#/pbsupport/TicketDetails/" + $scope.TicketDetails[0].TicketID,
+                        "msg": "Ticket reopen : " + $scope.TicketDetails[0].TicketDispID,
+                        "read": false,
+                        "type": 1,
+                        "CBy": "124",
+                        "Source": "PBSUPPORT"
+                    }]
+                    HRSupportService.AddNotification(_objNoti).success(function (dataNoti) {
+
+                    });
+                }
                 HRSupportService.UpdateTicketRemarks(objRequest, $scope.UserDetails.Toket).success(function (data) {
                     if (!data.error) {
                         alert('Updated sussessfully');
@@ -73,11 +90,29 @@
                         $scope.GetTicketDetails();
                         $scope.TicketReply = '';
 
+
                     }
                 });
             });
         }
         else {
+            if ($scope.TicketDetails[0].StatusID == 4) {
+                var _objNoti = [{
+
+                    "empid": $scope.TicketDetails[0].AssignToEmployeeID,
+                    "uid": $scope.TicketDetails[0].AssignToEmployeeID,
+                    "entID": $scope.TicketDetails[0].TicketDispID,
+                    "url": "http://pbsupportuat.policybazaar.com/home.html#/pbsupport/TicketDetails/" + $scope.TicketDetails[0].TicketID,
+                    "msg": "Ticket reopen : " + $scope.TicketDetails[0].TicketDispID,
+                    "read": false,
+                    "type": 1,
+                    "CBy": "124",
+                    "Source": "PBSUPPORT"
+                }]
+                HRSupportService.AddNotification(_objNoti).success(function (dataNoti) {
+
+                });
+            }
             HRSupportService.UpdateTicketRemarks(objRequest, $scope.UserDetails.Toket).success(function (data) {
                 if (!data.error) {
                     alert('Updated sussessfully');
