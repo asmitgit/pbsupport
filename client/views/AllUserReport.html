@@ -34,7 +34,7 @@
                                     </tr>
                                 </thead>
 
-                                <tbody ng-repeat="dataResponse in Report  | orderBy : data.OriginalSNO ">
+                                <tbody ng-repeat="dataResponse in Report  | orderBy : data.OriginalSNO false">
                                     <tr>
                                         <td>{{dataResponse.SNO}}</td>
                                         <td><a href="javascript:void(0)" ng-click="GetAllUserReportByID(dataResponse,$index)" ng-show="dataResponse.HasChild=='Yes' && dataResponse.IsClicked=='0'">+{{dataResponse.Name}}({{dataResponse.EmployeeID}})</a> <span ng-show="dataResponse.HasChild=='No' || dataResponse.IsClicked=='1'">{{dataResponse.Name}}({{dataResponse.EmployeeID}})</span> </td>
