@@ -18,7 +18,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (dataGetFAQ) {
             var test=dataGetFAQ;
             //debugger;
-            console.log(dataGetFAQ);
+            //console.log(dataGetFAQ);
         })
             .error(function (error, status) {
                 if (status == 401) {
@@ -39,7 +39,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (data) {
             var test = data;
             //debugger;
-            console.log(data);
+            //console.log(data);
         })
             .error(function (error, status) {
                 if (status == 401) {
@@ -60,7 +60,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (data) {
             var test = data;
             //debugger;
-            console.log(data);
+            //console.log(data);
         })
             .error(function (error, status) {
                 if (status == 401) {
@@ -81,7 +81,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (data) {
             var test = data;
             //debugger;
-            console.log(data);
+            //console.log(data);
         })
             .error(function (error, status) {
                 if (status == 401) {
@@ -103,7 +103,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (data) {
             var test = data;
             //debugger;
-            console.log(data);
+            //console.log(data);
         })
             .error(function (error, status) {
                 if (status == 401) {
@@ -144,7 +144,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (dataGetFAQ) {
             var test = dataGetFAQ;
             //debugger;
-            console.log(dataGetFAQ);
+            //console.log(dataGetFAQ);
         })
             .error(function (error, status) {
                 if (status == 401) {
@@ -164,7 +164,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (dataGetFAQ) {
             var test = dataGetFAQ;
             //debugger;
-            console.log(dataGetFAQ);
+            //console.log(dataGetFAQ);
         })
             .error(function (error, status) {
                 if (status == 401) {
@@ -185,7 +185,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (dataGetFAQ) {
             var test = dataGetFAQ;
             //debugger;
-            console.log(dataGetFAQ);
+            //console.log(dataGetFAQ);
         })
             .error(function (error, status) {
                 if (status == 401) {
@@ -207,7 +207,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (data) {
             var test = data;
             //debugger;
-            console.log(data);
+            //console.log(data);
         })
             .error(function (error, status) {
                 if (status == 401) {
@@ -229,7 +229,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (data) {
             var test = data;
             //debugger;
-            console.log(data);
+            //console.log(data);
         })
             .error(function (error, status) {
                 if (status == 401) {
@@ -249,7 +249,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (data) {
             var test = data;
             //debugger;
-            console.log(data);
+            //console.log(data);
         })
         .error(function (error, status) {
                 if (status == 401) {
@@ -270,7 +270,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (data) {
             var test = data;
             //debugger;
-            console.log(data);
+            //console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
@@ -290,7 +290,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (data) {
             var test = data;
             //debugger;
-            console.log(data);
+            //console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
@@ -311,7 +311,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (data) {
             var test = data;
             //debugger;
-            console.log(data);
+            //console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
@@ -332,7 +332,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (data) {
             var test = data;
             //debugger;
-            console.log(data);
+            //console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
@@ -353,7 +353,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (data) {
             var test = data;
             //debugger;
-            console.log(data);
+            //console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
@@ -374,7 +374,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (data) {
             var test = data;
             //debugger;
-            console.log(data);
+            //console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
@@ -395,7 +395,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (data) {
             var test = data;
             //debugger;
-            console.log(data);
+            //console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
@@ -416,7 +416,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (data) {
             var test = data;
             //debugger;
-            console.log(data);
+            //console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
@@ -438,7 +438,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (data) {
             var test = data;
             //debugger;
-            console.log(data);
+            //console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
@@ -459,7 +459,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (data) {
             var test = data;
             //debugger;
-            console.log(data);
+            //console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
@@ -480,7 +480,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (data) {
             var test = data;
             //debugger;
-            console.log(data);
+            //console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
@@ -500,7 +500,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (data) {
             var test = data;
             //debugger;
-            console.log(data);
+            //console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
@@ -521,7 +521,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         }).success(function (data) {
             var test = data;
             //debugger;
-            console.log(data);
+            //console.log(data);
         })
         .error(function (error, status) {
             if (status == 401) {
@@ -532,8 +532,8 @@ HRSupport.service("HRSupportService", function ($http, $window) {
     }
 
     this.GetFAQ1 = function (objGetFAQ,token) {
-        console.log(objGetFAQ);
-        console.log(token);
+        //console.log(objGetFAQ);
+        //console.log(token);
         var request = $http({
             method: "POST",
             url: config.serviceURL+"api/issue/getAllFAQ",
@@ -542,7 +542,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
                 'Content-Type': "application/json; charset=utf-8"
             }
         }).success(function (data) {
-            console.log(data);
+            //console.log(data);
         })
             .error(function (error, status) {
                 if (status == 401) {
@@ -562,7 +562,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
                 "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             }
         }).success(function (data) {
-            console.log(data);
+            //console.log(data);
         })
             .error(function (error, status) {
                 if (status == 401) {

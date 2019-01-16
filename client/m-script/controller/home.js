@@ -1,0 +1,1 @@
+HRSupport.controller("HomeCTRL", function ($scope, HRSupportService, $rootScope, $uibModal, $routeParams, $window) { $scope.UserDetails = JSON.parse($window.localStorage.getItem('UserDetails')) })

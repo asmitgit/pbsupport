@@ -121,7 +121,7 @@ var cors = require('cors');
 
 // use it before all route definitions
 
-app.use(cors({ origin: ['http://pbsupportuat.policybazaar.com','http://localhost:61750'] }));
+app.use(cors({ origin: ['http://pbsupportuat.policybazaar.com','http://pbsupport.policybazaar.com','http://localhost:61750'] }));
 
 app.get('/api/getAllIssueSubIssue', (req, res) => {
     mc.query('CALL sp_GETISSUEDETAILS()', function (error, results, fields) {

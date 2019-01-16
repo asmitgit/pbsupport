@@ -280,8 +280,8 @@
     <script>
 
         function OpenNotification(count) {
-            console.log('ínside OpenNotification case');
-            console.log(count);
+            //console.log('ínside OpenNotification case');
+            //console.log(count);
             if (count == 1) {
                 $('#iframNot').css('height', '271px');
             }
@@ -298,10 +298,10 @@
         window.addEventListener('message', handleMessage, false);
 
         function handleMessage(event) {
-            console.log(event.data);
+            //console.log(event.data);
             switch (event.data.msg) {
                 case "NewTicket":
-                    console.log('ínside newticket case');
+                    //console.log('ínside newticket case');
                     OpenNotification(event.data.paramters);
                     //code to do something
                     break;

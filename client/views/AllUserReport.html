@@ -34,7 +34,7 @@
                                     </tr>
                                 </thead>
 
-                                <tbody ng-repeat="dataResponse in Report  | orderBy : data.OriginalSNO false">
+                                <tbody ng-repeat="dataResponse in Report  | orderBy : data.OriginalSNO ">
                                     <tr>
                                         <td>{{dataResponse.SNO}}</td>
                                         <td><a href="javascript:void(0)" ng-click="GetAllUserReportByID(dataResponse,$index)" ng-show="dataResponse.HasChild=='Yes' && dataResponse.IsClicked=='0'">+{{dataResponse.Name}}({{dataResponse.EmployeeID}})</a> <span ng-show="dataResponse.HasChild=='No' || dataResponse.IsClicked=='1'">{{dataResponse.Name}}({{dataResponse.EmployeeID}})</span> </td>
@@ -56,7 +56,7 @@
                                                         <table class="table">
                                                             <thead>
                                                                 <tr>
-
+                                                                    <th>SNO</th>
                                                                     <th>Ticket#</th>
                                                                     <th>Date</th>
                                                                     <th>Issue</th>
@@ -72,7 +72,7 @@
                                                             </thead>
                                                             <tbody>
                                                                 <tr ng-repeat="childData in dataResponse.SubData | orderBy : 'childData.CreatedON' :true">
-
+                                                                    <td>{{$index+1}}</td>
                                                                     <td><a class="btn btn-link mybtn-link" href="home.html#/pbsupport/TicketDetails/{{childData.TicketID}}">{{childData.TicketDispID}}</a></td>
                                                                     <td>{{childData.CreatedON | date:'medium'}}</td>
                                                                     <td>{{childData.ISSUENAME}}</td>
