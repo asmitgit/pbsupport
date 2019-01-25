@@ -44,20 +44,8 @@ const mysqldb = require('./config/keys').mysqldb;
     }
 };
 
-cron.schedule('*/1 * * * *', () => {
-    // mc.query('CALL sp_AutoAssignment()', [], function (error, results, fields) {
-    //     //console.log(results);        
-    // });
-    // mc.query('CALL sp_AutoClose()', [], function (error, results, fields) {
-    //     //console.log(results);        
-    // });
-    
-    
-
-    // config for your database
-    
-    //sql.close();
-    // connect to your database
+    // sql.close();
+    // //connect to your database
     // sql.connect(msconfig, function (err) {
     
     //     if (err) //console.log(err);
@@ -66,14 +54,100 @@ cron.schedule('*/1 * * * *', () => {
     //     var request = new sql.Request();
            
     //     // query to the database and get the records
-    //     request.query('select EmpID,EmpName,OriginalDOJ,Photograph,ConfirmationStatus,DOB,FatherName,Gender,MaritalStatus,DateOfMarriage,SpouseName,SpouseDOB,Child1Name,Child1Gender,Child1DOB,Child2Name,Child2Gender,Child2DOB,HighestQualification,TotalExp,PermanentAddress,LevelName,BandName,NoticePeriod,Designation,EntityName,DepartmentName,CategoryName,SubCategoryName,VerticalName,UnitName,FunctionName,SubFunctionName,FirstLevelReportingCode,FirstLevelReportingName,SecondLevelReportingCode,SecondLevelReportingName,WorkingLocation,SeatLocation,HRSpocCode,HRSpocName,ITSPOCCode,ITSPOCName,BuildingNumber,EmergencyContactNumber,EmergencyContactPersonName,EmergencyContactPersonRelation,PresentAddress,UANNumber,ESICNumber,ReJoiningCase,UninformedAbsenceLWD,LoanAmount,GMCNumber,TypeOfExitName,LWD_LastWorking,IsActive,EmailID,CurrentEmployeeCode,MobileNo,PersonalEmailID from HREmp', function (err, recordset) {
+    //     request.query('select EmpID,EmpName,OriginalDOJ,Photograph,ConfirmationStatus,DOB,FatherName,Gender,MaritalStatus,DateOfMarriage,SpouseName,SpouseDOB,Child1Name,Child1Gender,Child1DOB,Child2Name,Child2Gender,Child2DOB,HighestQualification,TotalExp,PermanentAddress,LevelName,BandName,NoticePeriod,Designation,EntityName,DepartmentName,CategoryName,SubCategoryName,VerticalName,UnitName,FunctionName,SubFunctionName,FirstLevelReportingCode,FirstLevelReportingName,SecondLevelReportingCode,SecondLevelReportingName,WorkingLocation,SeatLocation,HRSpocCode,HRSpocName,ITSPOCCode,ITSPOCName,BuildingNumber,EmergencyContactNumber,EmergencyContactPersonName,EmergencyContactPersonRelation,PresentAddress,UANNumber,ESICNumber,ReJoiningCase,UninformedAbsenceLWD,LoanAmount,GMCNumber,TypeOfExitName,LWD_LastWorking,IsActive,EmailID,CurrentEmployeeCode,MobileNo,PersonalEmailID from HREmpData', function (err, recordset) {
+    //         //console.log(recordset);
+    //         if (err) console.log(err);
+
+    //         //console.log(recordset.recordset.length);
+    //         for(var i=0;i<recordset.recordset.length;i++){
+    //             var tempData=recordset.recordset[i];
+    //             //console.log(tempData);
+    //             try{
+    //             //console.log(tempData.C`urrentEmployeeCode,tempData.EntityName,tempData.CurrentEmployeeCode,tempData.EmailID,tempData.EmpName,tempData.MobileNo,tempData.OriginalDOJ,tempData.Photograph,tempData.ConfirmationStatus,'0',tempData.DOB,tempData.FatherName,tempData.Gender,tempData.MaritalStatus,tempData.Designation,tempData.FirstLevelReportingCode,tempData.FirstLevelReportingName,tempData.SecondLevelReportingCode,tempData.SecondLevelReportingName,tempData.WorkingLocation,tempData.BuildingNumber,'0',tempData.SeatLocation,tempData.HRSpocCode,tempData.HRSpocName,'0',tempData.EmergencyContactNumber,tempData.EmergencyContactPersonName,tempData.EmergencyContactPersonRelation,tempData.PresentAddress,'0',tempData.PersonalEmailID,tempData.TotalExp,tempData.PermanentAddress,tempData.IsActive,tempData.ITSPOCCode,tempData.ITSPOCName,tempData.DepartmentName,tempData.CategoryName,tempData.SubCategoryName,tempData.VerticalName,tempData.UnitName,tempData.FunctionName,tempData.SubFunctionName,'0','0',tempData.UANNumber,tempData.GMCNumber,tempData.BandName,tempData.Child1DOB,tempData.Child1Gender,tempData.Child1Name,tempData.Child2DOB,tempData.Child2Gender,tempData.Child2Name,tempData.DateOfMarriage,'0',tempData.EntityName,tempData.ESICNumber,tempData.HighestQualification,tempData.LevelName,tempData.LoanAmount,tempData.LWD_LastWorking,tempData.NoticePeriod,tempData.ReJoiningCase,tempData.SpouseDOB,tempData.SpouseName,tempData.TypeOfExitName,tempData.UninformedAbsenceLWD,tempData.UniversityInstituteHighQual,tempData.SpocDepartment);                
+    //             mc.query('CALL UpdateEmployeeData(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+    //              [tempData.CurrentEmployeeCode,tempData.EntityName,tempData.CurrentEmployeeCode,tempData.EmailID,tempData.EmpName,tempData.MobileNo,tempData.OriginalDOJ,tempData.Photograph,tempData.ConfirmationStatus,'0',tempData.DOB,tempData.FatherName,tempData.Gender,tempData.MaritalStatus,tempData.Designation,tempData.FirstLevelReportingCode,tempData.FirstLevelReportingName,tempData.SecondLevelReportingCode,tempData.SecondLevelReportingName,tempData.WorkingLocation,tempData.BuildingNumber,'0',tempData.SeatLocation,tempData.HRSpocCode,tempData.HRSpocName,'0',tempData.EmergencyContactNumber,tempData.EmergencyContactPersonName,tempData.EmergencyContactPersonRelation,tempData.PresentAddress,'0',tempData.PersonalEmailID,tempData.TotalExp,tempData.PermanentAddress,tempData.IsActive,tempData.ITSPOCCode,tempData.ITSPOCName,tempData.DepartmentName,tempData.CategoryName,tempData.SubCategoryName,tempData.VerticalName,tempData.UnitName,tempData.FunctionName,tempData.SubFunctionName,'0','0',tempData.UANNumber,tempData.GMCNumber,tempData.BandName,tempData.Child1DOB,tempData.Child1Gender,tempData.Child1Name,tempData.Child2DOB,tempData.Child2Gender,tempData.Child2Name,tempData.DateOfMarriage,'0',tempData.EntityName,tempData.ESICNumber,tempData.HighestQualification,tempData.LevelName,tempData.LoanAmount,tempData.LWD_LastWorking,tempData.NoticePeriod,tempData.ReJoiningCase,tempData.SpouseDOB,tempData.SpouseName,tempData.TypeOfExitName,tempData.UninformedAbsenceLWD,tempData.UniversityInstituteHighQual,tempData.SpocDepartment], 
+    //             function (error, results, fields) {
+    //                console.log('Reuslt for data update: ',error,results);
+    //             });
+    //             }catch(err){}
+    //         }
             
+    //         // send records as a response
+    //         //res.send(recordset);
+            
+    //     });
+        
+    // });
+
+// cron.schedule('*/1 * * * *', () => {
+    
+//     sql.close();
+//     //connect to your database
+//     sql.connect(msconfig, function (err) {
+    
+//         if (err) //console.log(err);
+
+//         // create Request object
+//         var request = new sql.Request();
+           
+//         // query to the database and get the records
+//         request.query('select EmpID,EmpName,OriginalDOJ,Photograph,ConfirmationStatus,DOB,FatherName,Gender,MaritalStatus,DateOfMarriage,SpouseName,SpouseDOB,Child1Name,Child1Gender,Child1DOB,Child2Name,Child2Gender,Child2DOB,HighestQualification,TotalExp,PermanentAddress,LevelName,BandName,NoticePeriod,Designation,EntityName,DepartmentName,CategoryName,SubCategoryName,VerticalName,UnitName,FunctionName,SubFunctionName,FirstLevelReportingCode,FirstLevelReportingName,SecondLevelReportingCode,SecondLevelReportingName,WorkingLocation,SeatLocation,HRSpocCode,HRSpocName,ITSPOCCode,ITSPOCName,BuildingNumber,EmergencyContactNumber,EmergencyContactPersonName,EmergencyContactPersonRelation,PresentAddress,UANNumber,ESICNumber,ReJoiningCase,UninformedAbsenceLWD,LoanAmount,GMCNumber,TypeOfExitName,LWD_LastWorking,IsActive,EmailID,CurrentEmployeeCode,MobileNo,PersonalEmailID from HREmpData', function (err, recordset) {
+//             console.log(recordset);
+//             if (err) //console.log(err);
+
+//             ////console.log('Resul ',recordset);
+//             for(var i=0;i<recordset.recordset.length;i++){
+//                 var tempData=recordset.recordset[i];
+//                 ////console.log(tempData.C`urrentEmployeeCode,tempData.EntityName,tempData.CurrentEmployeeCode,tempData.EmailID,tempData.EmpName,tempData.MobileNo,tempData.OriginalDOJ,tempData.Photograph,tempData.ConfirmationStatus,'0',tempData.DOB,tempData.FatherName,tempData.Gender,tempData.MaritalStatus,tempData.Designation,tempData.FirstLevelReportingCode,tempData.FirstLevelReportingName,tempData.SecondLevelReportingCode,tempData.SecondLevelReportingName,tempData.WorkingLocation,tempData.BuildingNumber,'0',tempData.SeatLocation,tempData.HRSpocCode,tempData.HRSpocName,'0',tempData.EmergencyContactNumber,tempData.EmergencyContactPersonName,tempData.EmergencyContactPersonRelation,tempData.PresentAddress,'0',tempData.PersonalEmailID,tempData.TotalExp,tempData.PermanentAddress,tempData.IsActive,tempData.ITSPOCCode,tempData.ITSPOCName,tempData.DepartmentName,tempData.CategoryName,tempData.SubCategoryName,tempData.VerticalName,tempData.UnitName,tempData.FunctionName,tempData.SubFunctionName,'0','0',tempData.UANNumber,tempData.GMCNumber,tempData.BandName,tempData.Child1DOB,tempData.Child1Gender,tempData.Child1Name,tempData.Child2DOB,tempData.Child2Gender,tempData.Child2Name,tempData.DateOfMarriage,'0',tempData.EntityName,tempData.ESICNumber,tempData.HighestQualification,tempData.LevelName,tempData.LoanAmount,tempData.LWD_LastWorking,tempData.NoticePeriod,tempData.ReJoiningCase,tempData.SpouseDOB,tempData.SpouseName,tempData.TypeOfExitName,tempData.UninformedAbsenceLWD,tempData.UniversityInstituteHighQual,tempData.SpocDepartment);                
+//                 mc.query('CALL UpdateEmployeeData(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+//                  [tempData.CurrentEmployeeCode,tempData.EntityName,tempData.CurrentEmployeeCode,tempData.EmailID,tempData.EmpName,tempData.MobileNo,tempData.OriginalDOJ,tempData.Photograph,tempData.ConfirmationStatus,'0',tempData.DOB,tempData.FatherName,tempData.Gender,tempData.MaritalStatus,tempData.Designation,tempData.FirstLevelReportingCode,tempData.FirstLevelReportingName,tempData.SecondLevelReportingCode,tempData.SecondLevelReportingName,tempData.WorkingLocation,tempData.BuildingNumber,'0',tempData.SeatLocation,tempData.HRSpocCode,tempData.HRSpocName,'0',tempData.EmergencyContactNumber,tempData.EmergencyContactPersonName,tempData.EmergencyContactPersonRelation,tempData.PresentAddress,'0',tempData.PersonalEmailID,tempData.TotalExp,tempData.PermanentAddress,tempData.IsActive,tempData.ITSPOCCode,tempData.ITSPOCName,tempData.DepartmentName,tempData.CategoryName,tempData.SubCategoryName,tempData.VerticalName,tempData.UnitName,tempData.FunctionName,tempData.SubFunctionName,'0','0',tempData.UANNumber,tempData.GMCNumber,tempData.BandName,tempData.Child1DOB,tempData.Child1Gender,tempData.Child1Name,tempData.Child2DOB,tempData.Child2Gender,tempData.Child2Name,tempData.DateOfMarriage,'0',tempData.EntityName,tempData.ESICNumber,tempData.HighestQualification,tempData.LevelName,tempData.LoanAmount,tempData.LWD_LastWorking,tempData.NoticePeriod,tempData.ReJoiningCase,tempData.SpouseDOB,tempData.SpouseName,tempData.TypeOfExitName,tempData.UninformedAbsenceLWD,tempData.UniversityInstituteHighQual,tempData.SpocDepartment], 
+//                 function (error, results, fields) {
+//                    ////console.log(error);
+//                 });
+//             }
+            
+//             // send records as a response
+//             //res.send(recordset);
+            
+//         });
+        
+//     });
+    
+    
+// });
+var _countprint=0;
+cron.schedule('*/5 * * * *', () => {
+    console.log(_countprint++);
+    try{
+        mc.query('CALL sp_AutoAssignment()', [], function (error, results, fields) {
+            //console.log(results);        
+        });
+        mc.query('CALL sp_AutoClose()', [], function (error, results, fields) {
+            //console.log(results);        
+        });
+        
+    }catch(err){}
+
+    //config for your database
+    
+    // sql.close();
+    // //connect to your database
+    // sql.connect(msconfig, function (err) {
+    
+    //     if (err) //console.log(err);
+
+    //     // create Request object
+    //     var request = new sql.Request();
+           
+    //     // query to the database and get the records
+    //     request.query('select EmpID,EmpName,OriginalDOJ,Photograph,ConfirmationStatus,DOB,FatherName,Gender,MaritalStatus,DateOfMarriage,SpouseName,SpouseDOB,Child1Name,Child1Gender,Child1DOB,Child2Name,Child2Gender,Child2DOB,HighestQualification,TotalExp,PermanentAddress,LevelName,BandName,NoticePeriod,Designation,EntityName,DepartmentName,CategoryName,SubCategoryName,VerticalName,UnitName,FunctionName,SubFunctionName,FirstLevelReportingCode,FirstLevelReportingName,SecondLevelReportingCode,SecondLevelReportingName,WorkingLocation,SeatLocation,HRSpocCode,HRSpocName,ITSPOCCode,ITSPOCName,BuildingNumber,EmergencyContactNumber,EmergencyContactPersonName,EmergencyContactPersonRelation,PresentAddress,UANNumber,ESICNumber,ReJoiningCase,UninformedAbsenceLWD,LoanAmount,GMCNumber,TypeOfExitName,LWD_LastWorking,IsActive,EmailID,CurrentEmployeeCode,MobileNo,PersonalEmailID from HREmpData', function (err, recordset) {
+    //         console.log(recordset);
     //         if (err) //console.log(err);
 
     //         ////console.log('Resul ',recordset);
     //         for(var i=0;i<recordset.recordset.length;i++){
     //             var tempData=recordset.recordset[i];
-    //             ////console.log(tempData.CurrentEmployeeCode,tempData.EntityName,tempData.CurrentEmployeeCode,tempData.EmailID,tempData.EmpName,tempData.MobileNo,tempData.OriginalDOJ,tempData.Photograph,tempData.ConfirmationStatus,'0',tempData.DOB,tempData.FatherName,tempData.Gender,tempData.MaritalStatus,tempData.Designation,tempData.FirstLevelReportingCode,tempData.FirstLevelReportingName,tempData.SecondLevelReportingCode,tempData.SecondLevelReportingName,tempData.WorkingLocation,tempData.BuildingNumber,'0',tempData.SeatLocation,tempData.HRSpocCode,tempData.HRSpocName,'0',tempData.EmergencyContactNumber,tempData.EmergencyContactPersonName,tempData.EmergencyContactPersonRelation,tempData.PresentAddress,'0',tempData.PersonalEmailID,tempData.TotalExp,tempData.PermanentAddress,tempData.IsActive,tempData.ITSPOCCode,tempData.ITSPOCName,tempData.DepartmentName,tempData.CategoryName,tempData.SubCategoryName,tempData.VerticalName,tempData.UnitName,tempData.FunctionName,tempData.SubFunctionName,'0','0',tempData.UANNumber,tempData.GMCNumber,tempData.BandName,tempData.Child1DOB,tempData.Child1Gender,tempData.Child1Name,tempData.Child2DOB,tempData.Child2Gender,tempData.Child2Name,tempData.DateOfMarriage,'0',tempData.EntityName,tempData.ESICNumber,tempData.HighestQualification,tempData.LevelName,tempData.LoanAmount,tempData.LWD_LastWorking,tempData.NoticePeriod,tempData.ReJoiningCase,tempData.SpouseDOB,tempData.SpouseName,tempData.TypeOfExitName,tempData.UninformedAbsenceLWD,tempData.UniversityInstituteHighQual,tempData.SpocDepartment);                
+    //             ////console.log(tempData.C`urrentEmployeeCode,tempData.EntityName,tempData.CurrentEmployeeCode,tempData.EmailID,tempData.EmpName,tempData.MobileNo,tempData.OriginalDOJ,tempData.Photograph,tempData.ConfirmationStatus,'0',tempData.DOB,tempData.FatherName,tempData.Gender,tempData.MaritalStatus,tempData.Designation,tempData.FirstLevelReportingCode,tempData.FirstLevelReportingName,tempData.SecondLevelReportingCode,tempData.SecondLevelReportingName,tempData.WorkingLocation,tempData.BuildingNumber,'0',tempData.SeatLocation,tempData.HRSpocCode,tempData.HRSpocName,'0',tempData.EmergencyContactNumber,tempData.EmergencyContactPersonName,tempData.EmergencyContactPersonRelation,tempData.PresentAddress,'0',tempData.PersonalEmailID,tempData.TotalExp,tempData.PermanentAddress,tempData.IsActive,tempData.ITSPOCCode,tempData.ITSPOCName,tempData.DepartmentName,tempData.CategoryName,tempData.SubCategoryName,tempData.VerticalName,tempData.UnitName,tempData.FunctionName,tempData.SubFunctionName,'0','0',tempData.UANNumber,tempData.GMCNumber,tempData.BandName,tempData.Child1DOB,tempData.Child1Gender,tempData.Child1Name,tempData.Child2DOB,tempData.Child2Gender,tempData.Child2Name,tempData.DateOfMarriage,'0',tempData.EntityName,tempData.ESICNumber,tempData.HighestQualification,tempData.LevelName,tempData.LoanAmount,tempData.LWD_LastWorking,tempData.NoticePeriod,tempData.ReJoiningCase,tempData.SpouseDOB,tempData.SpouseName,tempData.TypeOfExitName,tempData.UninformedAbsenceLWD,tempData.UniversityInstituteHighQual,tempData.SpocDepartment);                
     //             mc.query('CALL UpdateEmployeeData(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
     //              [tempData.CurrentEmployeeCode,tempData.EntityName,tempData.CurrentEmployeeCode,tempData.EmailID,tempData.EmpName,tempData.MobileNo,tempData.OriginalDOJ,tempData.Photograph,tempData.ConfirmationStatus,'0',tempData.DOB,tempData.FatherName,tempData.Gender,tempData.MaritalStatus,tempData.Designation,tempData.FirstLevelReportingCode,tempData.FirstLevelReportingName,tempData.SecondLevelReportingCode,tempData.SecondLevelReportingName,tempData.WorkingLocation,tempData.BuildingNumber,'0',tempData.SeatLocation,tempData.HRSpocCode,tempData.HRSpocName,'0',tempData.EmergencyContactNumber,tempData.EmergencyContactPersonName,tempData.EmergencyContactPersonRelation,tempData.PresentAddress,'0',tempData.PersonalEmailID,tempData.TotalExp,tempData.PermanentAddress,tempData.IsActive,tempData.ITSPOCCode,tempData.ITSPOCName,tempData.DepartmentName,tempData.CategoryName,tempData.SubCategoryName,tempData.VerticalName,tempData.UnitName,tempData.FunctionName,tempData.SubFunctionName,'0','0',tempData.UANNumber,tempData.GMCNumber,tempData.BandName,tempData.Child1DOB,tempData.Child1Gender,tempData.Child1Name,tempData.Child2DOB,tempData.Child2Gender,tempData.Child2Name,tempData.DateOfMarriage,'0',tempData.EntityName,tempData.ESICNumber,tempData.HighestQualification,tempData.LevelName,tempData.LoanAmount,tempData.LWD_LastWorking,tempData.NoticePeriod,tempData.ReJoiningCase,tempData.SpouseDOB,tempData.SpouseName,tempData.TypeOfExitName,tempData.UninformedAbsenceLWD,tempData.UniversityInstituteHighQual,tempData.SpocDepartment], 
     //             function (error, results, fields) {
@@ -283,14 +357,15 @@ app.post('/api/auth', (req, res) => {
        
         ad.findUser(username, function(err, user) {            
             if (err) {
-                //console.log('ERROR: ' +JSON.stringify(err));
+                console.log('ERROR: ' +JSON.stringify(err));
                 return  res.send({ error: true, data: null, message: 'User not found', token: null });;
             }        
-            if (! user) {//console.log('User: ' + username + ' not found.');
+            if (! user) {
+                console.log(err,user);
             return  res.send({ error: true, data: null, message: 'User not found', token: null });;
         }
             else 
-            {
+            {console.log(user);
                 let _EMPID=user.description;
                 _EMPID=_EMPID.split(' ')[0];
                 let buff = new Buffer(password);  

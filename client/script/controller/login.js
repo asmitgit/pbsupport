@@ -46,22 +46,22 @@ HRSupport.controller("LoginCTRL", function ($scope, HRSupportService, $rootScope
                 alert(data.message);
                 return false;
             }
+            else if (data.data[0] == null || data.data[0].length == 0) {
+                alert('Data not found.');
+                return false;
+            }
             $window.localStorage.removeItem('UserDetails');
             $window.localStorage.setItem('UserDetails',
                 JSON.stringify({ "EMPData": data.data[0], "Token": data.token, "IsLocSet": 0, "Location": data.data[1], "Issue": { "IssueID": getParameterByName("issue"), "SubIssueID": getParameterByName("subissue") } }));
             $scope.UserDetails = JSON.parse($window.localStorage.getItem('UserDetails'));
-            if (('4').indexOf(data.data[0][0].RoleID) >= 0) //agent
-            {
+            
                 if (getParameterByName("issue") != '') {
                     $window.location.href = '/home.html#/pbsupport/CreateTicket/' + getParameterByName("issue") + '/' + getParameterByName("subissue");
                 }
                 else {
                     $window.location.href = '/home.html#/pbsupport/MyTickets';
                 }
-            }
-            else{
-                $window.location.href = '/home.html#/pbsupport/MyTickets';
-            }
+                        
 
             //else if (('4,6,7').indexOf(data.data[0][0].RoleID) >= 0) //spoc
             //{

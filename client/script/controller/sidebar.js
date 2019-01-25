@@ -21,6 +21,7 @@ HRSupport.controller("SideBarCTRL", function ($scope, HRSupportService, $rootSco
        area_name: undefined,
        building_name: undefined
    };
+   $scope.IsDataExists = 0;
    //$scope.Floor = [{ FloorNo: "BS2" }, { FloorNo: "BS1" }, { FloorNo: "GR" }, { FloorNo: "1" }, { FloorNo: "2" }, { FloorNo: "3" }, { FloorNo: "4" }, { FloorNo: "5" }];
    $scope.getlocationmaster = function () {
        if ($scope.UserDetails.IsLocSet != 1) {
@@ -29,6 +30,7 @@ HRSupport.controller("SideBarCTRL", function ($scope, HRSupportService, $rootSco
                    $scope.UserDetails.LocationMaster = data.data.length > 1 ? data.data[0] : [];
                    if($scope.UserDetails.Location.length>0)
                    {
+                       $scope.IsDataExists = 1;
                        $scope.Selected = {
                            city_name: { city_name: $scope.UserDetails.Location[0].City },
                            floor: { floor_name: $scope.UserDetails.Location[0].FloorNo },
@@ -94,7 +96,7 @@ HRSupport.controller("SideBarCTRL", function ($scope, HRSupportService, $rootSco
        return typeof str == 'string' && !str.trim() || typeof str == 'undefined' || str === null;
    };
    $scope.Skip = function () {
-       if ($scope.UserDetails.Location.length > 0) {
+       if ($scope.IsDataExists==1) {
            $scope.UserDetails.IsLocSet = 1;
            $window.localStorage.setItem('UserDetails',
             JSON.stringify($scope.UserDetails));
@@ -132,13 +134,11 @@ HRSupport.controller("HeaderCTRL", function ($scope, HRSupportService, $rootScop
     $scope.UserDetails = JSON.parse($window.localStorage.getItem('UserDetails'));
 
 
-    var _notURL = notURL;// "http://localhost:8080/home1?eid=@eid&role=@role&empid=@empid";
+    var _notURL = notURL;
     _notURL = _notURL.replace("@empid", $scope.UserDetails.EMPData[0].EmployeeID);
     _notURL = _notURL.replace("@eid", $scope.UserDetails.EMPData[0].EmployeeID);
     _notURL = _notURL.replace("@role", $scope.UserDetails.EMPData[0].RoleID);
     $scope.NotificationURL = $sce.trustAsResourceUrl(_notURL);
-
-    //$scope.NotificationURL = $sce.trustAsResourceUrl("http://notification.policybazaar.com:8080/home1?eid=16315&role=agent&empid=BPW11002");
 
     var modalInstanceSameCtrl;
 
