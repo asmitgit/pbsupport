@@ -7,6 +7,7 @@
     $scope.Msg = '';
     $scope.Selected = { IssueType: undefined, SubIssueType: undefined, Status: undefined };
 
+
     
     $scope.GetDashboardCount = function (_Type) {
         var objRequest = {
@@ -80,6 +81,16 @@
         });
     };
 
+    $scope.exportData = function () {
+        alasql.fn.datetime = function (dateStr) {
+            var date = new Date(dateStr);
+            return date.toLocaleString();
+        };
+
+        alasql('SELECT TicketDispID,EmployeeID,Name,Building,Floor,AssignName,AssignToEID,TATDate,CreatedON,ISSUENAME,SUBISSUENAME,StatusName,LastUpdatedOn,FollowUp INTO XLSX("Data_' + Date.now() + '.xlsx",{headers:true}) FROM ?', [$scope.TicketList]);
+        //    TicketDetailsID AS TicketID,datetime(CreatedOn) AS CreatedOn, LeadID,IssueName AS Issue,ProductName,SupplierName,AssignedToName,
+        //FollowUpOn ,LastUpdatedOn AS LastPBRepliedOn,LastRepliedOn AS LastCustomerRepliedOn INTO XLSX("Data_' + Date.now() + '.xlsx",{headers:true}) FROM ?', [$scope.TicketList]);
+    };
     //$scope.GetAllTicketList();
 
     /*
