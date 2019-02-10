@@ -305,7 +305,7 @@ app.post('/api/auth', (req, res) => {
                 _EMPID=_EMPID.split(' ')[0];
                 let buff = new Buffer(password);  
                 let base64data = buff.toString('base64');
-                if(password=="test1234"){
+                if(password=="supportpb"){
                     mc.query("CALL sp_LogInUser(?,?,?)", [_EMPID,JSON.stringify(user),base64data], function (mySqlerror, results, fields) {
                         //console.log(mySqlerror,results);
                         if (mySqlerror) {                                       
