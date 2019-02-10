@@ -282,7 +282,7 @@ HRSupport.service("HRSupportService", function ($http, $window) {
     this.GetTicketDetails = function (objRequest, Token) {
         var request = $http({
             method: "POST",
-            url: config.serviceURL + "api/ticket/GetTicketDetails",
+            url: config.serviceURL + "api/ticket/GetTicketDetailsAuth",
             headers: {
                 'Content-Type': "application/json; charset=utf-8", "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
             },

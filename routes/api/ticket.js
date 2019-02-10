@@ -217,6 +217,30 @@ router.post('/GetTicketDetails', (req, res) => {
         return res.send({ error: true, data: null, message: err});
     }
 });
+router.post('/GetTicketDetailsAuth', (req, res) => {
+    if(isEmpty(req.body))
+        return res.send({ error: true, data: null, message: 'error in request' });
+    try{
+        //IN _TicketID INT,IN _Type INT,IN _EmployeeID VARCHAR(50),IN _UserID INT
+        let _TicketID = req.body.TicketID;
+        let _Type = req.body.Type;
+        let _EmployeeID = req.body.EmployeeID;
+        let _UserID = req.body.UserID;
+        mc.query('CALL sp_GetTicketDetailsAuth(?,?,?,?)', [_TicketID,_Type,_EmployeeID,_UserID], function (error, results, fields) {
+            console.log(results);
+            if (error) 
+            {
+                return res.send({ error: true, data: null, message: error});
+            }
+            else
+                return res.send({ error: false, data: results, message: 'success' });
+        });  
+    }
+    catch(err){
+        console.error(err);
+        return res.send({ error: true, data: null, message: err});
+    }
+});
 router.post('/UpdateTicketRemarks', (req, res) => {
     if(isEmpty(req.body))
         return res.send({ error: true, data: null, message: 'error in request' });

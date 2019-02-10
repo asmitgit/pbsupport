@@ -11,20 +11,25 @@
    
     $scope.GetTicketDetails = function () {
         var objRequest = {
-            "TicketID": $scope.TicketID
+            "TicketID": $scope.TicketID,
+            "Type": 2,
+            "EmployeeID": $scope.UserDetails.EMPData[0].EmployeeID, "UserID": $scope.UserDetails.EMPData[0].EmpID
         };
         HRSupportService.GetTicketDetails(objRequest, $scope.UserDetails.Toket).success(function (data) {
             $scope.TicketDetails = data.data.length > 1 ? data.data[0] : [];
+            if ($scope.TicketDetails[0].RESULT == "1") {
+                $scope.CommentList = [];
+                $scope.TicketComments = data.data.length > 2 ? data.data[1] : [];
 
-            $scope.CommentList = [];
-            $scope.TicketComments = data.data.length > 2 ? data.data[1] : [];
+                angular.forEach($scope.TicketComments, function (value, key) {
+                    value.Comments = $sce.trustAsHtml(value.Comments);
+                    this.push(value);
+                }, $scope.CommentList);
 
-            angular.forEach($scope.TicketComments, function (value, key) {                
-                value.Comments = $sce.trustAsHtml(value.Comments);
-                this.push(value);
-            }, $scope.CommentList);
-
-           
+            }
+            else {
+                alert('Invalid data.');
+            }
             //$scope.Selected.Status = { StatusID: $scope.TicketDetails[0].StatusID };
             //$scope.Selected.IssueType = { ISSUEID: $scope.TicketDetails[0].IssueID };
             //$scope.Selected.SubIssueType = { SUBISSUEID: $scope.TicketDetails[0].SubIssueID };

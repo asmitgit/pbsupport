@@ -72,42 +72,49 @@
 
     $scope.GetTicketDetails = function () {
         var objRequest = {
-            "TicketID": $scope.TicketID
+            "TicketID": $scope.TicketID,
+            "Type": 1,
+            "EmployeeID": $scope.UserDetails.EMPData[0].EmployeeID, "UserID": $scope.UserDetails.EMPData[0].EmpID
         };
         HRSupportService.GetTicketDetails(objRequest, $scope.UserDetails.Toket).success(function (data) {
             $scope.TicketDetails = data.data.length > 1 ? data.data[0] : [];
-            $scope.Location = data.data.length > 2 ? data.data[2] : [];
-            
-            $scope.IsSupport = $scope.TicketDetails[0].IsSupport;
+            if ($scope.TicketDetails[0].RESULT == "1") {
+                $scope.Location = data.data.length > 2 ? data.data[2] : [];
 
-            $scope.CommentList = [];
-            $scope.TicketComments = data.data.length > 2 ? data.data[1] : [];
+                $scope.IsSupport = $scope.TicketDetails[0].IsSupport;
 
-            angular.forEach($scope.TicketComments, function (value, key) {
-                value.Comments = $sce.trustAsHtml(value.Comments);
-                this.push(value);
-            }, $scope.CommentList);
+                $scope.CommentList = [];
+                $scope.TicketComments = data.data.length > 2 ? data.data[1] : [];
+
+                angular.forEach($scope.TicketComments, function (value, key) {
+                    value.Comments = $sce.trustAsHtml(value.Comments);
+                    this.push(value);
+                }, $scope.CommentList);
 
 
-            $scope.TicketLog = data.data.length > 3 ? data.data[3] : [];
-            $scope.Selected.Status = { StatusID: $scope.TicketDetails[0].StatusID };
-            $scope.Selected.IssueType = { ISSUEID: $scope.TicketDetails[0].IssueID };
-            $scope.Selected.SubIssueType = { SUBISSUEID: $scope.TicketDetails[0].SubIssueID };
-            $scope.TicketDetails[0].FollowUp = $scope.isEmpty($scope.TicketDetails[0].FollowUp) ? '' :new Date($scope.TicketDetails[0].FollowUp) ;
-            //if (!$scope.isEmpty($routeParams.IssueID) && !$scope.isEmpty($routeParams.SubIssueID)) {
-            //    $scope.Selected.IssueType = { ISSUEID: $routeParams.IssueID };
-            //    $scope.Selected.SubIssueType = { SUBISSUEID: $routeParams.SubIssueID };
-            //}
-            
-            if ($scope.TicketDetails[0].StatusID == 4 || $scope.TicketDetails[0].StatusID == 6) {
-                $scope.InActive = true;
+                $scope.TicketLog = data.data.length > 3 ? data.data[3] : [];
+                $scope.Selected.Status = { StatusID: $scope.TicketDetails[0].StatusID };
+                $scope.Selected.IssueType = { ISSUEID: $scope.TicketDetails[0].IssueID };
+                $scope.Selected.SubIssueType = { SUBISSUEID: $scope.TicketDetails[0].SubIssueID };
+                $scope.TicketDetails[0].FollowUp = $scope.isEmpty($scope.TicketDetails[0].FollowUp) ? '' : new Date($scope.TicketDetails[0].FollowUp);
+                //if (!$scope.isEmpty($routeParams.IssueID) && !$scope.isEmpty($routeParams.SubIssueID)) {
+                //    $scope.Selected.IssueType = { ISSUEID: $routeParams.IssueID };
+                //    $scope.Selected.SubIssueType = { SUBISSUEID: $routeParams.SubIssueID };
+                //}
+
+                if ($scope.TicketDetails[0].StatusID == 4 || $scope.TicketDetails[0].StatusID == 6) {
+                    $scope.InActive = true;
+                }
+                else if ($scope.TicketDetails[0].StatusID == 5) {
+                    $scope.StatusList.splice(4, 1);
+                    $scope.StatusList.splice(0, 2);
+                }
+                {
+                    $scope.StatusList.splice(3, 2);
+                }
             }
-            else if ($scope.TicketDetails[0].StatusID == 5) {
-                $scope.StatusList.splice(4, 1);
-                $scope.StatusList.splice(0, 2);
-            }
-            {
-                $scope.StatusList.splice(3, 2);
+            else {
+                alert('Invalid data.');
             }
         });
     };

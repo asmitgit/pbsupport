@@ -154,7 +154,9 @@
     </div>
     <div class="row clearfix">
         <div class="col-md-12">
-            <button class="btn btn-primary" ng-click="GetAllTicketList(8)">Search</button>
+            
+            <a ng-show="TicketList.length>0" href="javascript:void(0);" class="btn btn-info" data-toggle="modal" ng-click="exportData()">Export Data</a>
+           
             <div class="card">
 
                 <div class="body">
