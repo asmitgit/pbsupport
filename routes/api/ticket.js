@@ -124,6 +124,29 @@ router.post('/GetSpocListANDUpdate', (req, res) => {
         return res.send({ error: true, data: null, message: err});
     }
 });
+
+router.post('/GetAdminDashboardCount', (req, res) => {
+    if(isEmpty(req.body))
+        return res.send({ error: true, data: null, message: 'error in request' });
+    try{
+        
+        let _EMPID = req.body.EMPID;
+        let _IssueType = req.body.IssueType;
+        mc.query('CALL sp_GetAdminDashboardCount(?,?)', [_EMPID,_IssueType], function (error, results, fields) {
+            console.log(results);
+            if (error) 
+            {
+                return res.send({ error: true, data: null, message: error});
+            }
+            else
+                return res.send({ error: false, data: results, message: 'success' });
+        });  
+    }
+    catch(err){
+        console.error(err);
+        return res.send({ error: true, data: null, message: err});
+    }
+});
 router.post('/GetAdminTicketList', (req, res) => {
     console.log(req.body);
     if(isEmpty(req.body))
@@ -131,7 +154,7 @@ router.post('/GetAdminTicketList', (req, res) => {
     try{
         
         let _EmpID = req.body.EmpID;
-        let _Type =  req.body.Type;
+        let _IssueType =  req.body.IssueType;
         let _QUERY =  req.body.QUERY;
 
         // var timestampFrom = moment.unix(req.body.From);
@@ -144,8 +167,10 @@ router.post('/GetAdminTicketList', (req, res) => {
         let _IssueID = req.body.IssueID;
         let _SubIssueID =  req.body.SubIssueID;
         let _StatusID =  req.body.StatusID;
+        let _TicketID =  req.body.TicketID;
         console.log(_From,_To);
-        mc.query('CALL sp_GetAdminTicketList(?,?,?,?,?,?,?,?)', [_EmpID,_Type,_QUERY,_From,_To,_IssueID,_SubIssueID,_StatusID], function (error, results, fields) {
+        mc.query('CALL sp_GetAdminTicketData(?,?,?,?,?,?,?,?,?)',
+         [_EmpID,_IssueType,_QUERY,_From,_To,_IssueID,_SubIssueID,_StatusID,_TicketID], function (error, results, fields) {
             console.log(results);
             if (error) 
             {

@@ -81,6 +81,12 @@
         });
     };
 
+    $scope.orderByField = 'CreatedON';
+    $scope.reverseSort = false;
+    $scope.sortData = function (columnIndex) {
+        $scope.reverseSort = ($scope.sortColumn == columnIndex) ? !$scope.reverseSort : false;
+        $scope.sortColumn = columnIndex;
+    }
     $scope.exportData = function () {
         alasql.fn.datetime = function (dateStr) {
             var date = new Date(dateStr);

@@ -321,6 +321,28 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         return request;
     }
 
+    this.GetAdminDashboardCount = function (objRequest, Token) {
+        var request = $http({
+            method: "POST",
+            url: config.serviceURL + "api/ticket/GetAdminDashboardCount",
+            headers: {
+                'Content-Type': "application/json; charset=utf-8",
+                "auth-token": JSON.parse($window.localStorage.getItem('UserDetails')).Token
+            },
+            data: JSON.stringify(objRequest)
+        }).success(function (data) {
+            var test = data;
+            //debugger;
+            //console.log(data);
+        })
+        .error(function (error, status) {
+            if (status == 401) {
+                $window.location.href = '/login.html';
+            }
+        });
+        return request;
+    }
+
     this.UpdateLocation = function (objRequest, Token) {
         var request = $http({
             method: "POST",

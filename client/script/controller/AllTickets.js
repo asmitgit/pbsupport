@@ -44,18 +44,44 @@
     }
     $scope.ToDate = new Date;
     $scope.FromDate = new Date;
-
+    $scope.TicketID = '';
     //$scope.Filter = { FromDate: undefined, ToDate: undefined };
+
+    $scope.ActiveSearch = function (data) {
+        $scope.ActiveSearchType = data;
+    };
+    $scope.ActiveSearchType = 2;
+    $scope.GetDashboardCount = function () {
+        var _Type = 0;
+        if ($scope.Selected.CountIssueType) {
+            _Type = $scope.Selected.CountIssueType.ISSUEID;
+        }
+        var objRequest = {
+            "EMPID": $scope.UserDetails.EMPData[0].EmpID,
+            "IssueType": _Type
+
+        };
+        HRSupportService.GetAdminDashboardCount(objRequest, $scope.UserDetails.Toket).success(function (data) {
+            $scope.TicketCount = data.data.length > 1 ? data.data[0] : [];
+        });
+    };
+    $scope.GetDashboardCount();
+
     $scope.GetAdminTicketList = function (QUERY) {
+        var _Type = 0;
+        if ($scope.Selected.CountIssueType) {
+            _Type = $scope.Selected.CountIssueType.ISSUEID;
+        }
         var objRequest = {
             "EmpID": $scope.UserDetails.EMPData[0].EmpID,
-            "Type": 3,
+            "IssueType": _Type,
             "QUERY": QUERY,
             "From": $scope.FromDate.getFullYear() + "-" + (getMonth($scope.FromDate)) + '-' + getDate($scope.FromDate), //moment($scope.FromDate).format("YYYY-MM-YY"),
             "To": $scope.ToDate.getFullYear() + "-" + (getMonth($scope.ToDate)) + '-' + getDate($scope.ToDate), //moment($scope.FromDate).format("YYYY-MM-YY"),
             "IssueID": $scope.Selected.IssueType ? $scope.Selected.IssueType.ISSUEID : 0,
             "SubIssueID": $scope.Selected.SubIssueType ? $scope.Selected.SubIssueType.SUBISSUEID : 0,
-            "StatusID": $scope.Selected.Status ? $scope.Selected.Status.StatusID : 0
+            "StatusID": $scope.Selected.Status ? $scope.Selected.Status.StatusID : 0,
+            "TicketID": $scope.TicketID.trim()
         };
         HRSupportService.GetAdminTicketList(objRequest, $scope.UserDetails.Toket).success(function (data) {
             if (data.data != null) {
@@ -67,6 +93,23 @@
         });
     };
 
+
+    $scope.orderByField = 'CreatedON';
+    $scope.reverseSort = false;
+    $scope.sortData = function (columnIndex) {
+        $scope.reverseSort = ($scope.sortColumn == columnIndex) ? !$scope.reverseSort : false;
+        $scope.sortColumn = columnIndex;
+    }
+    $scope.exportData = function () {
+        alasql.fn.datetime = function (dateStr) {
+            var date = new Date(dateStr);
+            return date.toLocaleString();
+        };
+
+        alasql('SELECT TicketDispID,EmployeeID,Name,Building,Floor,AssignName,AssignToEID,TATDate,CreatedON,ISSUENAME,SUBISSUENAME,StatusName,LastUpdatedOn,FollowUp INTO XLSX("Data_' + Date.now() + '.xlsx",{headers:true}) FROM ?', [$scope.TicketList]);
+        //    TicketDetailsID AS TicketID,datetime(CreatedOn) AS CreatedOn, LeadID,IssueName AS Issue,ProductName,SupplierName,AssignedToName,
+        //FollowUpOn ,LastUpdatedOn AS LastPBRepliedOn,LastRepliedOn AS LastCustomerRepliedOn INTO XLSX("Data_' + Date.now() + '.xlsx",{headers:true}) FROM ?', [$scope.TicketList]);
+    };
     //$scope.GetAllTicketList();
 
     /*
