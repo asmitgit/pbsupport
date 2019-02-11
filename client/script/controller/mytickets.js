@@ -16,7 +16,8 @@
             "To": "2022-01-01",
             "IssueID": 0,
             "SubIssueID": 0,
-            "StatusID": 0
+            "StatusID": 0,
+            "TicketID": ''
         };
         HRSupportService.GetAllTicketList(objRequest, $scope.UserDetails.Toket).success(function (data) {
             if (data.data != null) {

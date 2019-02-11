@@ -69,7 +69,8 @@
             "To": $scope.ToDate.getFullYear() + "-" + (getMonth($scope.ToDate)) + '-' + getDate($scope.ToDate), //moment($scope.FromDate).format("YYYY-MM-YY"),
             "IssueID": $scope.Selected.IssueType ? $scope.Selected.IssueType.ISSUEID : 0,
             "SubIssueID": $scope.Selected.SubIssueType ? $scope.Selected.SubIssueType.SUBISSUEID : 0,
-            "StatusID": $scope.Selected.Status ? $scope.Selected.Status.StatusID : 0
+            "StatusID": $scope.Selected.Status ? $scope.Selected.Status.StatusID : 0,
+            "TicketID": $scope.TicketID.trim()
         };
         HRSupportService.GetAllTicketList(objRequest, $scope.UserDetails.Toket).success(function (data) {
             if (data.data != null) {
@@ -80,7 +81,7 @@
             }
         });
     };
-
+    $scope.TicketID = '';
     $scope.orderByField = 'CreatedON';
     $scope.reverseSort = false;
     $scope.sortData = function (columnIndex) {

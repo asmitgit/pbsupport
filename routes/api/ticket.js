@@ -205,8 +205,11 @@ router.post('/GetAllTicketList', (req, res) => {
         let _IssueID = req.body.IssueID;
         let _SubIssueID =  req.body.SubIssueID;
         let _StatusID =  req.body.StatusID;
+        let _TicketID =  req.body.TicketID;
+        
         console.log(_From,_To);
-        mc.query('CALL sp_GetAllTicketList(?,?,?,?,?,?,?,?)', [_EmpID,_Type,_QUERY,_From,_To,_IssueID,_SubIssueID,_StatusID], function (error, results, fields) {
+        mc.query('CALL sp_GetAllTicketList(?,?,?,?,?,?,?,?,?)',
+         [_EmpID,_Type,_QUERY,_From,_To,_IssueID,_SubIssueID,_StatusID,_TicketID], function (error, results, fields) {
             console.log(results);
             if (error) 
             {
