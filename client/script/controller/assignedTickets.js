@@ -58,6 +58,22 @@
     $scope.ToDate = new Date;
     $scope.FromDate = new Date;
     $scope.TicketID = '';
+    $scope.orderByField = 'CreatedON';
+    $scope.reverseSort = false;
+    $scope.sortData = function (columnIndex) {
+        $scope.reverseSort = ($scope.sortColumn == columnIndex) ? !$scope.reverseSort : false;
+        $scope.sortColumn = columnIndex;
+    }
+    $scope.exportData = function () {
+        alasql.fn.datetime = function (dateStr) {
+            var date = new Date(dateStr);
+            return date.toLocaleString();
+        };
+
+        alasql('SELECT TicketDispID,EmployeeID,Name,Building,Floor,AssignName,AssignToEID,TATDate,CreatedON,ISSUENAME,SUBISSUENAME,StatusName,LastUpdatedOn,FollowUp INTO XLSX("Data_' + Date.now() + '.xlsx",{headers:true}) FROM ?', [$scope.TicketList]);
+        //    TicketDetailsID AS TicketID,datetime(CreatedOn) AS CreatedOn, LeadID,IssueName AS Issue,ProductName,SupplierName,AssignedToName,
+        //FollowUpOn ,LastUpdatedOn AS LastPBRepliedOn,LastRepliedOn AS LastCustomerRepliedOn INTO XLSX("Data_' + Date.now() + '.xlsx",{headers:true}) FROM ?', [$scope.TicketList]);
+    };
     $scope.GetAllTicketList = function (QUERY) {
         var objRequest = {
             "EmpID": $scope.UserDetails.EMPData[0].EmpID,

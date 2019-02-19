@@ -53,6 +53,7 @@
             //}
         });
     };
+    
     $scope.GetAllIssueSubIssue();
     $scope.getStatusMaster();
     $scope.TicketID = $routeParams.TicketID;
@@ -76,6 +77,9 @@
             "Type": 1,
             "EmployeeID": $scope.UserDetails.EMPData[0].EmployeeID, "UserID": $scope.UserDetails.EMPData[0].EmpID
         };
+
+            
+
         HRSupportService.GetTicketDetails(objRequest, $scope.UserDetails.Toket).success(function (data) {
             $scope.TicketDetails = data.data.length > 1 ? data.data[0] : [];
             if ($scope.TicketDetails[0].RESULT == "1") {

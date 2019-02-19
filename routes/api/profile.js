@@ -32,5 +32,28 @@ router.post('/getAllEmployee', (req, res) => {
     });  
 });
 
-
+router.post('/sp_GetLoginLogout', (req, res) => {
+    if(isEmpty(req.body))
+        return res.send({ error: true, data: null, message: 'error in request' });
+    try{        
+        let _MgrID = req.body.MgrID;   
+        let _MgrEmployeeID = req.body.MgrEmployeeID; 
+        let _MgrName = req.body.MgrName;   
+        let _Type = req.body.Type; 
+        
+        mc.query('CALL sp_GetLoginLogout(?,?,?,?)', [_MgrID,_MgrEmployeeID,_MgrName,_Type], function (error, results, fields) {
+            console.log(results);   
+            if (error) 
+            {
+                return res.send({ error: true, data: null, message: error});
+            }
+            else
+                return res.send({ error: false, data: results, message: 'success' });
+        });
+    }
+    catch(err){
+        console.error(err);
+        return res.send({ error: true, data: null, message: err});
+    }
+});
 module.exports = router;

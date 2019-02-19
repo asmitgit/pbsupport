@@ -21,7 +21,7 @@
                             <option value="">Select Spoc</option>
                         </select>
                       
-                            <button type="button" class="btn btn-outline-success" title="Log" ng-click="UpdateAssignment(1)" ng-show="UpdateAssignmentFlag==0"><span>Re-assign</span></button>
+                        <button type="button" class="btn btn-outline-success" title="Log" ng-click="UpdateAssignment(1)" ng-show="UpdateAssignmentFlag==0" ng-disabled="InActive"><span>Re-assign</span></button>
                             <button type="button" class="btn btn-outline-success" title="Log" ng-click="UpdateAssignment(2)" ng-show="UpdateAssignmentFlag==1"><span>Update</span></button>
                             <button type="button" class="btn btn-outline-success" title="Log" ng-click="UpdateAssignment(3)" ng-show="UpdateAssignmentFlag==1"><span>Cancel</span></button>
                             <!--<button type="button" class="btn btn-outline-danger" title="Log"><i class="fa fa-file-text-o"></i> <span>Log</span></button>-->
@@ -224,7 +224,7 @@
                                                 <label class="fancy-radio custom-color-green"><input name="IsSupport" value="1" type="radio" ng-model="IsSupport"><span><i></i>Yes</span></label>
                                                 <label class="fancy-radio custom-color-green"><input name="IsSupport" value="2" type="radio" ng-model="IsSupport"><span><i></i>Done</span></label>
                                             </div>
-                                            <button type="button" class="btn btn-success comment_submit" ng-click="UpdateTicketRemarks(3)" style="vertical-align:top; margin:0 0 0 10px;">Submit</button>
+                                            <button type="button" class="btn btn-success comment_submit" ng-click="UpdateTicketRemarks(3)" style="vertical-align:top; margin:0 0 0 10px;" ng-disabled="InActive">Submit</button>
                                         </div>
 
                                         <div class="media">

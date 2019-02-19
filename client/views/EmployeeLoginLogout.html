@@ -1,0 +1,74 @@
+﻿<div class="container-fluid">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-6 col-md-8 col-lg-12">
+
+                <ul class="breadcrumb adv_search">
+                    <!--<li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>-->
+                    <li class="breadcrumb-item active">Employee LogIn Details</li>
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+    
+
+    <div class="row clearfix">
+        <div class="col-md-12">
+            <div class="card">
+
+                <div class="body">
+                    <!--<div class="search_box">
+                        <select class="form-control" ng-model="Selected.FilterType"
+                                ng-options="data.FilterType for data in FilterType
+                                    |  unique: 'FilterType' | orderBy:['FilterType'] track by data.FilterType ">
+                            <option value="">Select Key</option>
+                        </select>
+                        <input type="search" class="searchdata" value="" placeholder="Enter Key" ng-model="KeyValue">
+                        <button type="button" class="btn btn-success" ng-click="SearchEmployee(1)">Search</button>
+                    </div>-->
+                    <div class="table-responsive" ng-if="EmpData.length>0">
+                        <table class="table table-hover js-basic-example dataTable table-custom">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Employee ID</th>
+                                    <th>Name</th>
+                                    <th>Company</th>
+                                    <th>Department</th>
+                                    <th>HR Spoc</th>
+                                    <th>First Reporting</th>
+                                    <th>Second Reporting</th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr ng-repeat="data in EmpData">
+                                    <td><span class="active_green" ng-class="data.IsActive=='Yes' ? 'active_green':'inactive_red' ">&nbsp;</span><a class="btn btn-link mybtn-link" href="javascript:void(0)" ng-click="OpenDetails(data.EmployeeID)">{{data.EmployeeID}}</a></td>
+                                    <td>{{data.Name}}</td>
+                                    <td>{{data.CompanyName}}</td>
+                                    <td>{{data.DepartmentName}}</td>
+                                    <td>{{data.HRSpocName}}</td>
+                                    <td>{{data.FirstLevelReportingName}}</td>
+                                    <td>{{data.SecondLevelReportingName}}</td>
+
+                                </tr>
+
+
+
+
+                            </tbody>
+                        </table>
+                        <div ng-show="!EmpData  || EmpData.length<=0">No record found</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
