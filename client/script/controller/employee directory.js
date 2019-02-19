@@ -129,3 +129,31 @@ HRSupport.controller("EmployeeDirectoryCTRL", function ($scope, HRSupportService
 
     $scope.SearchEmployee(2)
 });
+
+
+
+
+
+HRSupport.controller("EmployeeLogInCTRL", function ($scope, HRSupportService, $rootScope, $uibModal, $routeParams, $window) {
+    $scope.UserDetails = JSON.parse($window.localStorage.getItem('UserDetails'));
+    
+    $scope.sp_GetLoginLogout = function () {
+        debugger;
+        var objRequest = {
+            "MgrID": $scope.UserDetails.EMPData[0].EmpID,
+            "MgrEmployeeID": $scope.UserDetails.EMPData[0].EmployeeID,
+           
+            "Type": 1
+        };
+        HRSupportService.sp_GetLoginLogout(objRequest, $scope.UserDetails.Toket).success(function (data) {
+            if (data.data != null) {
+                $scope.Report = data.data.length > 1 ? data.data[0] : [];
+            }
+            else {
+
+            }
+        });
+    };
+    $scope.sp_GetLoginLogout();
+   
+});

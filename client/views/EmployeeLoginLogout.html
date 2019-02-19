@@ -28,31 +28,27 @@
                         <input type="search" class="searchdata" value="" placeholder="Enter Key" ng-model="KeyValue">
                         <button type="button" class="btn btn-success" ng-click="SearchEmployee(1)">Search</button>
                     </div>-->
-                    <div class="table-responsive" ng-if="EmpData.length>0">
+                    <div class="table-responsive" ng-if="Report.length>0">
                         <table class="table table-hover js-basic-example dataTable table-custom">
                             <thead class="thead-dark">
                                 <tr>
                                     <th>Employee ID</th>
                                     <th>Name</th>
-                                    <th>Company</th>
-                                    <th>Department</th>
-                                    <th>HR Spoc</th>
-                                    <th>First Reporting</th>
-                                    <th>Second Reporting</th>
+                                    <th>Login Time</th>
+                                    <th>Logout Time</th>
+
 
                                 </tr>
                             </thead>
 
                             <tbody>
 
-                                <tr ng-repeat="data in EmpData">
-                                    <td><span class="active_green" ng-class="data.IsActive=='Yes' ? 'active_green':'inactive_red' ">&nbsp;</span><a class="btn btn-link mybtn-link" href="javascript:void(0)" ng-click="OpenDetails(data.EmployeeID)">{{data.EmployeeID}}</a></td>
+                                <tr ng-repeat="data in Report">
+                                    <td>{{data.EmployeeID}}</td>
                                     <td>{{data.Name}}</td>
-                                    <td>{{data.CompanyName}}</td>
-                                    <td>{{data.DepartmentName}}</td>
-                                    <td>{{data.HRSpocName}}</td>
-                                    <td>{{data.FirstLevelReportingName}}</td>
-                                    <td>{{data.SecondLevelReportingName}}</td>
+                                    <td>{{data.CreatedOn | date:"dd-MM-yyyy  h:mma"}}</td>
+                                    <td>{{data.LogOutOn | date:"dd-MM-yyyy  h:mma"}}</td>
+
 
                                 </tr>
 
@@ -61,7 +57,7 @@
 
                             </tbody>
                         </table>
-                        <div ng-show="!EmpData  || EmpData.length<=0">No record found</div>
+                        
                     </div>
                 </div>
             </div>
