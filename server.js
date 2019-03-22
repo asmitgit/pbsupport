@@ -47,20 +47,20 @@ const mysqldb = require('./config/keys').mysqldb;
     
 
 var _countprint=0;
-cron.schedule('*/5 * * * *', () => {
-    console.log(_countprint++);
-    try{
-        mc.query('CALL sp_AutoAssignment()', [], function (error, results, fields) {
-            //console.log(results);        
-        });
-        mc.query('CALL sp_AutoClose()', [], function (error, results, fields) {
-            //console.log(results);        
-        });
+// cron.schedule('*/5 * * * *', () => {
+//     console.log(_countprint++);
+//     try{
+//         mc.query('CALL sp_AutoAssignment()', [], function (error, results, fields) {
+//             //console.log(results);        
+//         });
+//         mc.query('CALL sp_AutoClose()', [], function (error, results, fields) {
+//             //console.log(results);        
+//         });
         
-    }catch(err){}
+//     }catch(err){}
 
     
-});
+// });
 
 const ActiveDirectory = require('activedirectory');
 const config = { url: 'ldap://10.0.10.10:389',
@@ -101,7 +101,65 @@ app.get('/api/getAllIssueSubIssue', (req, res) => {
     });  
 });
 
+// sql.close();
+//     //connect to your database
+//     sql.connect(msconfig, function (err) {
+    
+//         if (err) //console.log(err);
 
+//         // create Request object
+//         var request = new sql.Request();
+           
+//         // query to the database and get the records
+//         request.query('select EmpID,EmpName,OriginalDOJ,Photograph,ConfirmationStatus,DOB,FatherName,Gender,MaritalStatus,DateOfMarriage,SpouseName,SpouseDOB,Child1Name,Child1Gender,Child1DOB,Child2Name,Child2Gender,Child2DOB,HighestQualification,TotalExp,PermanentAddress,LevelName,BandName,NoticePeriod,Designation,EntityName,DepartmentName,CategoryName,SubCategoryName,VerticalName,UnitName,FunctionName,SubFunctionName,FirstLevelReportingCode,FirstLevelReportingName,SecondLevelReportingCode,SecondLevelReportingName,WorkingLocation,SeatLocation,HRSpocCode,HRSpocName,ITSPOCCode,ITSPOCName,BuildingNumber,EmergencyContactNumber,EmergencyContactPersonName,EmergencyContactPersonRelation,PresentAddress,UANNumber,ESICNumber,ReJoiningCase,UninformedAbsenceLWD,LoanAmount,GMCNumber,TypeOfExitName,LWD_LastWorking,IsActive,EmailID,CurrentEmployeeCode,MobileNo,PersonalEmailID from V_EmployeeDetails', function (err, recordset) {
+//             //console.log(recordset);
+//             if (err) console.log(err);
+
+//             //console.log(recordset.recordset.length);
+//             for(var i=0;i<recordset.recordset.length;i++){
+//                 var tempData=recordset.recordset[i];
+//                 console.log('SNO ',i);
+//                 try{
+//                 //console.log(tempData.C`urrentEmployeeCode,tempData.EntityName,tempData.CurrentEmployeeCode,tempData.EmailID,tempData.EmpName,tempData.MobileNo,tempData.OriginalDOJ,tempData.Photograph,tempData.ConfirmationStatus,'0',tempData.DOB,tempData.FatherName,tempData.Gender,tempData.MaritalStatus,tempData.Designation,tempData.FirstLevelReportingCode,tempData.FirstLevelReportingName,tempData.SecondLevelReportingCode,tempData.SecondLevelReportingName,tempData.WorkingLocation,tempData.BuildingNumber,'0',tempData.SeatLocation,tempData.HRSpocCode,tempData.HRSpocName,'0',tempData.EmergencyContactNumber,tempData.EmergencyContactPersonName,tempData.EmergencyContactPersonRelation,tempData.PresentAddress,'0',tempData.PersonalEmailID,tempData.TotalExp,tempData.PermanentAddress,tempData.IsActive,tempData.ITSPOCCode,tempData.ITSPOCName,tempData.DepartmentName,tempData.CategoryName,tempData.SubCategoryName,tempData.VerticalName,tempData.UnitName,tempData.FunctionName,tempData.SubFunctionName,'0','0',tempData.UANNumber,tempData.GMCNumber,tempData.BandName,tempData.Child1DOB,tempData.Child1Gender,tempData.Child1Name,tempData.Child2DOB,tempData.Child2Gender,tempData.Child2Name,tempData.DateOfMarriage,'0',tempData.EntityName,tempData.ESICNumber,tempData.HighestQualification,tempData.LevelName,tempData.LoanAmount,tempData.LWD_LastWorking,tempData.NoticePeriod,tempData.ReJoiningCase,tempData.SpouseDOB,tempData.SpouseName,tempData.TypeOfExitName,tempData.UninformedAbsenceLWD,tempData.UniversityInstituteHighQual,tempData.SpocDepartment);                
+//                 mc.query('CALL UpdateEmployeeData(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+//                  [tempData.CurrentEmployeeCode,tempData.EntityName,tempData.CurrentEmployeeCode,tempData.EmailID,tempData.EmpName,tempData.MobileNo,tempData.OriginalDOJ,tempData.Photograph,tempData.ConfirmationStatus,'0',tempData.DOB,tempData.FatherName,tempData.Gender,tempData.MaritalStatus,tempData.Designation,tempData.FirstLevelReportingCode,tempData.FirstLevelReportingName,tempData.SecondLevelReportingCode,tempData.SecondLevelReportingName,tempData.WorkingLocation,tempData.BuildingNumber,'0',tempData.SeatLocation,tempData.HRSpocCode,tempData.HRSpocName,'0',tempData.EmergencyContactNumber,tempData.EmergencyContactPersonName,tempData.EmergencyContactPersonRelation,tempData.PresentAddress,'0',tempData.PersonalEmailID,tempData.TotalExp,tempData.PermanentAddress,tempData.IsActive,tempData.ITSPOCCode,tempData.ITSPOCName,tempData.DepartmentName,tempData.CategoryName,tempData.SubCategoryName,tempData.VerticalName,tempData.UnitName,tempData.FunctionName,tempData.SubFunctionName,'0','0',tempData.UANNumber,tempData.GMCNumber,tempData.BandName,tempData.Child1DOB,tempData.Child1Gender,tempData.Child1Name,tempData.Child2DOB,tempData.Child2Gender,tempData.Child2Name,tempData.DateOfMarriage,'0',tempData.EntityName,tempData.ESICNumber,tempData.HighestQualification,tempData.LevelName,tempData.LoanAmount,tempData.LWD_LastWorking,tempData.NoticePeriod,tempData.ReJoiningCase,tempData.SpouseDOB,tempData.SpouseName,tempData.TypeOfExitName,tempData.UninformedAbsenceLWD,tempData.UniversityInstituteHighQual,tempData.SpocDepartment], 
+//                 function (error, results, fields) {
+//                    console.log('Reuslt for data update: ',error,results);
+//                 });
+//                 }catch(err){}
+//             }
+            
+//             // send records as a response
+//             //res.send(recordset);
+            
+//         });
+        
+//     });    
+
+app.post('api/FAQCount', (req, res) => {
+    if (isEmpty(req.body))
+        return res.send({ error: true, data: null, message: 'error in request' });
+    try {
+
+        let _EmployeeID = req.body.EmployeeID;
+        let _FAQId = req.body.FAQId;
+        let _Status =  req.body.Status;
+ 
+        mc.query('CALL sp_FAQCount(?,?,?)', 
+        [_EmployeeID,_FAQId,_Status], function (error, results, fields) {
+            console.log(results);
+            if (error) {
+                return res.send({ error: true, data: null, message: error });
+            }
+            else
+                return res.send({ error: false, data: results, message: 'success' });
+        });
+    }
+    catch (err) {
+        console.error(err);
+        return res.send({ error: true, data: null, message: err });
+    }
+});
 app.get('/api/UpdateAllEmployeeData', (req, res) => {
     sql.close();
     //connect to your database

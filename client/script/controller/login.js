@@ -39,7 +39,7 @@ HRSupport.controller("LoginCTRL", function ($scope, HRSupportService, $rootScope
         }
         var objLogin = { "username": $scope.EmployeeID, "password": $scope.Password };
         HRSupportService.login(objLogin).success(function (data) {
-            debugger;
+            //debugger;
             console.log(data);
             if(data.error)
             {

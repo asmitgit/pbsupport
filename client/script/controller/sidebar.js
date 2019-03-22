@@ -9,7 +9,18 @@ HRSupport.controller("SideBarCTRL", function ($scope, HRSupportService, $rootSco
 
    $scope.UserDetails = JSON.parse($window.localStorage.getItem('UserDetails'));
    
+   function getMonth(date) {
+       var month = date.getMonth() + 1;
+       return month < 10 ? '0' + month : '' + month; // ('' + month) for string result
+   }
 
+   function getDate(date) {
+       var month = date.getDate();
+       return month < 10 ? '0' + month : '' + month; // ('' + month) for string result
+   }
+   var _ObjDate = new Date;
+   $scope.CurDate = _ObjDate.getFullYear() + "-" + (getMonth(_ObjDate)) + '-' + getDate(_ObjDate)
+    
    var modalInstanceSameCtrl;
 
    $scope.cancel = function () {

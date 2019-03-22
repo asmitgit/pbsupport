@@ -30,10 +30,16 @@ angular.module("HRSupport", ["ngRoute", "ui.bootstrap", "ui.filters"]).config(["
                  templateUrl: 'views/faq.html',
                  controller: 'FAQCtrl'
              })
+             .when('/pbsupport/MySpanTickets/:Type/:Query/:From/:To/:IssueId/:SubIssueId/:StatusID/:TicketID', {
+                 
+                 templateUrl: 'views/mySpanTickets.html',
+                 controller: 'SpanTicketsCTRL'
+             })
               .when('/pbsupport/MySpanTickets', {
                   templateUrl: 'views/mySpanTickets.html',
                   controller: 'SpanTicketsCTRL'
               })
+           
              .when('/pbsupport/UserReport', {
                  templateUrl: 'views/user-report.html',
                  controller: 'UserReportCTRL'
@@ -76,8 +82,5 @@ angular.module("HRSupport", ["ngRoute", "ui.bootstrap", "ui.filters"]).config(["
                 templateUrl: 'view/landingpage/landingpage.html',
                 controller: 'OpenTicketCtrl'
             })
-            .otherwise('/pbsupport', {
-                templateUrl: 'home.html',
-                controller: 'HomeCTRL'
-            })
+           
     }]);

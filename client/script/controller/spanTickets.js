@@ -60,6 +60,7 @@
     $scope.FromDate = new Date;
 
     //$scope.Filter = { FromDate: undefined, ToDate: undefined };
+   
     $scope.GetAllTicketList = function (QUERY) {
         var objRequest = {
             "EmpID": $scope.UserDetails.EMPData[0].EmpID,
@@ -72,15 +73,42 @@
             "StatusID": $scope.Selected.Status ? $scope.Selected.Status.StatusID : 0,
             "TicketID": $scope.TicketID.trim()
         };
+        
+        $window.localStorage.removeItem('PrevPage');
+        $window.localStorage.removeItem('QueryFilter');
+        $window.localStorage.setItem('QueryFilter',
+            JSON.stringify(objRequest));
+        $window.localStorage.setItem('PrevPage', 1);
+
         HRSupportService.GetAllTicketList(objRequest, $scope.UserDetails.Toket).success(function (data) {
             if (data.data != null) {
                 $scope.TicketList = data.data.length > 1 ? data.data[0] : [];
+
             }
             else {
 
             }
         });
+        
     };
+    
+    $scope.LoadPrevData = function () {
+        $scope.PrevPage = JSON.parse($window.localStorage.getItem('PrevPage'));
+        $scope.QueryFilter = JSON.parse($window.localStorage.getItem('QueryFilter'));
+        $window.localStorage.removeItem('PrevPage');
+        $window.localStorage.removeItem('QueryFilter');
+        if ($scope.PrevPage == 1) {
+            HRSupportService.GetAllTicketList($scope.QueryFilter, $scope.UserDetails.Toket).success(function (data) {
+                if (data.data != null) {
+                    $scope.TicketList = data.data.length > 1 ? data.data[0] : [];
+                }
+                else {
+
+                }
+            });
+        }
+    };
+    $scope.LoadPrevData();
     $scope.TicketID = '';
     $scope.orderByField = 'CreatedON';
     $scope.reverseSort = false;

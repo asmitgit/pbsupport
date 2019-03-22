@@ -23,7 +23,7 @@ HRSupport.controller("CreateTicketCTRL", function ($scope, HRSupportService, $ro
         $scope.FileAttachments.splice(index, 1);
 
     }
-
+    $scope.IsDisabled = false;
 
     $scope.ClickOkCancel = function (clickType) {
         //ok
@@ -53,16 +53,20 @@ HRSupport.controller("CreateTicketCTRL", function ($scope, HRSupportService, $ro
     $scope.IsComments = true;
 
     $scope.CreateTicket = function () {
+        $scope.IsDisabled = true;
         if ($scope.isEmpty($scope.Selected.IssueType)) {
             alert('Please select issue type');
+            $scope.IsDisabled = false;
             return false;
         }
         else if ($scope.isEmpty($scope.Selected.SubIssueType)) {
             alert('Please select sub issue type');
+            $scope.IsDisabled = false;
             return false;
         }
         else if ($scope.isEmpty($scope.Comments) || $scope.Comments.length<=10) {
             alert('Query should be more than 10 char');
+            $scope.IsDisabled = false;
             return false;
         }
         else {
@@ -122,7 +126,7 @@ HRSupport.controller("CreateTicketCTRL", function ($scope, HRSupportService, $ro
                                 "empid": data.data[0][0].AssignToCode,
                                 "uid": data.data[0][0].AssignToCode,
                                 "entID": data.data[0][0].TicketDispID,
-                                "url": "http://pbsupportuat.policybazaar.com/home.html#/pbsupport/TicketDetails/" + data.data[0][0].TicketID,
+                                "url": "http://pbsupport.policybazaar.com/home.html#/pbsupport/TicketDetails/" + data.data[0][0].TicketID,
                                 "msg": "New ticket : " + data.data[0][0].TicketDispID,
                                 "read": false,
                                 "type": 1,
@@ -188,7 +192,7 @@ HRSupport.controller("CreateTicketCTRL", function ($scope, HRSupportService, $ro
                         "empid": data.data[0][0].AssignToCode,
                         "uid": data.data[0][0].AssignToCode,
                         "entID": data.data[0][0].TicketDispID,
-                        "url": "http://pbsupportuat.policybazaar.com/home.html#/pbsupport/TicketDetails/" + data.data[0][0].TicketID,
+                        "url": "http://pbsupport.policybazaar.com/home.html#/pbsupport/TicketDetails/" + data.data[0][0].TicketID,
                         "msg": "New ticket : " + data.data[0][0].TicketDispID,
                         "read": false,
                         "type": 1,

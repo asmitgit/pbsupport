@@ -4,3 +4,8 @@ var config = {
 };
 var notURL = "http://notification.policybazaar.com:8080/home1?eid=@eid&role=@role&empid=@empid";
 var addnotification = "http://notification.policybazaar.com:8080/api/AddTicketNotification";
+
+
+function goBack() {
+    window.history.back();
+}
