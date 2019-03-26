@@ -28,6 +28,29 @@ HRSupport.service("HRSupportService", function ($http, $window) {
         return request;
     }
 
+    this.FAQCount = function (objRequest) {
+
+        var request = $http({
+            method: "POST",
+            url: config.serviceURL + "api/FAQCount",
+            headers: {
+                'Content-Type': "application/json; charset=utf-8"
+            },
+            data: JSON.stringify(objRequest)
+        }).success(function (data) {
+            var test = data;
+            //debugger;
+            //console.log(dataGetFAQ);
+        })
+            .error(function (error, status) {
+                if (status == 401) {
+                    $window.location.href = '/login.html';
+                }
+            });
+        return request;
+    }
+
+
     this.SendEmail = function (objReq) {
         var request = $http({
             method: "POST",

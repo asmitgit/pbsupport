@@ -17,8 +17,19 @@ HRSupport.controller("FAQCtrl", function ($scope, HRSupportService, $rootScope,$
         $scope.IsNo = 0;        
     };
 
-    $scope.NoClick = function (data) {
-        data.IsNo = true;
+    $scope.NoClick = function (data,type) {
+        var _request = { "EmployeeID": "0", "FAQId": data.FAQDetailsID, "Status": type };
+        HRSupportService.FAQCount(_request).success(function (data) {
+            if (type == 'Yes') {
+                data.IsNo = true;
+            }
+            else {
+                ///login.html?issue={{data.IssueID}}&subissue={{data.SubIssueID}}
+                $window.location.href = '/login.html?issue=' + data.IssueID + '&subissue=' + data.SubIssueID;
+            }
+            
+        });
+      
     };
 
     $scope.Login = function () {

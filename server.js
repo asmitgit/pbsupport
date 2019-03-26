@@ -136,7 +136,8 @@ app.get('/api/getAllIssueSubIssue', (req, res) => {
         
 //     });    
 
-app.post('api/FAQCount', (req, res) => {
+app.post('/api/FAQCount', (req, res) => {
+    console.log('faqcount');
     if (isEmpty(req.body))
         return res.send({ error: true, data: null, message: 'error in request' });
     try {
@@ -487,7 +488,8 @@ app.post('/api/auth', (req, res) => {
 // });
 
 app.use(function (req, res, next) {
-    //console.log(req.body);
+
+    //console.log(req);
     // check header or url parameters or post parameters for token
     var token = req.body.token || req.param('token') || req.headers['auth-token'];
 console.log(token);
