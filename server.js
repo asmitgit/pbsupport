@@ -38,7 +38,7 @@ const mysqldb = require('./config/keys').mysqldb;
         encrypt: false
     },
     pool: {
-        max: 10,
+        max: 100,
         min: 0,
         idleTimeoutMillis: 30000
     }
@@ -427,7 +427,7 @@ app.post('/api/auth', (req, res) => {
                                                 admin: username
                                             }
                                             var token = jwt.sign(payload, app.get('superSecret'), {
-                                                expiresIn: 3600 // expires in 1 hours
+                                                expiresIn: 36000 // expires in 1 hours
                                             });
                                             console.log('token ',token);
                                             //return res.send({ error: false, data: results, message: 'success',token: token });

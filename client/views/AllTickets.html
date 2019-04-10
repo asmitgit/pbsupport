@@ -184,13 +184,16 @@
                                     <th><a ng-click="sortData('Building')" href="javascript:void(0)">Building</a></th>
                                     <th><a ng-click="sortData('Floor')" href="javascript:void(0)">Floor</a></th>
                                     <th><a ng-click="sortData('AssignName')" href="javascript:void(0)">AssignTo</a></th>
+
                                     <th><a ng-click="sortData('TATDate')" href="javascript:void(0)">TAT</a></th>
+                                    <th><a ng-click="sortData('IsTatBurst')" href="javascript:void(0)">TAT Burst</a></th>
                                     <th><a ng-click="sortData('CreatedON')" href="javascript:void(0)">Created On</a></th>
                                     <th><a ng-click="sortData('ISSUENAME')" href="javascript:void(0)">Issue</a></th>
                                     <th><a ng-click="sortData('SUBISSUENAME')" href="javascript:void(0)">Sub Issue</a></th>
                                     <th><a ng-click="sortData('StatusName')" href="javascript:void(0)">Status</a></th>
                                     <th><a ng-click="sortData('LastUpdatedOn')" href="javascript:void(0)">Updated On</a></th>
                                     <th><a ng-click="sortData('FollowUp')" href="javascript:void(0)">FollowUp</a></th>
+
                                 </tr>
                             </thead>
 
@@ -204,6 +207,7 @@
                                     <td>{{data.Floor}}</td>
                                     <td>{{data.AssignName}}({{data.AssignToEID}})</td>
                                     <td>{{data.TATDate | date:"dd-MM-yyyy  h:mma"}}</td>
+                                    <td>{{data.IsTatBurst==1 ? 'Yes' : 'No'}}</td>
                                     <td>{{data.CreatedON | date:"dd-MM-yyyy  h:mma"}}</td>
                                     <td>{{data.ISSUENAME}}</td>
                                     <td>{{data.SUBISSUENAME}}</td>

@@ -56,8 +56,8 @@
                                         <div class="faq_reply">
                                             <p ng-show="(data.IsNo)">Thanks for your confirmation.</p>
                                             <p ng-show="!(data.IsNo)">Was this answer helpful?</p>
-                                            <button class="btn yes" ng-click="NoClick(data,'Yes')" ng-show="!(data.IsNo)">Yes</button>
-                                            <a ng-show="!(data.IsNo)" class="btn no_btn" ng-click="NoClick(data,'No')"
+                                            <button class="btn yes" ng-click="NoClick(data.FAQDetailsID,data.IssueID,data.SubIssueID,'Yes')" ng-show="!(data.IsNo)">Yes</button>
+                                            <a ng-show="!(data.IsNo)" class="btn no_btn" ng-click="NoClick(data.FAQDetailsID,data.IssueID,data.SubIssueID,'No')"
                                                href="javascript:void(0)">No</a>
                                             <!--<a class="btn no_btn" href="light/login.html?issue={{data.IssueID}}&subissue={{data.SubIssueID}}" ng-click="OpenLogin(data)">No</a>-->
                                             <!--<a class="btn no" href="light/login.html?issue={{data.IssueID}}&subissue={{data.SubIssueID}}">No</a>-->

@@ -104,6 +104,7 @@ HRSupport.controller("CreateTicketCTRL", function ($scope, HRSupportService, $ro
                                          
                                           + "<tr> <td >EmployeeID</td>  <td>" + $scope.UserDetails.EMPData[0].EmployeeID + "</td> </tr> " +
                                           "<tr><td >Employee Name</td> <td >" + $scope.UserDetails.EMPData[0].Name + "</td> </tr> " +
+                                          "<tr><td >Function Name</td> <td >" + $scope.UserDetails.EMPData[0].FunctionName + "</td> </tr> " +
                                           "<tr><td >Ticket#</td>  <td >" + data.data[0][0].TicketDispID + "</td> </tr> " +
                                           " <tr><td >Issue</td><td >" + $scope.Selected.IssueType.ISSUENAME + "</td> </tr> " +
                                           " <tr><td >Concern</td><td >" + $scope.Comments + "</td> </tr></table>"
@@ -171,6 +172,7 @@ HRSupport.controller("CreateTicketCTRL", function ($scope, HRSupportService, $ro
                                           "<table border='1' style='border-collapse:collapse'>"
                                   + "<tr> <td >EmployeeID</td>  <td>" + $scope.UserDetails.EMPData[0].EmployeeID + "</td> </tr> " +
                                           "<tr><td >Employee Name</td> <td >" + $scope.UserDetails.EMPData[0].Name + "</td> </tr> " +
+                                          "<tr><td >Function Name</td> <td >" + $scope.UserDetails.EMPData[0].FunctionName + "</td> </tr> " +
                                           "<tr><td >Ticket#</td>  <td >" + data.data[0][0].TicketDispID + "</td> </tr> " +
                                           " <tr><td >Issue</td><td >" + $scope.Selected.IssueType.ISSUENAME + "</td> </tr> " +
                                           " <tr><td >Concern</td><td >" + $scope.Comments + "</td> </tr></table>"

@@ -17,15 +17,31 @@ HRSupport.controller("FAQCtrl", function ($scope, HRSupportService, $rootScope,$
         $scope.IsNo = 0;        
     };
 
-    $scope.NoClick = function (data,type) {
-        var _request = { "EmployeeID": "0", "FAQId": data.FAQDetailsID, "Status": type };
+    $scope.NoClick = function (_FAQDetailsID,_IssueID,_SubIssueID, type) {
+        var UserDetails = JSON.parse($window.localStorage.getItem('UserDetails'));
+        var EmployeeID = "0";
+        if (!$scope.isEmpty(UserDetails.EMPData)) {
+            EmployeeID = UserDetails.EMPData[0].EmployeeID
+        }
+        var _request = { "EmployeeID": EmployeeID, "FAQId": _FAQDetailsID, "Status": type };
         HRSupportService.FAQCount(_request).success(function (data) {
             if (type == 'Yes') {
-                data.IsNo = true;
+                angular.forEach($scope.FAQData, function (value, key) {
+                    if (value.FAQDetailsID == _FAQDetailsID) {
+                        value.IsNo = true;
+                    }                    
+                });
+
             }
             else {
                 ///login.html?issue={{data.IssueID}}&subissue={{data.SubIssueID}}
-                $window.location.href = '/login.html?issue=' + data.IssueID + '&subissue=' + data.SubIssueID;
+                if (EmployeeID != "0") {
+                    ///home.html#/pbsupport/CreateTicket/{{data.IssueID}}/{{data.SubIssueID}}
+                    $window.location.href = '/home.html#/pbsupport/CreateTicket/' + _IssueID + '/' + _SubIssueID;
+                } else {
+                    $window.location.href = '/login.html?issue=' + _IssueID + '&subissue=' + _SubIssueID;
+                }
+                
             }
             
         });

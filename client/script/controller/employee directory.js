@@ -19,16 +19,22 @@ HRSupport.controller("EmployeeDirectoryCTRL", function ($scope, HRSupportService
         var _Reason = "";
         if (type == 1) {
             _Reason = $scope.ContactReason;
+            _Reason = 'Please share contact number for ' + $scope.EmpData[0].EmployeeID + '<br/>Reason : ' + _Reason;
         }
-        else {
+        else if (type == 2) {
             _Reason = $scope.CTCReason;
+            _Reason = 'Please share CTC for ' + $scope.EmpData[0].EmployeeID + '<br/>Reason : ' + _Reason;
+        }
+        else {            
+            _Reason = $scope.AdditionalReason;
+            _Reason = 'Please share Additional Doc for ' + $scope.EmpData[0].EmployeeID + '<br/>Reason : ' + _Reason;
         }
         
         if ($scope.isEmpty(_Reason) || _Reason.length <= 10) {
             alert('Reason should be more than 10 char');
             return false;
         }
-        _Reason = 'Please share contact number for ' + $scope.EmpData[0].EmployeeID + '<br/>Reason : ' + _Reason;
+        
         var objCreateTicket = {
             "EmpID": $scope.UserDetails.EMPData[0].EmpID,
             "RequestType": type,
