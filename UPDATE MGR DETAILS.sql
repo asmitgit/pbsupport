@@ -1,12 +1,19 @@
---select e.EmpName,e.FirstLevelReportingCode,e.CurrentEmployeeCode
--- from [SQLEXPR-SERVER\SQLEXPRESS].hrdb.[HR].[V_EmployeeDetails] e where EmpName like '%shambhavi%'
+--select * from V_EmployeeDetails
+
+use PBCroma
+go
+
 
 DECLARE @TEMP TABLE (EmployeeCode VARCHAR(50),EmpName VARCHAR(150))
 INSERT INTO @TEMP(EmployeeCode,EmpName)
-SELECT CurrentEmployeeCode,EmpName FROM [SQLEXPR-SERVER\SQLEXPRESS].hrdb.[HR].[V_EmployeeDetails] WHERE CurrentEmployeeCode IS NOT NULL
+SELECT CurrentEmployeeCode,EmpName FROM V_EmployeeDetails WHERE CurrentEmployeeCode IS NOT NULL
+
+DECLARE @ALLTEMP TABLE (CurrentEmployeeCode varchar(200),EmpName varchar(200),FirstLevelReportingCode varchar(200))
+insert into @ALLTEMP(CurrentEmployeeCode,EmpName,FirstLevelReportingCode)
+select CurrentEmployeeCode,EmpName,FirstLevelReportingCode from V_EmployeeDetails
 
 DECLARE @EmpID varchar(50),@EmpName VARCHAR(150),@COUNT INT=0
-
+select count(1) from @TEMP
 WHILE EXISTS(SELECT 1 FROM @TEMP)
 BEGIN
 	SELECT @EmpID=EmployeeCode,@EmpName=EmpName FROM @TEMP
@@ -19,11 +26,11 @@ BEGIN
 	;WITH SubOrdinates AS
 		(
 			SELECT	CurrentEmployeeCode,EmpName,0 AS MgrLevel
-			FROM	[SQLEXPR-SERVER\SQLEXPRESS].hrdb.[HR].[V_EmployeeDetails] 	-- change if table name is different
+			FROM	@ALLTEMP	-- change if table name is different
 			WHERE	CurrentEmployeeCode = @EmpID
 			UNION ALL
 			SELECT	Employee.CurrentEmployeeCode,Employee.EmpName,S.MgrLevel+1 as MgrLevel
-			FROM	[SQLEXPR-SERVER\SQLEXPRESS].hrdb.[HR].[V_EmployeeDetails]  Employee
+			FROM	@ALLTEMP Employee
 			JOIN	SubOrdinates S
 			ON		Employee.FirstLevelReportingCode = S.CurrentEmployeeCode
 		)
@@ -39,9 +46,6 @@ BEGIN
 END
 
 
- 
- --SELECT	CurrentEmployeeCode,EmpName
-	--FROM	[SQLEXPR-SERVER\SQLEXPRESS].hrdb.[HR].[V_EmployeeDetails] 
- --WHERE FirstLevelReportingCode  in ('EW00399','ET01654') -- in @EmpID
- 
- 
+
+--select * from EmpMgrDetails
+--truncate table EmpMgrDetails

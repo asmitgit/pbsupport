@@ -563,17 +563,17 @@ ul.ui-form li.inline-field input[type="text"] { border-radius: 4px; border: 1px 
 button.mybtn-link{padding:0;}
 .mydashboard_card{max-width: 16.6%;}
 .grp1 > label{ margin:0;}
-.new{ background:#17a2b8!important;}
+.new{ background:#49b1d4!important;}
 .new > .body{ padding:0 20px;}
-.open{background-color: #6c757d!important;}
+.open{background-color: #e0e02d!important;}
 .open > .body{ padding:0 20px;}
-.tatbust{background-color: #ffc107!important;}
-.closed{    background: #d06a38 !important;}
+.tatbust{background-color: #ff3131!important;}
+.closed{    background: #2e7b2e  !important;}
 .closed > .body{ padding:0 20px;}
-.resolved{background:#32789a !important;}
+.resolved{background:#53e653  !important;}
 .resolved > .body{ padding:0 20px;}
 .tatbust >.body{ padding:0 19px;}
-.closed{    background: #fd625e !important;}
+.closed{    background: #2e7b2e  !important;}
 .closed >.body{ padding:0 20px;}
 .reopen{background: #a092b0 !important;}
 .reopen >.body{ padding:0 20px;}
@@ -753,3 +753,18 @@ ul.accord_tabs li.active {
     padding: 0 13px 0 0;}
 
 .agent_name{display:block;}
+
+.dotRed {
+  height: 25px;
+  width: 25px;
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dotGreen {
+  height: 25px;
+  width: 25px;
+  background-color: green;
+  border-radius: 50%;
+  display: inline-block;
+}

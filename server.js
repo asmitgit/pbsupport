@@ -30,9 +30,9 @@ const mysqldb = require('./config/keys').mysqldb;
  const mc = mysql.createConnection(mysqldb);
  const sql = require("mssql");
  const msconfig = {
-    user: 'PBLive',
-    password: 'PB123Live',
-    server: '10.0.10.42',       
+    user: 'UATUser',
+    password: 'UAT123User',
+    server: '10.0.10.43',       
     database: 'PBCroma',
     options: {           
         encrypt: false
@@ -427,7 +427,7 @@ app.post('/api/auth', (req, res) => {
                                                 admin: username
                                             }
                                             var token = jwt.sign(payload, app.get('superSecret'), {
-                                                expiresIn: 36000 // expires in 1 hours
+                                                expiresIn: 360000 // expires in 1 hours
                                             });
                                             console.log('token ',token);
                                             //return res.send({ error: false, data: results, message: 'success',token: token });

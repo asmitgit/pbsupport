@@ -207,7 +207,11 @@
                                     <td>{{data.Floor}}</td>
                                     <td>{{data.AssignName}}({{data.AssignToEID}})</td>
                                     <td>{{data.TATDate | date:"dd-MM-yyyy  h:mma"}}</td>
-                                    <td>{{data.IsTatBurst==1 ? 'Yes' : 'No'}}</td>
+
+                                    <td>
+                                        <span class="dot" ></span>
+                                    {{data.IsTatBurst==1 ? 'Yes' : 'No'}}</td>
+
                                     <td>{{data.CreatedON | date:"dd-MM-yyyy  h:mma"}}</td>
                                     <td>{{data.ISSUENAME}}</td>
                                     <td>{{data.SUBISSUENAME}}</td>
